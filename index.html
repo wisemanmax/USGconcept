@@ -1,0 +1,2069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Underground Sound — The Media Hub for the Underground</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   UGS PHASE 1 — MEDIA HUB
+   Dark underground editorial — XXL structure, UGS energy
+   ============================================================ */
+
+:root {
+  --black:    #050507;
+  --deep:     #0a0a0f;
+  --surface:  #101016;
+  --card:     #14141c;
+  --raised:   #1a1a24;
+  --border:   #222230;
+  --border2:  #2e2e40;
+
+  --acid:     #d4ff00;       /* primary accent — neon acid yellow-green */
+  --fire:     #ff3500;       /* secondary — hot orange-red */
+  --ice:      #00e5ff;       /* tertiary — electric cyan */
+  --gold:     #ffc300;       /* freshman gold */
+
+  --white:    #f2f2f0;
+  --off:      #c8c8c0;
+  --muted:    #5a5a70;
+  --dimmed:   #3a3a50;
+
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-serif:   'DM Serif Display', serif;
+  --font-ui:      'Barlow Condensed', sans-serif;
+  --font-mono:    'Space Mono', monospace;
+
+  --gap: 16px;
+  --max: 1440px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-ui);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* GRAIN */
+body::after {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity: 0.35;
+}
+
+a { text-decoration: none; color: inherit; }
+img { display: block; width: 100%; }
+
+/* ============================================================
+   UTILITY
+   ============================================================ */
+.container { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--acid);
+  display: flex; align-items: center; gap: 10px;
+}
+.eyebrow::before { content:''; width: 24px; height: 1px; background: var(--acid); flex-shrink: 0; }
+
+.section-head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 32px; flex-wrap: wrap; gap: 16px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 7vw, 100px);
+  line-height: 0.88;
+  letter-spacing: 1px;
+}
+.see-all {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--dimmed);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+  align-self: flex-end;
+  margin-bottom: 14px;
+}
+.see-all:hover { color: var(--acid); border-color: var(--acid); }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-ui); font-weight: 700;
+  font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
+  cursor: pointer; border: none; transition: all 0.2s;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+}
+.btn-acid { background: var(--acid); color: var(--black); padding: 14px 28px; }
+.btn-acid:hover { background: var(--fire); color: #fff; transform: translateY(-1px); }
+.btn-ghost { background: transparent; color: var(--white); padding: 12px 24px; border: 1px solid var(--border2); clip-path: none; }
+.btn-ghost:hover { border-color: var(--acid); color: var(--acid); }
+
+/* CATEGORY BADGES */
+.cat {
+  font-family: var(--font-mono);
+  font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+  padding: 4px 10px;
+  display: inline-block;
+}
+.cat-news    { background: rgba(212,255,0,0.12); color: var(--acid); }
+.cat-video   { background: rgba(255,53,0,0.15);  color: var(--fire); }
+.cat-fresh   { background: rgba(255,195,0,0.15); color: var(--gold); }
+.cat-feature { background: rgba(0,229,255,0.12); color: var(--ice); }
+.cat-event   { background: rgba(212,255,0,0.12); color: var(--acid); }
+
+/* ============================================================
+   TOP UTILITY BAR
+   ============================================================ */
+.util-bar {
+  background: var(--deep);
+  border-bottom: 1px solid var(--border);
+  padding: 8px 0;
+}
+.util-inner {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.util-left {
+  font-family: var(--font-mono); font-size: 9px; letter-spacing: 3px;
+  color: var(--muted); text-transform: uppercase;
+  display: flex; align-items: center; gap: 20px;
+}
+.util-left span { color: var(--acid); }
+.util-right {
+  display: flex; gap: 16px;
+}
+.util-right a {
+  font-family: var(--font-mono); font-size: 9px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--muted); transition: color 0.2s;
+}
+.util-right a:hover { color: var(--acid); }
+
+/* ============================================================
+   PRIMARY NAV
+   ============================================================ */
+.primary-nav {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(5,5,7,0.94);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  display: flex; align-items: center;
+  height: 72px; gap: 0;
+}
+.nav-logo-wrap {
+  display: flex; align-items: center; gap: 14px;
+  padding-right: 36px;
+  border-right: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.logo-mark {
+  width: 38px; height: 38px;
+  background: var(--acid);
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 70% 100%, 0 100%);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.logo-mark span {
+  font-family: var(--font-display);
+  font-size: 18px; color: var(--black); letter-spacing: 1px; padding-top: 2px;
+}
+.logo-text {
+  display: flex; flex-direction: column; gap: 1px;
+}
+.logo-text .top {
+  font-family: var(--font-display);
+  font-size: 22px; letter-spacing: 4px; color: var(--white); line-height: 1;
+}
+.logo-text .sub {
+  font-family: var(--font-mono);
+  font-size: 8px; letter-spacing: 4px; color: var(--muted); text-transform: uppercase;
+}
+
+.nav-menu {
+  display: flex; list-style: none;
+  padding-left: 32px; flex: 1; gap: 4px;
+}
+.nav-menu > li { position: relative; }
+.nav-menu > li > a {
+  display: flex; align-items: center; gap: 5px;
+  font-family: var(--font-ui); font-weight: 700;
+  font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--off); padding: 8px 14px;
+  transition: color 0.2s; white-space: nowrap;
+}
+.nav-menu > li > a:hover { color: var(--acid); }
+.nav-menu > li > a.active { color: var(--acid); }
+.nav-badge {
+  font-size: 8px; background: var(--fire); color: white;
+  padding: 2px 5px; border-radius: 2px; letter-spacing: 1px;
+  font-family: var(--font-mono);
+}
+
+.nav-actions {
+  display: flex; align-items: center; gap: 12px;
+  padding-left: 20px; border-left: 1px solid var(--border); flex-shrink: 0;
+}
+.nav-search {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 8px 14px; width: 200px;
+}
+.nav-search input {
+  background: none; border: none; outline: none;
+  font-family: var(--font-ui); font-size: 13px; color: var(--white);
+  width: 100%;
+}
+.nav-search input::placeholder { color: var(--muted); }
+.nav-search-icon { color: var(--muted); font-size: 14px; }
+
+/* ============================================================
+   BREAKING TICKER
+   ============================================================ */
+.breaking-bar {
+  background: var(--fire);
+  padding: 0; overflow: hidden;
+  display: flex; align-items: stretch;
+}
+.breaking-label {
+  background: var(--black);
+  color: var(--fire);
+  font-family: var(--font-display);
+  font-size: 14px; letter-spacing: 4px;
+  padding: 8px 20px; white-space: nowrap; flex-shrink: 0;
+  display: flex; align-items: center;
+}
+.breaking-track {
+  display: flex; overflow: hidden; flex: 1;
+  padding: 0;
+}
+.breaking-inner {
+  display: inline-flex; animation: breakTicker 25s linear infinite;
+  white-space: nowrap;
+}
+.breaking-item {
+  font-family: var(--font-ui); font-weight: 600;
+  font-size: 13px; letter-spacing: 1px; color: var(--black);
+  padding: 8px 32px; border-right: 1px solid rgba(0,0,0,0.2);
+  display: flex; align-items: center; gap: 8px;
+}
+.breaking-item::before { content: '●'; font-size: 6px; }
+@keyframes breakTicker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ============================================================
+   HERO — EDITORIAL LEAD
+   ============================================================ */
+.hero { position: relative; overflow: hidden; }
+
+.hero-ambient {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 60% at 75% 40%, rgba(212,255,0,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 35% 45% at 10% 70%, rgba(255,53,0,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 30% at 50% 0%,  rgba(0,229,255,0.04) 0%, transparent 50%);
+}
+
+.hero-grid-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(212,255,0,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212,255,0,0.025) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 80%);
+}
+
+/* Hero split: BIG feature left + sidebar right */
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 1px;
+  background: var(--border);
+  min-height: 620px;
+}
+
+/* HERO MAIN ARTICLE */
+.hero-main {
+  position: relative;
+  background: var(--black);
+  overflow: hidden;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  min-height: 620px;
+}
+.hero-img-placeholder {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(160deg, #0f0f18 0%, #1a0a00 50%, #060608 100%);
+  overflow: hidden;
+}
+.hero-img-placeholder::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent 0px, transparent 40px,
+    rgba(212,255,0,0.015) 40px, rgba(212,255,0,0.015) 41px
+  );
+}
+/* Decorative large "UGS" watermark */
+.hero-watermark {
+  position: absolute; right: -20px; top: 20px;
+  font-family: var(--font-display);
+  font-size: 320px; line-height: 1; letter-spacing: -10px;
+  color: rgba(212,255,0,0.04);
+  pointer-events: none; user-select: none;
+  white-space: nowrap;
+}
+
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 40px;
+  background: linear-gradient(to top, rgba(5,5,7,0.98) 0%, rgba(5,5,7,0.7) 60%, transparent 100%);
+}
+.hero-cats { display: flex; gap: 8px; margin-bottom: 16px; }
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(42px, 5vw, 72px);
+  line-height: 0.92; letter-spacing: 1px;
+  margin-bottom: 16px; max-width: 700px;
+}
+.hero-headline em {
+  font-style: normal;
+  color: var(--acid);
+}
+.hero-deck {
+  font-size: 16px; font-weight: 300; color: var(--off);
+  line-height: 1.6; max-width: 580px; margin-bottom: 24px;
+  letter-spacing: 0.3px;
+}
+.hero-meta {
+  display: flex; align-items: center; gap: 20px;
+}
+.hero-author {
+  display: flex; align-items: center; gap: 10px;
+}
+.author-avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--acid), var(--fire));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 14px; color: var(--black);
+  flex-shrink: 0;
+}
+.author-name {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--muted);
+}
+.author-date {
+  font-family: var(--font-mono); font-size: 10px; color: var(--dimmed);
+}
+.hero-divider { color: var(--dimmed); }
+
+/* HERO SIDEBAR */
+.hero-sidebar {
+  background: var(--surface);
+  display: flex; flex-direction: column;
+}
+.sidebar-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-display);
+  font-size: 18px; letter-spacing: 3px; color: var(--muted);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.sidebar-header span { color: var(--acid); }
+.sidebar-stories { flex: 1; display: flex; flex-direction: column; }
+
+.sidebar-article {
+  display: flex; gap: 14px;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+  cursor: pointer;
+  text-decoration: none; color: inherit;
+}
+.sidebar-article:hover { background: var(--card); }
+.sidebar-article:last-child { border-bottom: none; }
+
+.sidebar-thumb {
+  width: 72px; height: 72px; flex-shrink: 0;
+  background: var(--raised);
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; position: relative; overflow: hidden;
+}
+.sidebar-thumb-inner {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+}
+.sidebar-body { flex: 1; min-width: 0; }
+.sidebar-body .cat { margin-bottom: 6px; }
+.sidebar-title {
+  font-family: var(--font-ui); font-weight: 700;
+  font-size: 14px; line-height: 1.35; letter-spacing: 0.2px;
+  margin-bottom: 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.sidebar-time {
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 2px; color: var(--muted); text-transform: uppercase;
+}
+
+/* ============================================================
+   EDITORIAL CONTENT AREA
+   ============================================================ */
+.editorial { padding: 60px 0; background: var(--black); }
+
+/* FEATURED STRIP — 3 horizontal cards */
+.featured-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  margin-bottom: 60px;
+}
+.strip-card {
+  background: var(--card);
+  padding: 28px 24px;
+  position: relative; overflow: hidden;
+  transition: background 0.3s;
+  cursor: pointer;
+}
+.strip-card:hover { background: var(--raised); }
+.strip-card::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: var(--acid);
+  transform: scaleX(0); transition: transform 0.3s; transform-origin: left;
+}
+.strip-card:hover::after { transform: scaleX(1); }
+
+.strip-num {
+  font-family: var(--font-display);
+  font-size: 80px; color: var(--border2); line-height: 1;
+  margin-bottom: 12px; transition: color 0.3s;
+}
+.strip-card:hover .strip-num { color: rgba(212,255,0,0.15); }
+.strip-card .cat { margin-bottom: 10px; }
+.strip-headline {
+  font-family: var(--font-display);
+  font-size: 26px; letter-spacing: 1px; line-height: 1.1;
+  margin-bottom: 10px;
+}
+.strip-deck {
+  font-size: 13px; color: var(--muted); line-height: 1.6;
+  font-weight: 300; letter-spacing: 0.2px;
+}
+.strip-meta {
+  margin-top: 20px;
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 2px; color: var(--dimmed); text-transform: uppercase;
+}
+
+/* ============================================================
+   NEWS GRID
+   ============================================================ */
+.news-section { padding: 60px 0; background: var(--deep); border-top: 1px solid var(--border); }
+
+.news-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 40px;
+  align-items: start;
+}
+
+.news-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap);
+}
+
+/* Large news card */
+.news-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+  text-decoration: none; color: inherit; display: block;
+}
+.news-card:hover { border-color: var(--acid); transform: translateY(-2px); }
+.news-card.span-2 { grid-column: span 2; }
+
+.card-img {
+  aspect-ratio: 16/9;
+  background: var(--raised);
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.card-img-inner {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px; opacity: 0.4;
+}
+.card-img-gradient {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, var(--card) 0%, transparent 60%);
+}
+.card-img-label {
+  position: absolute; top: 12px; left: 12px;
+  z-index: 1;
+}
+.card-play {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px; height: 48px;
+  border: 2px solid rgba(255,255,255,0.6);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; color: white;
+  backdrop-filter: blur(4px); background: rgba(255,53,0,0.4);
+}
+
+.card-body { padding: 20px; }
+.card-body .cat { margin-bottom: 8px; }
+.card-title {
+  font-family: var(--font-ui); font-weight: 900;
+  font-size: 17px; line-height: 1.3; letter-spacing: 0.3px;
+  margin-bottom: 10px;
+}
+.news-card.span-2 .card-title { font-size: 22px; }
+.card-excerpt {
+  font-size: 13px; color: var(--muted); line-height: 1.6;
+  font-weight: 300; margin-bottom: 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 12px; border-top: 1px solid var(--border);
+}
+.card-author {
+  display: flex; align-items: center; gap: 8px;
+}
+.card-avatar {
+  width: 24px; height: 24px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--acid), var(--fire));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: var(--black); font-family: var(--font-display);
+  flex-shrink: 0;
+}
+.card-author-name {
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--muted);
+}
+.card-time {
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 1px; color: var(--dimmed);
+}
+
+/* NEWS SIDEBAR */
+.news-sidebar { position: sticky; top: 96px; }
+.trending-box {
+  background: var(--card); border: 1px solid var(--border);
+  overflow: hidden; margin-bottom: 24px;
+}
+.trending-head {
+  background: var(--raised);
+  padding: 14px 20px;
+  font-family: var(--font-display);
+  font-size: 20px; letter-spacing: 3px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.trending-head .dot {
+  width: 8px; height: 8px; background: var(--fire); border-radius: 50%;
+  animation: pulse 1.5s infinite;
+}
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.5)} }
+
+.trending-list { display: flex; flex-direction: column; }
+.trending-item {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 20px; border-bottom: 1px solid var(--border);
+  cursor: pointer; transition: background 0.2s;
+}
+.trending-item:last-child { border-bottom: none; }
+.trending-item:hover { background: var(--raised); }
+.trending-rank {
+  font-family: var(--font-display);
+  font-size: 32px; color: var(--border2);
+  line-height: 1; flex-shrink: 0; width: 32px;
+  transition: color 0.2s;
+}
+.trending-item:hover .trending-rank { color: var(--acid); }
+.trending-body {}
+.trending-title {
+  font-weight: 700; font-size: 13px; line-height: 1.3;
+  margin-bottom: 4px; letter-spacing: 0.2px;
+}
+.trending-views {
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 2px; color: var(--muted); text-transform: uppercase;
+}
+
+/* SOCIAL PULSE BOX */
+.social-pulse {
+  background: var(--surface); border: 1px solid var(--border);
+  padding: 20px;
+}
+.pulse-head {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 3px; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+}
+.pulse-stats {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+}
+.pulse-stat {
+  background: var(--card); padding: 14px;
+  border-left: 2px solid;
+}
+.pulse-stat.tw { border-color: #1da1f2; }
+.pulse-stat.ig { border-color: #e1306c; }
+.pulse-stat.yt { border-color: #ff0000; }
+.pulse-stat.all{ border-color: var(--acid); }
+.pulse-num {
+  font-family: var(--font-display);
+  font-size: 28px; line-height: 1;
+}
+.pulse-stat.tw .pulse-num { color: #1da1f2; }
+.pulse-stat.ig .pulse-num { color: #e1306c; }
+.pulse-stat.yt .pulse-num { color: #ff0000; }
+.pulse-stat.all .pulse-num { color: var(--acid); }
+.pulse-label {
+  font-family: var(--font-mono); font-size: 8px;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--muted);
+  margin-top: 4px;
+}
+
+/* ============================================================
+   FRESHMAN LIST — CENTERPIECE
+   ============================================================ */
+.freshman-section {
+  padding: 80px 0;
+  background: var(--black);
+  position: relative; overflow: hidden;
+}
+
+.freshman-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 50%, rgba(255,195,0,0.05) 0%, transparent 60%);
+}
+.freshman-grid-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,195,0,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,195,0,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* TITLE BLOCK */
+.freshman-title-block {
+  text-align: center;
+  padding-bottom: 64px;
+  position: relative;
+}
+.freshman-year {
+  font-family: var(--font-display);
+  font-size: clamp(120px, 18vw, 240px);
+  line-height: 0.85;
+  color: rgba(255,195,0,0.06);
+  letter-spacing: -8px;
+  position: absolute; top: -20px; left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap; pointer-events: none; user-select: none;
+}
+.freshman-eyebrow-wrap {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+}
+.fresh-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+  color: var(--gold);
+  display: flex; align-items: center; gap: 12px;
+}
+.fresh-eyebrow::before,
+.fresh-eyebrow::after {
+  content: ''; width: 40px; height: 1px; background: var(--gold);
+}
+.fresh-main-title {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 9vw, 130px);
+  letter-spacing: 4px; line-height: 0.9; color: var(--white);
+  position: relative; z-index: 1;
+}
+.fresh-main-title span { color: var(--gold); }
+.fresh-subtitle {
+  font-size: 15px; color: var(--muted); font-weight: 300; letter-spacing: 1px;
+  max-width: 500px; text-align: center; line-height: 1.7; margin-top: 8px;
+}
+
+/* FRESHMAN GRID */
+.freshman-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+  background: var(--border);
+  position: relative; z-index: 1;
+}
+
+.fresh-card {
+  background: var(--card);
+  position: relative; overflow: hidden;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  aspect-ratio: 3/4;
+  display: flex; flex-direction: column;
+}
+
+.fresh-card:hover { z-index: 10; transform: scale(1.03); }
+.fresh-card.featured { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
+
+/* Card background */
+.fresh-bg {
+  position: absolute; inset: 0;
+  background: var(--raised);
+  transition: all 0.35s;
+}
+.fresh-card:hover .fresh-bg { filter: brightness(1.15); }
+
+/* Each card has a unique color scheme */
+.fresh-card:nth-child(1)  .fresh-bg { background: linear-gradient(160deg, #1a1000 0%, #0d0800 100%); }
+.fresh-card:nth-child(2)  .fresh-bg { background: linear-gradient(160deg, #0a1200 0%, #050a00 100%); }
+.fresh-card:nth-child(3)  .fresh-bg { background: linear-gradient(160deg, #120010 0%, #080008 100%); }
+.fresh-card:nth-child(4)  .fresh-bg { background: linear-gradient(160deg, #001218 0%, #000a0e 100%); }
+.fresh-card:nth-child(5)  .fresh-bg { background: linear-gradient(160deg, #180800 0%, #0e0500 100%); }
+.fresh-card:nth-child(6)  .fresh-bg { background: linear-gradient(160deg, #001400 0%, #000c00 100%); }
+.fresh-card:nth-child(7)  .fresh-bg { background: linear-gradient(160deg, #14000a 0%, #0c0006 100%); }
+
+/* Card number — massive watermark */
+.fresh-num {
+  position: absolute;
+  right: -8px; bottom: -8px;
+  font-family: var(--font-display);
+  font-size: 140px; line-height: 1;
+  color: rgba(255,255,255,0.04);
+  transition: color 0.3s;
+  pointer-events: none; user-select: none;
+}
+.fresh-card:hover .fresh-num { color: rgba(255,195,0,0.08); }
+.fresh-card.featured .fresh-num { font-size: 220px; }
+
+/* Emoji "portrait" placeholder */
+.fresh-portrait {
+  flex: 1;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 72px;
+  position: relative; z-index: 1;
+  transition: transform 0.35s;
+}
+.fresh-card:hover .fresh-portrait { transform: scale(1.1) translateY(-4px); }
+.fresh-card.featured .fresh-portrait { font-size: 120px; }
+
+/* Gold accent line on hover */
+.fresh-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--gold);
+  transform: scaleX(0); transition: transform 0.3s; transform-origin: left;
+  z-index: 5;
+}
+.fresh-card:hover::before,
+.fresh-card.featured::before { transform: scaleX(1); }
+
+/* Card info */
+.fresh-info {
+  position: relative; z-index: 2;
+  padding: 16px;
+  background: linear-gradient(to top, rgba(5,5,7,0.98) 0%, rgba(5,5,7,0.8) 60%, transparent 100%);
+}
+.fresh-card.featured .fresh-info { padding: 24px 28px; }
+
+.fresh-number-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px;
+  background: var(--gold);
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 70% 100%, 0 100%);
+  font-family: var(--font-display);
+  font-size: 14px; color: var(--black);
+  margin-bottom: 8px;
+}
+.fresh-card.featured .fresh-number-badge { width: 36px; height: 36px; font-size: 18px; }
+
+.fresh-name {
+  font-family: var(--font-display);
+  font-size: 22px; letter-spacing: 2px; color: var(--white); line-height: 1;
+  margin-bottom: 4px;
+}
+.fresh-card.featured .fresh-name { font-size: 34px; }
+
+.fresh-origin {
+  font-family: var(--font-mono);
+  font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 4px;
+}
+
+.fresh-desc {
+  font-size: 12px; color: var(--muted); line-height: 1.5; font-weight: 300;
+  display: none;
+}
+.fresh-card.featured .fresh-desc { display: block; margin-top: 8px; }
+
+.fresh-tags {
+  display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px;
+}
+.fresh-tag {
+  font-family: var(--font-mono); font-size: 8px;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 3px 8px; border: 1px solid rgba(255,195,0,0.2);
+  color: rgba(255,195,0,0.6);
+}
+.fresh-card.featured .fresh-tag { font-size: 9px; padding: 4px 10px; }
+
+/* ============================================================
+   VIDEO SECTION
+   ============================================================ */
+.video-section {
+  padding: 60px 0;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--gap);
+}
+
+.video-feature {
+  background: var(--card);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  cursor: pointer; transition: border-color 0.2s;
+}
+.video-feature:hover { border-color: var(--fire); }
+
+.video-thumb {
+  aspect-ratio: 16/9;
+  background: linear-gradient(135deg, #150500 0%, #0a0f00 100%);
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.video-thumb-bg {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 80px; opacity: 0.15;
+}
+.play-btn {
+  position: relative; z-index: 1;
+  width: 72px; height: 72px;
+  background: var(--fire);
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 70% 100%, 0 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  transition: transform 0.2s;
+}
+.video-feature:hover .play-btn { transform: scale(1.1); }
+
+.views-badge {
+  position: absolute; bottom: 12px; right: 12px;
+  background: rgba(0,0,0,0.7);
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 2px; color: var(--off);
+  padding: 4px 10px; backdrop-filter: blur(4px);
+}
+
+.video-body { padding: 20px; }
+.video-title {
+  font-family: var(--font-display);
+  font-size: 28px; letter-spacing: 1px; line-height: 1.05;
+  margin-bottom: 8px;
+}
+.video-desc {
+  font-size: 13px; color: var(--muted); line-height: 1.6;
+  font-weight: 300; margin-bottom: 16px;
+}
+
+.video-sidebar { display: flex; flex-direction: column; gap: var(--gap); }
+
+.video-mini {
+  background: var(--card); border: 1px solid var(--border);
+  display: flex; gap: 0; overflow: hidden; cursor: pointer;
+  transition: border-color 0.2s;
+}
+.video-mini:hover { border-color: var(--fire); }
+.video-mini-thumb {
+  width: 120px; flex-shrink: 0;
+  background: linear-gradient(135deg, #100a00 0%, #050a0f 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; position: relative;
+}
+.mini-play {
+  position: absolute; inset: 0;
+  background: rgba(255,53,0,0.08);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; opacity: 0; transition: opacity 0.2s;
+}
+.video-mini:hover .mini-play { opacity: 1; }
+.video-mini-body { padding: 14px 16px; flex: 1; min-width: 0; }
+.video-mini-title {
+  font-weight: 700; font-size: 13px; line-height: 1.35;
+  margin-bottom: 6px; letter-spacing: 0.2px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+.video-mini-views {
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 2px; color: var(--muted); text-transform: uppercase;
+  display: flex; align-items: center; gap: 8px;
+}
+
+/* ============================================================
+   EVENTS STRIP
+   ============================================================ */
+.events-section {
+  padding: 60px 0;
+  background: var(--black);
+  border-top: 1px solid var(--border);
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+  margin-top: 32px;
+}
+
+.event-card {
+  background: var(--card); border: 1px solid var(--border);
+  overflow: hidden; cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.event-card:hover { border-color: var(--acid); transform: translateY(-3px); }
+
+.event-date-banner {
+  padding: 16px 20px;
+  background: var(--raised);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-end; gap: 8px;
+}
+.event-day {
+  font-family: var(--font-display);
+  font-size: 52px; color: var(--acid); line-height: 1;
+}
+.event-month-year {
+  display: flex; flex-direction: column; gap: 0;
+  padding-bottom: 4px;
+}
+.event-month {
+  font-family: var(--font-display);
+  font-size: 22px; color: var(--white); letter-spacing: 2px;
+}
+.event-year {
+  font-family: var(--font-mono); font-size: 10px; color: var(--muted); letter-spacing: 2px;
+}
+
+.event-body { padding: 20px; }
+.event-title {
+  font-family: var(--font-display);
+  font-size: 22px; letter-spacing: 1px; margin-bottom: 8px; line-height: 1.1;
+}
+.event-location {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 2px; color: var(--muted); text-transform: uppercase;
+  margin-bottom: 12px; display: flex; align-items: center; gap: 6px;
+}
+.event-location::before { content: '📍'; font-size: 10px; }
+.event-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.event-status {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 2px; text-transform: uppercase; padding: 5px 10px;
+}
+.event-status.open { background: rgba(212,255,0,0.1); color: var(--acid); }
+.event-status.soon { background: rgba(255,53,0,0.1); color: var(--fire); }
+.event-status.tba  { background: rgba(90,90,112,0.3); color: var(--muted); }
+.event-status::before { content:''; width:5px;height:5px;border-radius:50%;background:currentColor; }
+.event-status.open::before { animation: pulse 1.5s infinite; }
+
+/* ============================================================
+   SUBMIT CTA BANNER
+   ============================================================ */
+.cta-banner {
+  padding: 80px 0;
+  background: var(--deep);
+  border-top: 1px solid var(--border);
+  position: relative; overflow: hidden;
+}
+.cta-banner-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 80% at 20% 50%, rgba(212,255,0,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 80% 50%, rgba(255,53,0,0.06) 0%, transparent 55%);
+}
+.cta-inner {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1fr auto; gap: 48px;
+  align-items: center;
+}
+.cta-text {}
+.cta-label {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 5px; text-transform: uppercase; color: var(--acid);
+  margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+}
+.cta-label::before { content:''; width:30px;height:1px;background:var(--acid); }
+.cta-heading {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 7vw, 96px);
+  line-height: 0.88; letter-spacing: 2px; margin-bottom: 20px;
+}
+.cta-heading span { color: var(--acid); }
+.cta-subtext {
+  font-size: 16px; font-weight: 300; color: var(--muted);
+  line-height: 1.7; max-width: 540px;
+}
+.cta-actions {
+  display: flex; flex-direction: column; gap: 12px;
+  align-items: flex-start; flex-shrink: 0;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+.footer-top {
+  padding: 60px 0 48px;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 48px;
+}
+.footer-brand {}
+.footer-brand-logo {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+}
+.footer-brand p {
+  font-size: 13px; color: var(--muted); line-height: 1.8; max-width: 260px;
+}
+.footer-socials {
+  display: flex; gap: 10px; margin-top: 20px;
+}
+.social-ico {
+  width: 36px; height: 36px;
+  background: var(--raised); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; transition: all 0.2s;
+  clip-path: polygon(0 0, calc(100% - 5px) 0, 100% 5px, 100% 100%, 5px 100%, 0 calc(100% - 5px));
+}
+.social-ico:hover { background: var(--acid); border-color: var(--acid); }
+
+.footer-col h5 {
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 20px;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 10px; }
+.footer-col a {
+  font-size: 13px; color: var(--off); opacity: 0.6;
+  transition: all 0.2s; letter-spacing: 0.3px;
+}
+.footer-col a:hover { color: var(--acid); opacity: 1; }
+.footer-col .new {
+  font-family: var(--font-mono); font-size: 8px; letter-spacing: 1px;
+  background: var(--fire); color: white; padding: 2px 5px; margin-left: 6px;
+  vertical-align: middle;
+}
+
+.footer-bottom {
+  padding: 24px 0;
+  border-top: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-copy {
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--muted);
+}
+.footer-phase {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 9px; letter-spacing: 2px;
+  text-transform: uppercase;
+}
+.phase-badge {
+  background: var(--acid); color: var(--black);
+  padding: 3px 8px; font-weight: 700;
+}
+
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.reveal.in { opacity: 1; transform: none; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 1200px) {
+  .hero-layout { grid-template-columns: 1fr 320px; }
+  .freshman-grid { grid-template-columns: repeat(4, 1fr); }
+  .fresh-card.featured { grid-column: span 2; }
+  .footer-top { grid-template-columns: 1fr 1fr 1fr; }
+}
+@media (max-width: 1024px) {
+  .news-layout { grid-template-columns: 1fr; }
+  .news-sidebar { position: static; }
+  .pulse-stats { grid-template-columns: repeat(4, 1fr); }
+  .trending-box { display: none; }
+  .cta-inner { grid-template-columns: 1fr; }
+  .video-grid { grid-template-columns: 1fr; }
+  .events-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 900px) {
+  .hero-layout { grid-template-columns: 1fr; }
+  .hero-sidebar { display: none; }
+  .freshman-grid { grid-template-columns: repeat(3, 1fr); }
+  .fresh-card.featured { grid-column: span 2; }
+  .featured-strip { grid-template-columns: 1fr; }
+  .news-main-grid { grid-template-columns: 1fr; }
+  .news-card.span-2 { grid-column: span 1; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  .nav-inner { padding: 0 20px; }
+  .nav-menu { display: none; }
+  .freshman-grid { grid-template-columns: repeat(2, 1fr); }
+  .fresh-card.featured { grid-column: span 2; }
+  .events-grid { grid-template-columns: 1fr; }
+  footer .footer-top { grid-template-columns: 1fr; }
+  .util-bar { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- UTILITY BAR -->
+<div class="util-bar">
+  <div class="container">
+    <div class="util-inner">
+      <div class="util-left">
+        <span>Underground Sound</span> — Media Hub for the New Global Underground
+        &nbsp;|&nbsp; 📍 <span>US-Based</span> &nbsp;|&nbsp; Est. 2020
+      </div>
+      <div class="util-right">
+        <a href="#submit">Submit Music</a>
+        <a href="#freshman">2025 Freshman</a>
+        <a href="#events">Events</a>
+        <a href="https://twitter.com/therealugs" target="_blank">Twitter</a>
+        <a href="https://instagram.com/undergroundsound" target="_blank">Instagram</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRIMARY NAV -->
+<nav class="primary-nav">
+  <div class="container">
+    <div class="nav-inner">
+      <div class="nav-logo-wrap">
+        <div class="logo-mark"><span>UGS</span></div>
+        <div class="logo-text">
+          <span class="top">UNDERGROUND</span>
+          <span class="sub">Sound · Est. 2020</span>
+        </div>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#freshman">Freshman List <span class="nav-badge">2025</span></a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#submit">Promotions</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div class="nav-search">
+          <span class="nav-search-icon">🔍</span>
+          <input type="text" placeholder="Search artists, news...">
+        </div>
+        <a href="#submit" class="btn btn-acid" style="padding: 10px 20px; font-size: 11px;">Submit ↗</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- BREAKING BAR -->
+<div class="breaking-bar">
+  <div class="breaking-label">BREAKING</div>
+  <div class="breaking-track">
+    <div class="breaking-inner">
+      <span class="breaking-item">2Slimey's music video crosses 1.8M views on Underground Sound's Twitter</span>
+      <span class="breaking-item">UGS 2025 Freshman List nominations now open — submit your artist</span>
+      <span class="breaking-item">Underground Sound road to 100K followers — follow @therealugs</span>
+      <span class="breaking-item">ØWAY Cypher out now — watch on YouTube @therealugs</span>
+      <span class="breaking-item">New promotions packages available — Twitter, Instagram, and YouTube</span>
+      <span class="breaking-item">Phase 2 platform analytics coming soon — stay tuned</span>
+      <!-- duplicate for loop -->
+      <span class="breaking-item">2Slimey's music video crosses 1.8M views on Underground Sound's Twitter</span>
+      <span class="breaking-item">UGS 2025 Freshman List nominations now open — submit your artist</span>
+      <span class="breaking-item">Underground Sound road to 100K followers — follow @therealugs</span>
+      <span class="breaking-item">ØWAY Cypher out now — watch on YouTube @therealugs</span>
+      <span class="breaking-item">New promotions packages available — Twitter, Instagram, and YouTube</span>
+      <span class="breaking-item">Phase 2 platform analytics coming soon — stay tuned</span>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero" id="home">
+  <div class="hero-ambient"></div>
+  <div class="hero-grid-bg"></div>
+  <div class="hero-layout">
+
+    <!-- MAIN FEATURE -->
+    <div class="hero-main">
+      <div class="hero-img-placeholder">
+        <div class="hero-watermark">UGS</div>
+      </div>
+      <div class="hero-content">
+        <div class="hero-cats">
+          <span class="cat cat-fresh">⭐ Freshman</span>
+          <span class="cat cat-feature">✦ Feature</span>
+        </div>
+        <h1 class="hero-headline">
+          <em>2025 FRESHMAN</em><br>
+          LIST: THE NEXT<br>GENERATION OF<br>UNDERGROUND
+        </h1>
+        <p class="hero-deck">
+          Underground Sound identifies the hardest rising artists before the mainstream catches on. 
+          This year's class is the deepest yet — 10 artists, 10 stories, one platform that never misses.
+        </p>
+        <div class="hero-meta">
+          <div class="hero-author">
+            <div class="author-avatar">UGS</div>
+            <div>
+              <div class="author-name">UGS Editorial</div>
+              <div class="author-date">February 2025</div>
+            </div>
+          </div>
+          <span class="hero-divider">|</span>
+          <span style="font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:2px;">8 MIN READ</span>
+          <span class="hero-divider">|</span>
+          <span style="font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:2px;">1.2M VIEWS</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="hero-sidebar">
+      <div class="sidebar-header">LATEST <span>STORIES</span></div>
+      <div class="sidebar-stories">
+        <a href="#" class="sidebar-article">
+          <div class="sidebar-thumb">
+            <div class="sidebar-thumb-inner">🎤</div>
+          </div>
+          <div class="sidebar-body">
+            <span class="cat cat-news">News</span>
+            <div class="sidebar-title">2Slimey Goes Viral — Fans Cry as He Finally Makes It in Underground Scene</div>
+            <div class="sidebar-time">2 hours ago</div>
+          </div>
+        </a>
+        <a href="#" class="sidebar-article">
+          <div class="sidebar-thumb">
+            <div class="sidebar-thumb-inner">🎬</div>
+          </div>
+          <div class="sidebar-body">
+            <span class="cat cat-video">Video</span>
+            <div class="sidebar-title">ØWAY Cypher Drops — Hardest Bars of 2024 Compiled on UGS YouTube</div>
+            <div class="sidebar-time">5 hours ago</div>
+          </div>
+        </a>
+        <a href="#" class="sidebar-article">
+          <div class="sidebar-thumb">
+            <div class="sidebar-thumb-inner">📊</div>
+          </div>
+          <div class="sidebar-body">
+            <span class="cat cat-feature">Feature</span>
+            <div class="sidebar-title">Underground Sound's Twitter Hits 92K: The Growth Story No One Talks About</div>
+            <div class="sidebar-time">1 day ago</div>
+          </div>
+        </a>
+        <a href="#" class="sidebar-article">
+          <div class="sidebar-thumb">
+            <div class="sidebar-thumb-inner">🌐</div>
+          </div>
+          <div class="sidebar-body">
+            <span class="cat cat-feature">Platform</span>
+            <div class="sidebar-title">Phase 2 Infrastructure Revealed: Creator Dashboards, Analytics & More</div>
+            <div class="sidebar-time">2 days ago</div>
+          </div>
+        </a>
+        <a href="#" class="sidebar-article">
+          <div class="sidebar-thumb">
+            <div class="sidebar-thumb-inner">🔥</div>
+          </div>
+          <div class="sidebar-body">
+            <span class="cat cat-news">Regional</span>
+            <div class="sidebar-title">Delaware's Quiet Wave: How One State is Building Underground Infrastructure</div>
+            <div class="sidebar-time">3 days ago</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURED STRIP -->
+<section class="editorial">
+  <div class="container">
+    <div class="featured-strip reveal">
+      <div class="strip-card">
+        <div class="strip-num">01</div>
+        <span class="cat cat-feature">Platform</span>
+        <h3 class="strip-headline">Building Underground Infrastructure: The UGS Blueprint</h3>
+        <p class="strip-deck">From social promotion to owned media — how Underground Sound is building the platform the underground actually deserves.</p>
+        <div class="strip-meta">UGS Editorial · 6 min read</div>
+      </div>
+      <div class="strip-card">
+        <div class="strip-num">02</div>
+        <span class="cat cat-video">Video</span>
+        <h3 class="strip-headline">The ØWAY Cypher Breaks Through: 1.8M Views and Climbing</h3>
+        <p class="strip-deck">The cypher format is back. Underground Sound's flagship video series proves the underground has bars that mainstream won't touch.</p>
+        <div class="strip-meta">UGS Video · 3 min read</div>
+      </div>
+      <div class="strip-card">
+        <div class="strip-num">03</div>
+        <span class="cat cat-fresh">Freshman</span>
+        <h3 class="strip-headline">Nominations for the 2025 Class Are Open — Here's How to Apply</h3>
+        <p class="strip-deck">UGS Freshman List is the underground's most anticipated artist recognition. Submit now before the class locks in.</p>
+        <div class="strip-meta">UGS Staff · 2 min read</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS SECTION -->
+<section class="news-section" id="news">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:12px;">Latest Coverage</div>
+        <div class="section-title">FRESH<br>DROPS</div>
+      </div>
+      <a href="#" class="see-all">All News →</a>
+    </div>
+
+    <div class="news-layout">
+      <div class="news-main-grid reveal">
+
+        <!-- BIG CARD -->
+        <a href="#" class="news-card span-2">
+          <div class="card-img">
+            <div class="card-img-inner">🎤</div>
+            <div class="card-img-gradient"></div>
+            <div class="card-img-label"><span class="cat cat-news">Breaking</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">2Slimey Breaks Through: Fans Start Screaming as He Finally Makes It — This Is What The Underground Is About</div>
+            <p class="card-excerpt">The moment went viral when a crowd of underground fans erupted as 2Slimey took the stage, proving that authentic traction converts to real-world recognition. Underground Sound's coverage reached 177K views within 48 hours.</p>
+            <div class="card-footer">
+              <div class="card-author">
+                <div class="card-avatar">UGS</div>
+                <span class="card-author-name">UGS Staff</span>
+              </div>
+              <span class="card-time">2h ago · 4 min read</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- CARD 2 -->
+        <a href="#" class="news-card">
+          <div class="card-img">
+            <div class="card-img-inner">🎬</div>
+            <div class="card-img-gradient"></div>
+            <div class="card-img-label"><span class="cat cat-video">Video</span></div>
+            <div class="card-play">▶</div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">ØWAY Cypher: The Hardest Underground Collab of 2024 Is Finally Out</div>
+            <p class="card-excerpt">The UGS cypher series returns with its biggest installment yet. Multiple underground artists, one platform, millions of eyes.</p>
+            <div class="card-footer">
+              <div class="card-author">
+                <div class="card-avatar">V</div>
+                <span class="card-author-name">UGS Video</span>
+              </div>
+              <span class="card-time">5h ago</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- CARD 3 -->
+        <a href="#" class="news-card">
+          <div class="card-img">
+            <div class="card-img-inner">📊</div>
+            <div class="card-img-gradient"></div>
+            <div class="card-img-label"><span class="cat cat-feature">Platform</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">92K and Growing: How Underground Sound Built a Twitter Empire on Pure Content</div>
+            <p class="card-excerpt">No paid ads, no shortcuts. Just daily underground content and an audience that actually listens. The numbers don't lie.</p>
+            <div class="card-footer">
+              <div class="card-author">
+                <div class="card-avatar">E</div>
+                <span class="card-author-name">UGS Editorial</span>
+              </div>
+              <span class="card-time">1d ago</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- CARD 4 -->
+        <a href="#" class="news-card">
+          <div class="card-img">
+            <div class="card-img-inner">🌍</div>
+            <div class="card-img-gradient"></div>
+            <div class="card-img-label"><span class="cat cat-news">Regional</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Delaware's Underground Is Quietly Building Something Nobody Can Ignore</div>
+            <p class="card-excerpt">Small state, massive wave. The underground scene coming out of Delaware is positioning itself for national breakout.</p>
+            <div class="card-footer">
+              <div class="card-author">
+                <div class="card-avatar">R</div>
+                <span class="card-author-name">Regional Desk</span>
+              </div>
+              <span class="card-time">2d ago</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- CARD 5 -->
+        <a href="#" class="news-card">
+          <div class="card-img">
+            <div class="card-img-inner">🎶</div>
+            <div class="card-img-gradient"></div>
+            <div class="card-img-label"><span class="cat cat-fresh">Freshman</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">The UGS Freshman List Returns — Inside the Selection Process for 2025</div>
+            <p class="card-excerpt">How UGS identifies the next class of underground artists before anyone else. Criteria, timeline, and what we're looking for.</p>
+            <div class="card-footer">
+              <div class="card-author">
+                <div class="card-avatar">A</div>
+                <span class="card-author-name">A&R Desk</span>
+              </div>
+              <span class="card-time">3d ago</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- CARD 6 -->
+        <a href="#" class="news-card">
+          <div class="card-img">
+            <div class="card-img-inner">⚡</div>
+            <div class="card-img-gradient"></div>
+            <div class="card-img-label"><span class="cat cat-feature">Phase 2</span></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Underground Sound Phase 2: Creator Dashboards, Analytics, and Ticketing Are Coming</div>
+            <p class="card-excerpt">The next phase of the platform turns Underground Sound from a media brand into full artist infrastructure. Here's the roadmap.</p>
+            <div class="card-footer">
+              <div class="card-author">
+                <div class="card-avatar">P</div>
+                <span class="card-author-name">Platform Team</span>
+              </div>
+              <span class="card-time">4d ago</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <aside class="news-sidebar">
+        <div class="trending-box reveal">
+          <div class="trending-head">TRENDING <div class="dot"></div></div>
+          <div class="trending-list">
+            <div class="trending-item">
+              <div class="trending-rank">01</div>
+              <div class="trending-body">
+                <div class="trending-title">2Slimey Viral Breakdown Moment</div>
+                <div class="trending-views">1.8M VIEWS · TWITTER</div>
+              </div>
+            </div>
+            <div class="trending-item">
+              <div class="trending-rank">02</div>
+              <div class="trending-body">
+                <div class="trending-title">ØWAY Cypher Full Video</div>
+                <div class="trending-views">500K VIEWS · YOUTUBE</div>
+              </div>
+            </div>
+            <div class="trending-item">
+              <div class="trending-rank">03</div>
+              <div class="trending-body">
+                <div class="trending-title">2025 Freshman List Reveal</div>
+                <div class="trending-views">177K VIEWS · ALL PLATFORMS</div>
+              </div>
+            </div>
+            <div class="trending-item">
+              <div class="trending-rank">04</div>
+              <div class="trending-body">
+                <div class="trending-title">Delaware Underground Wave Article</div>
+                <div class="trending-views">64K VIEWS · TWITTER</div>
+              </div>
+            </div>
+            <div class="trending-item">
+              <div class="trending-rank">05</div>
+              <div class="trending-body">
+                <div class="trending-title">Phase 2 Infrastructure Reveal</div>
+                <div class="trending-views">38K VIEWS · INSTAGRAM</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-pulse reveal">
+          <div class="pulse-head">
+            <span style="color:var(--acid);">●</span> Live Platform Pulse
+          </div>
+          <div class="pulse-stats">
+            <div class="pulse-stat tw">
+              <div class="pulse-num">92K</div>
+              <div class="pulse-label">Twitter</div>
+            </div>
+            <div class="pulse-stat ig">
+              <div class="pulse-num">50K+</div>
+              <div class="pulse-label">Instagram</div>
+            </div>
+            <div class="pulse-stat yt">
+              <div class="pulse-num">1.8M</div>
+              <div class="pulse-label">YT Top Views</div>
+            </div>
+            <div class="pulse-stat all">
+              <div class="pulse-num">177K</div>
+              <div class="pulse-label">Avg/Post</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- FRESHMAN LIST -->
+<section class="freshman-section" id="freshman">
+  <div class="freshman-bg"></div>
+  <div class="freshman-grid-bg"></div>
+  <div class="container">
+    <div class="freshman-title-block reveal">
+      <div class="freshman-year">2025</div>
+      <div class="freshman-eyebrow-wrap">
+        <div class="fresh-eyebrow">Underground Sound Presents</div>
+        <div class="fresh-main-title">FRESHMAN<br><span>CLASS</span></div>
+        <p class="fresh-subtitle">
+          The artists you need to know before they blow. Underground Sound's annual recognition of the hardest rising talent in the game.
+        </p>
+      </div>
+    </div>
+
+    <!-- FRESHMAN GRID — 10 ARTISTS -->
+    <div class="freshman-grid reveal">
+
+      <!-- FEATURED CARD -->
+      <div class="fresh-card featured">
+        <div class="fresh-bg"></div>
+        <div class="fresh-num">1</div>
+        <div class="fresh-portrait">🎤</div>
+        <div class="fresh-info">
+          <div class="fresh-number-badge">1</div>
+          <div class="fresh-origin">ATL · Melodic Trap</div>
+          <div class="fresh-name">SLIMZY REAL</div>
+          <p class="fresh-desc">Born in Atlanta's Westside, Slimzy Real has been building regional momentum since 2022. His melodic approach to trap beats with raw storytelling earned him a spot at the top of this year's class.</p>
+          <div class="fresh-tags">
+            <span class="fresh-tag">MELODIC</span>
+            <span class="fresh-tag">TRAP</span>
+            <span class="fresh-tag">RISING</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fresh-card">
+        <div class="fresh-bg"></div>
+        <div class="fresh-num">2</div>
+        <div class="fresh-portrait">🧊</div>
+        <div class="fresh-info">
+          <div class="fresh-number-badge">2</div>
+          <div class="fresh-origin">CHI · DRILL</div>
+          <div class="fresh-name">FROST DIVZ</div>
+          <div class="fresh-tags"><span class="fresh-tag">DRILL</span></div>
+        </div>
+      </div>
+
+      <div class="fresh-card">
+        <div class="fresh-bg"></div>
+        <div class="fresh-num">3</div>
+        <div class="fresh-portrait">🔮</div>
+        <div class="fresh-info">
+          <div class="fresh-number-badge">3</div>
+          <div class="fresh-origin">NYC · ALT RAP</div>
+          <div class="fresh-name">VOIDKID</div>
+          <div class="fresh-tags"><span class="fresh-tag">ALT</span><span class="fresh-tag">EMO</span></div>
+        </div>
+      </div>
+
+      <div class="fresh-card">
+        <div class="fresh-bg"></div>
+        <div class="fresh-num">4</div>
+        <div class="fresh-portrait">⚡</div>
+        <div class="fresh-info">
+          <div class="fresh-number-badge">4</div>
+          <div class="fresh-origin">HOU · HYPHY</div>
+          <div class="fresh-name">KAOSWAVE</div>
+          <div class="fresh-tags"><span class="fresh-tag">ENERGY</span></div>
+        </div>
+      </div>
+
+      <div class="fresh-card">
+        <div class="fresh-bg"></div>
+        <div class="fresh-num">5</div>
+        <div class="fresh-portrait">🌑</div>
+        <div class="fresh-info">
+          <div class="fresh-number-badge">5</div>
+          <div class="fresh-origin">DET · DARK RAP</div>
+          <div class="fresh-name">LUNAR4</div>
+          <div class="fresh-tags"><span class="fresh-tag">DARK</span></div>
+        </div>
+      </div>
+
+      <div class="fresh-card">
+        <div class="fresh-bg"></div>
+        <div class="fresh-num">6</div>
+        <div class="fresh-portrait">🦋</div>
+        <div class="fresh-info">
+          <div class="fresh-number-badge">6</div>
+          <div class="fresh-origin">MIA · R&B FUSION</div>
+          <div class="fresh-name">SOLARIS</div>
+          <div class="fresh-tags"><span class="fresh-tag">R&B</span></div>
+        </div>
+      </div>
+
+      <div class="fresh-card">
+        <div class="fresh-bg"></div>
+        <div class="fresh-num">7</div>
+        <div class="fresh-portrait">🔥</div>
+        <div class="fresh-info">
+          <div class="fresh-number-badge">7</div>
+          <div class="fresh-origin">LA · HYPER</div>
+          <div class="fresh-name">HELLGATE</div>
+          <div class="fresh-tags"><span class="fresh-tag">HYPER</span></div>
+        </div>
+      </div>
+
+      <div class="fresh-card">
+        <div class="fresh-bg"></div>
+        <div class="fresh-num">8</div>
+        <div class="fresh-portrait">🌊</div>
+        <div class="fresh-info">
+          <div class="fresh-number-badge">8</div>
+          <div class="fresh-origin">DE · MELODIC</div>
+          <div class="fresh-name">TIDECREST</div>
+          <div class="fresh-tags"><span class="fresh-tag">MELODIC</span></div>
+        </div>
+      </div>
+
+      <div class="fresh-card">
+        <div class="fresh-bg"></div>
+        <div class="fresh-num">9</div>
+        <div class="fresh-portrait">🎯</div>
+        <div class="fresh-info">
+          <div class="fresh-number-badge">9</div>
+          <div class="fresh-origin">PHX · BARS</div>
+          <div class="fresh-name">SNIPR</div>
+          <div class="fresh-tags"><span class="fresh-tag">LYRICAL</span></div>
+        </div>
+      </div>
+
+      <div class="fresh-card">
+        <div class="fresh-bg"></div>
+        <div class="fresh-num">10</div>
+        <div class="fresh-portrait">👁️</div>
+        <div class="fresh-info">
+          <div class="fresh-number-badge">10</div>
+          <div class="fresh-origin">ATL · EXPERIMENTAL</div>
+          <div class="fresh-name">ORACLE</div>
+          <div class="fresh-tags"><span class="fresh-tag">EXPERIMENTAL</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center; margin-top: 40px;" class="reveal">
+      <a href="#submit" class="btn btn-acid" style="font-size:13px; padding: 16px 40px;">
+        Submit for 2025 Class →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO SECTION -->
+<section class="video-section" id="videos">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:12px;">Watch</div>
+        <div class="section-title">LATEST<br>VIDEOS</div>
+      </div>
+      <a href="https://youtube.com/@therealugs" target="_blank" class="see-all">YouTube Channel →</a>
+    </div>
+
+    <div class="video-grid reveal">
+      <div class="video-feature">
+        <div class="video-thumb">
+          <div class="video-thumb-bg">🎤</div>
+          <div class="play-btn">▶</div>
+          <div class="views-badge">1.8M VIEWS</div>
+        </div>
+        <div class="video-body">
+          <span class="cat cat-video" style="margin-bottom:10px;display:inline-block;">Cypher</span>
+          <div class="video-title">ØWAY CYPHER — Full Session</div>
+          <p class="video-desc">The most viewed cypher on Underground Sound's platform. Multiple underground artists, unfiltered bars, one camera. Watch the video that proved UGS builds careers.</p>
+          <div style="display:flex;gap:12px;align-items:center;">
+            <a href="https://youtube.com/@therealugs" target="_blank" class="btn btn-acid" style="font-size:11px;padding:10px 20px;">Watch on YouTube ↗</a>
+            <span style="font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:2px;">@THEREALUGS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-sidebar">
+        <div class="video-mini">
+          <div class="video-mini-thumb">
+            🔥
+            <div class="mini-play">▶</div>
+          </div>
+          <div class="video-mini-body">
+            <span class="cat cat-video" style="margin-bottom:6px;display:inline-block;">Viral</span>
+            <div class="video-mini-title">2Slimey Drops New Music Video — Fans React Live</div>
+            <div class="video-mini-views">
+              <span style="color:var(--fire);">▶</span> 177K VIEWS · TWITTER
+            </div>
+          </div>
+        </div>
+        <div class="video-mini">
+          <div class="video-mini-thumb">
+            🎧
+            <div class="mini-play">▶</div>
+          </div>
+          <div class="video-mini-body">
+            <span class="cat cat-fresh" style="margin-bottom:6px;display:inline-block;">Freshman</span>
+            <div class="video-mini-title">UGS Freshman 2025 — Artist Profiles & Freestyles</div>
+            <div class="video-mini-views">
+              <span style="color:var(--fire);">▶</span> 64K VIEWS · YOUTUBE
+            </div>
+          </div>
+        </div>
+        <div class="video-mini">
+          <div class="video-mini-thumb">
+            🌍
+            <div class="mini-play">▶</div>
+          </div>
+          <div class="video-mini-body">
+            <span class="cat cat-feature" style="margin-bottom:6px;display:inline-block;">Regional</span>
+            <div class="video-mini-title">The Delaware Wave — Underground Sound's Home Scene Documentary</div>
+            <div class="video-mini-views">
+              <span style="color:var(--fire);">▶</span> 38K VIEWS · YOUTUBE
+            </div>
+          </div>
+        </div>
+        <div class="video-mini">
+          <div class="video-mini-thumb">
+            ⭐
+            <div class="mini-play">▶</div>
+          </div>
+          <div class="video-mini-body">
+            <span class="cat cat-feature" style="margin-bottom:6px;display:inline-block;">Platform</span>
+            <div class="video-mini-title">Phase 2 Preview: What Underground Sound Is Building Next</div>
+            <div class="video-mini-views">
+              <span style="color:var(--fire);">▶</span> 22K VIEWS · ALL PLATFORMS
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EVENTS -->
+<section class="events-section" id="events">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:12px;">Live & Upcoming</div>
+        <div class="section-title">EVENTS</div>
+      </div>
+      <a href="#" class="see-all">Full Calendar →</a>
+    </div>
+
+    <div class="events-grid reveal">
+      <div class="event-card">
+        <div class="event-date-banner">
+          <div class="event-day">15</div>
+          <div class="event-month-year">
+            <div class="event-month">MAR</div>
+            <div class="event-year">2025</div>
+          </div>
+        </div>
+        <div class="event-body">
+          <div class="cat cat-event" style="margin-bottom:10px;">UGS Pop-Up</div>
+          <div class="event-title">UGS Underground Showcase Vol. 1</div>
+          <div class="event-location">Wilmington, DE</div>
+          <div class="event-tags">
+            <span class="fresh-tag">LIVE PERFORMANCE</span>
+            <span class="fresh-tag">NETWORKING</span>
+          </div>
+          <div class="event-status open">Tickets Open</div>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date-banner">
+          <div class="event-day">28</div>
+          <div class="event-month-year">
+            <div class="event-month">APR</div>
+            <div class="event-year">2025</div>
+          </div>
+        </div>
+        <div class="event-body">
+          <div class="cat cat-fresh" style="margin-bottom:10px;">Freshman Live</div>
+          <div class="event-title">Freshman Class 2025 Reveal Event</div>
+          <div class="event-location">TBD — Major City</div>
+          <div class="event-tags">
+            <span class="fresh-tag">FRESHMAN</span>
+            <span class="fresh-tag">LIVE</span>
+          </div>
+          <div class="event-status soon">Announcing Soon</div>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date-banner">
+          <div class="event-day">TBA</div>
+          <div class="event-month-year">
+            <div class="event-month">SUM</div>
+            <div class="event-year">2025</div>
+          </div>
+        </div>
+        <div class="event-body">
+          <div class="cat cat-feature" style="margin-bottom:10px;">Phase 3 Preview</div>
+          <div class="event-title">UGS Community Summit + Live Experience</div>
+          <div class="event-location">Regional — TBD</div>
+          <div class="event-tags">
+            <span class="fresh-tag">COMMUNITY</span>
+            <span class="fresh-tag">FESTIVAL</span>
+          </div>
+          <div class="event-status tba">Date TBA</div>
+        </div>
+      </div>
+
+      <div class="event-card">
+        <div class="event-date-banner">
+          <div class="event-day">???</div>
+          <div class="event-month-year">
+            <div class="event-month">2026</div>
+            <div class="event-year">FLAGSHIP</div>
+          </div>
+        </div>
+        <div class="event-body">
+          <div class="cat cat-video" style="margin-bottom:10px;">Flagship Event</div>
+          <div class="event-title">Underground Sound Festival — Phase 4 Vision</div>
+          <div class="event-location">National Scale</div>
+          <div class="event-tags">
+            <span class="fresh-tag">FESTIVAL</span>
+            <span class="fresh-tag">FLAGSHIP</span>
+            <span class="fresh-tag">PHASE 4</span>
+          </div>
+          <div class="event-status tba">In Development</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUBMIT CTA -->
+<section class="cta-banner" id="submit">
+  <div class="cta-banner-bg"></div>
+  <div class="container">
+    <div class="cta-inner reveal">
+      <div class="cta-text">
+        <div class="cta-label">For Artists</div>
+        <h2 class="cta-heading">
+          GET ON<br><span>UNDERGROUND</span><br>SOUND
+        </h2>
+        <p class="cta-subtext">
+          Submit your music for promotion across Twitter, Instagram, and YouTube. 
+          Get in front of 92K+ underground fans who actually listen. 
+          Be considered for the Freshman List. Get your campaign report. 
+          This is the infrastructure the underground deserves.
+        </p>
+      </div>
+      <div class="cta-actions">
+        <a href="#" class="btn btn-acid" style="font-size: 13px; padding: 18px 36px; white-space: nowrap;">
+          Submit Your Music →
+        </a>
+        <a href="#" class="btn btn-ghost" style="font-size: 12px; padding: 14px 28px; white-space: nowrap;">
+          View Packages
+        </a>
+        <div style="text-align:center;">
+          <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-top:4px;">Response within 48 hours</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-brand-logo">
+          <div class="logo-mark"><span>UGS</span></div>
+          <div class="logo-text">
+            <span class="top" style="font-size:18px;">UNDERGROUND</span>
+            <span class="sub">Sound · Media Hub</span>
+          </div>
+        </div>
+        <p>The media brand for underground artists. Daily content, real promotion, and authentic exposure across Twitter, Instagram, and YouTube. Building toward the underground's flagship event.</p>
+        <div class="footer-socials">
+          <a href="https://twitter.com/therealugs" target="_blank" class="social-ico">𝕏</a>
+          <a href="https://instagram.com/undergroundsound" target="_blank" class="social-ico">📸</a>
+          <a href="https://youtube.com/@therealugs" target="_blank" class="social-ico">▶</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Editorial</h5>
+        <ul>
+          <li><a href="#news">Latest News</a></li>
+          <li><a href="#freshman">Freshman List <span class="new">2025</span></a></li>
+          <li><a href="#videos">Videos</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#">Features</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>For Artists</h5>
+        <ul>
+          <li><a href="#submit">Submit Music</a></li>
+          <li><a href="#submit">Promotion Packages</a></li>
+          <li><a href="#submit">Twitter Blast</a></li>
+          <li><a href="#submit">YouTube Feature</a></li>
+          <li><a href="#submit">Cypher Application</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Platform</h5>
+        <ul>
+          <li><a href="#">Phase 1 — Media Hub <span class="new">LIVE</span></a></li>
+          <li><a href="#">Phase 2 — Analytics</a></li>
+          <li><a href="#">Phase 3 — Community</a></li>
+          <li><a href="#">Phase 4 — Festival</a></li>
+          <li><a href="#">Roadmap</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">About UGS</a></li>
+          <li><a href="#">Partnerships</a></li>
+          <li><a href="#">Advertise</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Press Kit</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Underground Sound — All Rights Reserved</div>
+      <div class="footer-phase">
+        Currently <div class="phase-badge">PHASE 1</div> — Media Hub Infrastructure
+      </div>
+      <div class="footer-copy">Built for the underground. By the underground.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// SCROLL REVEAL
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('in'), i * 60);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// NAV ACTIVE STATE ON SCROLL
+const sections = document.querySelectorAll('section[id], div[id]');
+const navLinks = document.querySelectorAll('.nav-menu a');
+
+const navObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + entry.target.id) {
+          link.classList.add('active');
+        }
+      });
+    }
+  });
+}, { rootMargin: '-40% 0px -40% 0px' });
+
+sections.forEach(s => navObserver.observe(s));
+
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+// PLATFORM TOGGLE on old promo form compatibility
+document.querySelectorAll('.platform-check')?.forEach(label => {
+  label.addEventListener('click', () => label.classList.toggle('checked'));
+});
+</script>
+</body>
+</html>

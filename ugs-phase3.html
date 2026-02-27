@@ -1,0 +1,2269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UGS Phase 3 — Community Integration & Reward Ecosystem</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   UGS PHASE 3 — COMMUNITY INTEGRATION
+   Aesthetic: Underground Network — nodes, pulses, organic spread
+   Like watching a movement grow in real time.
+   Dark base. Electric violet + acid green accent system.
+   Rounded where Phase 2 was sharp — community is human.
+   ============================================================ */
+
+:root {
+  --void:    #04040c;
+  --base:    #080812;
+  --deep:    #0c0c1a;
+  --panel:   #101022;
+  --card:    #141428;
+  --raised:  #1c1c35;
+  --border:  #22223a;
+  --border2: #2e2e50;
+
+  /* Phase 3 accent system */
+  --violet:  #8b5cf6;
+  --violet-l:#a78bfa;
+  --violet-d: rgba(139,92,246,0.12);
+  --violet-glow: 0 0 30px rgba(139,92,246,0.2), 0 0 60px rgba(139,92,246,0.08);
+  --neo:     #00ff88;       /* network green — "the movement" */
+  --neo-d:   rgba(0,255,136,0.08);
+  --neo-glow: 0 0 20px rgba(0,255,136,0.15);
+  --amber:   #f59e0b;
+  --amber-d: rgba(245,158,11,0.1);
+  --rose:    #f43f5e;
+  --rose-d:  rgba(244,63,94,0.1);
+  --sky:     #38bdf8;
+  --sky-d:   rgba(56,189,248,0.08);
+
+  --white: #ededf8;
+  --off:   #b0b0cc;
+  --muted: #52527a;
+  --dim:   #30304a;
+
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-ui:      'Outfit', sans-serif;
+  --font-mono:    'IBM Plex Mono', monospace;
+
+  --sidebar-w: 256px;
+  --header-h:  64px;
+  --radius:    8px;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { font-size:16px; scroll-behavior: smooth; }
+body {
+  background: var(--void);
+  color: var(--white);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* NETWORK PARTICLE BG */
+#network-canvas {
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 0;
+  opacity: 0.35;
+}
+
+/* GRAIN */
+body::after {
+  content:''; position:fixed; inset:0;
+  pointer-events:none; z-index:9999;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  opacity: 0.3;
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ============================================================
+   APP SHELL
+   ============================================================ */
+.app-shell {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr;
+  grid-template-rows: var(--header-h) 1fr;
+  grid-template-areas: "sidebar header" "sidebar main";
+  min-height: 100vh;
+  position: relative; z-index: 1;
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.sidebar {
+  grid-area: sidebar;
+  position: fixed; left:0; top:0; bottom:0;
+  width: var(--sidebar-w); z-index: 100;
+  background: rgba(8,8,18,0.95);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid var(--border);
+  display: flex; flex-direction: column;
+  overflow-y: auto;
+}
+.sidebar::-webkit-scrollbar { width: 3px; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+
+.sidebar-brand {
+  height: var(--header-h);
+  display: flex; align-items: center; gap: 12px;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.brand-orb {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--violet), var(--neo));
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  box-shadow: var(--violet-glow);
+}
+.brand-orb span {
+  font-family: var(--font-display);
+  font-size: 14px; color: white; letter-spacing: 1px;
+}
+.brand-text {}
+.brand-name { font-family: var(--font-display); font-size: 18px; letter-spacing: 3px; line-height: 1; }
+.brand-phase {
+  font-family: var(--font-mono); font-size: 8px;
+  letter-spacing: 3px; text-transform: uppercase;
+  background: linear-gradient(90deg, var(--violet), var(--neo));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.sidebar-community-stats {
+  margin: 16px;
+  padding: 14px;
+  background: var(--violet-d);
+  border: 1px solid rgba(139,92,246,0.2);
+  border-radius: var(--radius);
+}
+.cs-title {
+  font-family: var(--font-mono); font-size: 8px;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 10px;
+  display: flex; align-items: center; gap: 6px;
+}
+.cs-live { width: 5px; height: 5px; border-radius: 50%; background: var(--neo); animation: neo-pulse 2s infinite; }
+@keyframes neo-pulse { 0%,100%{box-shadow:0 0 0 0 rgba(0,255,136,0.4)} 50%{box-shadow:0 0 0 6px rgba(0,255,136,0)} }
+.cs-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.cs-stat {}
+.cs-val { font-family: var(--font-display); font-size: 22px; line-height: 1; }
+.cs-val.v  { color: var(--violet-l); }
+.cs-val.g  { color: var(--neo); }
+.cs-label { font-family: var(--font-mono); font-size: 7px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+
+.nav-group { margin-bottom: 4px; }
+.nav-group-label {
+  font-family: var(--font-mono); font-size: 8px;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--dim); padding: 12px 20px 4px;
+}
+.nav-btn {
+  display: flex; align-items: center; gap: 10px;
+  width: 100%; padding: 9px 20px;
+  background: none; border: none;
+  font-family: var(--font-ui); font-weight: 600;
+  font-size: 13px; letter-spacing: 0.3px;
+  color: var(--muted); cursor: pointer;
+  transition: all 0.15s; border-radius: 0;
+  text-align: left; position: relative;
+}
+.nav-btn:hover { color: var(--off); background: rgba(255,255,255,0.03); }
+.nav-btn.active { color: var(--violet-l); background: var(--violet-d); }
+.nav-btn.active::before {
+  content:''; position: absolute; left: 0; top: 4px; bottom: 4px;
+  width: 3px; background: var(--violet); border-radius: 0 2px 2px 0;
+}
+.nav-icon { font-size: 15px; width: 20px; text-align: center; flex-shrink: 0; }
+.nav-pip {
+  margin-left: auto;
+  font-family: var(--font-mono); font-size: 8px;
+  letter-spacing: 1px; padding: 2px 7px; border-radius: 20px;
+}
+.pip-violet { background: var(--violet-d); color: var(--violet-l); }
+.pip-neo    { background: var(--neo-d); color: var(--neo); }
+.pip-amber  { background: var(--amber-d); color: var(--amber); }
+.pip-rose   { background: var(--rose-d); color: var(--rose); }
+
+.sidebar-user {
+  margin-top: auto;
+  padding: 16px;
+  border-top: 1px solid var(--border);
+}
+.user-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.user-avi {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--violet), var(--neo));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 14px; color: white;
+  flex-shrink: 0;
+  box-shadow: var(--violet-glow);
+}
+.user-name { font-size: 13px; font-weight: 700; }
+.user-role { font-family: var(--font-mono); font-size: 8px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.top-bar {
+  grid-area: header;
+  position: sticky; top:0; z-index: 50;
+  background: rgba(4,4,12,0.9);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  margin-left: var(--sidebar-w);
+  display: flex; align-items: center;
+  padding: 0 28px; gap: 16px;
+  height: var(--header-h);
+}
+.top-bar-title {
+  font-family: var(--font-display);
+  font-size: 24px; letter-spacing: 3px; flex: 1;
+}
+.top-bar-search {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--panel); border: 1px solid var(--border);
+  border-radius: 6px; padding: 8px 14px; width: 220px;
+}
+.top-bar-search input {
+  background: none; border: none; outline: none;
+  font-family: var(--font-ui); font-size: 12px;
+  color: var(--white); width: 100%;
+}
+.top-bar-search input::placeholder { color: var(--muted); }
+.pulse-indicator {
+  display: flex; align-items: center; gap: 7px;
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 3px; text-transform: uppercase; color: var(--neo);
+}
+.top-notif {
+  width: 34px; height: 34px;
+  border: 1px solid var(--border); border-radius: 8px;
+  background: var(--panel);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; cursor: pointer; position: relative;
+  transition: border-color 0.2s;
+}
+.top-notif:hover { border-color: var(--violet); }
+.notif-dot {
+  position: absolute; top:-3px; right:-3px;
+  width:10px; height:10px; border-radius:50%;
+  background: var(--rose); border: 2px solid var(--void);
+}
+.ph-nav-btn {
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 7px 14px; border-radius: 6px;
+  border: 1px solid var(--border); background: var(--panel);
+  color: var(--muted); cursor: pointer; transition: all 0.2s; white-space:nowrap;
+}
+.ph-nav-btn:hover { border-color: var(--violet); color: var(--violet-l); }
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+.main {
+  grid-area: main;
+  margin-left: var(--sidebar-w);
+  padding: 28px;
+  min-height: calc(100vh - var(--header-h));
+}
+
+.tab-page { display: none; }
+.tab-page.active { display: block; animation: fadeUp 0.3s ease; }
+@keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:none; } }
+
+/* PAGE HEADER */
+.page-hd {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 28px; flex-wrap: wrap; gap: 16px;
+}
+.page-hd-left {}
+.page-eyebrow {
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--violet-l); margin-bottom: 6px;
+  display: flex; align-items: center; gap: 10px;
+}
+.page-eyebrow::before { content:''; width: 20px; height: 1px; background: var(--violet); }
+.page-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 0.9; letter-spacing: 2px;
+}
+.page-title span { color: var(--violet-l); }
+.page-sub {
+  font-size: 13px; color: var(--muted);
+  margin-top: 8px; font-weight: 400; letter-spacing: 0.3px;
+  max-width: 480px; line-height: 1.6;
+}
+.page-actions { display: flex; gap: 10px; align-items: center; flex-shrink:0; }
+
+/* BUTTONS */
+.btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-ui); font-weight: 700;
+  font-size: 12px; letter-spacing: 0.5px;
+  cursor: pointer; border: none; transition: all 0.2s;
+  padding: 10px 20px; border-radius: var(--radius);
+}
+.btn-violet { background: var(--violet); color: white; box-shadow: 0 4px 15px rgba(139,92,246,0.3); }
+.btn-violet:hover { background: var(--violet-l); transform: translateY(-1px); }
+.btn-neo { background: var(--neo); color: var(--void); box-shadow: var(--neo-glow); }
+.btn-neo:hover { background: #00e87a; transform: translateY(-1px); }
+.btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border); }
+.btn-ghost:hover { border-color: var(--violet); color: var(--violet-l); }
+.btn-sm { padding: 7px 14px; font-size: 11px; }
+
+/* CARDS / PANELS */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.card-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+.card-title {
+  font-weight: 700; font-size: 14px; letter-spacing: 0.3px;
+  display: flex; align-items: center; gap: 8px;
+}
+.card-title-icon { font-size: 16px; }
+.card-action {
+  font-family: var(--font-mono); font-size: 8px;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--muted); background: none; border: none;
+  cursor: pointer; transition: color 0.2s;
+}
+.card-action:hover { color: var(--violet-l); }
+.card-body { padding: 20px; }
+
+/* STAT CHIPS */
+.stat-chip {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 10px; border-radius: 20px;
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 1px; text-transform: uppercase;
+}
+.sc-neo    { background: var(--neo-d); color: var(--neo); }
+.sc-violet { background: var(--violet-d); color: var(--violet-l); }
+.sc-amber  { background: var(--amber-d); color: var(--amber); }
+.sc-rose   { background: var(--rose-d); color: var(--rose); }
+.sc-sky    { background: var(--sky-d); color: var(--sky); }
+.sc-dot    { width:5px;height:5px;border-radius:50%;background:currentColor; }
+
+/* ============================================================
+   OVERVIEW — COMMUNITY HUB
+   ============================================================ */
+
+/* TOP KPI GRID */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px; margin-bottom: 24px;
+}
+.kpi {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 18px 16px;
+  position: relative; overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.kpi:hover { border-color: var(--border2); transform: translateY(-2px); }
+.kpi-glow {
+  position: absolute; top:-40px; right:-40px;
+  width:100px; height:100px; border-radius:50%;
+  pointer-events:none;
+}
+.kpi.kv .kpi-glow { background: radial-gradient(circle, rgba(139,92,246,0.15) 0%, transparent 70%); }
+.kpi.kn .kpi-glow { background: radial-gradient(circle, rgba(0,255,136,0.12) 0%, transparent 70%); }
+.kpi.ka .kpi-glow { background: radial-gradient(circle, rgba(245,158,11,0.12) 0%, transparent 70%); }
+.kpi.kr .kpi-glow { background: radial-gradient(circle, rgba(244,63,94,0.1) 0%, transparent 70%); }
+.kpi.ks .kpi-glow { background: radial-gradient(circle, rgba(56,189,248,0.1) 0%, transparent 70%); }
+
+.kpi-label {
+  font-family: var(--font-mono); font-size: 8px;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 10px;
+}
+.kpi-val {
+  font-family: var(--font-display);
+  font-size: 38px; line-height: 1; letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+.kpi.kv .kpi-val { color: var(--violet-l); }
+.kpi.kn .kpi-val { color: var(--neo); }
+.kpi.ka .kpi-val { color: var(--amber); }
+.kpi.kr .kpi-val { color: var(--rose); }
+.kpi.ks .kpi-val { color: var(--sky); }
+.kpi-sub {
+  font-size: 11px; color: var(--muted);
+  display: flex; align-items: center; gap: 4px;
+}
+.kpi-sub.up { color: var(--neo); }
+.kpi-sub.dn { color: var(--rose); }
+
+/* MAIN COMMUNITY GRID */
+.community-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px; margin-bottom: 24px;
+}
+.community-grid.wide { grid-template-columns: 2fr 1fr; }
+
+/* DISCORD SERVERS */
+.discord-list { display: flex; flex-direction: column; gap: 10px; }
+.discord-server {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 16px;
+  background: var(--raised); border: 1px solid var(--border);
+  border-radius: 10px; cursor: pointer;
+  transition: all 0.2s;
+}
+.discord-server:hover { border-color: rgba(139,92,246,0.4); background: var(--panel); }
+.discord-server.featured { border-color: rgba(139,92,246,0.3); background: var(--violet-d); }
+.dc-icon {
+  width: 42px; height: 42px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; flex-shrink: 0;
+  position: relative;
+}
+.dc-icon .online-ring {
+  position: absolute; bottom: 1px; right: 1px;
+  width: 11px; height: 11px; border-radius: 50%;
+  background: var(--neo); border: 2px solid var(--void);
+}
+.dc-body { flex: 1; min-width: 0; }
+.dc-name { font-weight: 700; font-size: 14px; margin-bottom: 3px; }
+.dc-meta { display: flex; align-items: center; gap: 10px; }
+.dc-members {
+  font-family: var(--font-mono); font-size: 9px;
+  color: var(--muted); letter-spacing: 1px; text-transform: uppercase;
+}
+.dc-online {
+  font-family: var(--font-mono); font-size: 9px;
+  color: var(--neo); letter-spacing: 1px;
+  display: flex; align-items: center; gap: 4px;
+}
+.dc-online::before { content:''; width:5px;height:5px;border-radius:50%;background:var(--neo); }
+.dc-status {
+  font-family: var(--font-mono); font-size: 8px;
+  padding: 3px 8px; border-radius: 20px; flex-shrink: 0;
+}
+.dc-reach {
+  font-family: var(--font-display); font-size: 20px;
+  color: var(--violet-l); flex-shrink: 0;
+  min-width: 48px; text-align: right;
+}
+
+/* AMBASSADOR LIST */
+.ambassador-list { display: flex; flex-direction: column; gap: 8px; }
+.ambassador {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px;
+  background: var(--raised); border: 1px solid var(--border);
+  border-radius: 8px; cursor: pointer;
+  transition: all 0.2s;
+}
+.ambassador:hover { border-color: rgba(245,158,11,0.4); }
+.amb-rank {
+  font-family: var(--font-display); font-size: 22px;
+  color: var(--dim); width: 26px; text-align: center; flex-shrink: 0;
+  transition: color 0.2s;
+}
+.ambassador:hover .amb-rank { color: var(--amber); }
+.amb-avi {
+  width: 34px; height: 34px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0; font-family: var(--font-display);
+  color: var(--void);
+}
+.amb-body { flex: 1; min-width: 0; }
+.amb-name { font-weight: 700; font-size: 13px; margin-bottom: 2px; }
+.amb-server {
+  font-family: var(--font-mono); font-size: 8px;
+  color: var(--muted); letter-spacing: 1px; text-transform: uppercase;
+}
+.amb-pts {
+  text-align: right; flex-shrink: 0;
+}
+.amb-pts-val {
+  font-family: var(--font-display); font-size: 20px;
+  color: var(--amber); line-height: 1;
+}
+.amb-pts-label {
+  font-family: var(--font-mono); font-size: 7px;
+  color: var(--muted); letter-spacing: 1px; text-transform: uppercase;
+}
+
+/* REP SCORE DISPLAY */
+.rep-breakdown { display: flex; flex-direction: column; gap: 12px; }
+.rep-item {}
+.rep-top {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 5px;
+}
+.rep-label { font-size: 12px; font-weight: 600; letter-spacing: 0.3px; display: flex; align-items: center; gap: 6px; }
+.rep-val { font-family: var(--font-mono); font-size: 11px; color: var(--violet-l); }
+.rep-bar-track {
+  height: 6px; background: var(--border2); border-radius: 3px; overflow: hidden;
+}
+.rep-bar-fill {
+  height: 100%; border-radius: 3px;
+  transition: width 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ACTIVITY PULSE */
+.activity-feed { display: flex; flex-direction: column; }
+.feed-item {
+  display: flex; gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  align-items: flex-start;
+}
+.feed-item:last-child { border-bottom: none; }
+.feed-avi {
+  width: 30px; height: 30px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px; flex-shrink: 0;
+}
+.feed-body {}
+.feed-text { font-size: 12px; line-height: 1.5; }
+.feed-text strong { color: var(--violet-l); }
+.feed-text .action { color: var(--neo); }
+.feed-meta {
+  font-family: var(--font-mono); font-size: 8px;
+  color: var(--muted); letter-spacing: 1px; margin-top: 3px;
+  display: flex; align-items: center; gap: 8px;
+}
+
+/* ============================================================
+   AMBASSADOR PROGRAM PAGE
+   ============================================================ */
+.amb-program-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px; margin-bottom: 24px;
+}
+.amb-program-grid.three { grid-template-columns: repeat(3, 1fr); }
+
+/* TIER CARDS */
+.tier-card {
+  border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--border);
+  position: relative;
+}
+.tier-card.gold-tier { border-color: rgba(245,158,11,0.3); }
+.tier-card.silver-tier { border-color: rgba(148,163,184,0.2); }
+.tier-card.bronze-tier { border-color: rgba(180,120,80,0.2); }
+
+.tier-card-head {
+  padding: 20px;
+  background: var(--raised);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 12px;
+}
+.tier-medal { font-size: 32px; }
+.tier-name { font-family: var(--font-display); font-size: 26px; letter-spacing: 2px; }
+.tier-count { font-family: var(--font-mono); font-size: 9px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+.tier-badge-col { margin-left: auto; }
+.tier-req {
+  font-family: var(--font-mono); font-size: 9px; letter-spacing: 1px;
+  padding: 4px 10px; border-radius: 20px;
+}
+.gold-tier .tier-req   { background: var(--amber-d); color: var(--amber); }
+.silver-tier .tier-req { background: rgba(148,163,184,0.1); color: #94a3b8; }
+.bronze-tier .tier-req { background: rgba(180,120,80,0.1); color: #b47850; }
+
+.tier-card-body { padding: 20px; background: var(--card); }
+.tier-perks { display: flex; flex-direction: column; gap: 8px; }
+.tier-perk {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 12px; color: var(--off); line-height: 1.4;
+}
+.perk-check {
+  width: 18px; height: 18px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; flex-shrink: 0; margin-top: 1px;
+}
+.gold-tier .perk-check   { background: var(--amber-d); color: var(--amber); }
+.silver-tier .perk-check { background: rgba(148,163,184,0.1); color: #94a3b8; }
+.bronze-tier .perk-check { background: rgba(180,120,80,0.1); color: #b47850; }
+
+/* FULL AMB TABLE */
+.full-amb-table { width: 100%; border-collapse: collapse; }
+.full-amb-table th {
+  font-family: var(--font-mono); font-size: 8px;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--muted); text-align: left;
+  padding: 10px 14px;
+  background: var(--panel); border-bottom: 1px solid var(--border);
+}
+.full-amb-table td {
+  padding: 13px 14px;
+  font-size: 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.full-amb-table tr:hover td { background: rgba(139,92,246,0.03); }
+.full-amb-table tr:last-child td { border-bottom: none; }
+
+/* XP bar inline */
+.xp-bar-wrap { display: flex; align-items: center; gap: 8px; }
+.xp-track { width: 80px; height: 5px; background: var(--border2); border-radius: 3px; }
+.xp-fill { height: 100%; border-radius: 3px; }
+.xp-val { font-family: var(--font-mono); font-size: 9px; color: var(--muted); }
+
+/* ============================================================
+   REPUTATION SYSTEM PAGE
+   ============================================================ */
+.rep-system-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px; margin-bottom: 24px;
+}
+
+/* Score ring */
+.score-ring-wrap {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; padding: 28px;
+}
+.score-ring {
+  position: relative; width: 140px; height: 140px; margin-bottom: 16px;
+}
+.score-ring svg { transform: rotate(-90deg); }
+.score-ring-val {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+}
+.score-num {
+  font-family: var(--font-display);
+  font-size: 42px; line-height: 1; color: var(--violet-l);
+}
+.score-label {
+  font-family: var(--font-mono); font-size: 8px;
+  letter-spacing: 2px; color: var(--muted); text-transform: uppercase;
+}
+.score-breakdown { width: 100%; }
+.score-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 0; border-bottom: 1px solid var(--border);
+  font-size: 12px;
+}
+.score-row:last-child { border-bottom: none; }
+.score-row-name { display: flex; align-items: center; gap: 8px; color: var(--off); }
+.score-row-icon { font-size: 14px; }
+.score-row-pts { font-family: var(--font-mono); font-size: 11px; color: var(--violet-l); }
+
+/* ACTIONS THAT EARN */
+.earn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.earn-item {
+  padding: 14px;
+  background: var(--raised); border: 1px solid var(--border);
+  border-radius: 8px; cursor: pointer;
+  transition: all 0.2s;
+}
+.earn-item:hover { border-color: rgba(139,92,246,0.4); background: var(--panel); }
+.earn-icon { font-size: 20px; margin-bottom: 8px; }
+.earn-name { font-size: 12px; font-weight: 700; margin-bottom: 3px; }
+.earn-pts {
+  font-family: var(--font-mono); font-size: 10px;
+  color: var(--neo); letter-spacing: 1px;
+}
+.earn-desc { font-size: 11px; color: var(--muted); line-height: 1.4; margin-top: 4px; }
+
+/* BADGES */
+.badges-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.badge-item {
+  padding: 14px 10px;
+  background: var(--raised); border: 1px solid var(--border);
+  border-radius: 8px; text-align: center;
+  cursor: pointer; transition: all 0.2s;
+}
+.badge-item:hover { border-color: rgba(139,92,246,0.4); transform: translateY(-2px); }
+.badge-item.earned { border-color: rgba(245,158,11,0.3); background: var(--amber-d); }
+.badge-item.locked { opacity: 0.4; }
+.badge-emoji { font-size: 28px; margin-bottom: 6px; }
+.badge-name { font-size: 11px; font-weight: 700; margin-bottom: 3px; }
+.badge-pts { font-family: var(--font-mono); font-size: 9px; color: var(--muted); }
+.badge-item.earned .badge-pts { color: var(--amber); }
+
+/* ============================================================
+   REFERRAL REWARDS PAGE
+   ============================================================ */
+.referral-hero {
+  background: linear-gradient(135deg, rgba(139,92,246,0.1) 0%, rgba(0,255,136,0.05) 100%);
+  border: 1px solid rgba(139,92,246,0.2);
+  border-radius: 16px; padding: 40px;
+  margin-bottom: 24px;
+  position: relative; overflow: hidden;
+  display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center;
+}
+.referral-hero::before {
+  content:'';
+  position: absolute; right: -80px; top: -80px;
+  width: 300px; height: 300px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(139,92,246,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.referral-code-section {}
+.referral-eyebrow {
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--violet-l); margin-bottom: 12px;
+}
+.referral-title {
+  font-family: var(--font-display);
+  font-size: 52px; line-height: 0.9; letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+.referral-title span { color: var(--neo); }
+.referral-desc {
+  font-size: 14px; color: var(--muted); line-height: 1.7;
+  max-width: 440px;
+}
+.referral-code-box {
+  display: flex; flex-direction: column; align-items: center; gap: 12px;
+  flex-shrink: 0;
+}
+.ref-code {
+  background: var(--panel); border: 2px solid var(--violet);
+  border-radius: 12px; padding: 20px 32px;
+  text-align: center;
+  box-shadow: var(--violet-glow);
+}
+.ref-code-label {
+  font-family: var(--font-mono); font-size: 8px;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 8px;
+}
+.ref-code-val {
+  font-family: var(--font-display);
+  font-size: 32px; letter-spacing: 6px; color: var(--violet-l);
+}
+.ref-code-stats {
+  font-family: var(--font-mono); font-size: 9px;
+  color: var(--neo); letter-spacing: 1px; margin-top: 6px;
+}
+
+/* REFERRAL STATS */
+.referral-stats-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+  margin-bottom: 24px;
+}
+.ref-stat {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 18px 16px;
+}
+.ref-stat-num {
+  font-family: var(--font-display); font-size: 36px; line-height: 1;
+  margin-bottom: 4px;
+}
+.ref-stat-label {
+  font-family: var(--font-mono); font-size: 8px;
+  letter-spacing: 3px; text-transform: uppercase; color: var(--muted);
+}
+
+/* REFERRAL STEPS */
+.ref-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 24px; }
+.ref-step {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 10px; padding: 20px 16px;
+  text-align: center; position: relative;
+}
+.ref-step:not(:last-child)::after {
+  content:'→';
+  position: absolute; right: -14px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px; color: var(--muted); z-index: 1;
+}
+.step-num {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--violet-d); border: 1px solid rgba(139,92,246,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 18px; color: var(--violet-l);
+  margin: 0 auto 12px;
+}
+.step-icon { font-size: 24px; margin-bottom: 10px; }
+.step-title { font-weight: 700; font-size: 13px; margin-bottom: 6px; }
+.step-desc { font-size: 11px; color: var(--muted); line-height: 1.5; }
+
+/* LEADERBOARD */
+.leaderboard { display: flex; flex-direction: column; gap: 0; }
+.lb-row {
+  display: flex; align-items: center; gap: 14px;
+  padding: 13px 16px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer; transition: background 0.15s;
+}
+.lb-row:last-child { border-bottom: none; }
+.lb-row:hover { background: rgba(139,92,246,0.04); }
+.lb-row.top-3 { background: var(--violet-d); }
+.lb-pos {
+  font-family: var(--font-display); font-size: 26px;
+  color: var(--dim); width: 28px; text-align: center; flex-shrink: 0;
+}
+.lb-row.top-3 .lb-pos { color: var(--violet-l); }
+.lb-avi {
+  width: 34px; height: 34px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 14px; color: var(--void);
+  flex-shrink: 0;
+}
+.lb-info { flex: 1; }
+.lb-name { font-weight: 700; font-size: 13px; margin-bottom: 2px; }
+.lb-server { font-family: var(--font-mono); font-size: 8px; color: var(--muted); letter-spacing: 1px; }
+.lb-referrals {
+  font-family: var(--font-display); font-size: 22px; color: var(--neo);
+}
+.lb-pts { font-family: var(--font-mono); font-size: 9px; color: var(--muted); }
+
+/* ============================================================
+   DISCORD PARTNERS PAGE
+   ============================================================ */
+.discord-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 16px; margin-bottom: 24px;
+}
+.dc-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; overflow: hidden;
+  cursor: pointer; transition: all 0.2s;
+}
+.dc-card:hover { border-color: rgba(139,92,246,0.4); transform: translateY(-3px); }
+.dc-card-head {
+  padding: 20px;
+  display: flex; align-items: center; gap: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.dc-card-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; flex-shrink: 0;
+}
+.dc-card-info {}
+.dc-card-name { font-weight: 800; font-size: 15px; margin-bottom: 4px; }
+.dc-card-tag { font-family: var(--font-mono); font-size: 9px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+.dc-card-body { padding: 18px 20px; }
+.dc-stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+.dc-stat-item {}
+.dc-stat-num { font-family: var(--font-display); font-size: 26px; line-height: 1; }
+.dc-stat-lbl { font-family: var(--font-mono); font-size: 8px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-top: 2px; }
+.dc-card-status-row { display: flex; align-items: center; justify-content: space-between; }
+.dc-partner-status {
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 20px;
+}
+.dps-active   { background: var(--neo-d); color: var(--neo); }
+.dps-pending  { background: var(--amber-d); color: var(--amber); }
+.dps-featured { background: var(--violet-d); color: var(--violet-l); }
+
+/* ============================================================
+   EVENT ACCESS PAGE
+   ============================================================ */
+.event-access-grid {
+  display: grid; grid-template-columns: 2fr 1fr;
+  gap: 16px; margin-bottom: 24px;
+}
+.event-list { display: flex; flex-direction: column; gap: 12px; }
+.event-item {
+  display: flex; gap: 0;
+  border: 1px solid var(--border); border-radius: 12px;
+  overflow: hidden; cursor: pointer;
+  transition: all 0.2s;
+}
+.event-item:hover { border-color: rgba(139,92,246,0.4); transform: translateY(-2px); }
+.event-date-col {
+  width: 80px; flex-shrink: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 16px 8px;
+  background: var(--raised); border-right: 1px solid var(--border);
+}
+.event-day { font-family: var(--font-display); font-size: 42px; color: var(--violet-l); line-height: 1; }
+.event-month { font-family: var(--font-mono); font-size: 10px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+.event-body-col { flex: 1; padding: 16px 20px; background: var(--card); }
+.event-cats { display: flex; gap: 6px; margin-bottom: 8px; }
+.event-title { font-weight: 800; font-size: 15px; margin-bottom: 6px; letter-spacing: 0.3px; }
+.event-location { font-family: var(--font-mono); font-size: 9px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 5px; }
+.event-access-row { display: flex; align-items: center; gap: 10px; }
+.access-tier-badge {
+  font-family: var(--font-mono); font-size: 8px;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 20px;
+}
+.atb-all    { background: var(--neo-d); color: var(--neo); }
+.atb-amb    { background: var(--amber-d); color: var(--amber); }
+.atb-gold   { background: rgba(245,158,11,0.15); color: var(--amber); }
+.atb-closed { background: rgba(80,80,120,0.2); color: var(--muted); }
+.event-spots { font-family: var(--font-mono); font-size: 9px; color: var(--muted); letter-spacing: 1px; }
+.event-priority-col {
+  width: 100px; flex-shrink: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 16px; border-left: 1px solid var(--border);
+  background: var(--panel); gap: 8px;
+}
+.priority-num { font-family: var(--font-display); font-size: 34px; color: var(--violet-l); line-height: 1; }
+.priority-label { font-family: var(--font-mono); font-size: 7px; color: var(--muted); letter-spacing: 2px; text-transform: uppercase; text-align: center; }
+
+/* Ticket priority explainer */
+.priority-explainer { display: flex; flex-direction: column; gap: 8px; }
+.pe-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--border); border-radius: 8px;
+  background: var(--raised);
+}
+.pe-tier { font-family: var(--font-display); font-size: 14px; letter-spacing: 1px; width: 60px; flex-shrink: 0; }
+.pe-desc { font-size: 11px; color: var(--off); flex: 1; line-height: 1.4; }
+.pe-window { font-family: var(--font-mono); font-size: 9px; text-align: right; flex-shrink: 0; }
+
+/* ============================================================
+   ROADMAP BANNER (shown on all pages)
+   ============================================================ */
+.phase-banner {
+  background: linear-gradient(90deg, rgba(139,92,246,0.08) 0%, rgba(0,255,136,0.05) 100%);
+  border: 1px solid rgba(139,92,246,0.15);
+  border-radius: 10px; padding: 14px 20px;
+  display: flex; align-items: center; gap: 16px; margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.pb-phases { display: flex; align-items: center; gap: 0; flex: 1; }
+.pb-phase {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 4px 12px; color: var(--muted);
+}
+.pb-phase.done { color: #666690; }
+.pb-phase.active { color: var(--violet-l); font-weight: 600; }
+.pb-phase.upcoming { color: var(--dim); }
+.pb-divider { color: var(--dim); }
+.pb-badge {
+  font-family: var(--font-mono); font-size: 7px;
+  letter-spacing: 2px; padding: 2px 6px; border-radius: 3px;
+}
+.pbb-done   { background: rgba(100,100,150,0.2); color: #666690; }
+.pbb-active { background: var(--violet-d); color: var(--violet-l); }
+.pbb-next   { background: var(--amber-d); color: var(--amber); }
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+.toast {
+  position: fixed; bottom: 24px; right: 24px; z-index: 9998;
+  background: var(--violet); color: white;
+  padding: 14px 22px; border-radius: 10px;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 1px;
+  box-shadow: var(--violet-glow);
+  transform: translateY(80px); opacity: 0;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: flex; align-items: center; gap: 8px;
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1280px) {
+  .kpi-grid { grid-template-columns: repeat(3,1fr); }
+  .community-grid { grid-template-columns: 1fr 1fr; }
+  .discord-grid { grid-template-columns: 1fr 1fr; }
+  .rep-system-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width:1024px) {
+  .community-grid.wide { grid-template-columns: 1fr; }
+  .amb-program-grid { grid-template-columns: 1fr; }
+  .event-access-grid { grid-template-columns: 1fr; }
+  .ref-steps { grid-template-columns: 1fr 1fr; }
+  .ref-step:not(:last-child)::after { display:none; }
+  .referral-stats-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width:768px) {
+  .app-shell { grid-template-columns: 1fr; grid-template-areas:"header""main"; }
+  .sidebar { display:none; }
+  .main, .top-bar { margin-left: 0 !important; }
+  .kpi-grid { grid-template-columns: 1fr 1fr; }
+  .discord-grid { grid-template-columns: 1fr; }
+  .badges-grid { grid-template-columns: repeat(2,1fr); }
+  .referral-hero { grid-template-columns: 1fr; }
+  .rep-system-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NETWORK CANVAS -->
+<canvas id="network-canvas"></canvas>
+
+<div class="app-shell">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-orb"><span>UGS</span></div>
+      <div class="brand-text">
+        <div class="brand-name">UNDERGROUND</div>
+        <div class="brand-phase">Phase 3 · Community</div>
+      </div>
+    </div>
+
+    <div class="sidebar-community-stats">
+      <div class="cs-title"><div class="cs-live"></div> Network Live</div>
+      <div class="cs-stats">
+        <div class="cs-stat">
+          <div class="cs-val v">2,847</div>
+          <div class="cs-label">Members</div>
+        </div>
+        <div class="cs-stat">
+          <div class="cs-val g">341</div>
+          <div class="cs-label">Online Now</div>
+        </div>
+        <div class="cs-stat">
+          <div class="cs-val v">18</div>
+          <div class="cs-label">Servers</div>
+        </div>
+        <div class="cs-stat">
+          <div class="cs-val g">94</div>
+          <div class="cs-label">Ambassadors</div>
+        </div>
+      </div>
+    </div>
+
+    <nav>
+      <div class="nav-group">
+        <div class="nav-group-label">Community Hub</div>
+        <button class="nav-btn active" onclick="showTab('overview',this)">
+          <span class="nav-icon">🌐</span> Overview
+        </button>
+        <button class="nav-btn" onclick="showTab('discord',this)">
+          <span class="nav-icon">💬</span> Discord Partners
+          <span class="nav-pip pip-neo">18</span>
+        </button>
+        <button class="nav-btn" onclick="showTab('feed',this)">
+          <span class="nav-icon">⚡</span> Activity Feed
+          <span class="nav-pip pip-violet">LIVE</span>
+        </button>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-label">Ambassador Program</div>
+        <button class="nav-btn" onclick="showTab('ambassadors',this)">
+          <span class="nav-icon">⭐</span> Ambassadors
+          <span class="nav-pip pip-amber">94</span>
+        </button>
+        <button class="nav-btn" onclick="showTab('reputation',this)">
+          <span class="nav-icon">🏆</span> Reputation System
+        </button>
+        <button class="nav-btn" onclick="showTab('referrals',this)">
+          <span class="nav-icon">🔗</span> Referral Rewards
+          <span class="nav-pip pip-neo">+$</span>
+        </button>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-label">Exclusive Access</div>
+        <button class="nav-btn" onclick="showTab('events',this)">
+          <span class="nav-icon">🎟️</span> Event Priority
+          <span class="nav-pip pip-rose">HOT</span>
+        </button>
+        <button class="nav-btn" onclick="showTab('perks',this)">
+          <span class="nav-icon">🎁</span> Perks & Rewards
+        </button>
+      </div>
+
+      <div class="nav-group">
+        <div class="nav-group-label">Platform</div>
+        <button class="nav-btn" onclick="showTab('roadmap',this)">
+          <span class="nav-icon">🗺️</span> Roadmap
+        </button>
+      </div>
+    </nav>
+
+    <div class="sidebar-user">
+      <div class="user-row">
+        <div class="user-avi">UGS</div>
+        <div>
+          <div class="user-name">UGS Admin</div>
+          <div class="user-role">Community Lead</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="top-bar">
+    <div class="top-bar-title" id="page-title">COMMUNITY HUB</div>
+    <div class="top-bar-search">
+      <span style="color:var(--muted);font-size:13px;">🔍</span>
+      <input type="text" placeholder="Search members, servers...">
+    </div>
+    <div class="pulse-indicator">
+      <div class="cs-live"></div> 341 Online
+    </div>
+    <div class="top-notif">🔔<div class="notif-dot"></div></div>
+    <button class="ph-nav-btn" onclick="window.location.href='ugs-phase2.html'">← Phase 2</button>
+    <button class="ph-nav-btn" onclick="window.location.href='ugs-phase1.html'" style="color:var(--violet-l);border-color:rgba(139,92,246,0.3);">Phase 1 Site ↗</button>
+  </header>
+
+  <!-- ===================== MAIN ===================== -->
+  <main class="main">
+
+    <!-- ======================================
+         OVERVIEW
+         ====================================== -->
+    <div class="tab-page active" id="tab-overview">
+      <div class="phase-banner">
+        <div class="pb-phases">
+          <div class="pb-phase done">Ph.1 Media Hub <span class="pb-badge pbb-done">LIVE</span></div>
+          <div class="pb-divider">›</div>
+          <div class="pb-phase done">Ph.2 Analytics <span class="pb-badge pbb-done">LIVE</span></div>
+          <div class="pb-divider">›</div>
+          <div class="pb-phase active">Ph.3 Community <span class="pb-badge pbb-active">YOU ARE HERE</span></div>
+          <div class="pb-divider">›</div>
+          <div class="pb-phase upcoming">Ph.4 Festival <span class="pb-badge pbb-next">2026</span></div>
+        </div>
+      </div>
+
+      <div class="page-hd">
+        <div class="page-hd-left">
+          <div class="page-eyebrow">Phase 3 — Community Integration</div>
+          <div class="page-title">UNDERGROUND<br><span>NETWORK</span></div>
+          <p class="page-sub">The underground runs on community. Phase 3 formalizes the network — Discord partnerships, ambassador rewards, reputation scoring, and exclusive event access all in one place.</p>
+        </div>
+        <div class="page-actions">
+          <button class="btn btn-ghost" onclick="showTab('discord', document.querySelectorAll('.nav-btn')[1])">+ Add Server</button>
+          <button class="btn btn-violet" onclick="showTab('referrals', document.querySelectorAll('.nav-btn')[5])">Share Your Code ↗</button>
+        </div>
+      </div>
+
+      <!-- KPIs -->
+      <div class="kpi-grid">
+        <div class="kpi kv"><div class="kpi-glow"></div>
+          <div class="kpi-label">Network Members</div>
+          <div class="kpi-val">2,847</div>
+          <div class="kpi-sub up">↑ +340 this month</div>
+        </div>
+        <div class="kpi kn"><div class="kpi-glow"></div>
+          <div class="kpi-label">Discord Servers</div>
+          <div class="kpi-val">18</div>
+          <div class="kpi-sub up">↑ 3 new partners</div>
+        </div>
+        <div class="kpi ka"><div class="kpi-glow"></div>
+          <div class="kpi-label">Active Ambassadors</div>
+          <div class="kpi-val">94</div>
+          <div class="kpi-sub up">↑ +12 this week</div>
+        </div>
+        <div class="kpi kr"><div class="kpi-glow"></div>
+          <div class="kpi-label">Referrals (30d)</div>
+          <div class="kpi-val">412</div>
+          <div class="kpi-sub up">↑ +28% vs last month</div>
+        </div>
+        <div class="kpi ks"><div class="kpi-glow"></div>
+          <div class="kpi-label">Reward Points Issued</div>
+          <div class="kpi-val">84K</div>
+          <div class="kpi-sub up">↑ $2,100 redeemed</div>
+        </div>
+      </div>
+
+      <!-- MAIN COMMUNITY GRID -->
+      <div class="community-grid wide">
+
+        <!-- DISCORD SERVERS -->
+        <div class="card">
+          <div class="card-head">
+            <div class="card-title"><span class="card-title-icon">💬</span> Top Discord Partners</div>
+            <button class="card-action" onclick="showTab('discord', document.querySelectorAll('.nav-btn')[1])">View All 18 →</button>
+          </div>
+          <div class="card-body">
+            <div class="discord-list">
+              <div class="discord-server featured">
+                <div class="dc-icon" style="background:rgba(139,92,246,0.15);">🎤<div class="online-ring"></div></div>
+                <div class="dc-body">
+                  <div class="dc-name">Underground Rap Central</div>
+                  <div class="dc-meta">
+                    <span class="dc-members">14.2K Members</span>
+                    <span class="dc-online">842 online</span>
+                  </div>
+                </div>
+                <span class="dc-status stat-chip sc-violet">Featured</span>
+                <div class="dc-reach">14K</div>
+              </div>
+              <div class="discord-server">
+                <div class="dc-icon" style="background:rgba(0,255,136,0.1);">🎧<div class="online-ring"></div></div>
+                <div class="dc-body">
+                  <div class="dc-name">Drill Nation HQ</div>
+                  <div class="dc-meta">
+                    <span class="dc-members">9.8K Members</span>
+                    <span class="dc-online">503 online</span>
+                  </div>
+                </div>
+                <span class="dc-status stat-chip sc-neo">Active</span>
+                <div class="dc-reach">9.8K</div>
+              </div>
+              <div class="discord-server">
+                <div class="dc-icon" style="background:rgba(245,158,11,0.1);">🔥<div class="online-ring"></div></div>
+                <div class="dc-body">
+                  <div class="dc-name">Melodic Trap Senate</div>
+                  <div class="dc-meta">
+                    <span class="dc-members">7.1K Members</span>
+                    <span class="dc-online">291 online</span>
+                  </div>
+                </div>
+                <span class="dc-status stat-chip sc-amber">Active</span>
+                <div class="dc-reach">7.1K</div>
+              </div>
+              <div class="discord-server">
+                <div class="dc-icon" style="background:rgba(56,189,248,0.1);">🌊<div class="online-ring"></div></div>
+                <div class="dc-body">
+                  <div class="dc-name">Emo Rap Collective</div>
+                  <div class="dc-meta">
+                    <span class="dc-members">5.4K Members</span>
+                    <span class="dc-online">178 online</span>
+                  </div>
+                </div>
+                <span class="dc-status stat-chip sc-sky">Active</span>
+                <div class="dc-reach">5.4K</div>
+              </div>
+              <div class="discord-server">
+                <div class="dc-icon" style="background:rgba(244,63,94,0.1);">⚡<div class="online-ring"></div></div>
+                <div class="dc-body">
+                  <div class="dc-name">Hyperpop Underground</div>
+                  <div class="dc-meta">
+                    <span class="dc-members">3.9K Members</span>
+                    <span class="dc-online">142 online</span>
+                  </div>
+                </div>
+                <span class="dc-status stat-chip sc-rose">Active</span>
+                <div class="dc-reach">3.9K</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COL -->
+        <div style="display:flex;flex-direction:column;gap:16px;">
+
+          <!-- TOP AMBASSADORS -->
+          <div class="card">
+            <div class="card-head">
+              <div class="card-title"><span class="card-title-icon">⭐</span> Top Ambassadors</div>
+              <button class="card-action" onclick="showTab('ambassadors', document.querySelectorAll('.nav-btn')[3])">Full List →</button>
+            </div>
+            <div class="card-body" style="padding:12px 16px;">
+              <div class="ambassador-list">
+                <div class="ambassador">
+                  <div class="amb-rank">1</div>
+                  <div class="amb-avi" style="background:linear-gradient(135deg,var(--amber),var(--violet));">K</div>
+                  <div class="amb-body">
+                    <div class="amb-name">KingFlow_DC</div>
+                    <div class="amb-server">Underground Rap Central</div>
+                  </div>
+                  <div class="amb-pts"><div class="amb-pts-val">4,820</div><div class="amb-pts-label">XP Points</div></div>
+                </div>
+                <div class="ambassador">
+                  <div class="amb-rank">2</div>
+                  <div class="amb-avi" style="background:linear-gradient(135deg,var(--neo),var(--sky));">Z</div>
+                  <div class="amb-body">
+                    <div class="amb-name">ZaraVibes</div>
+                    <div class="amb-server">Melodic Trap Senate</div>
+                  </div>
+                  <div class="amb-pts"><div class="amb-pts-val">3,950</div><div class="amb-pts-label">XP Points</div></div>
+                </div>
+                <div class="ambassador">
+                  <div class="amb-rank">3</div>
+                  <div class="amb-avi" style="background:linear-gradient(135deg,var(--rose),var(--amber));">D</div>
+                  <div class="amb-body">
+                    <div class="amb-name">DrillKing_CHI</div>
+                    <div class="amb-server">Drill Nation HQ</div>
+                  </div>
+                  <div class="amb-pts"><div class="amb-pts-val">3,210</div><div class="amb-pts-label">XP Points</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ACTIVITY FEED -->
+          <div class="card">
+            <div class="card-head">
+              <div class="card-title"><span class="card-title-icon">⚡</span> Live Activity</div>
+              <div class="cs-live" style="margin-left:auto;"></div>
+            </div>
+            <div class="card-body" style="padding: 0 16px;">
+              <div class="activity-feed">
+                <div class="feed-item">
+                  <div class="feed-avi" style="background:var(--violet-d);">👤</div>
+                  <div class="feed-body">
+                    <div class="feed-text"><strong>KingFlow_DC</strong> <span class="action">referred</span> 3 new members to UGS</div>
+                    <div class="feed-meta"><span>2m ago</span><span class="stat-chip sc-neo" style="padding:1px 6px;font-size:7px;">+150 XP</span></div>
+                  </div>
+                </div>
+                <div class="feed-item">
+                  <div class="feed-avi" style="background:var(--neo-d);">🎤</div>
+                  <div class="feed-body">
+                    <div class="feed-text"><strong>Drill Nation HQ</strong> <span class="action">shared</span> UGS promo post — 1.2K impressions</div>
+                    <div class="feed-meta"><span>8m ago</span><span class="stat-chip sc-violet" style="padding:1px 6px;font-size:7px;">PARTNER</span></div>
+                  </div>
+                </div>
+                <div class="feed-item">
+                  <div class="feed-avi" style="background:var(--amber-d);">⭐</div>
+                  <div class="feed-body">
+                    <div class="feed-text"><strong>ZaraVibes</strong> <span class="action">unlocked</span> Gold Ambassador tier</div>
+                    <div class="feed-meta"><span>22m ago</span><span class="stat-chip sc-amber" style="padding:1px 6px;font-size:7px;">MILESTONE</span></div>
+                  </div>
+                </div>
+                <div class="feed-item">
+                  <div class="feed-avi" style="background:var(--rose-d);">🎟️</div>
+                  <div class="feed-body">
+                    <div class="feed-text"><strong>14 members</strong> <span class="action">claimed</span> priority ticket access for March Showcase</div>
+                    <div class="feed-meta"><span>1h ago</span><span class="stat-chip sc-rose" style="padding:1px 6px;font-size:7px;">EVENT</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================
+         DISCORD PARTNERS
+         ====================================== -->
+    <div class="tab-page" id="tab-discord">
+      <div class="page-hd">
+        <div class="page-hd-left">
+          <div class="page-eyebrow">Partnership Network</div>
+          <div class="page-title">DISCORD<br><span>PARTNERS</span></div>
+          <p class="page-sub">18 active Discord servers representing 40K+ members in the underground. Each server gets a dedicated ambassador, custom UGS role, and co-promotion access.</p>
+        </div>
+        <div class="page-actions">
+          <button class="btn btn-ghost">Partnership Brief ↓</button>
+          <button class="btn btn-violet" onclick="showToast('🎉 Partner application sent!')">+ Apply as Partner</button>
+        </div>
+      </div>
+
+      <div class="discord-grid">
+        <div class="dc-card">
+          <div class="dc-card-head">
+            <div class="dc-card-icon" style="background:rgba(139,92,246,0.15);">🎤</div>
+            <div class="dc-card-info">
+              <div class="dc-card-name">Underground Rap Central</div>
+              <div class="dc-card-tag">Hip-Hop · All Regions</div>
+            </div>
+          </div>
+          <div class="dc-card-body">
+            <div class="dc-stats-row">
+              <div class="dc-stat-item"><div class="dc-stat-num" style="color:var(--violet-l)">14.2K</div><div class="dc-stat-lbl">Members</div></div>
+              <div class="dc-stat-item"><div class="dc-stat-num" style="color:var(--neo)">842</div><div class="dc-stat-lbl">Online Now</div></div>
+            </div>
+            <div class="dc-card-status-row">
+              <span class="dc-partner-status dps-featured">⭐ Featured Partner</span>
+              <button class="btn btn-sm btn-ghost" onclick="showToast('Opening server dashboard...')">Manage →</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="dc-card">
+          <div class="dc-card-head">
+            <div class="dc-card-icon" style="background:rgba(244,63,94,0.1);">🔫</div>
+            <div class="dc-card-info">
+              <div class="dc-card-name">Drill Nation HQ</div>
+              <div class="dc-card-tag">Drill · Chicago · NYC · UK</div>
+            </div>
+          </div>
+          <div class="dc-card-body">
+            <div class="dc-stats-row">
+              <div class="dc-stat-item"><div class="dc-stat-num" style="color:var(--violet-l)">9.8K</div><div class="dc-stat-lbl">Members</div></div>
+              <div class="dc-stat-item"><div class="dc-stat-num" style="color:var(--neo)">503</div><div class="dc-stat-lbl">Online Now</div></div>
+            </div>
+            <div class="dc-card-status-row">
+              <span class="dc-partner-status dps-active">● Active Partner</span>
+              <button class="btn btn-sm btn-ghost" onclick="showToast('Opening server dashboard...')">Manage →</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="dc-card">
+          <div class="dc-card-head">
+            <div class="dc-card-icon" style="background:rgba(245,158,11,0.1);">🎶</div>
+            <div class="dc-card-info">
+              <div class="dc-card-name">Melodic Trap Senate</div>
+              <div class="dc-card-tag">Melodic · Trap · ATL</div>
+            </div>
+          </div>
+          <div class="dc-card-body">
+            <div class="dc-stats-row">
+              <div class="dc-stat-item"><div class="dc-stat-num" style="color:var(--violet-l)">7.1K</div><div class="dc-stat-lbl">Members</div></div>
+              <div class="dc-stat-item"><div class="dc-stat-num" style="color:var(--neo)">291</div><div class="dc-stat-lbl">Online Now</div></div>
+            </div>
+            <div class="dc-card-status-row">
+              <span class="dc-partner-status dps-active">● Active Partner</span>
+              <button class="btn btn-sm btn-ghost" onclick="showToast('Opening server dashboard...')">Manage →</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="dc-card">
+          <div class="dc-card-head">
+            <div class="dc-card-icon" style="background:rgba(56,189,248,0.1);">🌊</div>
+            <div class="dc-card-info">
+              <div class="dc-card-name">Emo Rap Collective</div>
+              <div class="dc-card-tag">Emo · Alt · Midwest</div>
+            </div>
+          </div>
+          <div class="dc-card-body">
+            <div class="dc-stats-row">
+              <div class="dc-stat-item"><div class="dc-stat-num" style="color:var(--violet-l)">5.4K</div><div class="dc-stat-lbl">Members</div></div>
+              <div class="dc-stat-item"><div class="dc-stat-num" style="color:var(--neo)">178</div><div class="dc-stat-lbl">Online Now</div></div>
+            </div>
+            <div class="dc-card-status-row">
+              <span class="dc-partner-status dps-active">● Active Partner</span>
+              <button class="btn btn-sm btn-ghost" onclick="showToast('Opening server dashboard...')">Manage →</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="dc-card">
+          <div class="dc-card-head">
+            <div class="dc-card-icon" style="background:rgba(0,255,136,0.08);">⚡</div>
+            <div class="dc-card-info">
+              <div class="dc-card-name">Hyperpop Underground</div>
+              <div class="dc-card-tag">Hyperpop · Experimental</div>
+            </div>
+          </div>
+          <div class="dc-card-body">
+            <div class="dc-stats-row">
+              <div class="dc-stat-item"><div class="dc-stat-num" style="color:var(--violet-l)">3.9K</div><div class="dc-stat-lbl">Members</div></div>
+              <div class="dc-stat-item"><div class="dc-stat-num" style="color:var(--neo)">142</div><div class="dc-stat-lbl">Online Now</div></div>
+            </div>
+            <div class="dc-card-status-row">
+              <span class="dc-partner-status dps-active">● Active Partner</span>
+              <button class="btn btn-sm btn-ghost" onclick="showToast('Opening server dashboard...')">Manage →</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="dc-card" style="border-style:dashed;opacity:0.6;cursor:pointer;" onclick="showToast('Partner application form coming soon!')">
+          <div class="dc-card-head" style="justify-content:center;flex-direction:column;align-items:center;gap:6px;padding:32px 20px;">
+            <div style="font-size:32px;">+</div>
+            <div class="dc-card-name" style="text-align:center;color:var(--muted);">Apply for Partnership</div>
+            <div class="dc-card-tag">50K+ members · Active community</div>
+          </div>
+          <div class="dc-card-body" style="text-align:center;">
+            <span class="dc-partner-status dps-pending">Accepting Applications</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================
+         AMBASSADORS
+         ====================================== -->
+    <div class="tab-page" id="tab-ambassadors">
+      <div class="page-hd">
+        <div class="page-hd-left">
+          <div class="page-eyebrow">Community Leadership</div>
+          <div class="page-title">AMBASSADOR<br><span>PROGRAM</span></div>
+          <p class="page-sub">Verified community ambassadors earn XP, unlock exclusive perks, and get event access priority. 94 active ambassadors representing 18 Discord servers.</p>
+        </div>
+        <div class="page-actions">
+          <button class="btn btn-ghost">Download Roster</button>
+          <button class="btn btn-violet" onclick="showToast('Ambassador application submitted!')">Apply Now</button>
+        </div>
+      </div>
+
+      <!-- TIER CARDS -->
+      <div class="amb-program-grid three" style="margin-bottom:24px;">
+        <div class="tier-card gold-tier">
+          <div class="tier-card-head">
+            <div class="tier-medal">🥇</div>
+            <div>
+              <div class="tier-name">GOLD</div>
+              <div class="tier-count">12 ambassadors</div>
+            </div>
+            <div class="tier-badge-col"><span class="tier-req">2,500+ XP</span></div>
+          </div>
+          <div class="tier-card-body">
+            <div class="tier-perks">
+              <div class="tier-perk"><div class="perk-check">✓</div>Priority ticket access to all UGS events (72hr early)</div>
+              <div class="tier-perk"><div class="perk-check">✓</div>Monthly revenue share from referred campaigns</div>
+              <div class="tier-perk"><div class="perk-check">✓</div>Backstage access at UGS showcase events</div>
+              <div class="tier-perk"><div class="perk-check">✓</div>Co-branded promotion posts on @undergroundsound</div>
+              <div class="tier-perk"><div class="perk-check">✓</div>Direct line to UGS A&R for artist submissions</div>
+            </div>
+          </div>
+        </div>
+        <div class="tier-card silver-tier">
+          <div class="tier-card-head">
+            <div class="tier-medal">🥈</div>
+            <div>
+              <div class="tier-name">SILVER</div>
+              <div class="tier-count">38 ambassadors</div>
+            </div>
+            <div class="tier-badge-col"><span class="tier-req">1,000+ XP</span></div>
+          </div>
+          <div class="tier-card-body">
+            <div class="tier-perks">
+              <div class="tier-perk"><div class="perk-check">✓</div>Priority ticket access (48hr early) to UGS events</div>
+              <div class="tier-perk"><div class="perk-check">✓</div>Referral bonus cash rewards ($5 per qualified referral)</div>
+              <div class="tier-perk"><div class="perk-check">✓</div>Exclusive UGS Silver Ambassador Discord role</div>
+              <div class="tier-perk"><div class="perk-check">✓</div>Featured in monthly community spotlight post</div>
+              <div class="tier-perk"><div class="perk-check">✓</div>Early access to UGS content drops</div>
+            </div>
+          </div>
+        </div>
+        <div class="tier-card bronze-tier">
+          <div class="tier-card-head">
+            <div class="tier-medal">🥉</div>
+            <div>
+              <div class="tier-name">BRONZE</div>
+              <div class="tier-count">44 ambassadors</div>
+            </div>
+            <div class="tier-badge-col"><span class="tier-req">250+ XP</span></div>
+          </div>
+          <div class="tier-card-body">
+            <div class="tier-perks">
+              <div class="tier-perk"><div class="perk-check">✓</div>Priority ticket access (24hr early) to UGS events</div>
+              <div class="tier-perk"><div class="perk-check">✓</div>UGS Ambassador role in partner Discord servers</div>
+              <div class="tier-perk"><div class="perk-check">✓</div>Access to private UGS community channels</div>
+              <div class="tier-perk"><div class="perk-check">✓</div>Referral tracking dashboard access</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FULL TABLE -->
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">All Ambassadors — Ranked by XP</div>
+          <button class="card-action">Export CSV</button>
+        </div>
+        <table class="full-amb-table">
+          <thead>
+            <tr>
+              <th>#</th><th>Ambassador</th><th>Tier</th><th>Server</th>
+              <th>Referrals</th><th>XP Progress</th><th>Status</th><th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td style="font-family:var(--font-display);font-size:20px;color:var(--amber);">1</td>
+              <td><div style="display:flex;align-items:center;gap:10px;"><div class="amb-avi" style="background:linear-gradient(135deg,var(--amber),var(--violet));color:white;">K</div><div><div style="font-weight:700;">KingFlow_DC</div><div style="font-family:var(--font-mono);font-size:8px;color:var(--muted);">@kingflow</div></div></div></td>
+              <td><span class="stat-chip sc-amber">🥇 Gold</span></td>
+              <td style="font-size:12px;color:var(--muted);">Underground Rap Central</td>
+              <td style="font-family:var(--font-display);font-size:20px;color:var(--neo);">48</td>
+              <td><div class="xp-bar-wrap"><div class="xp-track"><div class="xp-fill" style="width:93%;background:var(--amber);"></div></div><div class="xp-val">4,820 XP</div></div></td>
+              <td><span class="stat-chip sc-neo">Active</span></td>
+              <td><button class="btn btn-sm btn-ghost" onclick="showToast('Opening ambassador profile...')">View</button></td>
+            </tr>
+            <tr><td style="font-family:var(--font-display);font-size:20px;color:var(--muted);">2</td>
+              <td><div style="display:flex;align-items:center;gap:10px;"><div class="amb-avi" style="background:linear-gradient(135deg,var(--neo),var(--sky));color:var(--void);">Z</div><div><div style="font-weight:700;">ZaraVibes</div><div style="font-family:var(--font-mono);font-size:8px;color:var(--muted);">@zaravibes</div></div></div></td>
+              <td><span class="stat-chip sc-amber">🥇 Gold</span></td>
+              <td style="font-size:12px;color:var(--muted);">Melodic Trap Senate</td>
+              <td style="font-family:var(--font-display);font-size:20px;color:var(--neo);">41</td>
+              <td><div class="xp-bar-wrap"><div class="xp-track"><div class="xp-fill" style="width:79%;background:var(--neo);"></div></div><div class="xp-val">3,950 XP</div></div></td>
+              <td><span class="stat-chip sc-neo">Active</span></td>
+              <td><button class="btn btn-sm btn-ghost" onclick="showToast('Opening ambassador profile...')">View</button></td>
+            </tr>
+            <tr><td style="font-family:var(--font-display);font-size:20px;color:var(--muted);">3</td>
+              <td><div style="display:flex;align-items:center;gap:10px;"><div class="amb-avi" style="background:linear-gradient(135deg,var(--rose),var(--amber));color:white;">D</div><div><div style="font-weight:700;">DrillKing_CHI</div><div style="font-family:var(--font-mono);font-size:8px;color:var(--muted);">@drillking</div></div></div></td>
+              <td><span class="stat-chip sc-sky">🥈 Silver</span></td>
+              <td style="font-size:12px;color:var(--muted);">Drill Nation HQ</td>
+              <td style="font-family:var(--font-display);font-size:20px;color:var(--neo);">35</td>
+              <td><div class="xp-bar-wrap"><div class="xp-track"><div class="xp-fill" style="width:64%;background:var(--sky);"></div></div><div class="xp-val">3,210 XP</div></div></td>
+              <td><span class="stat-chip sc-neo">Active</span></td>
+              <td><button class="btn btn-sm btn-ghost" onclick="showToast('Opening ambassador profile...')">View</button></td>
+            </tr>
+            <tr><td style="font-family:var(--font-display);font-size:20px;color:var(--muted);">4</td>
+              <td><div style="display:flex;align-items:center;gap:10px;"><div class="amb-avi" style="background:linear-gradient(135deg,var(--violet),var(--rose));color:white;">L</div><div><div style="font-weight:700;">LunarTracks</div><div style="font-family:var(--font-mono);font-size:8px;color:var(--muted);">@lunartracks</div></div></div></td>
+              <td><span class="stat-chip sc-sky">🥈 Silver</span></td>
+              <td style="font-size:12px;color:var(--muted);">Emo Rap Collective</td>
+              <td style="font-family:var(--font-display);font-size:20px;color:var(--neo);">29</td>
+              <td><div class="xp-bar-wrap"><div class="xp-track"><div class="xp-fill" style="width:48%;background:var(--violet);"></div></div><div class="xp-val">2,380 XP</div></div></td>
+              <td><span class="stat-chip sc-neo">Active</span></td>
+              <td><button class="btn btn-sm btn-ghost" onclick="showToast('Opening ambassador profile...')">View</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ======================================
+         REPUTATION
+         ====================================== -->
+    <div class="tab-page" id="tab-reputation">
+      <div class="page-hd">
+        <div class="page-hd-left">
+          <div class="page-eyebrow">Trust & Credibility</div>
+          <div class="page-title">REPUTATION<br><span>SYSTEM</span></div>
+          <p class="page-sub">Every action in the UGS ecosystem earns reputation points. High-rep members unlock more access, bigger rewards, and direct influence over the platform's direction.</p>
+        </div>
+      </div>
+
+      <div class="rep-system-grid">
+        <!-- SCORE VISUAL -->
+        <div class="card">
+          <div class="card-head"><div class="card-title">🏆 Community Score — KingFlow_DC</div></div>
+          <div class="card-body">
+            <div class="score-ring-wrap">
+              <div class="score-ring">
+                <svg width="140" height="140" viewBox="0 0 140 140">
+                  <circle cx="70" cy="70" r="58" fill="none" stroke="var(--border2)" stroke-width="10"/>
+                  <circle cx="70" cy="70" r="58" fill="none" stroke="var(--violet)" stroke-width="10"
+                    stroke-dasharray="364.4" stroke-dashoffset="25" stroke-linecap="round"
+                    style="filter:drop-shadow(0 0 8px rgba(139,92,246,0.6))"/>
+                </svg>
+                <div class="score-ring-val">
+                  <div class="score-num">93</div>
+                  <div class="score-label">/ 100</div>
+                </div>
+              </div>
+              <div class="score-breakdown">
+                <div class="score-row"><div class="score-row-name"><span class="score-row-icon">📬</span> Referrals Made</div><div class="score-row-pts">+2,400 XP</div></div>
+                <div class="score-row"><div class="score-row-name"><span class="score-row-icon">📣</span> Content Shared</div><div class="score-row-pts">+1,200 XP</div></div>
+                <div class="score-row"><div class="score-row-name"><span class="score-row-icon">🎟️</span> Events Attended</div><div class="score-row-pts">+800 XP</div></div>
+                <div class="score-row"><div class="score-row-name"><span class="score-row-icon">⭐</span> Artists Submitted</div><div class="score-row-pts">+420 XP</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EARN ACTIONS -->
+        <div class="card">
+          <div class="card-head"><div class="card-title">⚡ How to Earn XP</div></div>
+          <div class="card-body">
+            <div class="earn-grid">
+              <div class="earn-item" onclick="showToast('+50 XP earned!')">
+                <div class="earn-icon">📬</div>
+                <div class="earn-name">Refer a Member</div>
+                <div class="earn-pts">+50 XP each</div>
+                <div class="earn-desc">Bring new members into the UGS network via your referral link</div>
+              </div>
+              <div class="earn-item" onclick="showToast('+25 XP earned!')">
+                <div class="earn-icon">📣</div>
+                <div class="earn-name">Share Content</div>
+                <div class="earn-pts">+25 XP</div>
+                <div class="earn-desc">Repost or share UGS content in your community</div>
+              </div>
+              <div class="earn-item" onclick="showToast('+100 XP earned!')">
+                <div class="earn-icon">🎟️</div>
+                <div class="earn-name">Attend Event</div>
+                <div class="earn-pts">+100 XP</div>
+                <div class="earn-desc">Check in at any UGS event or showcase</div>
+              </div>
+              <div class="earn-item" onclick="showToast('+75 XP earned!')">
+                <div class="earn-icon">🎤</div>
+                <div class="earn-name">Submit Artist</div>
+                <div class="earn-pts">+75 XP</div>
+                <div class="earn-desc">Submit an artist who gets approved for UGS promotion</div>
+              </div>
+              <div class="earn-item" onclick="showToast('+200 XP earned!')">
+                <div class="earn-icon">🏆</div>
+                <div class="earn-name">Win Challenge</div>
+                <div class="earn-pts">+200 XP</div>
+                <div class="earn-desc">Win a community challenge or monthly contest</div>
+              </div>
+              <div class="earn-item" onclick="showToast('+30 XP earned!')">
+                <div class="earn-icon">💬</div>
+                <div class="earn-name">Daily Check-in</div>
+                <div class="earn-pts">+30 XP</div>
+                <div class="earn-desc">Be active in the community every day (streak bonus applies)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- BADGES -->
+        <div class="card">
+          <div class="card-head"><div class="card-title">🎖️ Achievement Badges</div></div>
+          <div class="card-body">
+            <div class="badges-grid">
+              <div class="badge-item earned" onclick="showToast('Badge: First Blood unlocked!')">
+                <div class="badge-emoji">🩸</div>
+                <div class="badge-name">First Blood</div>
+                <div class="badge-pts">First referral</div>
+              </div>
+              <div class="badge-item earned">
+                <div class="badge-emoji">🔥</div>
+                <div class="badge-name">On Fire</div>
+                <div class="badge-pts">7-day streak</div>
+              </div>
+              <div class="badge-item earned">
+                <div class="badge-emoji">🎤</div>
+                <div class="badge-name">A&R Eye</div>
+                <div class="badge-pts">10 artists submitted</div>
+              </div>
+              <div class="badge-item earned">
+                <div class="badge-emoji">👑</div>
+                <div class="badge-name">Gold Status</div>
+                <div class="badge-pts">2,500 XP reached</div>
+              </div>
+              <div class="badge-item locked">
+                <div class="badge-emoji">🚀</div>
+                <div class="badge-name">100 Referrals</div>
+                <div class="badge-pts">52 more to go</div>
+              </div>
+              <div class="badge-item locked">
+                <div class="badge-emoji">🌐</div>
+                <div class="badge-name">Network King</div>
+                <div class="badge-pts">5 servers joined</div>
+              </div>
+              <div class="badge-item locked">
+                <div class="badge-emoji">🎪</div>
+                <div class="badge-name">Festival Veteran</div>
+                <div class="badge-pts">Attend flagship event</div>
+              </div>
+              <div class="badge-item locked">
+                <div class="badge-emoji">⚡</div>
+                <div class="badge-name">Legendary</div>
+                <div class="badge-pts">Top 1% score</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================
+         REFERRALS
+         ====================================== -->
+    <div class="tab-page" id="tab-referrals">
+      <div class="page-hd">
+        <div class="page-hd-left">
+          <div class="page-eyebrow">Growth Engine</div>
+          <div class="page-title">REFERRAL<br><span>REWARDS</span></div>
+        </div>
+      </div>
+
+      <div class="referral-hero">
+        <div>
+          <div class="referral-eyebrow">Your Referral Code</div>
+          <div class="referral-title">GROW THE<br><span>NETWORK</span></div>
+          <p class="referral-desc">Every person you bring into UGS earns you XP and cash. Share your code across Discord, Twitter, and Instagram. When they join, submit, or buy — you get paid.</p>
+        </div>
+        <div class="referral-code-box">
+          <div class="ref-code" onclick="showToast('📋 Code copied: UGS-BWISE-7X')">
+            <div class="ref-code-label">Your Code — Click to Copy</div>
+            <div class="ref-code-val">UGS-BWISE-7X</div>
+            <div class="ref-code-stats">48 uses · $240 earned</div>
+          </div>
+          <button class="btn btn-neo" onclick="showToast('🔗 Referral link copied!')">Copy Share Link</button>
+          <button class="btn btn-ghost btn-sm" onclick="showToast('Sharing to Twitter...')">Share to Twitter ↗</button>
+        </div>
+      </div>
+
+      <div class="referral-stats-grid">
+        <div class="ref-stat">
+          <div class="ref-stat-num" style="color:var(--neo)">48</div>
+          <div class="ref-stat-label">Total Referrals</div>
+        </div>
+        <div class="ref-stat">
+          <div class="ref-stat-num" style="color:var(--amber)">$240</div>
+          <div class="ref-stat-label">Cash Earned</div>
+        </div>
+        <div class="ref-stat">
+          <div class="ref-stat-num" style="color:var(--violet-l)">2,400</div>
+          <div class="ref-stat-label">XP from Referrals</div>
+        </div>
+        <div class="ref-stat">
+          <div class="ref-stat-num" style="color:var(--sky)">12</div>
+          <div class="ref-stat-label">Active Converts</div>
+        </div>
+      </div>
+
+      <div class="ref-steps">
+        <div class="ref-step">
+          <div class="step-num">1</div>
+          <div class="step-icon">🔗</div>
+          <div class="step-title">Share Your Code</div>
+          <div class="step-desc">Post your UGS code in Discord servers, Twitter, Instagram Stories, or anywhere underground music fans hang out.</div>
+        </div>
+        <div class="ref-step">
+          <div class="step-num">2</div>
+          <div class="step-icon">👋</div>
+          <div class="step-title">They Join UGS</div>
+          <div class="step-desc">When someone clicks your link and creates an account or submits music, they're officially your referral.</div>
+        </div>
+        <div class="ref-step">
+          <div class="step-num">3</div>
+          <div class="step-icon">⚡</div>
+          <div class="step-title">You Earn XP + Cash</div>
+          <div class="step-desc">You earn +50 XP instantly. If they buy a campaign, you get 10% cash commission automatically.</div>
+        </div>
+        <div class="ref-step">
+          <div class="step-num">4</div>
+          <div class="step-icon">🏆</div>
+          <div class="step-title">Level Up Your Tier</div>
+          <div class="step-desc">Referrals stack toward your Ambassador tier. More referrals = more perks, priority access, and revenue share.</div>
+        </div>
+      </div>
+
+      <div class="community-grid wide">
+        <div class="card">
+          <div class="card-head"><div class="card-title">🏅 Referral Leaderboard</div><span style="font-family:var(--font-mono);font-size:9px;color:var(--neo);">MONTHLY</span></div>
+          <div class="leaderboard">
+            <div class="lb-row top-3"><div class="lb-pos">1</div><div class="lb-avi" style="background:linear-gradient(135deg,var(--amber),var(--violet));">K</div><div class="lb-info"><div class="lb-name">KingFlow_DC</div><div class="lb-server">Underground Rap Central</div></div><div><div class="lb-referrals">48</div><div class="lb-pts">referrals this month</div></div></div>
+            <div class="lb-row top-3"><div class="lb-pos">2</div><div class="lb-avi" style="background:linear-gradient(135deg,var(--neo),var(--sky));">Z</div><div class="lb-info"><div class="lb-name">ZaraVibes</div><div class="lb-server">Melodic Trap Senate</div></div><div><div class="lb-referrals">41</div><div class="lb-pts">referrals this month</div></div></div>
+            <div class="lb-row top-3"><div class="lb-pos">3</div><div class="lb-avi" style="background:linear-gradient(135deg,var(--rose),var(--amber));">D</div><div class="lb-info"><div class="lb-name">DrillKing_CHI</div><div class="lb-server">Drill Nation HQ</div></div><div><div class="lb-referrals">35</div><div class="lb-pts">referrals this month</div></div></div>
+            <div class="lb-row"><div class="lb-pos">4</div><div class="lb-avi" style="background:linear-gradient(135deg,var(--violet),var(--rose));">L</div><div class="lb-info"><div class="lb-name">LunarTracks</div><div class="lb-server">Emo Rap Collective</div></div><div><div class="lb-referrals" style="color:var(--off);">29</div><div class="lb-pts">referrals</div></div></div>
+            <div class="lb-row"><div class="lb-pos">5</div><div class="lb-avi" style="background:linear-gradient(135deg,var(--sky),var(--neo));">B</div><div class="lb-info"><div class="lb-name">BeatPlug_ATL</div><div class="lb-server">Melodic Trap Senate</div></div><div><div class="lb-referrals" style="color:var(--off);">24</div><div class="lb-pts">referrals</div></div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><div class="card-title">💰 Payout Structure</div></div>
+          <div class="card-body">
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="padding:14px;background:var(--raised);border-radius:8px;border-left:3px solid var(--neo);">
+                <div style="font-weight:700;font-size:13px;margin-bottom:4px;">New Member Joins</div>
+                <div style="font-family:var(--font-display);font-size:28px;color:var(--neo);">+50 XP</div>
+                <div style="font-size:11px;color:var(--muted);">Instant — no minimum</div>
+              </div>
+              <div style="padding:14px;background:var(--raised);border-radius:8px;border-left:3px solid var(--amber);">
+                <div style="font-weight:700;font-size:13px;margin-bottom:4px;">They Buy a Campaign</div>
+                <div style="font-family:var(--font-display);font-size:28px;color:var(--amber);">10% Cash</div>
+                <div style="font-size:11px;color:var(--muted);">Paid within 7 days</div>
+              </div>
+              <div style="padding:14px;background:var(--raised);border-radius:8px;border-left:3px solid var(--violet);">
+                <div style="font-weight:700;font-size:13px;margin-bottom:4px;">They Become Ambassador</div>
+                <div style="font-family:var(--font-display);font-size:28px;color:var(--violet-l);">+500 XP</div>
+                <div style="font-size:11px;color:var(--muted);">Bonus on milestone</div>
+              </div>
+              <div style="padding:14px;background:var(--raised);border-radius:8px;border-left:3px solid var(--rose);">
+                <div style="font-weight:700;font-size:13px;margin-bottom:4px;">Top Monthly Referrer</div>
+                <div style="font-family:var(--font-display);font-size:28px;color:var(--rose);">$100 Cash</div>
+                <div style="font-size:11px;color:var(--muted);">Monthly prize + spotlight</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================
+         EVENT ACCESS
+         ====================================== -->
+    <div class="tab-page" id="tab-events">
+      <div class="page-hd">
+        <div class="page-hd-left">
+          <div class="page-eyebrow">Exclusive Access</div>
+          <div class="page-title">EVENT<br><span>PRIORITY</span></div>
+          <p class="page-sub">Ambassadors and high-rep members get first access to every UGS event. The higher your tier, the earlier your window — up to 72 hours before general release.</p>
+        </div>
+        <div class="page-actions">
+          <button class="btn btn-violet" onclick="showToast('🎟️ Priority access claimed!')">Claim My Access</button>
+        </div>
+      </div>
+
+      <div class="event-access-grid">
+        <div>
+          <div class="event-list">
+            <div class="event-item">
+              <div class="event-date-col"><div class="event-day">15</div><div class="event-month">MAR</div></div>
+              <div class="event-body-col">
+                <div class="event-cats"><span class="stat-chip sc-neo">UGS Showcase</span></div>
+                <div class="event-title">Underground Sound Showcase Vol. 1</div>
+                <div class="event-location">📍 Wilmington, DE</div>
+                <div class="event-access-row">
+                  <span class="access-tier-badge atb-all">All Ambassadors</span>
+                  <span class="event-spots">12 priority spots left</span>
+                </div>
+              </div>
+              <div class="event-priority-col">
+                <div class="priority-num">72H</div>
+                <div class="priority-label">Gold Early Access</div>
+                <button class="btn btn-sm btn-violet" onclick="showToast('🎟️ Reserved!')">Reserve</button>
+              </div>
+            </div>
+
+            <div class="event-item">
+              <div class="event-date-col"><div class="event-day">28</div><div class="event-month">APR</div></div>
+              <div class="event-body-col">
+                <div class="event-cats"><span class="stat-chip sc-amber">Freshman</span></div>
+                <div class="event-title">Freshman Class 2025 Reveal — Live Event</div>
+                <div class="event-location">📍 TBD — Major City</div>
+                <div class="event-access-row">
+                  <span class="access-tier-badge atb-amb">Silver+ Only</span>
+                  <span class="event-spots">8 priority spots</span>
+                </div>
+              </div>
+              <div class="event-priority-col">
+                <div class="priority-num">48H</div>
+                <div class="priority-label">Silver Early Access</div>
+                <button class="btn btn-sm btn-ghost" onclick="showToast('🎟️ Waitlisted!')">Waitlist</button>
+              </div>
+            </div>
+
+            <div class="event-item">
+              <div class="event-date-col"><div class="event-day">TBA</div><div class="event-month">SUM</div></div>
+              <div class="event-body-col">
+                <div class="event-cats"><span class="stat-chip sc-violet">Community Summit</span></div>
+                <div class="event-title">UGS Community Summit + Live Experience</div>
+                <div class="event-location">📍 Regional — TBD</div>
+                <div class="event-access-row">
+                  <span class="access-tier-badge atb-gold">Gold Only</span>
+                  <span class="event-spots">20 spots reserved</span>
+                </div>
+              </div>
+              <div class="event-priority-col">
+                <div class="priority-num">72H</div>
+                <div class="priority-label">Gold Priority</div>
+                <button class="btn btn-sm btn-ghost">TBA</button>
+              </div>
+            </div>
+
+            <div class="event-item" style="border-color:rgba(139,92,246,0.3);background:var(--violet-d);">
+              <div class="event-date-col" style="background:rgba(139,92,246,0.1);"><div class="event-day" style="font-size:30px;color:var(--violet-l);">2026</div><div class="event-month">FLAG</div></div>
+              <div class="event-body-col">
+                <div class="event-cats"><span class="stat-chip sc-violet">Phase 4</span><span class="stat-chip sc-rose">Flagship</span></div>
+                <div class="event-title">Underground Sound Flagship Festival — Phase 4 Vision</div>
+                <div class="event-location">📍 National Scale — Multi-City</div>
+                <div class="event-access-row">
+                  <span class="access-tier-badge atb-gold">Ambassador Priority</span>
+                  <span class="event-spots">Priority list building now</span>
+                </div>
+              </div>
+              <div class="event-priority-col" style="background:var(--violet-d);">
+                <div class="priority-num" style="color:var(--violet-l);">P1</div>
+                <div class="priority-label">First Access List</div>
+                <button class="btn btn-sm btn-violet" onclick="showToast('✓ Added to flagship priority list!')">Join List</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRIORITY TIER EXPLAINER -->
+        <div class="card">
+          <div class="card-head"><div class="card-title">🎟️ Access Windows by Tier</div></div>
+          <div class="card-body">
+            <div class="priority-explainer">
+              <div class="pe-item" style="border-color:rgba(245,158,11,0.3);background:var(--amber-d);">
+                <div class="pe-tier" style="color:var(--amber);">🥇 GOLD</div>
+                <div class="pe-desc">First access — 72 hours before general ticket release. Backstage access where available.</div>
+                <div class="pe-window" style="color:var(--amber);">72H Early</div>
+              </div>
+              <div class="pe-item">
+                <div class="pe-tier" style="color:#94a3b8;">🥈 SILVER</div>
+                <div class="pe-desc">48 hours before general release. Priority seating at showcase events.</div>
+                <div class="pe-window" style="color:#94a3b8;">48H Early</div>
+              </div>
+              <div class="pe-item">
+                <div class="pe-tier" style="color:#b47850;">🥉 BRONZE</div>
+                <div class="pe-desc">24 hours before general public. Guaranteed entry to sold-out events.</div>
+                <div class="pe-window" style="color:#b47850;">24H Early</div>
+              </div>
+              <div class="pe-item" style="opacity:0.5;">
+                <div class="pe-tier" style="color:var(--muted);">General</div>
+                <div class="pe-desc">Standard public ticket sale. No guarantees on sold-out events.</div>
+                <div class="pe-window" style="color:var(--muted);">Public</div>
+              </div>
+            </div>
+          </div>
+          <div style="padding:16px 20px;border-top:1px solid var(--border);">
+            <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">Your Current Tier</div>
+            <div style="display:flex;align-items:center;gap:12px;padding:14px;background:var(--raised);border-radius:8px;border:1px solid rgba(245,158,11,0.3);">
+              <div style="font-size:28px;">🥇</div>
+              <div>
+                <div style="font-family:var(--font-display);font-size:22px;color:var(--amber);">GOLD AMBASSADOR</div>
+                <div style="font-size:11px;color:var(--muted);">4,820 XP · 72-hour early access unlocked</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================
+         PERKS
+         ====================================== -->
+    <div class="tab-page" id="tab-perks">
+      <div class="page-hd">
+        <div class="page-hd-left">
+          <div class="page-eyebrow">Member Benefits</div>
+          <div class="page-title">PERKS &<br><span>REWARDS</span></div>
+          <p class="page-sub">Your XP unlocks real rewards. Cash payouts, free campaigns, merchandise, backstage access, and direct influence over what Underground Sound does next.</p>
+        </div>
+      </div>
+      <div class="community-grid">
+        <div class="card" onclick="showToast('🎁 Reward claimed!')">
+          <div class="card-head"><div class="card-title">💸 Cash Payout</div><span class="stat-chip sc-neo">AVAILABLE</span></div>
+          <div class="card-body">
+            <div style="font-family:var(--font-display);font-size:48px;color:var(--neo);line-height:1;margin-bottom:8px;">$5+</div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;">Per qualified referral that purchases a campaign package. Paid weekly via PayPal, Venmo, or CashApp.</div>
+          </div>
+        </div>
+        <div class="card" onclick="showToast('🎁 Reward claimed!')">
+          <div class="card-head"><div class="card-title">🚀 Free Campaign</div><span class="stat-chip sc-amber">1,000 XP</span></div>
+          <div class="card-body">
+            <div style="font-family:var(--font-display);font-size:48px;color:var(--amber);line-height:1;margin-bottom:8px;">FREE</div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;">Redeem 1,000 XP for a free Twitter Blast campaign for yourself or any artist you believe in.</div>
+          </div>
+        </div>
+        <div class="card" onclick="showToast('🎁 Reward claimed!')">
+          <div class="card-head"><div class="card-title">👕 UGS Merch Drop</div><span class="stat-chip sc-violet">500 XP</span></div>
+          <div class="card-body">
+            <div style="font-family:var(--font-display);font-size:48px;color:var(--violet-l);line-height:1;margin-bottom:8px;">MERCH</div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;">Exclusive UGS ambassador merch — hoodies, tees, and accessories. Members only, never sold publicly.</div>
+          </div>
+        </div>
+        <div class="card" onclick="showToast('🎁 Reward claimed!')">
+          <div class="card-head"><div class="card-title">🎙️ Freshman Nomination</div><span class="stat-chip sc-amber">GOLD TIER</span></div>
+          <div class="card-body">
+            <div style="font-family:var(--font-display);font-size:48px;color:var(--amber);line-height:1;margin-bottom:8px;">NOMINATE</div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;">Gold ambassadors get a guaranteed nomination slot for the UGS Annual Freshman List. Your pick goes directly to A&R.</div>
+          </div>
+        </div>
+        <div class="card" onclick="showToast('🎁 Reward claimed!')">
+          <div class="card-head"><div class="card-title">🎙️ Spotlight Feature</div><span class="stat-chip sc-sky">MONTHLY</span></div>
+          <div class="card-body">
+            <div style="font-family:var(--font-display);font-size:48px;color:var(--sky);line-height:1;margin-bottom:8px;">FEATURE</div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;">Top contributor each month gets featured on @undergroundsound — Instagram post, Twitter thread, website profile.</div>
+          </div>
+        </div>
+        <div class="card" onclick="showToast('🎁 Added to advisory list!')">
+          <div class="card-head"><div class="card-title">🗳️ Platform Vote</div><span class="stat-chip sc-violet">GOLD ONLY</span></div>
+          <div class="card-body">
+            <div style="font-family:var(--font-display);font-size:48px;color:var(--violet-l);line-height:1;margin-bottom:8px;">VOTE</div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.6;">Gold ambassadors vote on platform decisions — what cities to expand to, which artists get special campaigns, and Phase 4 planning.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================
+         ACTIVITY FEED PAGE
+         ====================================== -->
+    <div class="tab-page" id="tab-feed">
+      <div class="page-hd">
+        <div class="page-hd-left">
+          <div class="page-eyebrow">Network Pulse</div>
+          <div class="page-title">ACTIVITY<br><span>FEED</span></div>
+        </div>
+      </div>
+      <div class="community-grid wide">
+        <div class="card">
+          <div class="card-head"><div class="card-title">⚡ Live Community Activity</div><div class="cs-live"></div></div>
+          <div class="card-body" style="padding:0 16px;">
+            <div class="activity-feed" id="live-feed">
+              <!-- populated by JS -->
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div class="card">
+            <div class="card-head"><div class="card-title">📊 Activity by Type</div></div>
+            <div class="card-body">
+              <div class="rep-breakdown">
+                <div class="rep-item"><div class="rep-top"><div class="rep-label">🔗 Referrals</div><div class="rep-val">412</div></div><div class="rep-bar-track"><div class="rep-bar-fill" style="width:82%;background:var(--neo);" data-w="82"></div></div></div>
+                <div class="rep-item"><div class="rep-top"><div class="rep-label">📣 Content Shared</div><div class="rep-val">284</div></div><div class="rep-bar-track"><div class="rep-bar-fill" style="width:57%;background:var(--violet);" data-w="57"></div></div></div>
+                <div class="rep-item"><div class="rep-top"><div class="rep-label">🎤 Artists Submitted</div><div class="rep-val">147</div></div><div class="rep-bar-track"><div class="rep-bar-fill" style="width:29%;background:var(--amber);" data-w="29"></div></div></div>
+                <div class="rep-item"><div class="rep-top"><div class="rep-label">🎟️ Events Attended</div><div class="rep-val">89</div></div><div class="rep-bar-track"><div class="rep-bar-fill" style="width:18%;background:var(--rose);" data-w="18"></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======================================
+         ROADMAP
+         ====================================== -->
+    <div class="tab-page" id="tab-roadmap">
+      <div class="page-hd">
+        <div class="page-hd-left">
+          <div class="page-eyebrow">Underground Sound</div>
+          <div class="page-title">PLATFORM<br><span>ROADMAP</span></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;">
+        <div style="display:flex;align-items:center;gap:16px;padding:20px 24px;background:var(--card);border:1px solid rgba(100,100,150,0.2);border-radius:12px;opacity:0.7;">
+          <div style="font-family:var(--font-display);font-size:32px;color:#666690;width:36px;">01</div>
+          <div style="flex:1;"><div style="font-weight:700;font-size:15px;margin-bottom:4px;">Phase 1 — Digital Media Infrastructure</div><div style="font-size:12px;color:var(--muted);">Editorial homepage · Freshman List · Artist profiles · SEO authority · Owned audience</div></div>
+          <span class="stat-chip sc-neo">LIVE ✓</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px;padding:20px 24px;background:var(--card);border:1px solid rgba(100,100,150,0.2);border-radius:12px;opacity:0.7;">
+          <div style="font-family:var(--font-display);font-size:32px;color:#666690;width:36px;">02</div>
+          <div style="flex:1;"><div style="font-weight:700;font-size:15px;margin-bottom:4px;">Phase 2 — Promotion Engine & Analytics</div><div style="font-size:12px;color:var(--muted);">Campaign tracker · Platform analytics · Sponsor dashboard · CRM · Artist funnel · Reports</div></div>
+          <span class="stat-chip sc-neo">LIVE ✓</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px;padding:24px;background:var(--violet-d);border:1px solid rgba(139,92,246,0.3);border-radius:12px;box-shadow:var(--violet-glow);">
+          <div style="font-family:var(--font-display);font-size:32px;color:var(--violet-l);width:36px;">03</div>
+          <div style="flex:1;"><div style="font-weight:700;font-size:15px;margin-bottom:4px;">Phase 3 — Community Integration & Reward Ecosystem</div><div style="font-size:12px;color:var(--muted);">Discord partnerships · Ambassador program · Reputation scoring · Referral rewards · Event priority access</div></div>
+          <span class="stat-chip sc-violet">YOU ARE HERE</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:16px;padding:20px 24px;background:var(--card);border:1px solid var(--border);border-radius:12px;">
+          <div style="font-family:var(--font-display);font-size:32px;color:var(--dim);width:36px;">04</div>
+          <div style="flex:1;"><div style="font-weight:700;font-size:15px;margin-bottom:4px;">Phase 4 — Flagship Festival Event</div><div style="font-size:12px;color:var(--muted);">Data-backed venue selection · UGS ticketing · Sponsor leverage · Multi-city expansion · Rolling Loud ambition</div></div>
+          <span class="stat-chip sc-amber">2026 TARGET</span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── NETWORK CANVAS ────────────────────────────────────────
+(function() {
+  const canvas = document.getElementById('network-canvas');
+  const ctx = canvas.getContext('2d');
+  let nodes = [], W, H;
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function init() {
+    resize();
+    nodes = Array.from({length:60}, () => ({
+      x: Math.random() * W, y: Math.random() * H,
+      vx: (Math.random()-.5) * .4, vy: (Math.random()-.5) * .4,
+      r: Math.random() * 2 + 1,
+      color: Math.random() > .5 ? '#8b5cf6' : '#00ff88'
+    }));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    // connections
+    for(let i = 0; i < nodes.length; i++) {
+      for(let j = i+1; j < nodes.length; j++) {
+        const dx = nodes[i].x - nodes[j].x;
+        const dy = nodes[i].y - nodes[j].y;
+        const d = Math.sqrt(dx*dx + dy*dy);
+        if(d < 140) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(139,92,246,${0.12 * (1 - d/140)})`;
+          ctx.lineWidth = .5;
+          ctx.moveTo(nodes[i].x, nodes[i].y);
+          ctx.lineTo(nodes[j].x, nodes[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+    // nodes
+    nodes.forEach(n => {
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fillStyle = n.color;
+      ctx.globalAlpha = .6;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+      // update
+      n.x += n.vx; n.y += n.vy;
+      if(n.x < 0 || n.x > W) n.vx *= -1;
+      if(n.y < 0 || n.y > H) n.vy *= -1;
+    });
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  init(); draw();
+})();
+
+// ── TAB NAVIGATION ────────────────────────────────────────
+const pageTitles = {
+  overview:'COMMUNITY HUB', discord:'DISCORD PARTNERS',
+  ambassadors:'AMBASSADORS', reputation:'REPUTATION SYSTEM',
+  referrals:'REFERRAL REWARDS', events:'EVENT PRIORITY',
+  perks:'PERKS & REWARDS', feed:'ACTIVITY FEED', roadmap:'ROADMAP'
+};
+
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const page = document.getElementById('tab-' + id);
+  if(page) page.classList.add('active');
+  if(btn) btn.classList.add('active');
+  document.getElementById('page-title').textContent = pageTitles[id] || id.toUpperCase();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// ── LIVE FEED GENERATOR ──────────────────────────────────
+const feedEvents = [
+  {icon:'🔗',color:'var(--violet-d)',text:'<strong>KingFlow_DC</strong> <span style="color:var(--neo)">referred</span> 3 members',meta:'JUST NOW · +150 XP'},
+  {icon:'🎤',color:'var(--neo-d)',text:'<strong>Drill Nation HQ</strong> <span style="color:var(--neo)">shared</span> UGS promo post',meta:'2M AGO · PARTNER ACTION'},
+  {icon:'⭐',color:'var(--amber-d)',text:'<strong>ZaraVibes</strong> <span style="color:var(--amber)">unlocked</span> Gold tier',meta:'8M AGO · MILESTONE'},
+  {icon:'🎟️',color:'var(--rose-d)',text:'<strong>14 members</strong> <span style="color:var(--sky)">claimed</span> March event access',meta:'22M AGO · EVENT'},
+  {icon:'📣',color:'var(--violet-d)',text:'<strong>LunarTracks</strong> <span style="color:var(--neo)">shared</span> Freshman post — 800 impressions',meta:'1H AGO · CONTENT'},
+  {icon:'🏆',color:'var(--amber-d)',text:'<strong>DrillKing_CHI</strong> won <span style="color:var(--amber)">monthly referral challenge</span>',meta:'2H AGO · REWARD'},
+  {icon:'💬',color:'var(--sky-d)',text:'<strong>Emo Rap Collective</strong> <span style="color:var(--neo)">joined</span> as partner server',meta:'3H AGO · NEW PARTNER'},
+  {icon:'🎤',color:'var(--violet-d)',text:'<strong>BeatPlug_ATL</strong> submitted <span style="color:var(--violet-l)">Tidecrest</span> for Freshman consideration',meta:'4H AGO · A&R SUBMISSION'},
+];
+
+function buildFeed() {
+  const feed = document.getElementById('live-feed');
+  if(!feed) return;
+  feed.innerHTML = feedEvents.map(e => `
+    <div class="feed-item">
+      <div class="feed-avi" style="background:${e.color};">${e.icon}</div>
+      <div class="feed-body">
+        <div class="feed-text">${e.text}</div>
+        <div class="feed-meta"><span>${e.meta}</span></div>
+      </div>
+    </div>
+  `).join('');
+}
+buildFeed();
+
+// Simulate live feed updates
+setInterval(() => {
+  const feed = document.getElementById('live-feed');
+  if(!feed || !document.getElementById('tab-feed').classList.contains('active')) return;
+  const newItem = feedEvents[Math.floor(Math.random() * feedEvents.length)];
+  const el = document.createElement('div');
+  el.className = 'feed-item';
+  el.style.background = 'rgba(139,92,246,0.05)';
+  el.style.borderRadius = '6px';
+  el.innerHTML = `
+    <div class="feed-avi" style="background:${newItem.color};">${newItem.icon}</div>
+    <div class="feed-body">
+      <div class="feed-text">${newItem.text}</div>
+      <div class="feed-meta"><span>JUST NOW · LIVE</span></div>
+    </div>
+  `;
+  feed.insertBefore(el, feed.firstChild);
+  setTimeout(() => el.style.background = '', 2000);
+  if(feed.children.length > 12) feed.removeChild(feed.lastChild);
+}, 8000);
+
+// ── TOAST ─────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+// ── BAR ANIMS ─────────────────────────────────────────────
+const barObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.querySelectorAll('.rep-bar-fill[data-w], .breakdown-bar-fill[data-w]').forEach(b => {
+        b.style.width = '0%';
+        setTimeout(() => b.style.width = b.getAttribute('data-w') + '%', 150);
+      });
+      barObs.unobserve(e.target);
+    }
+  });
+}, {threshold: 0.2});
+document.querySelectorAll('.card').forEach(c => barObs.observe(c));
+</script>
+</body>
+</html>

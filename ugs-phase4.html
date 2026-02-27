@@ -1,0 +1,2113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UGS Phase 4 — Flagship Festival Infrastructure</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   UGS PHASE 4 — FLAGSHIP FESTIVAL INFRASTRUCTURE
+   Aesthetic: Luxury Festival Ops + Underground Muscle
+   High-contrast editorial. Gold and blood orange on near-black.
+   Anton (condensed bruiser) + Libre Baskerville (editorial serif).
+   Feels like a real festival deck you could walk into a room with.
+   ============================================================ */
+
+:root {
+  /* Base */
+  --ink:    #06050e;
+  --base:   #0a0912;
+  --deep:   #0f0e18;
+  --panel:  #131220;
+  --card:   #171628;
+  --raised: #1d1c30;
+  --rim:    #242338;
+  --rim2:   #2e2d45;
+
+  /* Accents — festival palette */
+  --gold:   #f0b429;
+  --gold-l: #ffd060;
+  --gold-d: rgba(240,180,41,0.1);
+  --gold-glow: 0 0 28px rgba(240,180,41,0.2), 0 0 56px rgba(240,180,41,0.06);
+  --blood:  #e8390e;        /* blood orange — energy, urgency */
+  --blood-d: rgba(232,57,14,0.1);
+  --blood-glow: 0 0 24px rgba(232,57,14,0.2);
+  --cream:  #f5f0e8;        /* warm cream — luxury editorial */
+  --teal:   #00c9a7;
+  --teal-d: rgba(0,201,167,0.08);
+  --sky:    #38bdf8;
+
+  /* Text */
+  --white: #f0eee8;
+  --off:   #b8b4a8;
+  --muted: #5a5770;
+  --dim:   #343250;
+
+  --font-display: 'Anton', sans-serif;
+  --font-serif:   'Libre Baskerville', serif;
+  --font-mono:    'DM Mono', monospace;
+
+  --sidebar-w: 248px;
+  --header-h:  64px;
+  --r:         6px;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { font-size:16px; scroll-behavior:smooth; }
+body {
+  background: var(--ink);
+  color: var(--white);
+  font-family: var(--font-serif);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* DIAGONAL LIGHT SWEEP */
+body::before {
+  content:'';
+  position: fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(240,180,41,0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(232,57,14,0.03) 0%, transparent 60%);
+}
+
+/* GRAIN */
+body::after {
+  content:''; position:fixed; inset:0; pointer-events:none; z-index:9999;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  opacity:0.25;
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.shell {
+  display: grid;
+  grid-template-columns: var(--sidebar-w) 1fr;
+  grid-template-rows: var(--header-h) 1fr;
+  grid-template-areas: "sb hd" "sb mn";
+  min-height: 100vh;
+  position: relative; z-index:1;
+}
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+.sb {
+  grid-area: sb;
+  position: fixed; left:0; top:0; bottom:0; width:var(--sidebar-w);
+  background: rgba(10,9,18,0.96);
+  border-right: 1px solid var(--rim);
+  display: flex; flex-direction:column;
+  z-index:100; overflow-y:auto;
+  backdrop-filter: blur(20px);
+}
+.sb::-webkit-scrollbar { width:2px; }
+.sb::-webkit-scrollbar-thumb { background:var(--rim2); }
+
+.sb-brand {
+  height: var(--header-h);
+  display:flex; align-items:center; gap:12px;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--rim);
+  flex-shrink:0;
+}
+.sb-logo {
+  display:flex; flex-direction:column; gap:1px;
+}
+.sb-logo-top {
+  font-family: var(--font-display);
+  font-size: 22px; letter-spacing: 4px; line-height:1; color:var(--white);
+}
+.sb-logo-bottom {
+  font-family: var(--font-mono); font-size: 8px;
+  letter-spacing: 4px; text-transform:uppercase;
+  color: var(--gold);
+}
+.sb-phase-orb {
+  width:38px; height:38px; flex-shrink:0;
+  background: linear-gradient(135deg, var(--gold), var(--blood));
+  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  display:flex; align-items:center; justify-content:center;
+  font-family: var(--font-display); font-size:14px; color:var(--ink);
+  box-shadow: var(--gold-glow);
+}
+
+.sb-festival-pulse {
+  margin:14px 16px;
+  padding:12px 14px;
+  background: var(--gold-d);
+  border: 1px solid rgba(240,180,41,0.2);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--r);
+}
+.sfp-label {
+  font-family: var(--font-mono); font-size:8px;
+  letter-spacing:3px; text-transform:uppercase; color:var(--muted);
+  display:flex; align-items:center; gap:6px; margin-bottom:8px;
+}
+.sfp-dot {
+  width:5px; height:5px; border-radius:50%; background:var(--gold);
+  animation: gold-blink 1.5s infinite;
+}
+@keyframes gold-blink { 0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(240,180,41,0.5)} 50%{opacity:0.3;box-shadow:0 0 0 5px rgba(240,180,41,0)} }
+.sfp-stats { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+.sfp-stat-val { font-family:var(--font-display); font-size:20px; line-height:1; }
+.sfp-stat-val.g { color:var(--gold); }
+.sfp-stat-val.b { color:var(--blood); }
+.sfp-stat-lbl { font-family:var(--font-mono); font-size:7px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); }
+
+.nav-section { margin-bottom:4px; }
+.nav-section-lbl {
+  font-family: var(--font-mono); font-size:8px;
+  letter-spacing:4px; text-transform:uppercase; color:var(--dim);
+  padding: 12px 20px 4px;
+}
+.nav-btn {
+  display:flex; align-items:center; gap:10px;
+  width:100%; padding:9px 20px;
+  background:none; border:none;
+  font-family: var(--font-serif); font-size:13px;
+  color:var(--muted); cursor:pointer;
+  transition:all 0.15s; text-align:left;
+  position:relative;
+}
+.nav-btn:hover { color:var(--off); background:rgba(255,255,255,0.02); }
+.nav-btn.active { color:var(--gold); background:var(--gold-d); }
+.nav-btn.active::before {
+  content:''; position:absolute; left:0; top:4px; bottom:4px;
+  width:3px; background:var(--gold); border-radius:0 2px 2px 0;
+}
+.nav-icon { font-size:14px; width:20px; text-align:center; flex-shrink:0; }
+.nav-pip {
+  margin-left:auto; font-family:var(--font-mono); font-size:8px;
+  letter-spacing:1px; padding:2px 7px; border-radius:20px;
+}
+.pip-gold  { background:var(--gold-d); color:var(--gold); }
+.pip-blood { background:var(--blood-d); color:var(--blood); }
+.pip-teal  { background:var(--teal-d); color:var(--teal); }
+
+.sb-footer {
+  margin-top:auto; padding:14px 16px;
+  border-top:1px solid var(--rim);
+}
+.sb-back-btn {
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  width:100%; padding:9px;
+  background:var(--panel); border:1px solid var(--rim);
+  border-radius:var(--r);
+  font-family:var(--font-mono); font-size:9px;
+  letter-spacing:2px; text-transform:uppercase; color:var(--muted);
+  cursor:pointer; transition:all 0.2s; text-decoration:none;
+  margin-bottom:6px;
+}
+.sb-back-btn:hover { border-color:var(--gold); color:var(--gold); }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.hd {
+  grid-area: hd;
+  position:sticky; top:0; z-index:50;
+  margin-left: var(--sidebar-w);
+  background: rgba(6,5,14,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--rim);
+  display:flex; align-items:center;
+  padding: 0 28px; gap:16px;
+  height: var(--header-h);
+}
+.hd-title {
+  font-family: var(--font-display);
+  font-size:22px; letter-spacing:4px; flex:1;
+}
+.hd-countdown {
+  display:flex; align-items:center; gap:14px;
+  padding: 8px 16px;
+  background:var(--gold-d); border:1px solid rgba(240,180,41,0.2);
+  border-radius:var(--r);
+}
+.hd-countdown-label { font-family:var(--font-mono); font-size:8px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); }
+.hd-countdown-val { font-family:var(--font-display); font-size:20px; color:var(--gold); letter-spacing:2px; line-height:1; }
+.hd-live {
+  display:flex; align-items:center; gap:6px;
+  font-family:var(--font-mono); font-size:9px;
+  letter-spacing:3px; text-transform:uppercase; color:var(--gold);
+}
+.hd-dot { width:6px; height:6px; border-radius:50%; background:var(--gold); animation:gold-blink 1.5s infinite; }
+.hd-notif {
+  width:34px; height:34px; background:var(--panel); border:1px solid var(--rim);
+  border-radius:var(--r); display:flex; align-items:center; justify-content:center;
+  font-size:14px; cursor:pointer; position:relative; transition:border-color 0.2s;
+}
+.hd-notif:hover { border-color:var(--gold); }
+.notif-pip { position:absolute; top:-3px; right:-3px; width:10px; height:10px; border-radius:50%; background:var(--blood); border:2px solid var(--ink); }
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+.mn {
+  grid-area: mn;
+  margin-left: var(--sidebar-w);
+  padding: 28px;
+  min-height: calc(100vh - var(--header-h));
+}
+
+.tab-page { display:none; }
+.tab-page.active { display:block; animation: rise 0.35s cubic-bezier(0.22,1,0.36,1); }
+@keyframes rise { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
+
+/* PAGE HEADER */
+.pg-hd {
+  display:flex; align-items:flex-end; justify-content:space-between;
+  margin-bottom:28px; flex-wrap:wrap; gap:16px;
+}
+.pg-eyebrow {
+  font-family:var(--font-mono); font-size:9px;
+  letter-spacing:4px; text-transform:uppercase; color:var(--gold);
+  margin-bottom:8px; display:flex; align-items:center; gap:10px;
+}
+.pg-eyebrow::before { content:''; width:24px; height:1px; background:var(--gold); }
+.pg-title {
+  font-family:var(--font-display);
+  font-size: clamp(42px, 6vw, 80px);
+  line-height:0.85; letter-spacing:2px; color:var(--white);
+}
+.pg-title em { color:var(--gold); font-style:normal; }
+.pg-sub {
+  font-size:13px; color:var(--muted); margin-top:10px;
+  max-width:500px; line-height:1.7; font-weight:400;
+}
+.pg-actions { display:flex; gap:10px; flex-shrink:0; align-items:center; }
+
+/* BUTTONS */
+.btn {
+  display:inline-flex; align-items:center; gap:7px;
+  font-family:var(--font-serif); font-weight:700; font-size:12px;
+  cursor:pointer; border:none; transition:all 0.2s;
+  padding:10px 22px; border-radius:var(--r); letter-spacing:0.5px;
+}
+.btn-gold  { background:var(--gold); color:var(--ink); box-shadow:var(--gold-glow); }
+.btn-gold:hover { background:var(--gold-l); transform:translateY(-1px); }
+.btn-blood { background:var(--blood); color:white; box-shadow:var(--blood-glow); }
+.btn-blood:hover { background:#ff5c2e; transform:translateY(-1px); }
+.btn-ghost { background:transparent; color:var(--muted); border:1px solid var(--rim); }
+.btn-ghost:hover { border-color:var(--gold); color:var(--gold); }
+.btn-sm { padding:7px 14px; font-size:11px; }
+.btn-outline-gold { background:transparent; border:1px solid var(--gold); color:var(--gold); }
+.btn-outline-gold:hover { background:var(--gold); color:var(--ink); }
+
+/* CARD */
+.card {
+  background:var(--card); border:1px solid var(--rim);
+  border-radius:10px; overflow:hidden;
+}
+.card-hd {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:14px 20px; border-bottom:1px solid var(--rim);
+  background:var(--panel);
+}
+.card-title {
+  font-family:var(--font-display); font-size:16px; letter-spacing:2px;
+  display:flex; align-items:center; gap:8px;
+}
+.card-action {
+  font-family:var(--font-mono); font-size:8px; letter-spacing:2px; text-transform:uppercase;
+  color:var(--muted); background:none; border:none; cursor:pointer; transition:color 0.2s;
+}
+.card-action:hover { color:var(--gold); }
+.card-body { padding:20px; }
+
+/* CHIPS */
+.chip {
+  display:inline-flex; align-items:center; gap:5px;
+  padding:3px 10px; border-radius:20px;
+  font-family:var(--font-mono); font-size:8px;
+  letter-spacing:1px; text-transform:uppercase;
+}
+.chip-gold  { background:var(--gold-d); color:var(--gold); }
+.chip-blood { background:var(--blood-d); color:var(--blood); }
+.chip-teal  { background:var(--teal-d); color:var(--teal); }
+.chip-muted { background:rgba(90,87,112,0.2); color:var(--muted); }
+.chip-sky   { background:rgba(56,189,248,0.1); color:var(--sky); }
+.chip-dot   { width:5px; height:5px; border-radius:50%; background:currentColor; }
+
+/* ============================================================
+   OVERVIEW — MISSION CONTROL
+   ============================================================ */
+
+/* HERO MARQUEE */
+.festival-hero {
+  position:relative; overflow:hidden;
+  border-radius:14px; border:1px solid rgba(240,180,41,0.2);
+  background: linear-gradient(135deg, rgba(240,180,41,0.06) 0%, rgba(232,57,14,0.04) 50%, transparent 100%);
+  padding: 48px 40px;
+  margin-bottom:24px;
+}
+.festival-hero::before {
+  content:'';
+  position:absolute; top:0; right:0;
+  width:60%; height:100%;
+  background: radial-gradient(ellipse at 80% 50%, rgba(240,180,41,0.08) 0%, transparent 70%);
+}
+.fh-year {
+  position:absolute; right:40px; top:50%; transform:translateY(-50%);
+  font-family:var(--font-display); font-size:clamp(80px,12vw,160px);
+  color:rgba(240,180,41,0.06); letter-spacing:-4px; line-height:1;
+  pointer-events:none; user-select:none;
+}
+.fh-content { position:relative; z-index:1; }
+.fh-phase-tag {
+  font-family:var(--font-mono); font-size:9px;
+  letter-spacing:5px; text-transform:uppercase; color:var(--gold);
+  margin-bottom:12px; display:flex; align-items:center; gap:10px;
+}
+.fh-phase-tag::before { content:''; width:30px; height:1px; background:var(--gold); }
+.fh-headline {
+  font-family:var(--font-display);
+  font-size: clamp(48px,7vw,96px); line-height:0.85;
+  letter-spacing:2px; color:var(--white); margin-bottom:16px;
+}
+.fh-headline em { color:var(--gold); font-style:normal; display:block; }
+.fh-desc {
+  font-size:14px; color:var(--off); line-height:1.8;
+  max-width:520px; margin-bottom:24px; font-style:italic;
+}
+.fh-ctas { display:flex; gap:12px; flex-wrap:wrap; }
+.fh-stats-row {
+  display:flex; gap:28px; margin-top:28px; flex-wrap:wrap;
+  padding-top:24px; border-top:1px solid rgba(240,180,41,0.12);
+}
+.fh-stat {}
+.fh-stat-val { font-family:var(--font-display); font-size:36px; color:var(--gold); line-height:1; }
+.fh-stat-lbl { font-family:var(--font-mono); font-size:8px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-top:2px; }
+
+/* KPI ROW */
+.kpi-row {
+  display:grid; grid-template-columns:repeat(5,1fr); gap:12px;
+  margin-bottom:24px;
+}
+.kpi {
+  background:var(--card); border:1px solid var(--rim);
+  border-radius:10px; padding:18px 16px;
+  position:relative; overflow:hidden;
+  transition:border-color 0.2s, transform 0.2s;
+  cursor:default;
+}
+.kpi:hover { transform:translateY(-2px); }
+.kpi::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; }
+.kpi.kg::after { background:var(--gold); }
+.kpi.kb::after { background:var(--blood); }
+.kpi.kt::after { background:var(--teal); }
+.kpi.ks::after { background:var(--sky); }
+.kpi-lbl { font-family:var(--font-mono); font-size:8px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); margin-bottom:10px; }
+.kpi-val { font-family:var(--font-display); font-size:38px; line-height:1; letter-spacing:1px; margin-bottom:4px; }
+.kpi.kg .kpi-val { color:var(--gold); }
+.kpi.kb .kpi-val { color:var(--blood); }
+.kpi.kt .kpi-val { color:var(--teal); }
+.kpi.ks .kpi-val { color:var(--sky); }
+.kpi-sub { font-size:11px; color:var(--muted); }
+.kpi-sub.up { color:var(--teal); }
+
+/* GRID LAYOUTS */
+.two-col { display:grid; grid-template-columns:2fr 1fr; gap:16px; margin-bottom:24px; }
+.two-col-eq { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px; }
+.three-col { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:24px; }
+.four-col  { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:24px; }
+
+/* ============================================================
+   VENUE INTELLIGENCE
+   ============================================================ */
+.venue-map-placeholder {
+  position:relative; height:320px; overflow:hidden;
+  background: var(--raised);
+  border-radius:8px; margin-bottom:16px;
+  border:1px solid var(--rim);
+}
+.map-grid {
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(240,180,41,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(240,180,41,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.map-title {
+  position:absolute; top:16px; left:20px;
+  font-family:var(--font-mono); font-size:9px;
+  letter-spacing:3px; text-transform:uppercase; color:var(--gold);
+  display:flex; align-items:center; gap:8px;
+}
+.map-pins { position:absolute; inset:0; }
+.map-pin {
+  position:absolute; cursor:pointer;
+  display:flex; flex-direction:column; align-items:center; gap:0;
+  transition:transform 0.2s;
+}
+.map-pin:hover { transform:scale(1.2); z-index:10; }
+.pin-dot {
+  width:14px; height:14px; border-radius:50%;
+  border:2px solid currentColor;
+  display:flex; align-items:center; justify-content:center;
+  position:relative;
+}
+.pin-dot::after {
+  content:''; position:absolute; inset:-4px;
+  border-radius:50%; border:1px solid currentColor;
+  opacity:0.3; animation:pin-ripple 2s infinite;
+}
+@keyframes pin-ripple { 0%{transform:scale(1);opacity:0.3} 100%{transform:scale(1.8);opacity:0} }
+.pin-inner { width:6px; height:6px; border-radius:50%; background:currentColor; }
+.pin-label {
+  margin-top:4px;
+  font-family:var(--font-mono); font-size:8px; letter-spacing:1px;
+  white-space:nowrap; color:inherit; text-transform:uppercase;
+  background:rgba(6,5,14,0.85); padding:2px 6px; border-radius:2px;
+}
+.pin-size {
+  font-family:var(--font-display); font-size:10px;
+  color:rgba(255,255,255,0.5); margin-top:2px;
+}
+
+/* VENUE TABLE */
+.venue-table { width:100%; border-collapse:collapse; }
+.venue-table th {
+  font-family:var(--font-mono); font-size:8px;
+  letter-spacing:3px; text-transform:uppercase; color:var(--muted);
+  text-align:left; padding:10px 14px;
+  background:var(--panel); border-bottom:1px solid var(--rim);
+  cursor:pointer;
+}
+.venue-table th:hover { color:var(--gold); }
+.venue-table td { padding:13px 14px; font-size:12px; border-bottom:1px solid var(--rim); vertical-align:middle; }
+.venue-table tr:hover td { background:rgba(240,180,41,0.02); }
+.venue-table tr:last-child td { border-bottom:none; }
+
+.venue-score {
+  display:flex; align-items:center; gap:8px;
+}
+.vs-track { width:60px; height:4px; background:var(--rim2); border-radius:2px; }
+.vs-fill  { height:100%; border-radius:2px; }
+.vs-num   { font-family:var(--font-mono); font-size:10px; color:var(--gold); min-width:24px; }
+
+.venue-name-cell { display:flex; flex-direction:column; }
+.venue-name-cell .vname { font-weight:700; font-size:13px; font-family:var(--font-display); letter-spacing:1px; }
+.venue-name-cell .vcity { font-family:var(--font-mono); font-size:9px; color:var(--muted); letter-spacing:1px; text-transform:uppercase; }
+
+/* HEATMAP BARS */
+.heatbar-row { display:flex; flex-direction:column; gap:10px; margin-bottom:20px; }
+.heatbar { display:flex; align-items:center; gap:12px; }
+.heatbar-city { font-family:var(--font-mono); font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); width:52px; text-align:right; flex-shrink:0; }
+.heatbar-track { flex:1; height:20px; background:var(--rim); border-radius:2px; position:relative; overflow:hidden; }
+.heatbar-fill  { position:absolute; left:0; top:0; bottom:0; border-radius:2px; display:flex; align-items:center; justify-content:flex-end; padding-right:8px; }
+.heatbar-fill span { font-family:var(--font-mono); font-size:8px; letter-spacing:1px; color:rgba(0,0,0,0.7); font-weight:500; }
+
+/* ============================================================
+   TICKETING ENGINE
+   ============================================================ */
+.ticket-tier-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:24px; }
+.ticket-tier {
+  border-radius:10px; overflow:hidden;
+  border:1px solid var(--rim);
+  transition:all 0.2s;
+  cursor:pointer;
+}
+.ticket-tier:hover { transform:translateY(-4px); }
+.ticket-tier.featured { border-color:rgba(240,180,41,0.4); box-shadow:var(--gold-glow); }
+.tt-head {
+  padding:20px 18px 14px;
+  border-bottom:1px solid var(--rim);
+}
+.tt-name { font-family:var(--font-display); font-size:24px; letter-spacing:2px; margin-bottom:6px; }
+.tt-price { font-family:var(--font-display); font-size:44px; line-height:1; margin-bottom:6px; }
+.tt-sold {
+  display:flex; flex-direction:column; gap:3px;
+}
+.tt-bar-track { height:4px; background:var(--rim2); border-radius:2px; }
+.tt-bar-fill  { height:100%; border-radius:2px; }
+.tt-sold-meta { font-family:var(--font-mono); font-size:8px; letter-spacing:1px; color:var(--muted); }
+.tt-body { padding:16px 18px; background:var(--card); }
+.tt-perks { display:flex; flex-direction:column; gap:7px; }
+.tt-perk { display:flex; align-items:flex-start; gap:8px; font-size:12px; color:var(--off); line-height:1.4; }
+.tt-check { font-size:10px; flex-shrink:0; margin-top:1px; }
+
+/* SALES TREND */
+.sales-chart-area {
+  position:relative; height:160px;
+}
+.sales-svg { width:100%; height:100%; overflow:visible; }
+
+/* TICKET ACTIONS */
+.tkt-actions-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:24px; }
+.tkt-action-card {
+  padding:20px; background:var(--card); border:1px solid var(--rim); border-radius:10px;
+  cursor:pointer; transition:all 0.2s; text-align:center;
+}
+.tkt-action-card:hover { border-color:var(--gold); background:var(--gold-d); }
+.tkt-action-icon { font-size:28px; margin-bottom:10px; }
+.tkt-action-title { font-family:var(--font-display); font-size:18px; letter-spacing:2px; margin-bottom:6px; }
+.tkt-action-desc { font-size:11px; color:var(--muted); line-height:1.5; }
+
+/* ============================================================
+   LINEUP BUILDER
+   ============================================================ */
+.lineup-stage-tabs { display:flex; gap:0; margin-bottom:20px; border-bottom:1px solid var(--rim); }
+.stage-tab {
+  font-family:var(--font-mono); font-size:9px; letter-spacing:3px; text-transform:uppercase;
+  padding:11px 20px; color:var(--muted); cursor:pointer; background:none;
+  border:none; border-bottom:2px solid transparent; margin-bottom:-1px;
+  transition:all 0.15s; display:flex; align-items:center; gap:8px;
+}
+.stage-tab.active { color:var(--gold); border-bottom-color:var(--gold); }
+.stage-tab:hover:not(.active) { color:var(--off); }
+
+.lineup-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px; }
+
+.artist-slot {
+  display:flex; align-items:center; gap:14px;
+  padding:14px 16px;
+  background:var(--raised); border:1px solid var(--rim); border-radius:8px;
+  cursor:pointer; transition:all 0.2s;
+}
+.artist-slot:hover { border-color:rgba(240,180,41,0.4); }
+.artist-slot.headliner { border-color:rgba(240,180,41,0.3); background:var(--gold-d); }
+.artist-slot.empty { border-style:dashed; opacity:0.5; justify-content:center; }
+.artist-slot.empty:hover { opacity:0.8; border-color:var(--gold); }
+.slot-num { font-family:var(--font-display); font-size:28px; color:var(--dim); width:28px; text-align:center; flex-shrink:0; transition:color 0.2s; }
+.artist-slot:hover .slot-num { color:var(--gold); }
+.slot-avi {
+  width:46px; height:46px; border-radius:8px; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px;
+}
+.slot-info { flex:1; }
+.slot-name { font-family:var(--font-display); font-size:20px; letter-spacing:1px; line-height:1; margin-bottom:4px; }
+.slot-meta { font-family:var(--font-mono); font-size:8px; color:var(--muted); letter-spacing:2px; text-transform:uppercase; }
+.slot-draw { text-align:right; flex-shrink:0; }
+.slot-draw-num { font-family:var(--font-display); font-size:20px; color:var(--gold); }
+.slot-draw-lbl { font-family:var(--font-mono); font-size:7px; color:var(--muted); letter-spacing:1px; text-transform:uppercase; }
+.slot-time { font-family:var(--font-mono); font-size:9px; color:var(--muted); border-left:1px solid var(--rim); padding-left:12px; flex-shrink:0; }
+
+/* SCHEDULE GRID */
+.schedule-grid { width:100%; border-collapse:collapse; }
+.schedule-grid th { font-family:var(--font-mono); font-size:8px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); padding:8px 12px; text-align:left; background:var(--panel); border-bottom:1px solid var(--rim); }
+.schedule-grid td { padding:10px 12px; border-bottom:1px solid var(--rim); font-size:12px; vertical-align:middle; }
+.schedule-grid tr:last-child td { border-bottom:none; }
+.sched-time { font-family:var(--font-mono); font-size:11px; color:var(--gold); white-space:nowrap; }
+.sched-name { font-family:var(--font-display); font-size:16px; letter-spacing:1px; }
+.sched-city { font-family:var(--font-mono); font-size:8px; color:var(--muted); letter-spacing:2px; text-transform:uppercase; }
+.sched-stage { padding:3px 8px; border-radius:3px; font-family:var(--font-mono); font-size:8px; letter-spacing:1px; text-transform:uppercase; }
+.st-main   { background:var(--gold-d); color:var(--gold); }
+.st-second { background:var(--blood-d); color:var(--blood); }
+.st-third  { background:var(--teal-d); color:var(--teal); }
+
+/* ============================================================
+   SPONSOR DECK
+   ============================================================ */
+.sponsor-tier-row { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:24px; }
+.spon-tier-card {
+  border-radius:12px; overflow:hidden; border:1px solid var(--rim);
+  transition:all 0.2s;
+}
+.spon-tier-card:hover { transform:translateY(-3px); }
+.spon-tier-card.presenting { border-color:rgba(240,180,41,0.4); }
+.spon-tier-head {
+  padding:22px 20px;
+  border-bottom:1px solid var(--rim);
+  display:flex; align-items:center; gap:12px;
+}
+.spon-crown { font-size:28px; }
+.spon-tier-name { font-family:var(--font-display); font-size:28px; letter-spacing:2px; }
+.spon-tier-price {
+  margin-left:auto; text-align:right;
+}
+.stp-val { font-family:var(--font-display); font-size:32px; color:var(--gold); line-height:1; }
+.stp-lbl { font-family:var(--font-mono); font-size:8px; color:var(--muted); letter-spacing:2px; text-transform:uppercase; }
+.spon-tier-body { padding:20px; background:var(--card); }
+.spon-deliverables { display:flex; flex-direction:column; gap:8px; }
+.spon-del { display:flex; align-items:flex-start; gap:10px; font-size:12px; color:var(--off); line-height:1.4; }
+.spon-del-icon { font-size:13px; flex-shrink:0; }
+.spon-slots {
+  margin-top:16px; padding-top:14px; border-top:1px solid var(--rim);
+  display:flex; align-items:center; justify-content:space-between;
+}
+.spon-slots-taken { font-family:var(--font-mono); font-size:9px; color:var(--muted); letter-spacing:1px; }
+.spon-slots-num { font-family:var(--font-display); font-size:22px; }
+
+/* EXISTING SPONSORS */
+.existing-sponsors { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.ex-sponsor {
+  display:flex; align-items:center; gap:14px;
+  padding:14px 16px;
+  background:var(--raised); border:1px solid var(--rim); border-radius:8px;
+  cursor:pointer; transition:border-color 0.2s;
+}
+.ex-sponsor:hover { border-color:rgba(240,180,41,0.3); }
+.ex-sp-icon { font-size:24px; width:44px; text-align:center; flex-shrink:0; }
+.ex-sp-info { flex:1; }
+.ex-sp-name { font-weight:700; font-size:13px; margin-bottom:3px; }
+.ex-sp-tier { font-family:var(--font-mono); font-size:8px; color:var(--muted); letter-spacing:2px; text-transform:uppercase; }
+.ex-sp-val { font-family:var(--font-display); font-size:22px; color:var(--gold); }
+
+/* ============================================================
+   P&L PROJECTIONS
+   ============================================================ */
+.pnl-hero {
+  display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:24px;
+}
+.pnl-big {
+  padding:28px 24px;
+  border-radius:12px;
+  position:relative; overflow:hidden;
+}
+.pnl-big.revenue { background:linear-gradient(135deg, rgba(240,180,41,0.12) 0%, rgba(240,180,41,0.04) 100%); border:1px solid rgba(240,180,41,0.25); }
+.pnl-big.costs   { background:linear-gradient(135deg, rgba(232,57,14,0.08) 0%, transparent 100%); border:1px solid rgba(232,57,14,0.2); }
+.pnl-big.profit  { background:linear-gradient(135deg, rgba(0,201,167,0.1) 0%, transparent 100%); border:1px solid rgba(0,201,167,0.25); box-shadow:0 0 24px rgba(0,201,167,0.08); }
+.pnl-label { font-family:var(--font-mono); font-size:9px; letter-spacing:4px; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+.pnl-amount { font-family:var(--font-display); font-size:clamp(36px,4vw,56px); line-height:1; margin-bottom:6px; }
+.pnl-big.revenue .pnl-amount { color:var(--gold); }
+.pnl-big.costs   .pnl-amount { color:var(--blood); }
+.pnl-big.profit  .pnl-amount { color:var(--teal); }
+.pnl-note { font-size:12px; color:var(--muted); font-style:italic; }
+
+.pnl-breakdown { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px; }
+.pnl-side { display:flex; flex-direction:column; gap:10px; }
+.pnl-line { display:flex; align-items:center; justify-content:space-between; padding:10px 14px; background:var(--raised); border-radius:6px; border-left:3px solid transparent; }
+.pnl-line.revenue-line { border-left-color:var(--gold); }
+.pnl-line.cost-line    { border-left-color:var(--blood); }
+.pnl-line-name { font-size:12px; color:var(--off); }
+.pnl-line-val  { font-family:var(--font-display); font-size:18px; }
+.revenue-line .pnl-line-val { color:var(--gold); }
+.cost-line .pnl-line-val    { color:var(--blood); }
+
+/* SCENARIO TABLE */
+.scenario-table { width:100%; border-collapse:collapse; }
+.scenario-table th { font-family:var(--font-mono); font-size:8px; letter-spacing:3px; text-transform:uppercase; color:var(--muted); padding:10px 14px; text-align:left; background:var(--panel); border-bottom:1px solid var(--rim); }
+.scenario-table td { padding:13px 14px; font-size:12px; border-bottom:1px solid var(--rim); vertical-align:middle; }
+.scenario-table tr:last-child td { border-bottom:none; }
+.scenario-table .scen-name { font-family:var(--font-display); font-size:18px; letter-spacing:1px; }
+.scenario-table .scen-revenue { font-family:var(--font-display); font-size:20px; color:var(--gold); }
+.scenario-table .scen-profit  { font-family:var(--font-display); font-size:20px; color:var(--teal); }
+.scenario-table .scen-loss    { font-family:var(--font-display); font-size:20px; color:var(--blood); }
+
+/* ============================================================
+   MULTI-CITY EXPANSION
+   ============================================================ */
+.city-expansion-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:24px; }
+.city-card {
+  border-radius:12px; overflow:hidden;
+  border:1px solid var(--rim); cursor:pointer;
+  transition:all 0.2s;
+}
+.city-card:hover { transform:translateY(-4px); border-color:rgba(240,180,41,0.3); }
+.city-card.flagship { border-color:rgba(240,180,41,0.4); box-shadow:var(--gold-glow); }
+.city-card.planning  { opacity:0.7; }
+.city-card.vision    { opacity:0.5; border-style:dashed; }
+.city-card-banner {
+  height:90px; position:relative; overflow:hidden;
+  display:flex; align-items:center; justify-content:center;
+}
+.city-banner-text {
+  font-family:var(--font-display); font-size:52px; letter-spacing:4px;
+  color:rgba(255,255,255,0.06); pointer-events:none; user-select:none;
+}
+.city-year-badge {
+  position:absolute; top:10px; right:12px;
+  font-family:var(--font-mono); font-size:9px; letter-spacing:2px; text-transform:uppercase;
+  padding:3px 10px; border-radius:20px;
+}
+.city-status-badge {
+  position:absolute; bottom:10px; left:12px;
+  font-family:var(--font-mono); font-size:8px; letter-spacing:2px; text-transform:uppercase;
+  padding:3px 8px; border-radius:3px;
+}
+.city-card-body { padding:18px 16px; background:var(--card); border-top:1px solid var(--rim); }
+.city-name { font-family:var(--font-display); font-size:28px; letter-spacing:2px; margin-bottom:4px; }
+.city-state { font-family:var(--font-mono); font-size:9px; color:var(--muted); letter-spacing:3px; text-transform:uppercase; margin-bottom:12px; }
+.city-stats { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.city-stat-val { font-family:var(--font-display); font-size:22px; line-height:1; }
+.city-stat-lbl { font-family:var(--font-mono); font-size:7px; color:var(--muted); letter-spacing:2px; text-transform:uppercase; }
+
+/* ============================================================
+   FULL ROADMAP PAGE
+   ============================================================ */
+.roadmap-timeline { position:relative; padding-left:40px; }
+.roadmap-timeline::before {
+  content:''; position:absolute; left:12px; top:0; bottom:0;
+  width:2px; background:linear-gradient(180deg, var(--gold) 0%, var(--blood) 50%, rgba(240,180,41,0.1) 100%);
+}
+.timeline-item { position:relative; margin-bottom:24px; }
+.timeline-item::before {
+  content:''; position:absolute; left:-34px; top:20px;
+  width:12px; height:12px; border-radius:50%;
+  background:var(--ink); border:2px solid var(--rim2);
+}
+.timeline-item.done::before { background:var(--gold); border-color:var(--gold); box-shadow:0 0 10px rgba(240,180,41,0.4); }
+.timeline-item.active::before { background:var(--blood); border-color:var(--blood); box-shadow:0 0 14px rgba(232,57,14,0.5); animation:pulse-timeline 1.5s infinite; }
+@keyframes pulse-timeline { 0%,100%{box-shadow:0 0 0 0 rgba(232,57,14,0.4)} 50%{box-shadow:0 0 0 8px rgba(232,57,14,0)} }
+.tl-card {
+  background:var(--card); border:1px solid var(--rim); border-radius:10px;
+  overflow:hidden; transition:border-color 0.2s;
+}
+.tl-card:hover { border-color:rgba(240,180,41,0.2); }
+.tl-card.done   { border-color:rgba(240,180,41,0.1); }
+.tl-card.active { border-color:rgba(232,57,14,0.3); box-shadow:var(--blood-glow); }
+.tl-card-hd {
+  display:flex; align-items:center; gap:16px;
+  padding:16px 20px; border-bottom:1px solid var(--rim);
+  background:var(--panel);
+}
+.tl-phase-num { font-family:var(--font-display); font-size:32px; color:var(--dim); width:36px; flex-shrink:0; }
+.tl-card.done   .tl-phase-num { color:var(--gold); }
+.tl-card.active .tl-phase-num { color:var(--blood); }
+.tl-card-hd-info { flex:1; }
+.tl-phase-title { font-family:var(--font-display); font-size:22px; letter-spacing:2px; margin-bottom:4px; }
+.tl-phase-sub { font-size:12px; color:var(--muted); }
+.tl-card-body { padding:16px 20px; display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.tl-deliverable { display:flex; align-items:flex-start; gap:8px; font-size:12px; color:var(--off); line-height:1.4; }
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+.toast {
+  position:fixed; bottom:24px; right:24px; z-index:9998;
+  background:var(--gold); color:var(--ink);
+  padding:14px 22px; border-radius:var(--r);
+  font-family:var(--font-mono); font-size:11px; letter-spacing:2px; text-transform:uppercase;
+  box-shadow:var(--gold-glow);
+  transform:translateY(80px); opacity:0;
+  transition:all 0.45s cubic-bezier(0.34,1.56,0.64,1);
+  display:flex; align-items:center; gap:8px;
+}
+.toast.show { transform:translateY(0); opacity:1; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:1280px) {
+  .kpi-row { grid-template-columns:repeat(3,1fr); }
+  .ticket-tier-grid { grid-template-columns:repeat(2,1fr); }
+  .pnl-hero { grid-template-columns:1fr 1fr; }
+  .city-expansion-grid { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:1024px) {
+  .two-col { grid-template-columns:1fr; }
+  .spon-tier-row { grid-template-columns:1fr; }
+  .sponsor-tier-row { grid-template-columns:1fr 1fr; }
+  .lineup-grid { grid-template-columns:1fr; }
+  .tkt-actions-grid { grid-template-columns:1fr 1fr; }
+}
+@media(max-width:768px) {
+  .shell { grid-template-columns:1fr; grid-template-areas:"hd""mn"; }
+  .sb { display:none; }
+  .mn, .hd { margin-left:0 !important; }
+  .kpi-row { grid-template-columns:1fr 1fr; }
+  .four-col { grid-template-columns:1fr 1fr; }
+  .three-col { grid-template-columns:1fr; }
+  .pnl-hero { grid-template-columns:1fr; }
+  .city-expansion-grid { grid-template-columns:1fr; }
+  .fh-year { display:none; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside class="sb">
+    <div class="sb-brand">
+      <div class="sb-phase-orb"><span>P4</span></div>
+      <div class="sb-logo">
+        <div class="sb-logo-top">UNDERGROUND</div>
+        <div class="sb-logo-bottom">Festival Infrastructure</div>
+      </div>
+    </div>
+
+    <div class="sb-festival-pulse">
+      <div class="sfp-label"><div class="sfp-dot"></div> Festival Status</div>
+      <div class="sfp-stats">
+        <div><div class="sfp-stat-val g">412</div><div class="sfp-stat-lbl">Pre-Sale List</div></div>
+        <div><div class="sfp-stat-val b">3</div><div class="sfp-stat-lbl">Cities Locked</div></div>
+        <div><div class="sfp-stat-val g">$48K</div><div class="sfp-stat-lbl">Sponsors Secured</div></div>
+        <div><div class="sfp-stat-val b">284</div><div class="sfp-stat-lbl">Days to Launch</div></div>
+      </div>
+    </div>
+
+    <nav>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Command Center</div>
+        <button class="nav-btn active" onclick="showTab('overview',this)"><span class="nav-icon">🎪</span> Mission Control</button>
+        <button class="nav-btn" onclick="showTab('venue',this)"><span class="nav-icon">📍</span> Venue Intelligence<span class="nav-pip pip-gold">8 Cities</span></button>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Festival Engine</div>
+        <button class="nav-btn" onclick="showTab('ticketing',this)"><span class="nav-icon">🎟️</span> Ticketing Engine<span class="nav-pip pip-blood">LIVE</span></button>
+        <button class="nav-btn" onclick="showTab('lineup',this)"><span class="nav-icon">🎤</span> Lineup Builder<span class="nav-pip pip-teal">Draft</span></button>
+        <button class="nav-btn" onclick="showTab('production',this)"><span class="nav-icon">⚙️</span> Production Plan</button>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Business</div>
+        <button class="nav-btn" onclick="showTab('sponsors',this)"><span class="nav-icon">💼</span> Sponsor Deck<span class="nav-pip pip-gold">$48K</span></button>
+        <button class="nav-btn" onclick="showTab('pnl',this)"><span class="nav-icon">📈</span> P&L Projections</button>
+        <button class="nav-btn" onclick="showTab('expansion',this)"><span class="nav-icon">🌎</span> Multi-City Expansion</button>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Platform</div>
+        <button class="nav-btn" onclick="showTab('roadmap',this)"><span class="nav-icon">🗺️</span> Full Roadmap</button>
+      </div>
+    </nav>
+
+    <div class="sb-footer">
+      <a href="ugs-phase3.html" class="sb-back-btn">← Phase 3: Community</a>
+      <a href="ugs-phase1.html" class="sb-back-btn">↗ Phase 1: Media Site</a>
+    </div>
+  </aside>
+
+  <!-- ===================== HEADER ===================== -->
+  <header class="hd">
+    <div class="hd-title" id="page-title">MISSION CONTROL</div>
+    <div class="hd-countdown">
+      <div><div class="hd-countdown-label">Days to Flagship</div><div class="hd-countdown-val" id="countdown-val">284</div></div>
+    </div>
+    <div class="hd-live"><div class="hd-dot"></div> Phase 4 Active</div>
+    <div class="hd-notif">🔔<div class="notif-pip"></div></div>
+    <button class="btn btn-gold btn-sm" onclick="showToast('🎟️ Pre-sale list is live — 412 signed up')">Pre-Sale Live ↗</button>
+  </header>
+
+  <!-- ===================== MAIN ===================== -->
+  <main class="mn">
+
+    <!-- =======================================
+         OVERVIEW — MISSION CONTROL
+         ======================================= -->
+    <div class="tab-page active" id="tab-overview">
+
+      <!-- HERO -->
+      <div class="festival-hero">
+        <div class="fh-year">2026</div>
+        <div class="fh-content">
+          <div class="fh-phase-tag">Phase 4 — Flagship Festival · Underground Sound</div>
+          <div class="fh-headline">THE UNDERGROUND<em>GOES LIVE</em></div>
+          <p class="fh-desc">Three years of data. 2,847 community members. 92K Twitter followers. 18 Discord partners. Now we use all of it to build the festival the underground actually deserves.</p>
+          <div class="fh-ctas">
+            <button class="btn btn-gold" onclick="showTab('ticketing', document.querySelectorAll('.nav-btn')[2])">🎟️ Ticketing Dashboard</button>
+            <button class="btn btn-blood" onclick="showTab('sponsors', document.querySelectorAll('.nav-btn')[5])">💼 Sponsor Deck</button>
+            <button class="btn btn-ghost" onclick="showTab('pnl', document.querySelectorAll('.nav-btn')[6])">📈 View P&L</button>
+          </div>
+          <div class="fh-stats-row">
+            <div class="fh-stat"><div class="fh-stat-val">412</div><div class="fh-stat-lbl">Pre-Sale Signups</div></div>
+            <div class="fh-stat"><div class="fh-stat-val" style="color:var(--blood);">$48K</div><div class="fh-stat-lbl">Sponsor Secured</div></div>
+            <div class="fh-stat"><div class="fh-stat-val">3</div><div class="fh-stat-lbl">Cities in Play</div></div>
+            <div class="fh-stat"><div class="fh-stat-val" style="color:var(--teal);">$284K</div><div class="fh-stat-lbl">Projected Revenue</div></div>
+            <div class="fh-stat"><div class="fh-stat-val">1,500</div><div class="fh-stat-lbl">Target Capacity</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI ROW -->
+      <div class="kpi-row">
+        <div class="kpi kg"><div class="kpi-lbl">Ticket Pre-Sales</div><div class="kpi-val">412</div><div class="kpi-sub up">↑ +84 this week</div></div>
+        <div class="kpi kb"><div class="kpi-lbl">Venue Score #1</div><div class="kpi-val">94</div><div class="kpi-sub">Wilmington, DE — Locked</div></div>
+        <div class="kpi kg"><div class="kpi-lbl">Sponsors Secured</div><div class="kpi-val">$48K</div><div class="kpi-sub up">↑ 4 brands confirmed</div></div>
+        <div class="kpi kt"><div class="kpi-lbl">Lineup Confirmed</div><div class="kpi-val">6/12</div><div class="kpi-sub">6 slots still open</div></div>
+        <div class="kpi kg"><div class="kpi-lbl">Days to Flagship</div><div class="kpi-val">284</div><div class="kpi-sub">Target: Nov 2026</div></div>
+      </div>
+
+      <!-- TWO COL -->
+      <div class="two-col">
+        <!-- MILESTONE TRACKER -->
+        <div class="card">
+          <div class="card-hd"><div class="card-title">🏁 Critical Milestones</div><span class="chip chip-gold">On Track</span></div>
+          <div class="card-body">
+            <div style="display:flex;flex-direction:column;gap:0;">
+              <!-- milestone row fn -->
+              <!-- milestone: done -->
+              <div style="display:flex;align-items:flex-start;gap:16px;padding:14px 0;border-bottom:1px solid var(--rim);">
+                <div style="width:20px;height:20px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;margin-top:2px;box-shadow:0 0 8px rgba(240,180,41,0.4);">✓</div>
+                <div style="flex:1;"><div style="font-weight:700;font-size:13px;margin-bottom:2px;">Phase 1–3 Infrastructure Complete</div><div style="font-size:11px;color:var(--muted);font-style:italic;">Media hub, analytics engine, and community network all live. 92K+ reach.</div></div>
+                <div style="font-family:var(--font-mono);font-size:9px;color:var(--gold);white-space:nowrap;">DONE ✓</div>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:16px;padding:14px 0;border-bottom:1px solid var(--rim);">
+                <div style="width:20px;height:20px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;margin-top:2px;box-shadow:0 0 8px rgba(240,180,41,0.4);">✓</div>
+                <div style="flex:1;"><div style="font-weight:700;font-size:13px;margin-bottom:2px;">Venue Intelligence Report Completed</div><div style="font-size:11px;color:var(--muted);font-style:italic;">8 cities analyzed. Wilmington, DE selected as Flagship Year 1 venue.</div></div>
+                <div style="font-family:var(--font-mono);font-size:9px;color:var(--gold);white-space:nowrap;">DONE ✓</div>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:16px;padding:14px 0;border-bottom:1px solid var(--rim);background:rgba(232,57,14,0.03);">
+                <div style="width:20px;height:20px;border-radius:50%;background:var(--blood);display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;margin-top:2px;animation:pulse-timeline 1.5s infinite;">▶</div>
+                <div style="flex:1;"><div style="font-weight:700;font-size:13px;margin-bottom:2px;">Pre-Sale Launch & Sponsor Outreach</div><div style="font-size:11px;color:var(--muted);font-style:italic;">412 pre-sale list. 4 sponsors confirmed at $48K. Targeting $90K total sponsorship.</div></div>
+                <div style="font-family:var(--font-mono);font-size:9px;color:var(--blood);white-space:nowrap;">IN PROGRESS</div>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:16px;padding:14px 0;border-bottom:1px solid var(--rim);opacity:0.6;">
+                <div style="width:20px;height:20px;border-radius:50%;background:var(--rim2);display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;margin-top:2px;">4</div>
+                <div style="flex:1;"><div style="font-weight:700;font-size:13px;margin-bottom:2px;">Lineup Finalization & Artist Contracts</div><div style="font-size:11px;color:var(--muted);font-style:italic;">6/12 slots filled. Headliner negotiation in progress. Target: 90-day out deadline.</div></div>
+                <div style="font-family:var(--font-mono);font-size:9px;color:var(--muted);white-space:nowrap;">Q2 2026</div>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:16px;padding:14px 0;border-bottom:1px solid var(--rim);opacity:0.6;">
+                <div style="width:20px;height:20px;border-radius:50%;background:var(--rim2);display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;margin-top:2px;">5</div>
+                <div style="flex:1;"><div style="font-weight:700;font-size:13px;margin-bottom:2px;">Full Ticket Sale & Marketing Campaign</div><div style="font-size:11px;color:var(--muted);font-style:italic;">Ambassador priority window opens first. Full public sale 90 days before event.</div></div>
+                <div style="font-family:var(--font-mono);font-size:9px;color:var(--muted);white-space:nowrap;">Q3 2026</div>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:16px;padding:14px 0;opacity:0.4;">
+                <div style="width:20px;height:20px;border-radius:50%;background:var(--rim2);display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;margin-top:2px;">6</div>
+                <div style="flex:1;"><div style="font-weight:700;font-size:13px;margin-bottom:2px;">Underground Sound Flagship Festival — Year 1</div><div style="font-size:11px;color:var(--muted);font-style:italic;">1,500-cap venue. 12 artists. 3 stages. Community. Data driving everything.</div></div>
+                <div style="font-family:var(--font-mono);font-size:9px;color:var(--muted);white-space:nowrap;">NOV 2026</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- QUICK STATS COL -->
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <!-- TICKET GAUGE -->
+          <div class="card">
+            <div class="card-hd"><div class="card-title">🎟️ Pre-Sale Velocity</div><button class="card-action" onclick="showTab('ticketing',null)">Full View →</button></div>
+            <div class="card-body">
+              <div style="text-align:center;padding:8px 0;">
+                <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Pre-Sales vs Goal</div>
+                <div style="font-family:var(--font-display);font-size:56px;color:var(--gold);line-height:1;">412</div>
+                <div style="font-family:var(--font-mono);font-size:9px;color:var(--muted);letter-spacing:2px;margin-bottom:14px;">of 1,500 capacity</div>
+                <div style="height:10px;background:var(--rim2);border-radius:5px;overflow:hidden;margin-bottom:6px;">
+                  <div id="presale-bar" style="height:100%;width:0%;background:linear-gradient(90deg,var(--blood),var(--gold));border-radius:5px;transition:width 1.5s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+                </div>
+                <div style="font-family:var(--font-mono);font-size:9px;color:var(--gold);">27% of capacity claimed</div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;">
+                <div style="padding:10px;background:var(--raised);border-radius:6px;text-align:center;border-left:2px solid var(--gold);">
+                  <div style="font-family:var(--font-display);font-size:22px;color:var(--gold);">84</div>
+                  <div style="font-family:var(--font-mono);font-size:7px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;">This Week</div>
+                </div>
+                <div style="padding:10px;background:var(--raised);border-radius:6px;text-align:center;border-left:2px solid var(--blood);">
+                  <div style="font-family:var(--font-display);font-size:22px;color:var(--blood);">28%</div>
+                  <div style="font-family:var(--font-mono);font-size:7px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;">Week Growth</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- SPONSOR SUMMARY -->
+          <div class="card">
+            <div class="card-hd"><div class="card-title">💼 Sponsor Status</div><button class="card-action" onclick="showTab('sponsors',null)">Deck →</button></div>
+            <div class="card-body">
+              <div style="font-family:var(--font-display);font-size:44px;color:var(--gold);line-height:1;margin-bottom:4px;">$48K</div>
+              <div style="font-family:var(--font-mono);font-size:8px;color:var(--muted);letter-spacing:3px;text-transform:uppercase;margin-bottom:14px;">Confirmed · Target $90K</div>
+              <div style="height:6px;background:var(--rim2);border-radius:3px;overflow:hidden;margin-bottom:14px;">
+                <div style="width:53%;height:100%;background:linear-gradient(90deg,var(--blood),var(--gold));border-radius:3px;"></div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;"><span style="color:var(--muted);">Brand X Audio</span><span style="font-family:var(--font-display);font-size:16px;color:var(--gold);">$20K</span></div>
+                <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;"><span style="color:var(--muted);">Sole Supply Co.</span><span style="font-family:var(--font-display);font-size:16px;color:var(--gold);">$15K</span></div>
+                <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;"><span style="color:var(--muted);">DistroKit</span><span style="font-family:var(--font-display);font-size:16px;color:var(--gold);">$8K</span></div>
+                <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;"><span style="color:var(--muted);">Local Media Partner</span><span style="font-family:var(--font-display);font-size:16px;color:var(--gold);">$5K</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================
+         VENUE INTELLIGENCE
+         ======================================= -->
+    <div class="tab-page" id="tab-venue">
+      <div class="pg-hd">
+        <div>
+          <div class="pg-eyebrow">Data-Backed Selection</div>
+          <div class="pg-title">VENUE<em>INTELLIGENCE</em></div>
+          <p class="pg-sub">8 cities scored across 6 dimensions: UGS audience density, venue availability, market competition, production cost, travel access, and community footprint. Wilmington leads.</p>
+        </div>
+        <div class="pg-actions">
+          <button class="btn btn-ghost">Download Report</button>
+          <button class="btn btn-gold" onclick="showToast('📍 Venue locked — Wilmington, DE confirmed')">Lock Venue ✓</button>
+        </div>
+      </div>
+
+      <!-- MAP -->
+      <div class="venue-map-placeholder">
+        <div class="map-grid"></div>
+        <div class="map-title">📍 UGS Audience + Venue Heat — East Coast Focus</div>
+        <div class="map-pins">
+          <!-- Wilmington DE — top pick -->
+          <div class="map-pin" style="left:72%;top:38%;color:var(--gold);" onclick="showToast('📍 Wilmington, DE — Score: 94 — SELECTED')">
+            <div class="pin-dot"><div class="pin-inner"></div></div>
+            <div class="pin-label">Wilmington</div>
+            <div class="pin-size">Cap: 1,500</div>
+          </div>
+          <!-- Philly -->
+          <div class="map-pin" style="left:68%;top:32%;color:var(--blood);" onclick="showToast('📍 Philadelphia, PA — Score: 88')">
+            <div class="pin-dot"><div class="pin-inner"></div></div>
+            <div class="pin-label">Philadelphia</div>
+            <div class="pin-size">Cap: 3,000</div>
+          </div>
+          <!-- Baltimore -->
+          <div class="map-pin" style="left:65%;top:46%;color:var(--blood);" onclick="showToast('📍 Baltimore, MD — Score: 82')">
+            <div class="pin-dot"><div class="pin-inner"></div></div>
+            <div class="pin-label">Baltimore</div>
+            <div class="pin-size">Cap: 2,000</div>
+          </div>
+          <!-- NYC -->
+          <div class="map-pin" style="left:78%;top:22%;color:var(--muted);" onclick="showToast('📍 New York, NY — Score: 91 — Year 2 Target')">
+            <div class="pin-dot"><div class="pin-inner"></div></div>
+            <div class="pin-label">New York</div>
+            <div class="pin-size">Cap: 5,000+</div>
+          </div>
+          <!-- ATL -->
+          <div class="map-pin" style="left:52%;top:72%;color:var(--teal);" onclick="showToast('📍 Atlanta, GA — Score: 86 — Year 2 Candidate')">
+            <div class="pin-dot"><div class="pin-inner"></div></div>
+            <div class="pin-label">Atlanta</div>
+            <div class="pin-size">Cap: 4,000</div>
+          </div>
+          <!-- DC -->
+          <div class="map-pin" style="left:62%;top:52%;color:var(--muted);" onclick="showToast('📍 Washington DC — Score: 79')">
+            <div class="pin-dot"><div class="pin-inner"></div></div>
+            <div class="pin-label">DC</div>
+          </div>
+          <!-- Chicago -->
+          <div class="map-pin" style="left:34%;top:28%;color:var(--teal);" onclick="showToast('📍 Chicago, IL — Score: 85 — Year 3 Candidate')">
+            <div class="pin-dot"><div class="pin-inner"></div></div>
+            <div class="pin-label">Chicago</div>
+            <div class="pin-size">Cap: 4,500</div>
+          </div>
+          <!-- Houston -->
+          <div class="map-pin" style="left:28%;top:74%;color:var(--muted);" onclick="showToast('📍 Houston, TX — Score: 77')">
+            <div class="pin-dot"><div class="pin-inner"></div></div>
+            <div class="pin-label">Houston</div>
+          </div>
+        </div>
+        <div style="position:absolute;bottom:14px;right:16px;display:flex;gap:12px;font-family:var(--font-mono);font-size:8px;letter-spacing:1px;text-transform:uppercase;">
+          <span style="color:var(--gold);display:flex;align-items:center;gap:5px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--gold);display:inline-block;"></span> Selected</span>
+          <span style="color:var(--blood);display:flex;align-items:center;gap:5px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--blood);display:inline-block;"></span> Year 1 Alt</span>
+          <span style="color:var(--teal);display:flex;align-items:center;gap:5px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--teal);display:inline-block;"></span> Year 2–3</span>
+        </div>
+      </div>
+
+      <!-- AUDIENCE HEAT BY CITY -->
+      <div class="two-col-eq" style="margin-bottom:20px;">
+        <div class="card">
+          <div class="card-hd"><div class="card-title">📊 UGS Audience Density by City</div></div>
+          <div class="card-body">
+            <div class="heatbar-row">
+              <div class="heatbar"><span class="heatbar-city">WILM.</span><div class="heatbar-track"><div class="heatbar-fill" style="width:94%;background:linear-gradient(90deg,var(--blood),var(--gold));" data-w="94"><span>94%</span></div></div></div>
+              <div class="heatbar"><span class="heatbar-city">PHILLY</span><div class="heatbar-track"><div class="heatbar-fill" style="width:88%;background:linear-gradient(90deg,var(--blood),var(--gold));" data-w="88"><span>88%</span></div></div></div>
+              <div class="heatbar"><span class="heatbar-city">NYC</span><div class="heatbar-track"><div class="heatbar-fill" style="width:91%;background:linear-gradient(90deg,var(--gold)80,var(--gold));" data-w="91"><span>91%</span></div></div></div>
+              <div class="heatbar"><span class="heatbar-city">ATL</span><div class="heatbar-track"><div class="heatbar-fill" style="width:86%;background:linear-gradient(90deg,var(--teal),var(--teal));" data-w="86"><span>86%</span></div></div></div>
+              <div class="heatbar"><span class="heatbar-city">CHI</span><div class="heatbar-track"><div class="heatbar-fill" style="width:85%;background:linear-gradient(90deg,var(--teal),var(--teal));" data-w="85"><span>85%</span></div></div></div>
+              <div class="heatbar"><span class="heatbar-city">BALT.</span><div class="heatbar-track"><div class="heatbar-fill" style="width:82%;background:linear-gradient(90deg,var(--rim2),var(--muted));" data-w="82"><span>82%</span></div></div></div>
+              <div class="heatbar"><span class="heatbar-city">DC</span><div class="heatbar-track"><div class="heatbar-fill" style="width:79%;background:linear-gradient(90deg,var(--rim2),var(--muted));" data-w="79"><span>79%</span></div></div></div>
+              <div class="heatbar"><span class="heatbar-city">HOU.</span><div class="heatbar-track"><div class="heatbar-fill" style="width:77%;background:linear-gradient(90deg,var(--rim2),var(--muted));" data-w="77"><span>77%</span></div></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><div class="card-title">🏆 Venue Scoring Matrix</div></div>
+          <div class="card-body">
+            <table class="venue-table">
+              <thead><tr><th>City</th><th>Score ↕</th><th>Capacity</th><th>Cost Index</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><div class="venue-name-cell"><span class="vname">Wilmington</span><span class="vcity">Delaware</span></div></td>
+                  <td><div class="venue-score"><div class="vs-track"><div class="vs-fill" style="width:94%;background:var(--gold);"></div></div><div class="vs-num">94</div></div></td>
+                  <td style="font-family:var(--font-mono);font-size:11px;">1,500</td>
+                  <td><span class="chip chip-teal">Low</span></td>
+                  <td><span class="chip chip-gold"><span class="chip-dot"></span> Selected</span></td>
+                </tr>
+                <tr>
+                  <td><div class="venue-name-cell"><span class="vname">New York</span><span class="vcity">New York</span></div></td>
+                  <td><div class="venue-score"><div class="vs-track"><div class="vs-fill" style="width:91%;background:var(--blood);"></div></div><div class="vs-num">91</div></div></td>
+                  <td style="font-family:var(--font-mono);font-size:11px;">5,000+</td>
+                  <td><span class="chip chip-blood">Very High</span></td>
+                  <td><span class="chip chip-sky">Year 2</span></td>
+                </tr>
+                <tr>
+                  <td><div class="venue-name-cell"><span class="vname">Philadelphia</span><span class="vcity">Pennsylvania</span></div></td>
+                  <td><div class="venue-score"><div class="vs-track"><div class="vs-fill" style="width:88%;background:var(--blood);"></div></div><div class="vs-num">88</div></div></td>
+                  <td style="font-family:var(--font-mono);font-size:11px;">3,000</td>
+                  <td><span class="chip chip-blood">High</span></td>
+                  <td><span class="chip chip-muted">Alt Year 1</span></td>
+                </tr>
+                <tr>
+                  <td><div class="venue-name-cell"><span class="vname">Atlanta</span><span class="vcity">Georgia</span></div></td>
+                  <td><div class="venue-score"><div class="vs-track"><div class="vs-fill" style="width:86%;background:var(--teal);"></div></div><div class="vs-num">86</div></div></td>
+                  <td style="font-family:var(--font-mono);font-size:11px;">4,000</td>
+                  <td><span class="chip chip-gold">Medium</span></td>
+                  <td><span class="chip chip-sky">Year 2</span></td>
+                </tr>
+                <tr>
+                  <td><div class="venue-name-cell"><span class="vname">Chicago</span><span class="vcity">Illinois</span></div></td>
+                  <td><div class="venue-score"><div class="vs-track"><div class="vs-fill" style="width:85%;background:var(--teal);"></div></div><div class="vs-num">85</div></div></td>
+                  <td style="font-family:var(--font-mono);font-size:11px;">4,500</td>
+                  <td><span class="chip chip-gold">Medium</span></td>
+                  <td><span class="chip chip-muted">Year 3</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================
+         TICKETING ENGINE
+         ======================================= -->
+    <div class="tab-page" id="tab-ticketing">
+      <div class="pg-hd">
+        <div>
+          <div class="pg-eyebrow">UGS-Owned Ticketing</div>
+          <div class="pg-title">TICKETING<em>ENGINE</em></div>
+          <p class="pg-sub">No Ticketmaster. No middleman. UGS owns the full ticketing stack — data, revenue, and the relationship with every buyer. Ambassador priority windows open first.</p>
+        </div>
+        <div class="pg-actions">
+          <button class="btn btn-ghost">Export Buyers</button>
+          <button class="btn btn-blood" onclick="showToast('🎟️ General sale window opened!')">Open General Sale</button>
+          <button class="btn btn-gold" onclick="showToast('⭐ Ambassador window activated!')">Ambassador Access</button>
+        </div>
+      </div>
+
+      <!-- TIER CARDS -->
+      <div class="ticket-tier-grid">
+        <div class="ticket-tier">
+          <div class="tt-head" style="background:var(--raised);">
+            <div class="tt-name" style="color:var(--muted);">GENERAL</div>
+            <div class="tt-price" style="color:var(--off);">$45</div>
+            <div class="tt-sold">
+              <div class="tt-bar-track"><div class="tt-bar-fill" style="width:34%;background:var(--muted);"></div></div>
+              <div class="tt-sold-meta">340 / 1,000 sold</div>
+            </div>
+          </div>
+          <div class="tt-body">
+            <div class="tt-perks">
+              <div class="tt-perk"><span class="tt-check">—</span> General admission</div>
+              <div class="tt-perk"><span class="tt-check">—</span> All 3 stages access</div>
+              <div class="tt-perk"><span class="tt-check">—</span> Standard entry queue</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ticket-tier featured">
+          <div class="tt-head" style="background:var(--gold-d);">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span class="chip chip-gold">BEST SELLER</span></div>
+            <div class="tt-name" style="color:var(--gold);">VIP</div>
+            <div class="tt-price" style="color:var(--gold);">$120</div>
+            <div class="tt-sold">
+              <div class="tt-bar-track"><div class="tt-bar-fill" style="width:58%;background:var(--gold);"></div></div>
+              <div class="tt-sold-meta" style="color:var(--gold);">58 / 100 sold</div>
+            </div>
+          </div>
+          <div class="tt-body">
+            <div class="tt-perks">
+              <div class="tt-perk"><span class="tt-check" style="color:var(--gold);">✓</span> VIP viewing platform</div>
+              <div class="tt-perk"><span class="tt-check" style="color:var(--gold);">✓</span> Open bar first 2 hours</div>
+              <div class="tt-perk"><span class="tt-check" style="color:var(--gold);">✓</span> Artist meet & greet access</div>
+              <div class="tt-perk"><span class="tt-check" style="color:var(--gold);">✓</span> UGS merch pack included</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ticket-tier">
+          <div class="tt-head" style="background:var(--raised);">
+            <div class="tt-name" style="color:var(--blood);">BACKSTAGE</div>
+            <div class="tt-price" style="color:var(--blood);">$250</div>
+            <div class="tt-sold">
+              <div class="tt-bar-track"><div class="tt-bar-fill" style="width:70%;background:var(--blood);"></div></div>
+              <div class="tt-sold-meta">14 / 20 sold</div>
+            </div>
+          </div>
+          <div class="tt-body">
+            <div class="tt-perks">
+              <div class="tt-perk"><span class="tt-check" style="color:var(--blood);">✓</span> Full backstage access</div>
+              <div class="tt-perk"><span class="tt-check" style="color:var(--blood);">✓</span> Soundcheck access</div>
+              <div class="tt-perk"><span class="tt-check" style="color:var(--blood);">✓</span> Private artist dinner</div>
+              <div class="tt-perk"><span class="tt-check" style="color:var(--blood);">✓</span> Signed merch + photo</div>
+              <div class="tt-perk"><span class="tt-check" style="color:var(--blood);">✓</span> Lifetime UGS Gold status</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ticket-tier">
+          <div class="tt-head" style="background:var(--raised);">
+            <div class="tt-name" style="color:var(--teal);">AMBASSADOR</div>
+            <div class="tt-price" style="color:var(--teal);">FREE</div>
+            <div class="tt-sold">
+              <div class="tt-bar-track"><div class="tt-bar-fill" style="width:20%;background:var(--teal);"></div></div>
+              <div class="tt-sold-meta">20 / 94 claimed</div>
+            </div>
+          </div>
+          <div class="tt-body">
+            <div class="tt-perks">
+              <div class="tt-perk"><span class="tt-check" style="color:var(--teal);">✓</span> Gold ambassador perk</div>
+              <div class="tt-perk"><span class="tt-check" style="color:var(--teal);">✓</span> Free entry — earned via XP</div>
+              <div class="tt-perk"><span class="tt-check" style="color:var(--teal);">✓</span> VIP access included</div>
+              <div class="tt-perk"><span class="tt-check" style="color:var(--teal);">✓</span> Ambassador lanyard + table</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SALES TREND + ACTIONS -->
+      <div class="two-col">
+        <div class="card">
+          <div class="card-hd"><div class="card-title">📈 Pre-Sale Trend</div><span class="chip chip-teal">+84 this week</span></div>
+          <div class="card-body">
+            <div class="sales-chart-area">
+              <svg class="sales-svg" viewBox="0 0 600 160" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="saleGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#f0b429" stop-opacity="0.3"/>
+                    <stop offset="100%" stop-color="#f0b429" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <path d="M0,155 C60,150 100,145 150,130 C200,115 240,110 290,90 C340,70 380,65 420,50 C460,35 500,25 540,15 C560,10 580,6 600,2" fill="url(#saleGrad)"/>
+                <path d="M0,155 C60,150 100,145 150,130 C200,115 240,110 290,90 C340,70 380,65 420,50 C460,35 500,25 540,15 C560,10 580,6 600,2" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round"/>
+                <!-- grid lines -->
+                <line x1="0" y1="40" x2="600" y2="40" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+                <line x1="0" y1="80" x2="600" y2="80" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+                <line x1="0" y1="120" x2="600" y2="120" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+                <!-- peak dot -->
+                <circle cx="600" cy="2" r="4" fill="var(--gold)"/>
+              </svg>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:8px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-top:8px;">
+              <span>NOV</span><span>DEC</span><span>JAN</span><span>FEB</span><span>MAR</span><span>NOW</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-hd"><div class="card-title">⚙️ Ticketing Controls</div></div>
+          <div class="card-body">
+            <div class="tkt-actions-grid" style="margin-bottom:0;">
+              <div class="tkt-action-card" onclick="showToast('⭐ Ambassador window: 72h priority activated')">
+                <div class="tkt-action-icon">⭐</div>
+                <div class="tkt-action-title">AMBASSADOR</div>
+                <div class="tkt-action-desc">Open Gold tier 72h window</div>
+              </div>
+              <div class="tkt-action-card" onclick="showToast('🔥 General sale now live')">
+                <div class="tkt-action-icon">🔥</div>
+                <div class="tkt-action-title">PUBLIC SALE</div>
+                <div class="tkt-action-desc">Open to all buyers</div>
+              </div>
+              <div class="tkt-action-card" onclick="showToast('📊 Analytics report generated')">
+                <div class="tkt-action-icon">📊</div>
+                <div class="tkt-action-title">ANALYTICS</div>
+                <div class="tkt-action-desc">Buyer data & demographics</div>
+              </div>
+              <div class="tkt-action-card" onclick="showToast('📩 Confirmation emails queued')">
+                <div class="tkt-action-icon">📩</div>
+                <div class="tkt-action-title">EMAIL BLAST</div>
+                <div class="tkt-action-desc">Send to pre-sale list</div>
+              </div>
+              <div class="tkt-action-card" onclick="showToast('🎟️ Promo codes generated')">
+                <div class="tkt-action-icon">🎟️</div>
+                <div class="tkt-action-title">PROMO CODES</div>
+                <div class="tkt-action-desc">Create discount codes</div>
+              </div>
+              <div class="tkt-action-card" onclick="showToast('🔒 Capacity locked at 1,500')">
+                <div class="tkt-action-icon">🔒</div>
+                <div class="tkt-action-title">LOCK CAP</div>
+                <div class="tkt-action-desc">Freeze at capacity</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================
+         LINEUP BUILDER
+         ======================================= -->
+    <div class="tab-page" id="tab-lineup">
+      <div class="pg-hd">
+        <div>
+          <div class="pg-eyebrow">Artist Selection</div>
+          <div class="pg-title">LINEUP<em>BUILDER</em></div>
+          <p class="pg-sub">12 slots across 3 stages. Filled by data — UGS campaign performance, audience overlap, genre balance, and draw potential. 6 confirmed, 6 open.</p>
+        </div>
+        <div class="pg-actions">
+          <button class="btn btn-ghost">Export Lineup</button>
+          <button class="btn btn-gold" onclick="showToast('🎤 Lineup announcement drafted!')">Announce Draft ↗</button>
+        </div>
+      </div>
+
+      <div class="lineup-stage-tabs">
+        <button class="stage-tab active" onclick="switchStage('main',this)">🏟️ Main Stage (5 slots)</button>
+        <button class="stage-tab" onclick="switchStage('second',this)">🔥 Second Stage (4 slots)</button>
+        <button class="stage-tab" onclick="switchStage('third',this)">💎 Third Stage (3 slots)</button>
+      </div>
+
+      <div id="stage-main">
+        <div class="lineup-grid">
+          <div class="artist-slot headliner">
+            <div class="slot-num">1</div>
+            <div class="slot-avi" style="background:var(--gold-d);">🎤</div>
+            <div class="slot-info">
+              <div class="slot-name">HEADLINER TBD</div>
+              <div class="slot-meta">Negotiating · Main Stage · ATL / NYC</div>
+            </div>
+            <div class="slot-draw"><div class="slot-draw-num">—</div><div class="slot-draw-lbl">Draw Est.</div></div>
+            <div class="slot-time">9:30 PM</div>
+          </div>
+          <div class="artist-slot">
+            <div class="slot-num">2</div>
+            <div class="slot-avi" style="background:linear-gradient(135deg,#222,#333);">🔥</div>
+            <div class="slot-info">
+              <div class="slot-name">2SLIMEY</div>
+              <div class="slot-meta">Confirmed · Melodic Trap · Delaware</div>
+            </div>
+            <div class="slot-draw"><div class="slot-draw-num">1.8M</div><div class="slot-draw-lbl">Peak Views</div></div>
+            <div class="slot-time">8:00 PM</div>
+          </div>
+          <div class="artist-slot">
+            <div class="slot-num">3</div>
+            <div class="slot-avi" style="background:linear-gradient(135deg,#1a1a2e,#16213e);">❄️</div>
+            <div class="slot-info">
+              <div class="slot-name">FROST DIVZ</div>
+              <div class="slot-meta">Confirmed · Drill · Chicago</div>
+            </div>
+            <div class="slot-draw"><div class="slot-draw-num">340K</div><div class="slot-draw-lbl">Peak Views</div></div>
+            <div class="slot-time">6:30 PM</div>
+          </div>
+          <div class="artist-slot">
+            <div class="slot-num">4</div>
+            <div class="slot-avi" style="background:linear-gradient(135deg,#0a1a1a,#0d2626);">🌊</div>
+            <div class="slot-info">
+              <div class="slot-name">KAOSWAVE</div>
+              <div class="slot-meta">Confirmed · Hyphy · Houston</div>
+            </div>
+            <div class="slot-draw"><div class="slot-draw-num">210K</div><div class="slot-draw-lbl">Peak Views</div></div>
+            <div class="slot-time">5:00 PM</div>
+          </div>
+          <div class="artist-slot empty" onclick="showToast('🎤 Open slot — submit artist for consideration')">
+            <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">+ Add Artist — Slot 5</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="stage-second" style="display:none;">
+        <div class="lineup-grid">
+          <div class="artist-slot">
+            <div class="slot-num">1</div>
+            <div class="slot-avi" style="background:linear-gradient(135deg,#1a0a2e,#2a1040);">🌌</div>
+            <div class="slot-info">
+              <div class="slot-name">VOIDKID</div>
+              <div class="slot-meta">Confirmed · Alt Rap · NYC</div>
+            </div>
+            <div class="slot-draw"><div class="slot-draw-num">180K</div><div class="slot-draw-lbl">Peak Views</div></div>
+            <div class="slot-time">8:30 PM</div>
+          </div>
+          <div class="artist-slot">
+            <div class="slot-num">2</div>
+            <div class="slot-avi" style="background:linear-gradient(135deg,#1a1a0a,#2a2a10);">🌙</div>
+            <div class="slot-info">
+              <div class="slot-name">LUNAR4</div>
+              <div class="slot-meta">Confirmed · Dark Rap · Detroit</div>
+            </div>
+            <div class="slot-draw"><div class="slot-draw-num">160K</div><div class="slot-draw-lbl">Peak Views</div></div>
+            <div class="slot-time">7:00 PM</div>
+          </div>
+          <div class="artist-slot empty" onclick="showToast('🎤 Open slot — Slot 3, Second Stage')">
+            <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">+ Add Artist — Slot 3</div>
+          </div>
+          <div class="artist-slot empty" onclick="showToast('🎤 Open slot — Slot 4, Second Stage')">
+            <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">+ Add Artist — Slot 4</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="stage-third" style="display:none;">
+        <div class="lineup-grid">
+          <div class="artist-slot">
+            <div class="slot-num">1</div>
+            <div class="slot-avi" style="background:linear-gradient(135deg,#2a0a0a,#3a1010);">☀️</div>
+            <div class="slot-info">
+              <div class="slot-name">SOLARIS</div>
+              <div class="slot-meta">Confirmed · Melodic · Miami</div>
+            </div>
+            <div class="slot-draw"><div class="slot-draw-num">95K</div><div class="slot-draw-lbl">Peak Views</div></div>
+            <div class="slot-time">7:30 PM</div>
+          </div>
+          <div class="artist-slot empty" onclick="showToast('🎤 Open slot — Slot 2, Third Stage')">
+            <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">+ Add Artist — Slot 2</div>
+          </div>
+          <div class="artist-slot empty" onclick="showToast('🎤 Opening act — Cypher slot reserved')">
+            <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">🎤 Cypher Slot — Slot 3</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FULL SCHEDULE TABLE -->
+      <div class="card" style="margin-top:20px;">
+        <div class="card-hd"><div class="card-title">📋 Full Show Schedule — Day of Event</div><button class="card-action" onclick="showToast('Schedule exported to PDF')">Export PDF →</button></div>
+        <table class="schedule-grid">
+          <thead><tr><th>Time</th><th>Artist</th><th>Origin</th><th>Stage</th><th>Genre</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="sched-time">4:00 PM</td><td><div class="sched-name">DOORS OPEN</div></td><td></td><td></td><td></td><td><span class="chip chip-teal">Set</span></td></tr>
+            <tr><td class="sched-time">5:00 PM</td><td><div class="sched-name">Kaoswave</div></td><td class="sched-city">Houston, TX</td><td><span class="sched-stage st-main">Main</span></td><td style="font-size:11px;color:var(--muted);">Hyphy</td><td><span class="chip chip-gold">Confirmed</span></td></tr>
+            <tr><td class="sched-time">6:00 PM</td><td><div class="sched-name">Solaris</div></td><td class="sched-city">Miami, FL</td><td><span class="sched-stage st-third">Third</span></td><td style="font-size:11px;color:var(--muted);">Melodic</td><td><span class="chip chip-gold">Confirmed</span></td></tr>
+            <tr><td class="sched-time">6:30 PM</td><td><div class="sched-name">Frost Divz</div></td><td class="sched-city">Chicago, IL</td><td><span class="sched-stage st-main">Main</span></td><td style="font-size:11px;color:var(--muted);">Drill</td><td><span class="chip chip-gold">Confirmed</span></td></tr>
+            <tr><td class="sched-time">7:00 PM</td><td><div class="sched-name">Lunar4</div></td><td class="sched-city">Detroit, MI</td><td><span class="sched-stage st-second">Second</span></td><td style="font-size:11px;color:var(--muted);">Dark Rap</td><td><span class="chip chip-gold">Confirmed</span></td></tr>
+            <tr><td class="sched-time">7:30 PM</td><td><div class="sched-name">Voidkid</div></td><td class="sched-city">New York, NY</td><td><span class="sched-stage st-second">Second</span></td><td style="font-size:11px;color:var(--muted);">Alt Rap</td><td><span class="chip chip-gold">Confirmed</span></td></tr>
+            <tr><td class="sched-time">8:00 PM</td><td><div class="sched-name">2Slimey</div></td><td class="sched-city">Delaware</td><td><span class="sched-stage st-main">Main</span></td><td style="font-size:11px;color:var(--muted);">Melodic Trap</td><td><span class="chip chip-gold">Confirmed</span></td></tr>
+            <tr><td class="sched-time">9:30 PM</td><td><div class="sched-name">HEADLINER TBD</div></td><td class="sched-city">ATL / NYC</td><td><span class="sched-stage st-main">Main</span></td><td style="font-size:11px;color:var(--muted);">Underground Rap</td><td><span class="chip chip-blood">Negotiating</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- =======================================
+         PRODUCTION PLAN
+         ======================================= -->
+    <div class="tab-page" id="tab-production">
+      <div class="pg-hd">
+        <div>
+          <div class="pg-eyebrow">Operations</div>
+          <div class="pg-title">PRODUCTION<em>PLAN</em></div>
+          <p class="pg-sub">Full day-of-show production checklist: stage, sound, lighting, security, merch, media, and ambassador coordination. Built from Phase 1–3 infrastructure data.</p>
+        </div>
+      </div>
+      <div class="three-col">
+        <div class="card">
+          <div class="card-hd"><div class="card-title">🎧 Sound & Stage</div><span class="chip chip-gold">In Progress</span></div>
+          <div class="card-body">
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:10px;background:var(--raised);border-radius:6px;border-left:2px solid var(--gold);">
+                <div><div style="font-size:13px;font-weight:700;margin-bottom:2px;">Main Stage PA System</div><div style="font-size:11px;color:var(--muted);">1,500 cap line array · L-Acoustics</div></div>
+                <span class="chip chip-gold">Quoted</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:10px;background:var(--raised);border-radius:6px;border-left:2px solid var(--teal);">
+                <div><div style="font-size:13px;font-weight:700;margin-bottom:2px;">Lighting Rig (Main)</div><div style="font-size:11px;color:var(--muted);">Full moving head package</div></div>
+                <span class="chip chip-teal">Confirmed</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:10px;background:var(--raised);border-radius:6px;border-left:2px solid var(--rim2);">
+                <div><div style="font-size:13px;font-weight:700;margin-bottom:2px;">Stage 2 + 3 Setup</div><div style="font-size:11px;color:var(--muted);">Backline, monitors, DJ booth</div></div>
+                <span class="chip chip-muted">Pending</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:10px;background:var(--raised);border-radius:6px;border-left:2px solid var(--rim2);">
+                <div><div style="font-size:13px;font-weight:700;margin-bottom:2px;">Live Stream Setup</div><div style="font-size:11px;color:var(--muted);">Multi-cam, UGS YouTube</div></div>
+                <span class="chip chip-muted">TBD</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><div class="card-title">🛡️ Operations</div><span class="chip chip-blood">Planning</span></div>
+          <div class="card-body">
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:10px;background:var(--raised);border-radius:6px;border-left:2px solid var(--teal);">
+                <div><div style="font-size:13px;font-weight:700;margin-bottom:2px;">Security Team (25 staff)</div><div style="font-size:11px;color:var(--muted);">Licensed, bag check, wristbands</div></div>
+                <span class="chip chip-teal">Confirmed</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:10px;background:var(--raised);border-radius:6px;border-left:2px solid var(--gold);">
+                <div><div style="font-size:13px;font-weight:700;margin-bottom:2px;">Venue Permit + Insurance</div><div style="font-size:11px;color:var(--muted);">City of Wilmington · $2M liability</div></div>
+                <span class="chip chip-gold">In Progress</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:10px;background:var(--raised);border-radius:6px;border-left:2px solid var(--rim2);">
+                <div><div style="font-size:13px;font-weight:700;margin-bottom:2px;">Medical + EMT Standby</div><div style="font-size:11px;color:var(--muted);">1 EMT per 500 attendees</div></div>
+                <span class="chip chip-muted">Pending</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:10px;background:var(--raised);border-radius:6px;border-left:2px solid var(--rim2);">
+                <div><div style="font-size:13px;font-weight:700;margin-bottom:2px;">Load-In & Teardown Plan</div><div style="font-size:11px;color:var(--muted);">8AM load-in · Midnight out</div></div>
+                <span class="chip chip-muted">Draft</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><div class="card-title">🛍️ Brand & Experience</div><span class="chip chip-teal">On Track</span></div>
+          <div class="card-body">
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:10px;background:var(--raised);border-radius:6px;border-left:2px solid var(--gold);">
+                <div><div style="font-size:13px;font-weight:700;margin-bottom:2px;">UGS Merch Pop-Up</div><div style="font-size:11px;color:var(--muted);">Exclusive event-only pieces</div></div>
+                <span class="chip chip-gold">Designed</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:10px;background:var(--raised);border-radius:6px;border-left:2px solid var(--teal);">
+                <div><div style="font-size:13px;font-weight:700;margin-bottom:2px;">Photo / Video Team</div><div style="font-size:11px;color:var(--muted);">3 photographers, 2 videographers</div></div>
+                <span class="chip chip-teal">Confirmed</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:10px;background:var(--raised);border-radius:6px;border-left:2px solid var(--teal);">
+                <div><div style="font-size:13px;font-weight:700;margin-bottom:2px;">Ambassador Corner</div><div style="font-size:11px;color:var(--muted);">Dedicated table, lanyards, merch</div></div>
+                <span class="chip chip-teal">Confirmed</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:10px;background:var(--raised);border-radius:6px;border-left:2px solid var(--rim2);">
+                <div><div style="font-size:13px;font-weight:700;margin-bottom:2px;">Sponsor Activations</div><div style="font-size:11px;color:var(--muted);">Brand booths per sponsor tier</div></div>
+                <span class="chip chip-muted">Planning</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================
+         SPONSOR DECK
+         ======================================= -->
+    <div class="tab-page" id="tab-sponsors">
+      <div class="pg-hd">
+        <div>
+          <div class="pg-eyebrow">Revenue Layer</div>
+          <div class="pg-title">SPONSOR<em>DECK</em></div>
+          <p class="pg-sub">Backed by real audience data from Phases 1–3. Every impression number, demographic, and engagement rate is provable. Not a pitch — a data package.</p>
+        </div>
+        <div class="pg-actions">
+          <button class="btn btn-ghost">Download Deck PDF</button>
+          <button class="btn btn-blood" onclick="showToast('📩 Deck sent to prospect list')">Send to Prospects</button>
+        </div>
+      </div>
+
+      <div class="sponsor-tier-row">
+        <div class="spon-tier-card presenting">
+          <div class="spon-tier-head" style="background:var(--gold-d);border-bottom-color:rgba(240,180,41,0.2);">
+            <div class="spon-crown">👑</div>
+            <div>
+              <div class="spon-tier-name" style="color:var(--gold);">PRESENTING</div>
+              <div style="font-family:var(--font-mono);font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:2px;">Title Sponsor</div>
+            </div>
+            <div class="spon-tier-price">
+              <div class="stp-val">$20K</div>
+              <div class="stp-lbl">Per Event</div>
+            </div>
+          </div>
+          <div class="spon-tier-body">
+            <div class="spon-deliverables">
+              <div class="spon-del"><span class="spon-del-icon">🏷️</span> Event named after brand: "Underground Sound presented by [Brand]"</div>
+              <div class="spon-del"><span class="spon-del-icon">📍</span> Stage naming rights (Main Stage)</div>
+              <div class="spon-del"><span class="spon-del-icon">📱</span> 10 dedicated social posts to 92K+ audience (pre + post event)</div>
+              <div class="spon-del"><span class="spon-del-icon">🎤</span> MC shoutouts throughout event</div>
+              <div class="spon-del"><span class="spon-del-icon">📊</span> Full campaign report with CPM, impressions, conversions</div>
+              <div class="spon-del"><span class="spon-del-icon">🎟️</span> 20 VIP passes + backstage access</div>
+              <div class="spon-del"><span class="spon-del-icon">🏪</span> Premium brand activation space</div>
+            </div>
+            <div class="spon-slots">
+              <div class="spon-slots-taken" style="font-size:9px;">1 of 1 slots</div>
+              <div class="spon-slots-num" style="color:var(--blood);">OPEN</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="spon-tier-card">
+          <div class="spon-tier-head">
+            <div class="spon-crown">🥇</div>
+            <div>
+              <div class="spon-tier-name">GOLD</div>
+              <div style="font-family:var(--font-mono);font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:2px;">Premier Partner</div>
+            </div>
+            <div class="spon-tier-price">
+              <div class="stp-val">$10K</div>
+              <div class="stp-lbl">Per Event</div>
+            </div>
+          </div>
+          <div class="spon-tier-body">
+            <div class="spon-deliverables">
+              <div class="spon-del"><span class="spon-del-icon">🎪</span> Stage 2 naming rights</div>
+              <div class="spon-del"><span class="spon-del-icon">📱</span> 6 social posts pre/post event to full audience</div>
+              <div class="spon-del"><span class="spon-del-icon">🎟️</span> 10 VIP passes included</div>
+              <div class="spon-del"><span class="spon-del-icon">🏪</span> Brand activation booth (20x20)</div>
+              <div class="spon-del"><span class="spon-del-icon">📊</span> Full post-event analytics report</div>
+            </div>
+            <div class="spon-slots">
+              <div class="spon-slots-taken">1 of 2 slots filled</div>
+              <div class="spon-slots-num" style="color:var(--gold);">1 LEFT</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="spon-tier-card">
+          <div class="spon-tier-head">
+            <div class="spon-crown">🥈</div>
+            <div>
+              <div class="spon-tier-name">SILVER</div>
+              <div style="font-family:var(--font-mono);font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:2px;">Supporting Sponsor</div>
+            </div>
+            <div class="spon-tier-price">
+              <div class="stp-val">$5K</div>
+              <div class="stp-lbl">Per Event</div>
+            </div>
+          </div>
+          <div class="spon-tier-body">
+            <div class="spon-deliverables">
+              <div class="spon-del"><span class="spon-del-icon">📱</span> 4 social posts across platforms</div>
+              <div class="spon-del"><span class="spon-del-icon">🎟️</span> 6 general admission passes</div>
+              <div class="spon-del"><span class="spon-del-icon">🏷️</span> Logo on all event materials</div>
+              <div class="spon-del"><span class="spon-del-icon">📊</span> Monthly performance report</div>
+            </div>
+            <div class="spon-slots">
+              <div class="spon-slots-taken">2 of 4 slots filled</div>
+              <div class="spon-slots-num" style="color:var(--teal);">2 LEFT</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONFIRMED SPONSORS -->
+      <div class="card">
+        <div class="card-hd"><div class="card-title">✅ Confirmed Sponsors — $48K Secured</div></div>
+        <div class="card-body">
+          <div class="existing-sponsors">
+            <div class="ex-sponsor" onclick="showToast('📊 Brand X report opened')">
+              <div class="ex-sp-icon">🎧</div>
+              <div class="ex-sp-info">
+                <div class="ex-sp-name">Brand X Audio</div>
+                <div class="ex-sp-tier">🥇 Gold Tier · Stage 2 Naming</div>
+              </div>
+              <div class="ex-sp-val">$20K</div>
+            </div>
+            <div class="ex-sponsor" onclick="showToast('📊 Sole Supply report opened')">
+              <div class="ex-sp-icon">👟</div>
+              <div class="ex-sp-info">
+                <div class="ex-sp-name">Sole Supply Co.</div>
+                <div class="ex-sp-tier">🥈 Silver Tier · Merch Collab</div>
+              </div>
+              <div class="ex-sp-val">$15K</div>
+            </div>
+            <div class="ex-sponsor" onclick="showToast('📊 DistroKit report opened')">
+              <div class="ex-sp-icon">🎵</div>
+              <div class="ex-sp-info">
+                <div class="ex-sp-name">DistroKit</div>
+                <div class="ex-sp-tier">🥈 Silver Tier · Stage 3 Naming</div>
+              </div>
+              <div class="ex-sp-val">$8K</div>
+            </div>
+            <div class="ex-sponsor" onclick="showToast('📊 Local Media report opened')">
+              <div class="ex-sp-icon">📻</div>
+              <div class="ex-sp-info">
+                <div class="ex-sp-name">Local Media Partner</div>
+                <div class="ex-sp-tier">🥉 Bronze Tier · Press + Radio</div>
+              </div>
+              <div class="ex-sp-val">$5K</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================
+         P&L PROJECTIONS
+         ======================================= -->
+    <div class="tab-page" id="tab-pnl">
+      <div class="pg-hd">
+        <div>
+          <div class="pg-eyebrow">Financial Model</div>
+          <div class="pg-title">P&L<em>PROJECTIONS</em></div>
+          <p class="pg-sub">Three scenarios modeled: conservative (900 tickets), base (1,200), and optimistic (sell-out 1,500). All include ticket revenue, sponsorship, merch, and bar split.</p>
+        </div>
+        <div class="pg-actions">
+          <button class="btn btn-ghost">Export Model</button>
+          <button class="btn btn-gold" onclick="showToast('📊 P&L sent to investors')">Share with Investors</button>
+        </div>
+      </div>
+
+      <!-- BIG 3 -->
+      <div class="pnl-hero" style="margin-bottom:24px;">
+        <div class="pnl-big revenue">
+          <div class="pnl-label">Base Case Revenue</div>
+          <div class="pnl-amount">$284K</div>
+          <div class="pnl-note">1,200 tickets × $85 avg + $90K sponsors + $44K merch/bar</div>
+        </div>
+        <div class="pnl-big costs">
+          <div class="pnl-label">Total Production Costs</div>
+          <div class="pnl-amount">$168K</div>
+          <div class="pnl-note">Artist fees + venue + production + operations + marketing</div>
+        </div>
+        <div class="pnl-big profit">
+          <div class="pnl-label">Base Case Net Profit</div>
+          <div class="pnl-amount">$116K</div>
+          <div class="pnl-note">41% margin · Year 1 · Reinvest into Year 2 expansion</div>
+        </div>
+      </div>
+
+      <!-- BREAKDOWN -->
+      <div class="pnl-breakdown">
+        <div>
+          <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px;"><span style="width:20px;height:1px;background:var(--gold);display:inline-block;"></span>Revenue Breakdown</div>
+          <div class="pnl-side">
+            <div class="pnl-line revenue-line"><div class="pnl-line-name">Ticket Sales (1,200 avg)</div><div class="pnl-line-val">$102K</div></div>
+            <div class="pnl-line revenue-line"><div class="pnl-line-name">VIP Upgrades (85 × $120)</div><div class="pnl-line-val">$10.2K</div></div>
+            <div class="pnl-line revenue-line"><div class="pnl-line-name">Backstage (18 × $250)</div><div class="pnl-line-val">$4.5K</div></div>
+            <div class="pnl-line revenue-line"><div class="pnl-line-name">Total Sponsorship</div><div class="pnl-line-val">$90K</div></div>
+            <div class="pnl-line revenue-line"><div class="pnl-line-name">Merchandise Sales</div><div class="pnl-line-val">$28K</div></div>
+            <div class="pnl-line revenue-line"><div class="pnl-line-name">Bar Revenue Split (40%)</div><div class="pnl-line-val">$16K</div></div>
+            <div class="pnl-line revenue-line"><div class="pnl-line-name">Media / Streaming Rights</div><div class="pnl-line-val">$10K</div></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:var(--gold-d);border:1px solid rgba(240,180,41,0.2);border-radius:6px;margin-top:4px;">
+              <div style="font-family:var(--font-display);font-size:16px;letter-spacing:2px;color:var(--gold);">TOTAL REVENUE</div>
+              <div style="font-family:var(--font-display);font-size:28px;color:var(--gold);">$284K</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--blood);margin-bottom:12px;display:flex;align-items:center;gap:8px;"><span style="width:20px;height:1px;background:var(--blood);display:inline-block;"></span>Cost Breakdown</div>
+          <div class="pnl-side">
+            <div class="pnl-line cost-line"><div class="pnl-line-name">Artist Fees (12 artists)</div><div class="pnl-line-val">$62K</div></div>
+            <div class="pnl-line cost-line"><div class="pnl-line-name">Venue Rental</div><div class="pnl-line-val">$18K</div></div>
+            <div class="pnl-line cost-line"><div class="pnl-line-name">Production (Sound + Lights)</div><div class="pnl-line-val">$28K</div></div>
+            <div class="pnl-line cost-line"><div class="pnl-line-name">Security + Operations</div><div class="pnl-line-val">$14K</div></div>
+            <div class="pnl-line cost-line"><div class="pnl-line-name">Marketing + Ticketing</div><div class="pnl-line-val">$12K</div></div>
+            <div class="pnl-line cost-line"><div class="pnl-line-name">Merch Production</div><div class="pnl-line-val">$8K</div></div>
+            <div class="pnl-line cost-line"><div class="pnl-line-name">Insurance + Permits</div><div class="pnl-line-val">$6K</div></div>
+            <div class="pnl-line cost-line"><div class="pnl-line-name">Staffing + Misc</div><div class="pnl-line-val">$20K</div></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:var(--blood-d);border:1px solid rgba(232,57,14,0.2);border-radius:6px;margin-top:4px;">
+              <div style="font-family:var(--font-display);font-size:16px;letter-spacing:2px;color:var(--blood);">TOTAL COSTS</div>
+              <div style="font-family:var(--font-display);font-size:28px;color:var(--blood);">$168K</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENARIO TABLE -->
+      <div class="card">
+        <div class="card-hd"><div class="card-title">📊 Scenario Analysis</div></div>
+        <table class="scenario-table">
+          <thead><tr><th>Scenario</th><th>Attendance</th><th>Ticket Rev.</th><th>Total Revenue</th><th>Total Costs</th><th>Net Profit</th><th>ROI</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><div class="scen-name" style="color:var(--muted);">Conservative</div></td>
+              <td style="font-family:var(--font-mono);font-size:11px;color:var(--muted);">900 (60%)</td>
+              <td style="font-family:var(--font-mono);font-size:11px;color:var(--muted);">$76K</td>
+              <td class="scen-revenue" style="color:var(--off);">$214K</td>
+              <td style="font-family:var(--font-display);font-size:20px;color:var(--blood);">$168K</td>
+              <td class="scen-profit" style="color:var(--teal);">$46K</td>
+              <td style="font-family:var(--font-mono);font-size:11px;color:var(--muted);">27%</td>
+            </tr>
+            <tr style="background:rgba(240,180,41,0.03);">
+              <td><div class="scen-name" style="color:var(--gold);">Base Case ← You Are Here</div></td>
+              <td style="font-family:var(--font-mono);font-size:11px;color:var(--gold);">1,200 (80%)</td>
+              <td style="font-family:var(--font-mono);font-size:11px;color:var(--gold);">$117K</td>
+              <td class="scen-revenue">$284K</td>
+              <td style="font-family:var(--font-display);font-size:20px;color:var(--blood);">$168K</td>
+              <td class="scen-profit">$116K</td>
+              <td style="font-family:var(--font-mono);font-size:11px;color:var(--teal);">41%</td>
+            </tr>
+            <tr>
+              <td><div class="scen-name" style="color:var(--teal);">Optimistic (Sell-Out)</div></td>
+              <td style="font-family:var(--font-mono);font-size:11px;color:var(--teal);">1,500 (100%)</td>
+              <td style="font-family:var(--font-mono);font-size:11px;color:var(--teal);">$146K</td>
+              <td class="scen-revenue" style="color:var(--teal);">$328K</td>
+              <td style="font-family:var(--font-display);font-size:20px;color:var(--blood);">$168K</td>
+              <td class="scen-profit" style="color:var(--teal);font-size:24px;">$160K</td>
+              <td style="font-family:var(--font-mono);font-size:11px;color:var(--teal);">49%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- =======================================
+         MULTI-CITY EXPANSION
+         ======================================= -->
+    <div class="tab-page" id="tab-expansion">
+      <div class="pg-hd">
+        <div>
+          <div class="pg-eyebrow">Growth Strategy</div>
+          <div class="pg-title">MULTI-CITY<em>EXPANSION</em></div>
+          <p class="pg-sub">Year 1 proves the model in Wilmington. Year 2 scales to NYC + Atlanta. Year 3 goes national — Chicago, Houston, LA. Data from every phase drives every decision.</p>
+        </div>
+        <div class="pg-actions">
+          <button class="btn btn-ghost">Investor Brief ↓</button>
+          <button class="btn btn-gold" onclick="showToast('🌎 Expansion deck shared with investors')">Share Expansion Plan</button>
+        </div>
+      </div>
+
+      <div class="city-expansion-grid">
+        <!-- YEAR 1 -->
+        <div class="city-card flagship">
+          <div class="city-card-banner" style="background:linear-gradient(135deg,rgba(240,180,41,0.12),rgba(232,57,14,0.08));">
+            <div class="city-banner-text">DE</div>
+            <div class="city-year-badge" style="background:var(--gold-d);color:var(--gold);">2026</div>
+            <div class="city-status-badge" style="background:var(--gold-d);color:var(--gold);">🏆 Flagship Year 1</div>
+          </div>
+          <div class="city-card-body">
+            <div class="city-name">Wilmington</div>
+            <div class="city-state">Delaware · East Coast Foundation</div>
+            <div class="city-stats">
+              <div><div class="city-stat-val" style="color:var(--gold);">1,500</div><div class="city-stat-lbl">Capacity</div></div>
+              <div><div class="city-stat-val" style="color:var(--blood);">94</div><div class="city-stat-lbl">Venue Score</div></div>
+              <div><div class="city-stat-val" style="color:var(--gold);">$116K</div><div class="city-stat-lbl">Proj. Profit</div></div>
+              <div><div class="city-stat-val" style="color:var(--teal);">Low</div><div class="city-stat-lbl">Cost Index</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- YEAR 2A -->
+        <div class="city-card planning">
+          <div class="city-card-banner" style="background:linear-gradient(135deg,rgba(232,57,14,0.08),transparent);">
+            <div class="city-banner-text">NYC</div>
+            <div class="city-year-badge" style="background:var(--blood-d);color:var(--blood);">2027</div>
+            <div class="city-status-badge" style="background:var(--blood-d);color:var(--blood);">Year 2 Target</div>
+          </div>
+          <div class="city-card-body">
+            <div class="city-name">New York</div>
+            <div class="city-state">New York · Premium Market</div>
+            <div class="city-stats">
+              <div><div class="city-stat-val" style="color:var(--off);">3,000+</div><div class="city-stat-lbl">Capacity</div></div>
+              <div><div class="city-stat-val" style="color:var(--off);">91</div><div class="city-stat-lbl">Venue Score</div></div>
+              <div><div class="city-stat-val" style="color:var(--off);">$280K</div><div class="city-stat-lbl">Proj. Profit</div></div>
+              <div><div class="city-stat-val" style="color:var(--blood);">Very High</div><div class="city-stat-lbl">Cost Index</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- YEAR 2B -->
+        <div class="city-card planning">
+          <div class="city-card-banner" style="background:linear-gradient(135deg,rgba(0,201,167,0.08),transparent);">
+            <div class="city-banner-text">ATL</div>
+            <div class="city-year-badge" style="background:var(--teal-d);color:var(--teal);">2027</div>
+            <div class="city-status-badge" style="background:var(--teal-d);color:var(--teal);">Year 2 Target</div>
+          </div>
+          <div class="city-card-body">
+            <div class="city-name">Atlanta</div>
+            <div class="city-state">Georgia · Southern Command</div>
+            <div class="city-stats">
+              <div><div class="city-stat-val" style="color:var(--off);">4,000</div><div class="city-stat-lbl">Capacity</div></div>
+              <div><div class="city-stat-val" style="color:var(--off);">86</div><div class="city-stat-lbl">Venue Score</div></div>
+              <div><div class="city-stat-val" style="color:var(--off);">$220K</div><div class="city-stat-lbl">Proj. Profit</div></div>
+              <div><div class="city-stat-val" style="color:var(--teal);">Medium</div><div class="city-stat-lbl">Cost Index</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- YEAR 3+ -->
+        <div class="city-card vision">
+          <div class="city-card-banner" style="background:rgba(255,255,255,0.01);">
+            <div class="city-banner-text">CHI</div>
+            <div class="city-year-badge" style="background:rgba(90,87,112,0.2);color:var(--muted);">2028</div>
+            <div class="city-status-badge" style="background:rgba(90,87,112,0.2);color:var(--muted);">Year 3 Vision</div>
+          </div>
+          <div class="city-card-body">
+            <div class="city-name" style="color:var(--muted);">Chicago</div>
+            <div class="city-state">Illinois · Midwest Expansion</div>
+            <div class="city-stats">
+              <div><div class="city-stat-val" style="color:var(--dim);">4,500</div><div class="city-stat-lbl">Capacity</div></div>
+              <div><div class="city-stat-val" style="color:var(--dim);">85</div><div class="city-stat-lbl">Venue Score</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="city-card vision">
+          <div class="city-card-banner" style="background:rgba(255,255,255,0.01);">
+            <div class="city-banner-text">HOU</div>
+            <div class="city-year-badge" style="background:rgba(90,87,112,0.2);color:var(--muted);">2028</div>
+            <div class="city-status-badge" style="background:rgba(90,87,112,0.2);color:var(--muted);">Year 3 Vision</div>
+          </div>
+          <div class="city-card-body">
+            <div class="city-name" style="color:var(--muted);">Houston</div>
+            <div class="city-state">Texas · Southern Expansion</div>
+            <div class="city-stats">
+              <div><div class="city-stat-val" style="color:var(--dim);">3,500</div><div class="city-stat-lbl">Capacity</div></div>
+              <div><div class="city-stat-val" style="color:var(--dim);">77</div><div class="city-stat-lbl">Venue Score</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="city-card vision">
+          <div class="city-card-banner" style="background:rgba(255,255,255,0.01);">
+            <div class="city-banner-text">LA</div>
+            <div class="city-year-badge" style="background:rgba(90,87,112,0.2);color:var(--muted);">2028+</div>
+            <div class="city-status-badge" style="background:rgba(90,87,112,0.2);color:var(--muted);">National Scale</div>
+          </div>
+          <div class="city-card-body">
+            <div class="city-name" style="color:var(--muted);">Los Angeles</div>
+            <div class="city-state">California · West Coast Flagship</div>
+            <div class="city-stats">
+              <div><div class="city-stat-val" style="color:var(--dim);">5,000+</div><div class="city-stat-lbl">Capacity</div></div>
+              <div><div class="city-stat-val" style="color:var(--dim);">TBD</div><div class="city-stat-lbl">Venue Score</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REVENUE PROJECTION BY YEAR -->
+      <div class="card">
+        <div class="card-hd"><div class="card-title">📈 Multi-Year Revenue Projection</div></div>
+        <div class="card-body">
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center;">
+            <div style="padding:20px;background:var(--gold-d);border:1px solid rgba(240,180,41,0.2);border-radius:8px;">
+              <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Year 1 · 2026</div>
+              <div style="font-family:var(--font-display);font-size:38px;color:var(--gold);line-height:1;margin-bottom:4px;">$284K</div>
+              <div style="font-size:11px;color:var(--muted);">1 city · Wilmington</div>
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--teal);margin-top:8px;">$116K profit</div>
+            </div>
+            <div style="padding:20px;background:var(--panel);border:1px solid var(--rim);border-radius:8px;">
+              <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Year 2 · 2027</div>
+              <div style="font-family:var(--font-display);font-size:38px;color:var(--off);line-height:1;margin-bottom:4px;">$1.2M</div>
+              <div style="font-size:11px;color:var(--muted);">3 cities · Scale</div>
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--teal);margin-top:8px;">$480K profit est.</div>
+            </div>
+            <div style="padding:20px;background:var(--panel);border:1px solid var(--rim);border-radius:8px;">
+              <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Year 3 · 2028</div>
+              <div style="font-family:var(--font-display);font-size:38px;color:var(--off);line-height:1;margin-bottom:4px;">$3.8M</div>
+              <div style="font-size:11px;color:var(--muted);">5+ cities · National</div>
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--teal);margin-top:8px;">$1.5M profit est.</div>
+            </div>
+            <div style="padding:20px;background:var(--panel);border:1px solid var(--rim);border-radius:8px;">
+              <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Year 4 · 2029</div>
+              <div style="font-family:var(--font-display);font-size:38px;color:var(--off);line-height:1;margin-bottom:4px;">$10M+</div>
+              <div style="font-size:11px;color:var(--muted);">Rolling Loud tier</div>
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--teal);margin-top:8px;">Nation-scale brand</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================
+         FULL ROADMAP
+         ======================================= -->
+    <div class="tab-page" id="tab-roadmap">
+      <div class="pg-hd">
+        <div>
+          <div class="pg-eyebrow">Underground Sound</div>
+          <div class="pg-title">FULL PLATFORM<em>ROADMAP</em></div>
+        </div>
+      </div>
+      <div class="roadmap-timeline">
+        <div class="timeline-item done">
+          <div class="tl-card done">
+            <div class="tl-card-hd">
+              <div class="tl-phase-num">01</div>
+              <div class="tl-card-hd-info">
+                <div class="tl-phase-title">DIGITAL MEDIA INFRASTRUCTURE</div>
+                <div class="tl-phase-sub">Editorial homepage · Freshman List · Artist profiles · SEO authority · Owned audience — COMPLETE</div>
+              </div>
+              <span class="chip chip-gold">LIVE ✓</span>
+            </div>
+            <div class="tl-card-body">
+              <div class="tl-deliverable"><span>✓</span> Full editorial media hub (XXL/Complex level)</div>
+              <div class="tl-deliverable"><span>✓</span> 2025 Freshman Class — 10 artists</div>
+              <div class="tl-deliverable"><span>✓</span> Videos, events, and submit sections</div>
+              <div class="tl-deliverable"><span>✓</span> SEO infrastructure + audience data capture</div>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item done">
+          <div class="tl-card done">
+            <div class="tl-card-hd">
+              <div class="tl-phase-num">02</div>
+              <div class="tl-card-hd-info">
+                <div class="tl-phase-title">PROMOTION ENGINE & ANALYTICS</div>
+                <div class="tl-phase-sub">Campaign tracker · Platform analytics · Sponsor dashboard · Artist funnel — COMPLETE</div>
+              </div>
+              <span class="chip chip-gold">LIVE ✓</span>
+            </div>
+            <div class="tl-card-body">
+              <div class="tl-deliverable"><span>✓</span> Full campaign submission + tracking system</div>
+              <div class="tl-deliverable"><span>✓</span> Twitter/Instagram/YouTube analytics dashboard</div>
+              <div class="tl-deliverable"><span>✓</span> Artist funnel (124 submissions → 27 completed)</div>
+              <div class="tl-deliverable"><span>✓</span> Sponsor reporting ($4,820 MRR Phase 2)</div>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item done">
+          <div class="tl-card done">
+            <div class="tl-card-hd">
+              <div class="tl-phase-num">03</div>
+              <div class="tl-card-hd-info">
+                <div class="tl-phase-title">COMMUNITY INTEGRATION & REWARDS</div>
+                <div class="tl-phase-sub">Discord partnerships · Ambassador system · Reputation scoring · Referral rewards — COMPLETE</div>
+              </div>
+              <span class="chip chip-gold">LIVE ✓</span>
+            </div>
+            <div class="tl-card-body">
+              <div class="tl-deliverable"><span>✓</span> 18 Discord partner servers (40K+ combined reach)</div>
+              <div class="tl-deliverable"><span>✓</span> 94 active ambassadors across 3 tiers</div>
+              <div class="tl-deliverable"><span>✓</span> XP reputation system + badge ecosystem</div>
+              <div class="tl-deliverable"><span>✓</span> Referral rewards ($5/referral, 10% commission)</div>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-item active">
+          <div class="tl-card active">
+            <div class="tl-card-hd">
+              <div class="tl-phase-num">04</div>
+              <div class="tl-card-hd-info">
+                <div class="tl-phase-title">FLAGSHIP FESTIVAL EVENT</div>
+                <div class="tl-phase-sub">Venue locked · Pre-sales live · Sponsors secured · Lineup in progress — YEAR 1 TARGET: NOV 2026</div>
+              </div>
+              <span class="chip chip-blood">IN PROGRESS</span>
+            </div>
+            <div class="tl-card-body">
+              <div class="tl-deliverable">▶ Wilmington, DE locked as Year 1 venue (Score: 94)</div>
+              <div class="tl-deliverable">▶ 412 pre-sale signups · $48K sponsors confirmed</div>
+              <div class="tl-deliverable">▶ 6/12 lineup slots filled · Headliner negotiating</div>
+              <div class="tl-deliverable">▶ 3-year expansion: NYC + ATL (2027) → National (2028)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ── TAB NAVIGATION ─────────────────────────────────────────
+const pageTitles = {
+  overview:'MISSION CONTROL', venue:'VENUE INTELLIGENCE',
+  ticketing:'TICKETING ENGINE', lineup:'LINEUP BUILDER',
+  production:'PRODUCTION PLAN', sponsors:'SPONSOR DECK',
+  pnl:'P&L PROJECTIONS', expansion:'MULTI-CITY EXPANSION', roadmap:'ROADMAP'
+};
+
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const page = document.getElementById('tab-' + id);
+  if(page) page.classList.add('active');
+  if(btn) btn.classList.add('active');
+  document.getElementById('page-title').textContent = pageTitles[id] || id.toUpperCase();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// ── STAGE SWITCHER ─────────────────────────────────────────
+function switchStage(stage, btn) {
+  document.querySelectorAll('.stage-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  ['main','second','third'].forEach(s => {
+    const el = document.getElementById('stage-' + s);
+    if(el) el.style.display = s === stage ? '' : 'none';
+  });
+}
+
+// ── PRESALE BAR ANIMATION ──────────────────────────────────
+setTimeout(() => {
+  const bar = document.getElementById('presale-bar');
+  if(bar) bar.style.width = '27.5%';
+}, 500);
+
+// ── LIVE COUNTDOWN ─────────────────────────────────────────
+(function() {
+  const target = new Date('2026-11-14T19:00:00');
+  function update() {
+    const diff = target - new Date();
+    if(diff > 0) {
+      const days = Math.floor(diff / 86400000);
+      const el = document.getElementById('countdown-val');
+      if(el) el.textContent = days + 'd';
+    }
+  }
+  update();
+  setInterval(update, 60000);
+})();
+
+// ── TOAST ──────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3800);
+}
+
+// ── HEATBAR ANIMATIONS ────────────────────────────────────
+const barObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.querySelectorAll('.heatbar-fill[data-w]').forEach(b => {
+        const w = b.getAttribute('data-w');
+        b.style.width = '0%';
+        setTimeout(() => b.style.width = w + '%', 200);
+      });
+      barObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.card, .venue-map-placeholder').forEach(c => barObs.observe(c));
+</script>
+</body>
+</html>
