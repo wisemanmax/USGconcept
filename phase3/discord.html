@@ -2,19 +2,52 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.svg">
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://undergroundsound.co/phase3/discord.html">
+<meta property="og:image" content="https://undergroundsound.co/og-image.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Underground Sound">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@therealugs">
+<meta name="twitter:image" content="https://undergroundsound.co/og-image.svg">
+<meta name="theme-color" content="#d4ff00">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Discord Partners — UGS Phase 3</title>
+<title>Discord Partners — UGS Phase 3 — Underground Sound</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/phase3.css">
+<link rel="stylesheet" href="/assets/css/phase3.css">
 <style>
 .tab-page { display: block !important; }
 .sidebar .nav-btn { text-decoration: none; display: flex; width: 100%; }
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Underground Sound",
+  "url": "https://undergroundsound.co",
+  "logo": "https://undergroundsound.co/favicon.svg",
+  "description": "Underground Sound is the media hub for underground artists — promotion, Freshman List, cyphers, and Phase 4 flagship festival.",
+  "sameAs": [
+    "https://twitter.com/therealugs",
+    "https://instagram.com/undergroundsound",
+    "https://youtube.com/@therealugs"
+  ],
+  "foundingDate": "2020",
+  "foundingLocation": {"@type": "Place", "name": "Delaware, USA"}
+}
+</script>
 </head>
 <body>
 <!-- NETWORK CANVAS -->
 <canvas id="network-canvas"></canvas>
 
+<div class="phase-drawer-overlay" id="phase-drawer-overlay"></div>
 <div class="app-shell">
   <aside class="sidebar">
     <div class="sidebar-brand">
@@ -34,12 +67,12 @@
       </div>
     </div>
     <nav>
-      <div class="nav-group"><div class="nav-group-label">Community Hub</div><a href="overview.html" class="nav-btn"><span class="nav-icon">🌐</span> Overview</a><a href="discord.html" class="nav-btn active"><span class="nav-icon">💬</span> Discord Partners<span class="nav-pip pip-neo">18</span></a><a href="feed.html" class="nav-btn"><span class="nav-icon">⚡</span> Activity Feed<span class="nav-pip pip-violet">LIVE</span></a></div><div class="nav-group"><div class="nav-group-label">Ambassador Program</div><a href="ambassadors.html" class="nav-btn"><span class="nav-icon">⭐</span> Ambassadors<span class="nav-pip pip-amber">94</span></a><a href="reputation.html" class="nav-btn"><span class="nav-icon">🏆</span> Reputation System</a><a href="referrals.html" class="nav-btn"><span class="nav-icon">🔗</span> Referral Rewards<span class="nav-pip pip-neo">+$</span></a></div><div class="nav-group"><div class="nav-group-label">Exclusive Access</div><a href="events.html" class="nav-btn"><span class="nav-icon">🎟️</span> Event Priority<span class="nav-pip pip-rose">HOT</span></a><a href="perks.html" class="nav-btn"><span class="nav-icon">🎁</span> Perks & Rewards</a></div><div class="nav-group"><div class="nav-group-label">Platform</div><a href="roadmap.html" class="nav-btn"><span class="nav-icon">🗺️</span> Roadmap</a></div>
+      <div class="nav-group"><div class="nav-group-label">Community Hub</div><a href="/phase3/overview.html" class="nav-btn"><span class="nav-icon">🌐</span> Overview</a><a href="/phase3/discord.html" class="nav-btn active"><span class="nav-icon">💬</span> Discord Partners<span class="nav-pip pip-neo">18</span></a><a href="/phase3/feed.html" class="nav-btn"><span class="nav-icon">⚡</span> Activity Feed<span class="nav-pip pip-violet">LIVE</span></a></div><div class="nav-group"><div class="nav-group-label">Ambassador Program</div><a href="/phase3/ambassadors.html" class="nav-btn"><span class="nav-icon">⭐</span> Ambassadors<span class="nav-pip pip-amber">94</span></a><a href="/phase3/reputation.html" class="nav-btn"><span class="nav-icon">🏆</span> Reputation System</a><a href="/phase3/referrals.html" class="nav-btn"><span class="nav-icon">🔗</span> Referral Rewards<span class="nav-pip pip-neo">+$</span></a></div><div class="nav-group"><div class="nav-group-label">Exclusive Access</div><a href="/phase3/events.html" class="nav-btn"><span class="nav-icon">🎟️</span> Event Priority<span class="nav-pip pip-rose">HOT</span></a><a href="/phase3/perks.html" class="nav-btn"><span class="nav-icon">🎁</span> Perks & Rewards</a></div><div class="nav-group"><div class="nav-group-label">Platform</div><a href="/phase3/roadmap.html" class="nav-btn"><span class="nav-icon">🗺️</span> Roadmap</a></div>
       <div class="nav-group">
         <div class="nav-group-label">Navigate</div>
-        <a href="../index.html" class="nav-btn" style="text-decoration:none;"><span class="nav-icon">↗</span> Phase 1: Media Hub</a>
-        <a href="../phase2/dashboard.html" class="nav-btn" style="text-decoration:none;"><span class="nav-icon">←</span> Phase 2: Analytics</a>
-        <a href="../phase4/mission-control.html" class="nav-btn" style="text-decoration:none;"><span class="nav-icon">→</span> Phase 4: Festival</a>
+        <a href="/" class="nav-btn" style="text-decoration:none;"><span class="nav-icon">↗</span> Phase 1: Media Hub</a>
+        <a href="/phase2/dashboard.html" class="nav-btn" style="text-decoration:none;"><span class="nav-icon">←</span> Phase 2: Analytics</a>
+        <a href="/phase4/mission-control.html" class="nav-btn" style="text-decoration:none;"><span class="nav-icon">→</span> Phase 4: Festival</a>
       </div>
     </nav>
     <div class="sidebar-user">
@@ -53,6 +86,10 @@
     </div>
   </aside>
   <header class="top-bar">
+    <button class="phase-mobile-toggle" id="phase-sidebar-toggle" aria-label="Open navigation">
+  <div class="toggle-bars"><span></span><span></span><span></span></div>
+  <span>Menu</span>
+</button>
     <div class="top-bar-title" id="page-title">DISCORD PARTNERS</div>
     <div class="top-bar-search">
       <span style="color:var(--muted);font-size:13px;">🔍</span>
@@ -62,8 +99,8 @@
       <div class="cs-live"></div> 341 Online
     </div>
     <div class="top-notif">🔔<div class="notif-dot"></div></div>
-    <a href="../phase2/dashboard.html" class="ph-nav-btn">← Phase 2</a>
-    <a href="../index.html" class="ph-nav-btn" style="color:var(--violet-l);border-color:rgba(139,92,246,0.3);">Phase 1 Site ↗</a>
+    <a href="/phase2/dashboard.html" class="ph-nav-btn">← Phase 2</a>
+    <a href="/" class="ph-nav-btn" style="color:var(--violet-l);border-color:rgba(139,92,246,0.3);">Phase 1 Site ↗</a>
   </header>
   <main class="main">
         <div class="tab-page active" id="tab-discord">
@@ -75,7 +112,7 @@
         </div>
         <div class="page-actions">
           <button class="btn btn-ghost">Partnership Brief ↓</button>
-          <button class="btn btn-violet" onclick="showToast('🎉 Partner application sent!')">+ Apply as Partner</button>
+          <button class="btn btn-violet" onclick="document.getElementById('partner-apply-modal').style.display='flex'">+ Apply as Partner</button>
         </div>
       </div>
 
@@ -180,7 +217,7 @@
           </div>
         </div>
 
-        <div class="dc-card" style="border-style:dashed;opacity:0.6;cursor:pointer;" onclick="showToast('Partner application form coming soon!')">
+        <div class="dc-card" style="border-style:dashed;opacity:0.6;cursor:pointer;" onclick="document.getElementById('partner-apply-modal').style.display='flex'">
           <div class="dc-card-head" style="justify-content:center;flex-direction:column;align-items:center;gap:6px;padding:32px 20px;">
             <div style="font-size:32px;">+</div>
             <div class="dc-card-name" style="text-align:center;color:var(--muted);">Apply for Partnership</div>
@@ -348,6 +385,22 @@ const barObs = new IntersectionObserver(entries => {
 document.querySelectorAll('.card').forEach(c => barObs.observe(c));
 
 </script>
-<script src="../assets/js/responsive.js"></script>
+
+<div id="partner-apply-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:1000;align-items:center;justify-content:center;padding:20px;" onclick="if(event.target===this)this.style.display='none'">
+  <div style="background:var(--card,#14141c);border:1px solid var(--border,#222230);max-width:480px;width:100%;padding:36px;position:relative;">
+    <button onclick="document.getElementById('partner-apply-modal').style.display='none'" style="position:absolute;top:16px;right:16px;background:none;border:none;color:var(--muted,#5a5a70);font-size:18px;cursor:pointer;">✕</button>
+    <div style="font-family:var(--font-mono,monospace);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--muted,#5a5a70);margin-bottom:12px;">Discord Partner Application</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:2px;margin-bottom:20px;">APPLY AS PARTNER</div>
+    <div style="display:flex;flex-direction:column;gap:14px;" id="paf">
+      <div><div style="font-family:var(--font-mono,monospace);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted,#5a5a70);margin-bottom:6px;">Server Name *</div><input type="text" id="pa-server" placeholder="Your Discord server name" style="width:100%;background:#101016;border:1px solid #222230;color:#fff;padding:10px 14px;font-size:13px;outline:none;"></div>
+      <div><div style="font-family:var(--font-mono,monospace);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted,#5a5a70);margin-bottom:6px;">Member Count</div><input type="text" id="pa-members" placeholder="e.g. 2,500 members" style="width:100%;background:#101016;border:1px solid #222230;color:#fff;padding:10px 14px;font-size:13px;outline:none;"></div>
+      <div><div style="font-family:var(--font-mono,monospace);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted,#5a5a70);margin-bottom:6px;">Contact / Discord Handle *</div><input type="text" id="pa-contact" placeholder="YourName#0000 or @handle" style="width:100%;background:#101016;border:1px solid #222230;color:#fff;padding:10px 14px;font-size:13px;outline:none;"></div>
+      <div><div style="font-family:var(--font-mono,monospace);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted,#5a5a70);margin-bottom:6px;">Focus / Genre</div><input type="text" id="pa-genre" placeholder="e.g. Melodic Trap, Drill, General Hip-Hop" style="width:100%;background:#101016;border:1px solid #222230;color:#fff;padding:10px 14px;font-size:13px;outline:none;"></div>
+      <button onclick="const s=document.getElementById('pa-server').value,c=document.getElementById('pa-contact').value;if(!s||!c){alert('Please fill in Server Name and Contact.');return;}document.getElementById('paf').innerHTML='<div style='padding:20px;background:rgba(0,255,136,.06);border:1px solid rgba(0,255,136,.2);border-left:2px solid #00ff88;'><div style='font-family:Bebas Neue,sans-serif;font-size:22px;letter-spacing:1px;color:#00ff88;margin-bottom:6px;'>✓ APPLICATION SENT</div><div style='font-size:13px;color:#c8c8c0;line-height:1.6;font-weight:300;'>We review partner applications within 48 hours. You'll hear back via Discord DM or email.</div></div>'" style="background:#8b5cf6;color:#fff;border:none;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:3px;text-transform:uppercase;padding:14px;cursor:pointer;">Submit Application →</button>
+    </div>
+  </div>
+</div>
+<script src="/assets/js/ugs-enhance.js"></script>
+<button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
 </body>
 </html>
