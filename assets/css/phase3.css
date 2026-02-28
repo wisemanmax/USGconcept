@@ -262,6 +262,18 @@ a { text-decoration: none; color: inherit; }
   color: var(--muted); cursor: pointer; transition: all 0.2s; white-space:nowrap;
 }
 .ph-nav-btn:hover { border-color: var(--violet); color: var(--violet-l); }
+.menu-toggle {
+  display: none;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border2);
+  background: var(--panel);
+  color: var(--off);
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  cursor: pointer;
+}
 
 /* ============================================================
    MAIN
@@ -988,8 +1000,23 @@ a { text-decoration: none; color: inherit; }
 }
 @media (max-width:768px) {
   .app-shell { grid-template-columns: 1fr; grid-template-areas:"header""main"; }
-  .sidebar { display:none; }
+  .app-shell::after {
+    content:'';
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    z-index: 90;
+  }
+  .app-shell.sidebar-open::after { opacity: 1; pointer-events: auto; }
+  .sidebar { display:flex; transform: translateX(-105%); transition: transform 0.25s ease; z-index:110; }
+  .app-shell.sidebar-open .sidebar { transform: translateX(0); }
   .main, .top-bar { margin-left: 0 !important; }
+  .top-bar { padding: 0 12px; gap: 10px; overflow-x: auto; white-space: nowrap; }
+  .menu-toggle { display: inline-flex; }
+  .top-bar-search { display:none; }
   .kpi-grid { grid-template-columns: 1fr 1fr; }
   .discord-grid { grid-template-columns: 1fr; }
   .badges-grid { grid-template-columns: repeat(2,1fr); }

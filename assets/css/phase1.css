@@ -222,6 +222,19 @@ img { display: block; width: 100%; }
 }
 .nav-search input::placeholder { color: var(--muted); }
 .nav-search-icon { color: var(--muted); font-size: 14px; }
+.mobile-nav-toggle {
+  display: none;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--border2);
+  background: var(--surface);
+  color: var(--off);
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
 
 /* ============================================================
    BREAKING TICKER
@@ -1150,8 +1163,22 @@ footer {
 }
 @media (max-width: 640px) {
   .container { padding: 0 20px; }
-  .nav-inner { padding: 0 20px; }
-  .nav-menu { display: none; }
+  .nav-inner { padding: 10px 0; height: auto; flex-wrap: wrap; row-gap: 10px; }
+  .mobile-nav-toggle { display: inline-flex; }
+  .nav-logo-wrap { border-right: none; padding-right: 0; }
+  .nav-menu,
+  .nav-actions {
+    display: none;
+    width: 100%;
+    padding: 12px 0 0;
+    border-top: 1px solid var(--border);
+  }
+  .primary-nav.mobile-open .nav-menu,
+  .primary-nav.mobile-open .nav-actions { display: flex; }
+  .primary-nav.mobile-open .nav-menu { flex-direction: column; gap: 2px; padding-left: 0; }
+  .primary-nav.mobile-open .nav-menu > li > a { padding: 10px 0; }
+  .primary-nav.mobile-open .nav-actions { border-left: none; padding-left: 0; flex-direction: column; align-items: stretch; }
+  .primary-nav.mobile-open .nav-search { width: 100%; }
   .freshman-grid { grid-template-columns: repeat(2, 1fr); }
   .fresh-card.featured { grid-column: span 2; }
   .events-grid { grid-template-columns: 1fr; }
