@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — UGS Phase 2</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/phase2.css">
+<style>
+.tab-page { display: block !important; }
+.sidebar .nav-item { text-decoration: none; display: flex; }
+</style>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-sq"><span>UGS</span></div>
+      <div class="logo-wordmark">
+        <span class="logo-top">UNDERGROUND</span>
+        <span class="logo-bottom">Phase 2 Platform</span>
+      </div>
+    </div>
+    <div class="sidebar-phase">
+      <span class="phase-label">Current Phase</span>
+      <span class="phase-val">02</span>
+    </div>
+    <nav>
+      <div class="nav-section">
+        <div class="nav-section-label">Overview</div>
+        <a href="/phase2/dashboard.html" class="nav-item active"><span class="nav-icon">⚡</span> Dashboard</a><a href="/phase2/analytics.html" class="nav-item"><span class="nav-icon">📊</span> Platform Analytics</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-label">Promotion Engine</div>
+        <a href="/phase2/campaigns.html" class="nav-item"><span class="nav-icon">🚀</span> Campaigns<span class="nav-badge">12</span></a><a href="/phase2/submit.html" class="nav-item"><span class="nav-icon">📬</span> Submit Request<span class="nav-badge green">NEW</span></a><a href="/phase2/funnel.html" class="nav-item"><span class="nav-icon">🎯</span> Artist Funnel</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-label">Revenue</div>
+        <a href="/phase2/sponsors.html" class="nav-item"><span class="nav-icon">💰</span> Sponsors<span class="nav-badge">3</span></a><a href="/phase2/reports.html" class="nav-item"><span class="nav-icon">📋</span> Reports</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-label">Platform Roadmap</div>
+        <a href="/phase2/roadmap.html" class="nav-item"><span class="nav-icon">🗺️</span> Phase Roadmap</a>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="phase-nav-strip" style="margin:0 -16px;padding:8px 16px;">
+        <a href="/" class="phase-nav-item" style="display:block;margin-bottom:4px;">← Phase 1: Media Hub</a>
+        <a href="/phase3/overview.html" class="phase-nav-item" style="display:block;margin-bottom:4px;">→ Phase 3: Community</a>
+        <a href="/phase4/mission-control.html" class="phase-nav-item" style="display:block;">→ Phase 4: Festival</a>
+      </div>
+      <div class="user-card" style="margin-top:12px;">
+        <div class="user-avatar">UGS</div>
+        <div class="user-info">
+          <div class="user-name">UGS Admin</div>
+          <div class="user-role">Platform Owner</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <header class="top-header">
+    <div class="header-title" id="header-title">DASHBOARD</div>
+    <div class="header-date" id="live-date"></div>
+    <div class="header-live"><div class="live-dot"></div> Live Data</div>
+    <div class="header-notif">🔔<div class="notif-count">5</div></div>
+    <a href="/" class="btn btn-ghost" style="font-size:10px;">← Phase 1 Site</a>
+  </header>
+  <main class="main-content">
+        <div class="tab-page active" id="tab-overview">
+      <div class="dash-welcome">
+        <div class="dash-welcome-text">
+          <div class="welcome-eyebrow">Underground Sound — Phase 2 Engine</div>
+          <div class="welcome-title">PROMOTION <span>HQ</span></div>
+          <div class="welcome-sub">// Real-time campaign data · Artist funnel · Platform reach</div>
+        </div>
+        <div class="dash-actions">
+          <button class="btn btn-ghost" onclick="window.location='/phase2/analytics.html'">View Analytics</button>
+          <button class="btn btn-acid" onclick="window.location='/phase2/submit.html'">+ New Campaign</button>
+        </div>
+      </div>
+
+      <!-- KPI ROW -->
+      <div class="kpi-row">
+        <div class="kpi-card k-acid">
+          <div class="kpi-platform"><div class="kpi-dot"></div><span>Twitter / X</span></div>
+          <div class="kpi-value">92K</div>
+          <div class="kpi-label">Total Followers</div>
+          <div class="kpi-delta delta-up">↑ +2.4K this month</div>
+        </div>
+        <div class="kpi-card k-fire">
+          <div class="kpi-platform"><div class="kpi-dot"></div><span>Peak Impressions</span></div>
+          <div class="kpi-value">1.8M</div>
+          <div class="kpi-label">Single Post Record</div>
+          <div class="kpi-delta delta-up">↑ New record set Feb 2025</div>
+        </div>
+        <div class="kpi-card k-cyan">
+          <div class="kpi-platform"><div class="kpi-dot"></div><span>Avg Per Post</span></div>
+          <div class="kpi-value">177K</div>
+          <div class="kpi-label">Average Views</div>
+          <div class="kpi-delta delta-up">↑ +12% vs last month</div>
+        </div>
+        <div class="kpi-card k-gold">
+          <div class="kpi-platform"><div class="kpi-dot"></div><span>Active Campaigns</span></div>
+          <div class="kpi-value">12</div>
+          <div class="kpi-label">Running Now</div>
+          <div class="kpi-delta delta-flat">→ 4 finishing this week</div>
+        </div>
+        <div class="kpi-card k-purple">
+          <div class="kpi-platform"><div class="kpi-dot"></div><span>Pipeline</span></div>
+          <div class="kpi-value">47</div>
+          <div class="kpi-label">Artists in Funnel</div>
+          <div class="kpi-delta delta-up">↑ +8 new submissions</div>
+        </div>
+      </div>
+
+      <!-- CHARTS + BREAKDOWN -->
+      <div class="charts-row">
+        <!-- LINE CHART -->
+        <div class="panel">
+          <div class="panel-head">
+            <div class="panel-title"><strong>Impression Trend</strong> — Last 6 Months</div>
+            <select style="background:var(--panel);border:1px solid var(--border);color:var(--muted);font-family:var(--font-mono);font-size:8px;letter-spacing:2px;padding:4px 8px;outline:none;text-transform:uppercase;">
+              <option>All Platforms</option>
+              <option>Twitter</option>
+              <option>Instagram</option>
+              <option>YouTube</option>
+            </select>
+          </div>
+          <div class="panel-body">
+            <div class="chart-area" style="position:relative;">
+              <div class="chart-y-lines">
+                <div class="chart-y-line"></div>
+                <div class="chart-y-line"></div>
+                <div class="chart-y-line"></div>
+                <div class="chart-y-line"></div>
+              </div>
+              <svg class="chart-svg" viewBox="0 0 600 180" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="acidGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#c8ff00" stop-opacity="0.3"/>
+                    <stop offset="100%" stop-color="#c8ff00" stop-opacity="0"/>
+                  </linearGradient>
+                  <linearGradient id="fireGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#ff4400" stop-opacity="0.2"/>
+                    <stop offset="100%" stop-color="#ff4400" stop-opacity="0"/>
+                  </linearGradient>
+                  <linearGradient id="cyanGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#00d4ff" stop-opacity="0.2"/>
+                    <stop offset="100%" stop-color="#00d4ff" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <!-- Twitter area -->
+                <path d="M0,140 C80,130 130,110 180,90 C230,70 280,75 330,55 C380,35 430,20 480,10 C510,5 550,8 600,0" fill="url(#acidGrad)" class="chart-area-path"/>
+                <!-- Twitter line -->
+                <path d="M0,140 C80,130 130,110 180,90 C230,70 280,75 330,55 C380,35 430,20 480,10 C510,5 550,8 600,0" class="chart-line-path" stroke="#c8ff00"/>
+                <!-- Instagram area -->
+                <path d="M0,155 C80,150 130,145 180,135 C230,125 280,120 330,110 C380,100 430,85 480,75 C510,68 550,60 600,50" fill="url(#fireGrad)" class="chart-area-path"/>
+                <!-- Instagram line -->
+                <path d="M0,155 C80,150 130,145 180,135 C230,125 280,120 330,110 C380,100 430,85 480,75 C510,68 550,60 600,50" class="chart-line-path" stroke="#ff4400" stroke-dasharray="5,3"/>
+                <!-- YouTube line -->
+                <path d="M0,165 C80,163 130,160 180,155 C230,150 280,142 330,135 C380,128 430,115 480,100 C510,92 550,82 600,70" class="chart-line-path" stroke="#00d4ff" stroke-dasharray="2,4"/>
+                <!-- Dot at peak -->
+                <circle cx="600" cy="0" r="4" fill="#c8ff00"/>
+                <circle cx="480" cy="10" r="3" fill="#c8ff00" opacity="0.6"/>
+              </svg>
+            </div>
+            <div class="chart-x-labels">
+              <span>SEP</span><span>OCT</span><span>NOV</span><span>DEC</span><span>JAN</span><span>FEB</span>
+            </div>
+            <div class="chart-legend">
+              <div class="legend-item"><div class="legend-line" style="background:var(--acid)"></div> Twitter</div>
+              <div class="legend-item"><div class="legend-line" style="background:var(--fire);opacity:.6;"></div> Instagram</div>
+              <div class="legend-item"><div class="legend-line" style="background:var(--cyan);opacity:.6;"></div> YouTube</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PLATFORM BREAKDOWN -->
+        <div class="panel">
+          <div class="panel-head">
+            <div class="panel-title"><strong>Platform Split</strong></div>
+            <button class="panel-action">Export ↗</button>
+          </div>
+          <div class="panel-body">
+            <div class="breakdown-list">
+              <div class="breakdown-item">
+                <div class="breakdown-top">
+                  <div class="breakdown-name"><span style="color:#1da1f2">𝕏</span> Twitter</div>
+                  <div class="breakdown-pct">58%</div>
+                </div>
+                <div class="breakdown-bar-track">
+                  <div class="breakdown-bar-fill" style="width:58%;background:var(--acid);" data-w="58"></div>
+                </div>
+                <div class="breakdown-sub">92K followers · 177K avg views</div>
+              </div>
+              <div class="breakdown-item">
+                <div class="breakdown-top">
+                  <div class="breakdown-name"><span style="color:#e1306c">📸</span> Instagram</div>
+                  <div class="breakdown-pct">24%</div>
+                </div>
+                <div class="breakdown-bar-track">
+                  <div class="breakdown-bar-fill" style="width:24%;background:var(--fire);" data-w="24"></div>
+                </div>
+                <div class="breakdown-sub">50K followers · Stories + Reels</div>
+              </div>
+              <div class="breakdown-item">
+                <div class="breakdown-top">
+                  <div class="breakdown-name"><span style="color:#ff4444">▶</span> YouTube</div>
+                  <div class="breakdown-pct">18%</div>
+                </div>
+                <div class="breakdown-bar-track">
+                  <div class="breakdown-bar-fill" style="width:18%;background:var(--cyan);" data-w="18"></div>
+                </div>
+                <div class="breakdown-sub">1.8M top video · Cyphers + Features</div>
+              </div>
+            </div>
+
+            <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border)">
+              <div class="breakdown-top" style="margin-bottom:12px;">
+                <div class="panel-title"><strong>Engagement Rates</strong></div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+                <div style="text-align:center;padding:12px;background:var(--panel);border:1px solid var(--border);">
+                  <div style="font-family:var(--font-display);font-size:24px;color:var(--acid);">4.2%</div>
+                  <div style="font-family:var(--font-mono);font-size:7px;color:var(--muted);letter-spacing:2px;margin-top:2px;">TWITTER</div>
+                </div>
+                <div style="text-align:center;padding:12px;background:var(--panel);border:1px solid var(--border);">
+                  <div style="font-family:var(--font-display);font-size:24px;color:var(--fire);">3.1%</div>
+                  <div style="font-family:var(--font-mono);font-size:7px;color:var(--muted);letter-spacing:2px;margin-top:2px;">INSTAGRAM</div>
+                </div>
+                <div style="text-align:center;padding:12px;background:var(--panel);border:1px solid var(--border);">
+                  <div style="font-family:var(--font-display);font-size:24px;color:var(--cyan);">6.8%</div>
+                  <div style="font-family:var(--font-mono);font-size:7px;color:var(--muted);letter-spacing:2px;margin-top:2px;">YOUTUBE</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 COL BOTTOM -->
+      <div class="three-col">
+        <!-- MINI FUNNEL -->
+        <div class="panel">
+          <div class="panel-head">
+            <div class="panel-title"><strong>Artist Funnel</strong> — This Month</div>
+            <button class="panel-action" onclick="window.location='/phase2/funnel.html'">Full View →</button>
+          </div>
+          <div class="panel-body" style="padding:12px 16px;">
+            <div class="funnel">
+              <div class="funnel-stage">
+                <div class="funnel-bar-wrap">
+                  <div class="funnel-bar" style="width:100%;background:rgba(200,255,0,0.15);border-left:2px solid var(--acid);">
+                    <span class="funnel-label">Submitted</span>
+                  </div>
+                </div>
+                <div class="funnel-count">124</div>
+              </div>
+              <div style="height:2px;"></div>
+              <div class="funnel-stage">
+                <div class="funnel-bar-wrap">
+                  <div class="funnel-bar" style="width:85%;background:rgba(255,183,0,0.12);border-left:2px solid var(--gold);">
+                    <span class="funnel-label">In Review</span>
+                  </div>
+                </div>
+                <div class="funnel-count">105</div>
+                <div class="funnel-rate">85%</div>
+              </div>
+              <div style="height:2px;"></div>
+              <div class="funnel-stage">
+                <div class="funnel-bar-wrap">
+                  <div class="funnel-bar" style="width:60%;background:rgba(0,212,255,0.1);border-left:2px solid var(--cyan);">
+                    <span class="funnel-label">Approved</span>
+                  </div>
+                </div>
+                <div class="funnel-count">74</div>
+                <div class="funnel-rate">60%</div>
+              </div>
+              <div style="height:2px;"></div>
+              <div class="funnel-stage">
+                <div class="funnel-bar-wrap">
+                  <div class="funnel-bar" style="width:38%;background:rgba(155,92,255,0.12);border-left:2px solid var(--purple);">
+                    <span class="funnel-label">Active</span>
+                  </div>
+                </div>
+                <div class="funnel-count">47</div>
+                <div class="funnel-rate">38%</div>
+              </div>
+              <div style="height:2px;"></div>
+              <div class="funnel-stage">
+                <div class="funnel-bar-wrap">
+                  <div class="funnel-bar" style="width:22%;background:rgba(255,68,0,0.1);border-left:2px solid var(--fire);">
+                    <span class="funnel-label">Completed</span>
+                  </div>
+                </div>
+                <div class="funnel-count">27</div>
+                <div class="funnel-rate">22%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RECENT ACTIVITY -->
+        <div class="panel">
+          <div class="panel-head">
+            <div class="panel-title"><strong>Activity Feed</strong></div>
+            <div class="live-dot"></div>
+          </div>
+          <div class="panel-body" style="padding: 0 16px;">
+            <div class="activity-list">
+              <div class="activity-item">
+                <div class="activity-icon">🔥</div>
+                <div class="activity-body">
+                  <div class="activity-text"><strong>2Slimey</strong> campaign hit 1.8M views</div>
+                  <div class="activity-meta">2 HOURS AGO · TWITTER</div>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-icon">📬</div>
+                <div class="activity-body">
+                  <div class="activity-text">New submission from <strong>Frost Divz</strong></div>
+                  <div class="activity-meta">4 HOURS AGO · FULL PACKAGE</div>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-icon">✅</div>
+                <div class="activity-body">
+                  <div class="activity-text"><strong>Voidkid</strong> campaign approved → live</div>
+                  <div class="activity-meta">6 HOURS AGO · INSTAGRAM</div>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-icon">📊</div>
+                <div class="activity-body">
+                  <div class="activity-text">Monthly report generated for <strong>Brand X</strong></div>
+                  <div class="activity-meta">1 DAY AGO · SPONSOR</div>
+                </div>
+              </div>
+              <div class="activity-item">
+                <div class="activity-icon">⭐</div>
+                <div class="activity-body">
+                  <div class="activity-text"><strong>Kaoswave</strong> flagged for Freshman List</div>
+                  <div class="activity-meta">2 DAYS AGO · A&R</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- QUICK REVENUE -->
+        <div class="panel">
+          <div class="panel-head">
+            <div class="panel-title"><strong>Revenue Snapshot</strong></div>
+            <button class="panel-action" onclick="window.location='/phase2/sponsors.html'">Details →</button>
+          </div>
+          <div class="panel-body">
+            <div style="margin-bottom:20px;">
+              <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:6px;">Feb 2025 Revenue</div>
+              <div style="font-family:var(--font-display);font-size:52px;color:var(--acid);line-height:1;">$4,820</div>
+              <div style="font-family:var(--font-mono);font-size:9px;color:var(--acid);margin-top:4px;">↑ +38% vs Jan</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);">
+                <span style="font-size:12px;color:var(--muted);">Twitter Blasts</span>
+                <span style="font-family:var(--font-display);font-size:18px;color:var(--off);">$1,750</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);">
+                <span style="font-size:12px;color:var(--muted);">Full Packages</span>
+                <span style="font-family:var(--font-display);font-size:18px;color:var(--off);">$1,980</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);">
+                <span style="font-size:12px;color:var(--muted);">Sponsorships</span>
+                <span style="font-family:var(--font-display);font-size:18px;color:var(--gold);">$900</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;">
+                <span style="font-size:12px;color:var(--muted);">YouTube Features</span>
+                <span style="font-family:var(--font-display);font-size:18px;color:var(--off);">$190</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======= CAMPAIGNS TAB ======= -->
+
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+// ── LIVE DATE ──────────────────────────────────────────────
+const d = new Date();
+document.getElementById('live-date').textContent =
+  d.toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric', year:'numeric'}).toUpperCase();
+
+// ── TAB NAVIGATION ────────────────────────────────────────
+const titles = {
+  overview: 'DASHBOARD', campaigns: 'CAMPAIGNS', submit: 'NEW CAMPAIGN',
+  funnel: 'ARTIST FUNNEL', analytics: 'PLATFORM ANALYTICS',
+  sponsors: 'SPONSORS', reports: 'REPORTS', roadmap: 'ROADMAP'
+};
+
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  const page = document.getElementById('tab-' + id);
+  if (page) page.classList.add('active');
+  if (btn) btn.classList.add('active');
+  document.getElementById('header-title').textContent = titles[id] || id.toUpperCase();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// ── PLATFORM TOGGLES ──────────────────────────────────────
+document.querySelectorAll('.plat-toggle').forEach(el => {
+  el.addEventListener('click', () => el.classList.toggle('on'));
+});
+
+// ── PACKAGE SELECT ────────────────────────────────────────
+function selectPkg(el) {
+  document.querySelectorAll('.pkg-option').forEach(p => p.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+// ── CAMPAIGN SUBMIT ──────────────────────────────────────
+function submitCampaign() {
+  showToast('⚡ Campaign submitted — added to review queue');
+}
+
+// ── CAMPAIGN FILTER ──────────────────────────────────────
+function filterCampaigns(status, btn) {
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  const rows = document.querySelectorAll('#campaigns-table tbody tr');
+  rows.forEach(row => {
+    const show = status === 'all' || row.dataset.status === status;
+    row.style.display = show ? '' : 'none';
+  });
+}
+
+// ── APPROVE ───────────────────────────────────────────────
+function approveItem(btn) {
+  const row = btn.closest('tr');
+  const statusCell = row.querySelector('.status-pill');
+  statusCell.className = 'status-pill sp-live';
+  statusCell.textContent = '';
+  const dot = document.createElement('span');
+  statusCell.classList.add('sp-live');
+  statusCell.innerHTML = 'Live';
+  row.dataset.status = 'live';
+  btn.className = 'btn btn-ghost';
+  btn.textContent = 'View';
+  btn.onclick = null;
+  showToast('✓ Campaign approved and scheduled');
+}
+
+// ── PLATFORM SWITCHER ─────────────────────────────────────
+const platformData = {
+  tw:  { followers:'92K', impressions:'5.4M', engagements:'228K', visits:'41K',
+         col:'#1da1f2', colB:'var(--acid)', colC:'var(--off)', colD:'var(--cyan)' },
+  ig:  { followers:'50K+', impressions:'1.2M', engagements:'48K', visits:'12K',
+         col:'#e1306c', colB:'var(--acid)', colC:'var(--off)', colD:'var(--cyan)' },
+  yt:  { followers:'—', impressions:'1.8M peak', engagements:'364K', visits:'8.4K',
+         col:'#ff4444', colB:'var(--acid)', colC:'var(--off)', colD:'var(--cyan)' },
+  all: { followers:'140K+', impressions:'8.4M', engagements:'640K', visits:'61K',
+         col:'var(--acid)', colB:'var(--acid)', colC:'var(--off)', colD:'var(--cyan)' },
+};
+function switchPlatform(btn, platform) {
+  document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  const d = platformData[platform];
+  const stats = document.querySelectorAll('.a-stat-val');
+  const vals = [d.followers, d.impressions, d.engagements, d.visits];
+  const colors = [d.col, d.colB, d.colC, d.colD];
+  stats.forEach((s, i) => {
+    s.textContent = vals[i]; s.style.color = colors[i];
+  });
+}
+
+// ── HEATMAP GENERATOR ────────────────────────────────────
+(function buildHeatmap() {
+  const grid = document.getElementById('heatmap-grid');
+  if (!grid) return;
+  const vals = [0,1,0,2,3,4,2, 1,0,2,3,4,4,3, 0,1,3,2,4,3,1, 2,2,1,3,4,4,2, 1,0,2,4,3,2,0, 2,3,1,2,4,3,1, 0,1,2,3,3,4,2];
+  vals.forEach(v => {
+    const d = document.createElement('div');
+    d.className = 'hm-day'; d.setAttribute('data-v', v);
+    grid.appendChild(d);
+  });
+})();
+
+// ── SPONSOR REPORT ────────────────────────────────────────
+function genReport(btn) {
+  btn.textContent = '✓ Report generated';
+  btn.style.color = 'var(--acid)';
+  showToast('📊 Sponsor report generated & ready');
+  setTimeout(() => { btn.textContent = '⬇ Generate Report'; btn.style.color = ''; }, 3000);
+}
+
+// ── TOAST ─────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+// ── BAR FILL ANIMATION ────────────────────────────────────
+const fillObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.breakdown-bar-fill[data-w]').forEach(bar => {
+        bar.style.width = '0%';
+        setTimeout(() => { bar.style.width = bar.getAttribute('data-w') + '%'; }, 200);
+      });
+      fillObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.panel').forEach(p => fillObserver.observe(p));
+
+// ── CAMPAIGNS SEARCH ─────────────────────────────────────
+document.querySelector('.search-input input')?.addEventListener('input', function() {
+  const q = this.value.toLowerCase();
+  document.querySelectorAll('#campaigns-table tbody tr').forEach(row => {
+    row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+});
+
+</script>
+</body>
+</html>

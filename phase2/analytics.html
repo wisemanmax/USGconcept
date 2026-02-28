@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Platform Analytics — UGS Phase 2</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/phase2.css">
+<style>
+.tab-page { display: block !important; }
+.sidebar .nav-item { text-decoration: none; display: flex; }
+</style>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-sq"><span>UGS</span></div>
+      <div class="logo-wordmark">
+        <span class="logo-top">UNDERGROUND</span>
+        <span class="logo-bottom">Phase 2 Platform</span>
+      </div>
+    </div>
+    <div class="sidebar-phase">
+      <span class="phase-label">Current Phase</span>
+      <span class="phase-val">02</span>
+    </div>
+    <nav>
+      <div class="nav-section">
+        <div class="nav-section-label">Overview</div>
+        <a href="/phase2/dashboard.html" class="nav-item"><span class="nav-icon">⚡</span> Dashboard</a><a href="/phase2/analytics.html" class="nav-item active"><span class="nav-icon">📊</span> Platform Analytics</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-label">Promotion Engine</div>
+        <a href="/phase2/campaigns.html" class="nav-item"><span class="nav-icon">🚀</span> Campaigns<span class="nav-badge">12</span></a><a href="/phase2/submit.html" class="nav-item"><span class="nav-icon">📬</span> Submit Request<span class="nav-badge green">NEW</span></a><a href="/phase2/funnel.html" class="nav-item"><span class="nav-icon">🎯</span> Artist Funnel</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-label">Revenue</div>
+        <a href="/phase2/sponsors.html" class="nav-item"><span class="nav-icon">💰</span> Sponsors<span class="nav-badge">3</span></a><a href="/phase2/reports.html" class="nav-item"><span class="nav-icon">📋</span> Reports</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-label">Platform Roadmap</div>
+        <a href="/phase2/roadmap.html" class="nav-item"><span class="nav-icon">🗺️</span> Phase Roadmap</a>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="phase-nav-strip" style="margin:0 -16px;padding:8px 16px;">
+        <a href="/" class="phase-nav-item" style="display:block;margin-bottom:4px;">← Phase 1: Media Hub</a>
+        <a href="/phase3/overview.html" class="phase-nav-item" style="display:block;margin-bottom:4px;">→ Phase 3: Community</a>
+        <a href="/phase4/mission-control.html" class="phase-nav-item" style="display:block;">→ Phase 4: Festival</a>
+      </div>
+      <div class="user-card" style="margin-top:12px;">
+        <div class="user-avatar">UGS</div>
+        <div class="user-info">
+          <div class="user-name">UGS Admin</div>
+          <div class="user-role">Platform Owner</div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <header class="top-header">
+    <div class="header-title" id="header-title">PLATFORM ANALYTICS</div>
+    <div class="header-date" id="live-date"></div>
+    <div class="header-live"><div class="live-dot"></div> Live Data</div>
+    <div class="header-notif">🔔<div class="notif-count">5</div></div>
+    <a href="/" class="btn btn-ghost" style="font-size:10px;">← Phase 1 Site</a>
+  </header>
+  <main class="main-content">
+        <div class="tab-page active" id="tab-analytics">
+      <div class="dash-welcome">
+        <div class="dash-welcome-text">
+          <div class="welcome-eyebrow">Phase 2 Engine</div>
+          <div class="welcome-title">PLATFORM <span>ANALYTICS</span></div>
+        </div>
+        <div class="dash-actions">
+          <button class="btn btn-ghost">Export Report</button>
+        </div>
+      </div>
+
+      <div class="platform-tabs">
+        <button class="ptab active" onclick="switchPlatform(this,'tw')"><span class="ptab-dot" style="background:#1da1f2"></span> Twitter</button>
+        <button class="ptab" onclick="switchPlatform(this,'ig')"><span class="ptab-dot" style="background:#e1306c"></span> Instagram</button>
+        <button class="ptab" onclick="switchPlatform(this,'yt')"><span class="ptab-dot" style="background:#ff4444"></span> YouTube</button>
+        <button class="ptab" onclick="switchPlatform(this,'all')"><span class="ptab-dot" style="background:var(--acid)"></span> All Platforms</button>
+      </div>
+
+      <div class="analytics-overview" id="analytics-overview">
+        <div class="a-stat">
+          <div class="a-stat-label">Followers</div>
+          <div class="a-stat-val" style="color:#1da1f2">92K</div>
+          <div class="a-stat-sub up">↑ +2,400 this month</div>
+        </div>
+        <div class="a-stat">
+          <div class="a-stat-label">Impressions (30d)</div>
+          <div class="a-stat-val" style="color:var(--acid)">5.4M</div>
+          <div class="a-stat-sub up">↑ +18% vs prior period</div>
+        </div>
+        <div class="a-stat">
+          <div class="a-stat-label">Engagements (30d)</div>
+          <div class="a-stat-val" style="color:var(--off)">228K</div>
+          <div class="a-stat-sub up">↑ +12%</div>
+        </div>
+        <div class="a-stat">
+          <div class="a-stat-label">Profile Visits</div>
+          <div class="a-stat-val" style="color:var(--cyan)">41K</div>
+          <div class="a-stat-sub dn">↓ -3% dip this week</div>
+        </div>
+      </div>
+
+      <div class="content-perf-grid">
+        <!-- POST FREQUENCY HEATMAP -->
+        <div class="panel">
+          <div class="panel-head"><div class="panel-title"><strong>Post Frequency Heatmap</strong> — Last 7 Weeks</div></div>
+          <div class="panel-body">
+            <div class="heatmap">
+              <div class="heatmap-labels">
+                <span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span>
+              </div>
+              <div class="heatmap-days" id="heatmap-grid"></div>
+              <div style="display:flex;align-items:center;gap:6px;margin-top:12px;font-family:var(--font-mono);font-size:8px;color:var(--muted);letter-spacing:1px;">
+                Less
+                <div style="width:10px;height:10px;background:var(--border);border-radius:2px;"></div>
+                <div style="width:10px;height:10px;background:rgba(200,255,0,0.15);border-radius:2px;"></div>
+                <div style="width:10px;height:10px;background:rgba(200,255,0,0.3);border-radius:2px;"></div>
+                <div style="width:10px;height:10px;background:rgba(200,255,0,0.5);border-radius:2px;"></div>
+                <div style="width:10px;height:10px;background:var(--acid);border-radius:2px;"></div>
+                More
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TOP PERFORMING POSTS -->
+        <div class="panel">
+          <div class="panel-head"><div class="panel-title"><strong>Top Performing Posts</strong></div></div>
+          <div class="panel-body" style="padding: 12px 16px;">
+            <div class="top-posts">
+              <div class="top-post">
+                <div class="post-rank">1</div>
+                <div class="post-icon">🔥</div>
+                <div class="post-body">
+                  <div class="post-title">2Slimey Fan Reaction Viral Clip</div>
+                  <div class="post-meta">TWITTER · FEB 2025</div>
+                </div>
+                <div class="post-views">1.8M</div>
+              </div>
+              <div class="top-post">
+                <div class="post-rank">2</div>
+                <div class="post-icon">🎤</div>
+                <div class="post-body">
+                  <div class="post-title">ØWAY Cypher Full Video</div>
+                  <div class="post-meta">YOUTUBE · NOV 2024</div>
+                </div>
+                <div class="post-views">500K</div>
+              </div>
+              <div class="top-post">
+                <div class="post-rank">3</div>
+                <div class="post-icon">📊</div>
+                <div class="post-body">
+                  <div class="post-title">Underground Wave Breakdown</div>
+                  <div class="post-meta">TWITTER · JAN 2025</div>
+                </div>
+                <div class="post-views">177K</div>
+              </div>
+              <div class="top-post">
+                <div class="post-rank">4</div>
+                <div class="post-icon">🎬</div>
+                <div class="post-body">
+                  <div class="post-title">Freshman List 2025 Teaser</div>
+                  <div class="post-meta">INSTAGRAM · FEB 2025</div>
+                </div>
+                <div class="post-views">64K</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======= SPONSORS TAB ======= -->
+
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+// ── LIVE DATE ──────────────────────────────────────────────
+const d = new Date();
+document.getElementById('live-date').textContent =
+  d.toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric', year:'numeric'}).toUpperCase();
+
+// ── TAB NAVIGATION ────────────────────────────────────────
+const titles = {
+  overview: 'DASHBOARD', campaigns: 'CAMPAIGNS', submit: 'NEW CAMPAIGN',
+  funnel: 'ARTIST FUNNEL', analytics: 'PLATFORM ANALYTICS',
+  sponsors: 'SPONSORS', reports: 'REPORTS', roadmap: 'ROADMAP'
+};
+
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  const page = document.getElementById('tab-' + id);
+  if (page) page.classList.add('active');
+  if (btn) btn.classList.add('active');
+  document.getElementById('header-title').textContent = titles[id] || id.toUpperCase();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// ── PLATFORM TOGGLES ──────────────────────────────────────
+document.querySelectorAll('.plat-toggle').forEach(el => {
+  el.addEventListener('click', () => el.classList.toggle('on'));
+});
+
+// ── PACKAGE SELECT ────────────────────────────────────────
+function selectPkg(el) {
+  document.querySelectorAll('.pkg-option').forEach(p => p.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+// ── CAMPAIGN SUBMIT ──────────────────────────────────────
+function submitCampaign() {
+  showToast('⚡ Campaign submitted — added to review queue');
+}
+
+// ── CAMPAIGN FILTER ──────────────────────────────────────
+function filterCampaigns(status, btn) {
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  const rows = document.querySelectorAll('#campaigns-table tbody tr');
+  rows.forEach(row => {
+    const show = status === 'all' || row.dataset.status === status;
+    row.style.display = show ? '' : 'none';
+  });
+}
+
+// ── APPROVE ───────────────────────────────────────────────
+function approveItem(btn) {
+  const row = btn.closest('tr');
+  const statusCell = row.querySelector('.status-pill');
+  statusCell.className = 'status-pill sp-live';
+  statusCell.textContent = '';
+  const dot = document.createElement('span');
+  statusCell.classList.add('sp-live');
+  statusCell.innerHTML = 'Live';
+  row.dataset.status = 'live';
+  btn.className = 'btn btn-ghost';
+  btn.textContent = 'View';
+  btn.onclick = null;
+  showToast('✓ Campaign approved and scheduled');
+}
+
+// ── PLATFORM SWITCHER ─────────────────────────────────────
+const platformData = {
+  tw:  { followers:'92K', impressions:'5.4M', engagements:'228K', visits:'41K',
+         col:'#1da1f2', colB:'var(--acid)', colC:'var(--off)', colD:'var(--cyan)' },
+  ig:  { followers:'50K+', impressions:'1.2M', engagements:'48K', visits:'12K',
+         col:'#e1306c', colB:'var(--acid)', colC:'var(--off)', colD:'var(--cyan)' },
+  yt:  { followers:'—', impressions:'1.8M peak', engagements:'364K', visits:'8.4K',
+         col:'#ff4444', colB:'var(--acid)', colC:'var(--off)', colD:'var(--cyan)' },
+  all: { followers:'140K+', impressions:'8.4M', engagements:'640K', visits:'61K',
+         col:'var(--acid)', colB:'var(--acid)', colC:'var(--off)', colD:'var(--cyan)' },
+};
+function switchPlatform(btn, platform) {
+  document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  const d = platformData[platform];
+  const stats = document.querySelectorAll('.a-stat-val');
+  const vals = [d.followers, d.impressions, d.engagements, d.visits];
+  const colors = [d.col, d.colB, d.colC, d.colD];
+  stats.forEach((s, i) => {
+    s.textContent = vals[i]; s.style.color = colors[i];
+  });
+}
+
+// ── HEATMAP GENERATOR ────────────────────────────────────
+(function buildHeatmap() {
+  const grid = document.getElementById('heatmap-grid');
+  if (!grid) return;
+  const vals = [0,1,0,2,3,4,2, 1,0,2,3,4,4,3, 0,1,3,2,4,3,1, 2,2,1,3,4,4,2, 1,0,2,4,3,2,0, 2,3,1,2,4,3,1, 0,1,2,3,3,4,2];
+  vals.forEach(v => {
+    const d = document.createElement('div');
+    d.className = 'hm-day'; d.setAttribute('data-v', v);
+    grid.appendChild(d);
+  });
+})();
+
+// ── SPONSOR REPORT ────────────────────────────────────────
+function genReport(btn) {
+  btn.textContent = '✓ Report generated';
+  btn.style.color = 'var(--acid)';
+  showToast('📊 Sponsor report generated & ready');
+  setTimeout(() => { btn.textContent = '⬇ Generate Report'; btn.style.color = ''; }, 3000);
+}
+
+// ── TOAST ─────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+// ── BAR FILL ANIMATION ────────────────────────────────────
+const fillObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.breakdown-bar-fill[data-w]').forEach(bar => {
+        bar.style.width = '0%';
+        setTimeout(() => { bar.style.width = bar.getAttribute('data-w') + '%'; }, 200);
+      });
+      fillObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.panel').forEach(p => fillObserver.observe(p));
+
+// ── CAMPAIGNS SEARCH ─────────────────────────────────────
+document.querySelector('.search-input input')?.addEventListener('input', function() {
+  const q = this.value.toLowerCase();
+  document.querySelectorAll('#campaigns-table tbody tr').forEach(row => {
+    row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+});
+
+</script>
+</body>
+</html>
