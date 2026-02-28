@@ -2,16 +2,49 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.svg">
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://undergroundsound.co/phase4/venue-intelligence.html">
+<meta property="og:image" content="https://undergroundsound.co/og-image.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Underground Sound">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@therealugs">
+<meta name="twitter:image" content="https://undergroundsound.co/og-image.svg">
+<meta name="theme-color" content="#d4ff00">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Venue Intelligence — UGS Phase 4</title>
+<title>Venue Intelligence — UGS Phase 4 — Underground Sound</title>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../assets/css/phase4.css">
+<link rel="stylesheet" href="/assets/css/phase4.css">
 <style>
 .tab-page { display: block !important; }
 .sb .nav-btn { text-decoration: none; display: flex; width: 100%; }
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Underground Sound",
+  "url": "https://undergroundsound.co",
+  "logo": "https://undergroundsound.co/favicon.svg",
+  "description": "Underground Sound is the media hub for underground artists — promotion, Freshman List, cyphers, and Phase 4 flagship festival.",
+  "sameAs": [
+    "https://twitter.com/therealugs",
+    "https://instagram.com/undergroundsound",
+    "https://youtube.com/@therealugs"
+  ],
+  "foundingDate": "2020",
+  "foundingLocation": {"@type": "Place", "name": "Delaware, USA"}
+}
+</script>
 </head>
 <body>
+<div class="phase-drawer-overlay" id="phase-drawer-overlay"></div>
 <div class="shell">
   <aside class="sb">
     <div class="sb-brand">
@@ -33,40 +66,44 @@
     <nav>
       <div class="nav-section">
         <div class="nav-section-lbl">Command Center</div>
-        <a href="mission-control.html" class="nav-btn"><span class="nav-icon">🎪</span> Mission Control</a>
-        <a href="venue-intelligence.html" class="nav-btn active"><span class="nav-icon">📍</span> Venue Intelligence<span class="nav-pip pip-gold">8 Cities</span></a>
+        <a href="/phase4/mission-control.html" class="nav-btn"><span class="nav-icon">🎪</span> Mission Control</a>
+        <a href="/phase4/venue-intelligence.html" class="nav-btn active"><span class="nav-icon">📍</span> Venue Intelligence<span class="nav-pip pip-gold">8 Cities</span></a>
       </div>
       <div class="nav-section">
         <div class="nav-section-lbl">Festival Engine</div>
-        <a href="ticketing.html" class="nav-btn"><span class="nav-icon">🎟️</span> Ticketing Engine<span class="nav-pip pip-blood">LIVE</span></a>
-        <a href="lineup.html" class="nav-btn"><span class="nav-icon">🎤</span> Lineup Builder<span class="nav-pip pip-teal">Draft</span></a>
-        <a href="production.html" class="nav-btn"><span class="nav-icon">⚙️</span> Production Plan</a>
+        <a href="/phase4/ticketing.html" class="nav-btn"><span class="nav-icon">🎟️</span> Ticketing Engine<span class="nav-pip pip-blood">LIVE</span></a>
+        <a href="/phase4/lineup.html" class="nav-btn"><span class="nav-icon">🎤</span> Lineup Builder<span class="nav-pip pip-teal">Draft</span></a>
+        <a href="/phase4/production.html" class="nav-btn"><span class="nav-icon">⚙️</span> Production Plan</a>
       </div>
       <div class="nav-section">
         <div class="nav-section-lbl">Business</div>
-        <a href="sponsors.html" class="nav-btn"><span class="nav-icon">💼</span> Sponsor Deck<span class="nav-pip pip-gold">$48K</span></a>
-        <a href="pnl.html" class="nav-btn"><span class="nav-icon">📈</span> P&amp;L Projections</a>
-        <a href="expansion.html" class="nav-btn"><span class="nav-icon">🌎</span> Multi-City Expansion</a>
+        <a href="/phase4/sponsors.html" class="nav-btn"><span class="nav-icon">💼</span> Sponsor Deck<span class="nav-pip pip-gold">$48K</span></a>
+        <a href="/phase4/pnl.html" class="nav-btn"><span class="nav-icon">📈</span> P&amp;L Projections</a>
+        <a href="/phase4/expansion.html" class="nav-btn"><span class="nav-icon">🌎</span> Multi-City Expansion</a>
       </div>
       <div class="nav-section">
         <div class="nav-section-lbl">Platform</div>
-        <a href="roadmap.html" class="nav-btn"><span class="nav-icon">🗺️</span> Full Roadmap</a>
+        <a href="/phase4/roadmap.html" class="nav-btn"><span class="nav-icon">🗺️</span> Full Roadmap</a>
       </div>
       <div class="nav-section">
         <div class="nav-section-lbl">Navigate</div>
-        <a href="../phase3/overview.html" class="nav-btn" style="text-decoration:none;"><span class="nav-icon">←</span> Phase 3: Community</a>
-        <a href="../index.html" class="nav-btn" style="text-decoration:none;"><span class="nav-icon">↗</span> Phase 1: Media Hub</a>
+        <a href="/phase3/overview.html" class="nav-btn" style="text-decoration:none;"><span class="nav-icon">←</span> Phase 3: Community</a>
+        <a href="/" class="nav-btn" style="text-decoration:none;"><span class="nav-icon">↗</span> Phase 1: Media Hub</a>
       </div>
     </nav>
     <div class="sb-footer">
-      <a href="../phase3/overview.html" class="sb-back-btn">← Phase 3: Community</a>
-      <a href="../index.html" class="sb-back-btn">↗ Phase 1: Media Site</a>
+      <a href="/phase3/overview.html" class="sb-back-btn">← Phase 3: Community</a>
+      <a href="/" class="sb-back-btn">↗ Phase 1: Media Site</a>
     </div>
   </aside>
   <header class="hd">
+    <button class="phase-mobile-toggle" id="phase-sidebar-toggle" aria-label="Open navigation">
+  <div class="toggle-bars"><span></span><span></span><span></span></div>
+  <span>Menu</span>
+</button>
     <div class="hd-title" id="page-title">VENUE INTELLIGENCE</div>
     <div class="hd-countdown">
-      <div><div class="hd-countdown-label">Days to Flagship</div><div class="hd-countdown-val" id="countdown-val">284</div></div>
+      <div><div class="hd-countdown-label">Days to Flagship</div><div class="hd-countdown-val" id="countdown-val">—</div></div>
     </div>
     <div class="hd-live"><div class="hd-dot"></div> Phase 4 Active</div>
     <div class="hd-notif">🔔<div class="notif-pip"></div></div>
@@ -290,6 +327,7 @@ const barObs = new IntersectionObserver(entries => {
 document.querySelectorAll('.card, .venue-map-placeholder').forEach(c => barObs.observe(c));
 
 </script>
-<script src="../assets/js/responsive.js"></script>
+<script src="/assets/js/ugs-enhance.js"></script>
+<button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
 </body>
 </html>
