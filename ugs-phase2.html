@@ -263,6 +263,38 @@ body::after {
   display: flex; align-items: center; justify-content: center; color: white;
 }
 
+.mobile-tab-nav {
+  display: none;
+  margin: 14px 28px 0;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 12px;
+}
+.mobile-tab-nav label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.mobile-tab-nav select {
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--border2);
+  color: var(--white);
+  padding: 10px;
+  font-family: var(--font-ui);
+}
+.mobile-phase-links {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.mobile-phase-links a { text-align: center; }
+
 /* ============================================================
    MAIN CONTENT
    ============================================================ */
@@ -975,6 +1007,16 @@ body::after {
   .app-shell { grid-template-columns: 1fr; grid-template-areas: "header" "main"; }
   .sidebar { display: none; }
   .main-content, .top-header { margin-left: 0 !important; }
+  .top-header {
+    height: auto;
+    min-height: var(--header-h);
+    padding: 12px 20px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .header-title { width: 100%; }
+  .mobile-tab-nav { display: block; margin: 12px 20px 0; }
+  .main-content { padding: 20px; }
   .kpi-row { grid-template-columns: repeat(2, 1fr); }
   .three-col { grid-template-columns: 1fr; }
   .funnel-page-grid { grid-template-columns: 1fr; }
@@ -1061,8 +1103,26 @@ body::after {
     <div class="header-date" id="live-date"></div>
     <div class="header-live"><div class="live-dot"></div> Live Data</div>
     <div class="header-notif">🔔<div class="notif-count">5</div></div>
-    <a href="ugs-phase1.html" class="btn btn-ghost" style="font-size:10px;">← Phase 1 Site</a>
+    <a href="index.html" class="btn btn-ghost" style="font-size:10px;">← Phase 1 Site</a>
   </header>
+
+  <div class="mobile-tab-nav" aria-label="Mobile section navigation">
+    <label for="mobile-tab-select-phase2">Jump to section</label>
+    <select id="mobile-tab-select-phase2">
+      <option value="overview">Dashboard</option>
+      <option value="analytics">Platform Analytics</option>
+      <option value="campaigns">Campaigns</option>
+      <option value="submit">Submit Request</option>
+      <option value="funnel">Artist Funnel</option>
+      <option value="sponsors">Sponsors</option>
+      <option value="reports">Reports</option>
+      <option value="roadmap">Phase Roadmap</option>
+    </select>
+    <div class="mobile-phase-links">
+      <a href="index.html" class="btn btn-ghost">Phase 1</a>
+      <a href="ugs-phase3.html" class="btn btn-ghost">Phase 3</a>
+    </div>
+  </div>
 
   <!-- ===================== MAIN ===================== -->
   <main class="main-content">
@@ -2240,7 +2300,23 @@ function showTab(id, btn) {
   if (page) page.classList.add('active');
   if (btn) btn.classList.add('active');
   document.getElementById('header-title').textContent = titles[id] || id.toUpperCase();
+  const mobileSelect = document.getElementById('mobile-tab-select-phase2');
+  if (mobileSelect && mobileSelect.value !== id) mobileSelect.value = id;
   window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function getNavItemByTab(id) {
+  return Array.from(document.querySelectorAll('.nav-item')).find(btn =>
+    (btn.getAttribute('onclick') || '').includes(`'${id}'`)
+  );
+}
+
+const mobileSelectPhase2 = document.getElementById('mobile-tab-select-phase2');
+if (mobileSelectPhase2) {
+  mobileSelectPhase2.addEventListener('change', (e) => {
+    const id = e.target.value;
+    showTab(id, getNavItemByTab(id));
+  });
 }
 
 // ── PLATFORM TOGGLES ──────────────────────────────────────
