@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Venue Intelligence — UGS Phase 4</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/phase4.css">
+<style>
+.tab-page { display: block !important; }
+.sb .nav-btn { text-decoration: none; display: flex; width: 100%; }
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="sb">
+    <div class="sb-brand">
+      <div class="sb-phase-orb"><span>P4</span></div>
+      <div class="sb-logo">
+        <div class="sb-logo-top">UNDERGROUND</div>
+        <div class="sb-logo-bottom">Festival Infrastructure</div>
+      </div>
+    </div>
+    <div class="sb-festival-pulse">
+      <div class="sfp-label"><div class="sfp-dot"></div> Festival Status</div>
+      <div class="sfp-stats">
+        <div><div class="sfp-stat-val g">412</div><div class="sfp-stat-lbl">Pre-Sale List</div></div>
+        <div><div class="sfp-stat-val b">3</div><div class="sfp-stat-lbl">Cities Locked</div></div>
+        <div><div class="sfp-stat-val g">$48K</div><div class="sfp-stat-lbl">Sponsors Secured</div></div>
+        <div><div class="sfp-stat-val b">284</div><div class="sfp-stat-lbl">Days to Launch</div></div>
+      </div>
+    </div>
+    <nav>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Command Center</div>
+        <a href="/phase4/mission-control.html" class="nav-btn"><span class="nav-icon">🎪</span> Mission Control</a>
+        <a href="/phase4/venue-intelligence.html" class="nav-btn active"><span class="nav-icon">📍</span> Venue Intelligence<span class="nav-pip pip-gold">8 Cities</span></a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Festival Engine</div>
+        <a href="/phase4/ticketing.html" class="nav-btn"><span class="nav-icon">🎟️</span> Ticketing Engine<span class="nav-pip pip-blood">LIVE</span></a>
+        <a href="/phase4/lineup.html" class="nav-btn"><span class="nav-icon">🎤</span> Lineup Builder<span class="nav-pip pip-teal">Draft</span></a>
+        <a href="/phase4/production.html" class="nav-btn"><span class="nav-icon">⚙️</span> Production Plan</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Business</div>
+        <a href="/phase4/sponsors.html" class="nav-btn"><span class="nav-icon">💼</span> Sponsor Deck<span class="nav-pip pip-gold">$48K</span></a>
+        <a href="/phase4/pnl.html" class="nav-btn"><span class="nav-icon">📈</span> P&amp;L Projections</a>
+        <a href="/phase4/expansion.html" class="nav-btn"><span class="nav-icon">🌎</span> Multi-City Expansion</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Platform</div>
+        <a href="/phase4/roadmap.html" class="nav-btn"><span class="nav-icon">🗺️</span> Full Roadmap</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Navigate</div>
+        <a href="/phase3/overview.html" class="nav-btn" style="text-decoration:none;"><span class="nav-icon">←</span> Phase 3: Community</a>
+        <a href="/" class="nav-btn" style="text-decoration:none;"><span class="nav-icon">↗</span> Phase 1: Media Hub</a>
+      </div>
+    </nav>
+    <div class="sb-footer">
+      <a href="/phase3/overview.html" class="sb-back-btn">← Phase 3: Community</a>
+      <a href="/" class="sb-back-btn">↗ Phase 1: Media Site</a>
+    </div>
+  </aside>
+  <header class="hd">
+    <div class="hd-title" id="page-title">VENUE INTELLIGENCE</div>
+    <div class="hd-countdown">
+      <div><div class="hd-countdown-label">Days to Flagship</div><div class="hd-countdown-val" id="countdown-val">284</div></div>
+    </div>
+    <div class="hd-live"><div class="hd-dot"></div> Phase 4 Active</div>
+    <div class="hd-notif">🔔<div class="notif-pip"></div></div>
+    <button class="btn btn-gold btn-sm" onclick="showToast('🎟️ Pre-sale list is live — 412 signed up')">Pre-Sale Live ↗</button>
+  </header>
+  <main class="mn">
+        <div class="tab-page active" id="tab-venue">
+      <div class="pg-hd">
+        <div>
+          <div class="pg-eyebrow">Data-Backed Selection</div>
+          <div class="pg-title">VENUE<em>INTELLIGENCE</em></div>
+          <p class="pg-sub">8 cities scored across 6 dimensions: UGS audience density, venue availability, market competition, production cost, travel access, and community footprint. Wilmington leads.</p>
+        </div>
+        <div class="pg-actions">
+          <button class="btn btn-ghost">Download Report</button>
+          <button class="btn btn-gold" onclick="showToast('📍 Venue locked — Wilmington, DE confirmed')">Lock Venue ✓</button>
+        </div>
+      </div>
+
+      <!-- MAP -->
+      <div class="venue-map-placeholder">
+        <div class="map-grid"></div>
+        <div class="map-title">📍 UGS Audience + Venue Heat — East Coast Focus</div>
+        <div class="map-pins">
+          <!-- Wilmington DE — top pick -->
+          <div class="map-pin" style="left:72%;top:38%;color:var(--gold);" onclick="showToast('📍 Wilmington, DE — Score: 94 — SELECTED')">
+            <div class="pin-dot"><div class="pin-inner"></div></div>
+            <div class="pin-label">Wilmington</div>
+            <div class="pin-size">Cap: 1,500</div>
+          </div>
+          <!-- Philly -->
+          <div class="map-pin" style="left:68%;top:32%;color:var(--blood);" onclick="showToast('📍 Philadelphia, PA — Score: 88')">
+            <div class="pin-dot"><div class="pin-inner"></div></div>
+            <div class="pin-label">Philadelphia</div>
+            <div class="pin-size">Cap: 3,000</div>
+          </div>
+          <!-- Baltimore -->
+          <div class="map-pin" style="left:65%;top:46%;color:var(--blood);" onclick="showToast('📍 Baltimore, MD — Score: 82')">
+            <div class="pin-dot"><div class="pin-inner"></div></div>
+            <div class="pin-label">Baltimore</div>
+            <div class="pin-size">Cap: 2,000</div>
+          </div>
+          <!-- NYC -->
+          <div class="map-pin" style="left:78%;top:22%;color:var(--muted);" onclick="showToast('📍 New York, NY — Score: 91 — Year 2 Target')">
+            <div class="pin-dot"><div class="pin-inner"></div></div>
+            <div class="pin-label">New York</div>
+            <div class="pin-size">Cap: 5,000+</div>
+          </div>
+          <!-- ATL -->
+          <div class="map-pin" style="left:52%;top:72%;color:var(--teal);" onclick="showToast('📍 Atlanta, GA — Score: 86 — Year 2 Candidate')">
+            <div class="pin-dot"><div class="pin-inner"></div></div>
+            <div class="pin-label">Atlanta</div>
+            <div class="pin-size">Cap: 4,000</div>
+          </div>
+          <!-- DC -->
+          <div class="map-pin" style="left:62%;top:52%;color:var(--muted);" onclick="showToast('📍 Washington DC — Score: 79')">
+            <div class="pin-dot"><div class="pin-inner"></div></div>
+            <div class="pin-label">DC</div>
+          </div>
+          <!-- Chicago -->
+          <div class="map-pin" style="left:34%;top:28%;color:var(--teal);" onclick="showToast('📍 Chicago, IL — Score: 85 — Year 3 Candidate')">
+            <div class="pin-dot"><div class="pin-inner"></div></div>
+            <div class="pin-label">Chicago</div>
+            <div class="pin-size">Cap: 4,500</div>
+          </div>
+          <!-- Houston -->
+          <div class="map-pin" style="left:28%;top:74%;color:var(--muted);" onclick="showToast('📍 Houston, TX — Score: 77')">
+            <div class="pin-dot"><div class="pin-inner"></div></div>
+            <div class="pin-label">Houston</div>
+          </div>
+        </div>
+        <div style="position:absolute;bottom:14px;right:16px;display:flex;gap:12px;font-family:var(--font-mono);font-size:8px;letter-spacing:1px;text-transform:uppercase;">
+          <span style="color:var(--gold);display:flex;align-items:center;gap:5px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--gold);display:inline-block;"></span> Selected</span>
+          <span style="color:var(--blood);display:flex;align-items:center;gap:5px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--blood);display:inline-block;"></span> Year 1 Alt</span>
+          <span style="color:var(--teal);display:flex;align-items:center;gap:5px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--teal);display:inline-block;"></span> Year 2–3</span>
+        </div>
+      </div>
+
+      <!-- AUDIENCE HEAT BY CITY -->
+      <div class="two-col-eq" style="margin-bottom:20px;">
+        <div class="card">
+          <div class="card-hd"><div class="card-title">📊 UGS Audience Density by City</div></div>
+          <div class="card-body">
+            <div class="heatbar-row">
+              <div class="heatbar"><span class="heatbar-city">WILM.</span><div class="heatbar-track"><div class="heatbar-fill" style="width:94%;background:linear-gradient(90deg,var(--blood),var(--gold));" data-w="94"><span>94%</span></div></div></div>
+              <div class="heatbar"><span class="heatbar-city">PHILLY</span><div class="heatbar-track"><div class="heatbar-fill" style="width:88%;background:linear-gradient(90deg,var(--blood),var(--gold));" data-w="88"><span>88%</span></div></div></div>
+              <div class="heatbar"><span class="heatbar-city">NYC</span><div class="heatbar-track"><div class="heatbar-fill" style="width:91%;background:linear-gradient(90deg,var(--gold)80,var(--gold));" data-w="91"><span>91%</span></div></div></div>
+              <div class="heatbar"><span class="heatbar-city">ATL</span><div class="heatbar-track"><div class="heatbar-fill" style="width:86%;background:linear-gradient(90deg,var(--teal),var(--teal));" data-w="86"><span>86%</span></div></div></div>
+              <div class="heatbar"><span class="heatbar-city">CHI</span><div class="heatbar-track"><div class="heatbar-fill" style="width:85%;background:linear-gradient(90deg,var(--teal),var(--teal));" data-w="85"><span>85%</span></div></div></div>
+              <div class="heatbar"><span class="heatbar-city">BALT.</span><div class="heatbar-track"><div class="heatbar-fill" style="width:82%;background:linear-gradient(90deg,var(--rim2),var(--muted));" data-w="82"><span>82%</span></div></div></div>
+              <div class="heatbar"><span class="heatbar-city">DC</span><div class="heatbar-track"><div class="heatbar-fill" style="width:79%;background:linear-gradient(90deg,var(--rim2),var(--muted));" data-w="79"><span>79%</span></div></div></div>
+              <div class="heatbar"><span class="heatbar-city">HOU.</span><div class="heatbar-track"><div class="heatbar-fill" style="width:77%;background:linear-gradient(90deg,var(--rim2),var(--muted));" data-w="77"><span>77%</span></div></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-hd"><div class="card-title">🏆 Venue Scoring Matrix</div></div>
+          <div class="card-body">
+            <table class="venue-table">
+              <thead><tr><th>City</th><th>Score ↕</th><th>Capacity</th><th>Cost Index</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><div class="venue-name-cell"><span class="vname">Wilmington</span><span class="vcity">Delaware</span></div></td>
+                  <td><div class="venue-score"><div class="vs-track"><div class="vs-fill" style="width:94%;background:var(--gold);"></div></div><div class="vs-num">94</div></div></td>
+                  <td style="font-family:var(--font-mono);font-size:11px;">1,500</td>
+                  <td><span class="chip chip-teal">Low</span></td>
+                  <td><span class="chip chip-gold"><span class="chip-dot"></span> Selected</span></td>
+                </tr>
+                <tr>
+                  <td><div class="venue-name-cell"><span class="vname">New York</span><span class="vcity">New York</span></div></td>
+                  <td><div class="venue-score"><div class="vs-track"><div class="vs-fill" style="width:91%;background:var(--blood);"></div></div><div class="vs-num">91</div></div></td>
+                  <td style="font-family:var(--font-mono);font-size:11px;">5,000+</td>
+                  <td><span class="chip chip-blood">Very High</span></td>
+                  <td><span class="chip chip-sky">Year 2</span></td>
+                </tr>
+                <tr>
+                  <td><div class="venue-name-cell"><span class="vname">Philadelphia</span><span class="vcity">Pennsylvania</span></div></td>
+                  <td><div class="venue-score"><div class="vs-track"><div class="vs-fill" style="width:88%;background:var(--blood);"></div></div><div class="vs-num">88</div></div></td>
+                  <td style="font-family:var(--font-mono);font-size:11px;">3,000</td>
+                  <td><span class="chip chip-blood">High</span></td>
+                  <td><span class="chip chip-muted">Alt Year 1</span></td>
+                </tr>
+                <tr>
+                  <td><div class="venue-name-cell"><span class="vname">Atlanta</span><span class="vcity">Georgia</span></div></td>
+                  <td><div class="venue-score"><div class="vs-track"><div class="vs-fill" style="width:86%;background:var(--teal);"></div></div><div class="vs-num">86</div></div></td>
+                  <td style="font-family:var(--font-mono);font-size:11px;">4,000</td>
+                  <td><span class="chip chip-gold">Medium</span></td>
+                  <td><span class="chip chip-sky">Year 2</span></td>
+                </tr>
+                <tr>
+                  <td><div class="venue-name-cell"><span class="vname">Chicago</span><span class="vcity">Illinois</span></div></td>
+                  <td><div class="venue-score"><div class="vs-track"><div class="vs-fill" style="width:85%;background:var(--teal);"></div></div><div class="vs-num">85</div></div></td>
+                  <td style="font-family:var(--font-mono);font-size:11px;">4,500</td>
+                  <td><span class="chip chip-gold">Medium</span></td>
+                  <td><span class="chip chip-muted">Year 3</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================
+         TICKETING ENGINE
+         ======================================= -->
+
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+// ── TAB NAVIGATION ─────────────────────────────────────────
+const pageTitles = {
+  overview:'MISSION CONTROL', venue:'VENUE INTELLIGENCE',
+  ticketing:'TICKETING ENGINE', lineup:'LINEUP BUILDER',
+  production:'PRODUCTION PLAN', sponsors:'SPONSOR DECK',
+  pnl:'P&L PROJECTIONS', expansion:'MULTI-CITY EXPANSION', roadmap:'ROADMAP'
+};
+
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const page = document.getElementById('tab-' + id);
+  if(page) page.classList.add('active');
+  if(btn) btn.classList.add('active');
+  document.getElementById('page-title').textContent = pageTitles[id] || id.toUpperCase();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// ── STAGE SWITCHER ─────────────────────────────────────────
+function switchStage(stage, btn) {
+  document.querySelectorAll('.stage-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  ['main','second','third'].forEach(s => {
+    const el = document.getElementById('stage-' + s);
+    if(el) el.style.display = s === stage ? '' : 'none';
+  });
+}
+
+// ── PRESALE BAR ANIMATION ──────────────────────────────────
+setTimeout(() => {
+  const bar = document.getElementById('presale-bar');
+  if(bar) bar.style.width = '27.5%';
+}, 500);
+
+// ── LIVE COUNTDOWN ─────────────────────────────────────────
+(function() {
+  const target = new Date('2026-11-14T19:00:00');
+  function update() {
+    const diff = target - new Date();
+    if(diff > 0) {
+      const days = Math.floor(diff / 86400000);
+      const el = document.getElementById('countdown-val');
+      if(el) el.textContent = days + 'd';
+    }
+  }
+  update();
+  setInterval(update, 60000);
+})();
+
+// ── TOAST ──────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3800);
+}
+
+// ── HEATBAR ANIMATIONS ────────────────────────────────────
+const barObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.querySelectorAll('.heatbar-fill[data-w]').forEach(b => {
+        const w = b.getAttribute('data-w');
+        b.style.width = '0%';
+        setTimeout(() => b.style.width = w + '%', 200);
+      });
+      barObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.card, .venue-map-placeholder').forEach(c => barObs.observe(c));
+
+</script>
+</body>
+</html>

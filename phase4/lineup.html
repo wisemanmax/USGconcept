@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lineup Builder — UGS Phase 4</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/phase4.css">
+<style>
+.tab-page { display: block !important; }
+.sb .nav-btn { text-decoration: none; display: flex; width: 100%; }
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="sb">
+    <div class="sb-brand">
+      <div class="sb-phase-orb"><span>P4</span></div>
+      <div class="sb-logo">
+        <div class="sb-logo-top">UNDERGROUND</div>
+        <div class="sb-logo-bottom">Festival Infrastructure</div>
+      </div>
+    </div>
+    <div class="sb-festival-pulse">
+      <div class="sfp-label"><div class="sfp-dot"></div> Festival Status</div>
+      <div class="sfp-stats">
+        <div><div class="sfp-stat-val g">412</div><div class="sfp-stat-lbl">Pre-Sale List</div></div>
+        <div><div class="sfp-stat-val b">3</div><div class="sfp-stat-lbl">Cities Locked</div></div>
+        <div><div class="sfp-stat-val g">$48K</div><div class="sfp-stat-lbl">Sponsors Secured</div></div>
+        <div><div class="sfp-stat-val b">284</div><div class="sfp-stat-lbl">Days to Launch</div></div>
+      </div>
+    </div>
+    <nav>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Command Center</div>
+        <a href="/phase4/mission-control.html" class="nav-btn"><span class="nav-icon">🎪</span> Mission Control</a>
+        <a href="/phase4/venue-intelligence.html" class="nav-btn"><span class="nav-icon">📍</span> Venue Intelligence<span class="nav-pip pip-gold">8 Cities</span></a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Festival Engine</div>
+        <a href="/phase4/ticketing.html" class="nav-btn"><span class="nav-icon">🎟️</span> Ticketing Engine<span class="nav-pip pip-blood">LIVE</span></a>
+        <a href="/phase4/lineup.html" class="nav-btn active"><span class="nav-icon">🎤</span> Lineup Builder<span class="nav-pip pip-teal">Draft</span></a>
+        <a href="/phase4/production.html" class="nav-btn"><span class="nav-icon">⚙️</span> Production Plan</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Business</div>
+        <a href="/phase4/sponsors.html" class="nav-btn"><span class="nav-icon">💼</span> Sponsor Deck<span class="nav-pip pip-gold">$48K</span></a>
+        <a href="/phase4/pnl.html" class="nav-btn"><span class="nav-icon">📈</span> P&amp;L Projections</a>
+        <a href="/phase4/expansion.html" class="nav-btn"><span class="nav-icon">🌎</span> Multi-City Expansion</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Platform</div>
+        <a href="/phase4/roadmap.html" class="nav-btn"><span class="nav-icon">🗺️</span> Full Roadmap</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Navigate</div>
+        <a href="/phase3/overview.html" class="nav-btn" style="text-decoration:none;"><span class="nav-icon">←</span> Phase 3: Community</a>
+        <a href="/" class="nav-btn" style="text-decoration:none;"><span class="nav-icon">↗</span> Phase 1: Media Hub</a>
+      </div>
+    </nav>
+    <div class="sb-footer">
+      <a href="/phase3/overview.html" class="sb-back-btn">← Phase 3: Community</a>
+      <a href="/" class="sb-back-btn">↗ Phase 1: Media Site</a>
+    </div>
+  </aside>
+  <header class="hd">
+    <div class="hd-title" id="page-title">LINEUP BUILDER</div>
+    <div class="hd-countdown">
+      <div><div class="hd-countdown-label">Days to Flagship</div><div class="hd-countdown-val" id="countdown-val">284</div></div>
+    </div>
+    <div class="hd-live"><div class="hd-dot"></div> Phase 4 Active</div>
+    <div class="hd-notif">🔔<div class="notif-pip"></div></div>
+    <button class="btn btn-gold btn-sm" onclick="showToast('🎟️ Pre-sale list is live — 412 signed up')">Pre-Sale Live ↗</button>
+  </header>
+  <main class="mn">
+        <div class="tab-page active" id="tab-lineup">
+      <div class="pg-hd">
+        <div>
+          <div class="pg-eyebrow">Artist Selection</div>
+          <div class="pg-title">LINEUP<em>BUILDER</em></div>
+          <p class="pg-sub">12 slots across 3 stages. Filled by data — UGS campaign performance, audience overlap, genre balance, and draw potential. 6 confirmed, 6 open.</p>
+        </div>
+        <div class="pg-actions">
+          <button class="btn btn-ghost">Export Lineup</button>
+          <button class="btn btn-gold" onclick="showToast('🎤 Lineup announcement drafted!')">Announce Draft ↗</button>
+        </div>
+      </div>
+
+      <div class="lineup-stage-tabs">
+        <button class="stage-tab active" onclick="switchStage('main',this)">🏟️ Main Stage (5 slots)</button>
+        <button class="stage-tab" onclick="switchStage('second',this)">🔥 Second Stage (4 slots)</button>
+        <button class="stage-tab" onclick="switchStage('third',this)">💎 Third Stage (3 slots)</button>
+      </div>
+
+      <div id="stage-main">
+        <div class="lineup-grid">
+          <div class="artist-slot headliner">
+            <div class="slot-num">1</div>
+            <div class="slot-avi" style="background:var(--gold-d);">🎤</div>
+            <div class="slot-info">
+              <div class="slot-name">HEADLINER TBD</div>
+              <div class="slot-meta">Negotiating · Main Stage · ATL / NYC</div>
+            </div>
+            <div class="slot-draw"><div class="slot-draw-num">—</div><div class="slot-draw-lbl">Draw Est.</div></div>
+            <div class="slot-time">9:30 PM</div>
+          </div>
+          <div class="artist-slot">
+            <div class="slot-num">2</div>
+            <div class="slot-avi" style="background:linear-gradient(135deg,#222,#333);">🔥</div>
+            <div class="slot-info">
+              <div class="slot-name">2SLIMEY</div>
+              <div class="slot-meta">Confirmed · Melodic Trap · Delaware</div>
+            </div>
+            <div class="slot-draw"><div class="slot-draw-num">1.8M</div><div class="slot-draw-lbl">Peak Views</div></div>
+            <div class="slot-time">8:00 PM</div>
+          </div>
+          <div class="artist-slot">
+            <div class="slot-num">3</div>
+            <div class="slot-avi" style="background:linear-gradient(135deg,#1a1a2e,#16213e);">❄️</div>
+            <div class="slot-info">
+              <div class="slot-name">FROST DIVZ</div>
+              <div class="slot-meta">Confirmed · Drill · Chicago</div>
+            </div>
+            <div class="slot-draw"><div class="slot-draw-num">340K</div><div class="slot-draw-lbl">Peak Views</div></div>
+            <div class="slot-time">6:30 PM</div>
+          </div>
+          <div class="artist-slot">
+            <div class="slot-num">4</div>
+            <div class="slot-avi" style="background:linear-gradient(135deg,#0a1a1a,#0d2626);">🌊</div>
+            <div class="slot-info">
+              <div class="slot-name">KAOSWAVE</div>
+              <div class="slot-meta">Confirmed · Hyphy · Houston</div>
+            </div>
+            <div class="slot-draw"><div class="slot-draw-num">210K</div><div class="slot-draw-lbl">Peak Views</div></div>
+            <div class="slot-time">5:00 PM</div>
+          </div>
+          <div class="artist-slot empty" onclick="showToast('🎤 Open slot — submit artist for consideration')">
+            <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">+ Add Artist — Slot 5</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="stage-second" style="display:none;">
+        <div class="lineup-grid">
+          <div class="artist-slot">
+            <div class="slot-num">1</div>
+            <div class="slot-avi" style="background:linear-gradient(135deg,#1a0a2e,#2a1040);">🌌</div>
+            <div class="slot-info">
+              <div class="slot-name">VOIDKID</div>
+              <div class="slot-meta">Confirmed · Alt Rap · NYC</div>
+            </div>
+            <div class="slot-draw"><div class="slot-draw-num">180K</div><div class="slot-draw-lbl">Peak Views</div></div>
+            <div class="slot-time">8:30 PM</div>
+          </div>
+          <div class="artist-slot">
+            <div class="slot-num">2</div>
+            <div class="slot-avi" style="background:linear-gradient(135deg,#1a1a0a,#2a2a10);">🌙</div>
+            <div class="slot-info">
+              <div class="slot-name">LUNAR4</div>
+              <div class="slot-meta">Confirmed · Dark Rap · Detroit</div>
+            </div>
+            <div class="slot-draw"><div class="slot-draw-num">160K</div><div class="slot-draw-lbl">Peak Views</div></div>
+            <div class="slot-time">7:00 PM</div>
+          </div>
+          <div class="artist-slot empty" onclick="showToast('🎤 Open slot — Slot 3, Second Stage')">
+            <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">+ Add Artist — Slot 3</div>
+          </div>
+          <div class="artist-slot empty" onclick="showToast('🎤 Open slot — Slot 4, Second Stage')">
+            <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">+ Add Artist — Slot 4</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="stage-third" style="display:none;">
+        <div class="lineup-grid">
+          <div class="artist-slot">
+            <div class="slot-num">1</div>
+            <div class="slot-avi" style="background:linear-gradient(135deg,#2a0a0a,#3a1010);">☀️</div>
+            <div class="slot-info">
+              <div class="slot-name">SOLARIS</div>
+              <div class="slot-meta">Confirmed · Melodic · Miami</div>
+            </div>
+            <div class="slot-draw"><div class="slot-draw-num">95K</div><div class="slot-draw-lbl">Peak Views</div></div>
+            <div class="slot-time">7:30 PM</div>
+          </div>
+          <div class="artist-slot empty" onclick="showToast('🎤 Open slot — Slot 2, Third Stage')">
+            <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">+ Add Artist — Slot 2</div>
+          </div>
+          <div class="artist-slot empty" onclick="showToast('🎤 Opening act — Cypher slot reserved')">
+            <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">🎤 Cypher Slot — Slot 3</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FULL SCHEDULE TABLE -->
+      <div class="card" style="margin-top:20px;">
+        <div class="card-hd"><div class="card-title">📋 Full Show Schedule — Day of Event</div><button class="card-action" onclick="showToast('Schedule exported to PDF')">Export PDF →</button></div>
+        <table class="schedule-grid">
+          <thead><tr><th>Time</th><th>Artist</th><th>Origin</th><th>Stage</th><th>Genre</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td class="sched-time">4:00 PM</td><td><div class="sched-name">DOORS OPEN</div></td><td></td><td></td><td></td><td><span class="chip chip-teal">Set</span></td></tr>
+            <tr><td class="sched-time">5:00 PM</td><td><div class="sched-name">Kaoswave</div></td><td class="sched-city">Houston, TX</td><td><span class="sched-stage st-main">Main</span></td><td style="font-size:11px;color:var(--muted);">Hyphy</td><td><span class="chip chip-gold">Confirmed</span></td></tr>
+            <tr><td class="sched-time">6:00 PM</td><td><div class="sched-name">Solaris</div></td><td class="sched-city">Miami, FL</td><td><span class="sched-stage st-third">Third</span></td><td style="font-size:11px;color:var(--muted);">Melodic</td><td><span class="chip chip-gold">Confirmed</span></td></tr>
+            <tr><td class="sched-time">6:30 PM</td><td><div class="sched-name">Frost Divz</div></td><td class="sched-city">Chicago, IL</td><td><span class="sched-stage st-main">Main</span></td><td style="font-size:11px;color:var(--muted);">Drill</td><td><span class="chip chip-gold">Confirmed</span></td></tr>
+            <tr><td class="sched-time">7:00 PM</td><td><div class="sched-name">Lunar4</div></td><td class="sched-city">Detroit, MI</td><td><span class="sched-stage st-second">Second</span></td><td style="font-size:11px;color:var(--muted);">Dark Rap</td><td><span class="chip chip-gold">Confirmed</span></td></tr>
+            <tr><td class="sched-time">7:30 PM</td><td><div class="sched-name">Voidkid</div></td><td class="sched-city">New York, NY</td><td><span class="sched-stage st-second">Second</span></td><td style="font-size:11px;color:var(--muted);">Alt Rap</td><td><span class="chip chip-gold">Confirmed</span></td></tr>
+            <tr><td class="sched-time">8:00 PM</td><td><div class="sched-name">2Slimey</div></td><td class="sched-city">Delaware</td><td><span class="sched-stage st-main">Main</span></td><td style="font-size:11px;color:var(--muted);">Melodic Trap</td><td><span class="chip chip-gold">Confirmed</span></td></tr>
+            <tr><td class="sched-time">9:30 PM</td><td><div class="sched-name">HEADLINER TBD</div></td><td class="sched-city">ATL / NYC</td><td><span class="sched-stage st-main">Main</span></td><td style="font-size:11px;color:var(--muted);">Underground Rap</td><td><span class="chip chip-blood">Negotiating</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- =======================================
+         PRODUCTION PLAN
+         ======================================= -->
+
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+// ── TAB NAVIGATION ─────────────────────────────────────────
+const pageTitles = {
+  overview:'MISSION CONTROL', venue:'VENUE INTELLIGENCE',
+  ticketing:'TICKETING ENGINE', lineup:'LINEUP BUILDER',
+  production:'PRODUCTION PLAN', sponsors:'SPONSOR DECK',
+  pnl:'P&L PROJECTIONS', expansion:'MULTI-CITY EXPANSION', roadmap:'ROADMAP'
+};
+
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const page = document.getElementById('tab-' + id);
+  if(page) page.classList.add('active');
+  if(btn) btn.classList.add('active');
+  document.getElementById('page-title').textContent = pageTitles[id] || id.toUpperCase();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// ── STAGE SWITCHER ─────────────────────────────────────────
+function switchStage(stage, btn) {
+  document.querySelectorAll('.stage-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  ['main','second','third'].forEach(s => {
+    const el = document.getElementById('stage-' + s);
+    if(el) el.style.display = s === stage ? '' : 'none';
+  });
+}
+
+// ── PRESALE BAR ANIMATION ──────────────────────────────────
+setTimeout(() => {
+  const bar = document.getElementById('presale-bar');
+  if(bar) bar.style.width = '27.5%';
+}, 500);
+
+// ── LIVE COUNTDOWN ─────────────────────────────────────────
+(function() {
+  const target = new Date('2026-11-14T19:00:00');
+  function update() {
+    const diff = target - new Date();
+    if(diff > 0) {
+      const days = Math.floor(diff / 86400000);
+      const el = document.getElementById('countdown-val');
+      if(el) el.textContent = days + 'd';
+    }
+  }
+  update();
+  setInterval(update, 60000);
+})();
+
+// ── TOAST ──────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3800);
+}
+
+// ── HEATBAR ANIMATIONS ────────────────────────────────────
+const barObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.querySelectorAll('.heatbar-fill[data-w]').forEach(b => {
+        const w = b.getAttribute('data-w');
+        b.style.width = '0%';
+        setTimeout(() => b.style.width = w + '%', 200);
+      });
+      barObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.card, .venue-map-placeholder').forEach(c => barObs.observe(c));
+
+</script>
+</body>
+</html>

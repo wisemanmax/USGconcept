@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multi-City Expansion — UGS Phase 4</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/phase4.css">
+<style>
+.tab-page { display: block !important; }
+.sb .nav-btn { text-decoration: none; display: flex; width: 100%; }
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="sb">
+    <div class="sb-brand">
+      <div class="sb-phase-orb"><span>P4</span></div>
+      <div class="sb-logo">
+        <div class="sb-logo-top">UNDERGROUND</div>
+        <div class="sb-logo-bottom">Festival Infrastructure</div>
+      </div>
+    </div>
+    <div class="sb-festival-pulse">
+      <div class="sfp-label"><div class="sfp-dot"></div> Festival Status</div>
+      <div class="sfp-stats">
+        <div><div class="sfp-stat-val g">412</div><div class="sfp-stat-lbl">Pre-Sale List</div></div>
+        <div><div class="sfp-stat-val b">3</div><div class="sfp-stat-lbl">Cities Locked</div></div>
+        <div><div class="sfp-stat-val g">$48K</div><div class="sfp-stat-lbl">Sponsors Secured</div></div>
+        <div><div class="sfp-stat-val b">284</div><div class="sfp-stat-lbl">Days to Launch</div></div>
+      </div>
+    </div>
+    <nav>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Command Center</div>
+        <a href="/phase4/mission-control.html" class="nav-btn"><span class="nav-icon">🎪</span> Mission Control</a>
+        <a href="/phase4/venue-intelligence.html" class="nav-btn"><span class="nav-icon">📍</span> Venue Intelligence<span class="nav-pip pip-gold">8 Cities</span></a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Festival Engine</div>
+        <a href="/phase4/ticketing.html" class="nav-btn"><span class="nav-icon">🎟️</span> Ticketing Engine<span class="nav-pip pip-blood">LIVE</span></a>
+        <a href="/phase4/lineup.html" class="nav-btn"><span class="nav-icon">🎤</span> Lineup Builder<span class="nav-pip pip-teal">Draft</span></a>
+        <a href="/phase4/production.html" class="nav-btn"><span class="nav-icon">⚙️</span> Production Plan</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Business</div>
+        <a href="/phase4/sponsors.html" class="nav-btn"><span class="nav-icon">💼</span> Sponsor Deck<span class="nav-pip pip-gold">$48K</span></a>
+        <a href="/phase4/pnl.html" class="nav-btn"><span class="nav-icon">📈</span> P&amp;L Projections</a>
+        <a href="/phase4/expansion.html" class="nav-btn active"><span class="nav-icon">🌎</span> Multi-City Expansion</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Platform</div>
+        <a href="/phase4/roadmap.html" class="nav-btn"><span class="nav-icon">🗺️</span> Full Roadmap</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Navigate</div>
+        <a href="/phase3/overview.html" class="nav-btn" style="text-decoration:none;"><span class="nav-icon">←</span> Phase 3: Community</a>
+        <a href="/" class="nav-btn" style="text-decoration:none;"><span class="nav-icon">↗</span> Phase 1: Media Hub</a>
+      </div>
+    </nav>
+    <div class="sb-footer">
+      <a href="/phase3/overview.html" class="sb-back-btn">← Phase 3: Community</a>
+      <a href="/" class="sb-back-btn">↗ Phase 1: Media Site</a>
+    </div>
+  </aside>
+  <header class="hd">
+    <div class="hd-title" id="page-title">MULTI-CITY EXPANSION</div>
+    <div class="hd-countdown">
+      <div><div class="hd-countdown-label">Days to Flagship</div><div class="hd-countdown-val" id="countdown-val">284</div></div>
+    </div>
+    <div class="hd-live"><div class="hd-dot"></div> Phase 4 Active</div>
+    <div class="hd-notif">🔔<div class="notif-pip"></div></div>
+    <button class="btn btn-gold btn-sm" onclick="showToast('🎟️ Pre-sale list is live — 412 signed up')">Pre-Sale Live ↗</button>
+  </header>
+  <main class="mn">
+        <div class="tab-page active" id="tab-expansion">
+      <div class="pg-hd">
+        <div>
+          <div class="pg-eyebrow">Growth Strategy</div>
+          <div class="pg-title">MULTI-CITY<em>EXPANSION</em></div>
+          <p class="pg-sub">Year 1 proves the model in Wilmington. Year 2 scales to NYC + Atlanta. Year 3 goes national — Chicago, Houston, LA. Data from every phase drives every decision.</p>
+        </div>
+        <div class="pg-actions">
+          <button class="btn btn-ghost">Investor Brief ↓</button>
+          <button class="btn btn-gold" onclick="showToast('🌎 Expansion deck shared with investors')">Share Expansion Plan</button>
+        </div>
+      </div>
+
+      <div class="city-expansion-grid">
+        <!-- YEAR 1 -->
+        <div class="city-card flagship">
+          <div class="city-card-banner" style="background:linear-gradient(135deg,rgba(240,180,41,0.12),rgba(232,57,14,0.08));">
+            <div class="city-banner-text">DE</div>
+            <div class="city-year-badge" style="background:var(--gold-d);color:var(--gold);">2026</div>
+            <div class="city-status-badge" style="background:var(--gold-d);color:var(--gold);">🏆 Flagship Year 1</div>
+          </div>
+          <div class="city-card-body">
+            <div class="city-name">Wilmington</div>
+            <div class="city-state">Delaware · East Coast Foundation</div>
+            <div class="city-stats">
+              <div><div class="city-stat-val" style="color:var(--gold);">1,500</div><div class="city-stat-lbl">Capacity</div></div>
+              <div><div class="city-stat-val" style="color:var(--blood);">94</div><div class="city-stat-lbl">Venue Score</div></div>
+              <div><div class="city-stat-val" style="color:var(--gold);">$116K</div><div class="city-stat-lbl">Proj. Profit</div></div>
+              <div><div class="city-stat-val" style="color:var(--teal);">Low</div><div class="city-stat-lbl">Cost Index</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- YEAR 2A -->
+        <div class="city-card planning">
+          <div class="city-card-banner" style="background:linear-gradient(135deg,rgba(232,57,14,0.08),transparent);">
+            <div class="city-banner-text">NYC</div>
+            <div class="city-year-badge" style="background:var(--blood-d);color:var(--blood);">2027</div>
+            <div class="city-status-badge" style="background:var(--blood-d);color:var(--blood);">Year 2 Target</div>
+          </div>
+          <div class="city-card-body">
+            <div class="city-name">New York</div>
+            <div class="city-state">New York · Premium Market</div>
+            <div class="city-stats">
+              <div><div class="city-stat-val" style="color:var(--off);">3,000+</div><div class="city-stat-lbl">Capacity</div></div>
+              <div><div class="city-stat-val" style="color:var(--off);">91</div><div class="city-stat-lbl">Venue Score</div></div>
+              <div><div class="city-stat-val" style="color:var(--off);">$280K</div><div class="city-stat-lbl">Proj. Profit</div></div>
+              <div><div class="city-stat-val" style="color:var(--blood);">Very High</div><div class="city-stat-lbl">Cost Index</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- YEAR 2B -->
+        <div class="city-card planning">
+          <div class="city-card-banner" style="background:linear-gradient(135deg,rgba(0,201,167,0.08),transparent);">
+            <div class="city-banner-text">ATL</div>
+            <div class="city-year-badge" style="background:var(--teal-d);color:var(--teal);">2027</div>
+            <div class="city-status-badge" style="background:var(--teal-d);color:var(--teal);">Year 2 Target</div>
+          </div>
+          <div class="city-card-body">
+            <div class="city-name">Atlanta</div>
+            <div class="city-state">Georgia · Southern Command</div>
+            <div class="city-stats">
+              <div><div class="city-stat-val" style="color:var(--off);">4,000</div><div class="city-stat-lbl">Capacity</div></div>
+              <div><div class="city-stat-val" style="color:var(--off);">86</div><div class="city-stat-lbl">Venue Score</div></div>
+              <div><div class="city-stat-val" style="color:var(--off);">$220K</div><div class="city-stat-lbl">Proj. Profit</div></div>
+              <div><div class="city-stat-val" style="color:var(--teal);">Medium</div><div class="city-stat-lbl">Cost Index</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- YEAR 3+ -->
+        <div class="city-card vision">
+          <div class="city-card-banner" style="background:rgba(255,255,255,0.01);">
+            <div class="city-banner-text">CHI</div>
+            <div class="city-year-badge" style="background:rgba(90,87,112,0.2);color:var(--muted);">2028</div>
+            <div class="city-status-badge" style="background:rgba(90,87,112,0.2);color:var(--muted);">Year 3 Vision</div>
+          </div>
+          <div class="city-card-body">
+            <div class="city-name" style="color:var(--muted);">Chicago</div>
+            <div class="city-state">Illinois · Midwest Expansion</div>
+            <div class="city-stats">
+              <div><div class="city-stat-val" style="color:var(--dim);">4,500</div><div class="city-stat-lbl">Capacity</div></div>
+              <div><div class="city-stat-val" style="color:var(--dim);">85</div><div class="city-stat-lbl">Venue Score</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="city-card vision">
+          <div class="city-card-banner" style="background:rgba(255,255,255,0.01);">
+            <div class="city-banner-text">HOU</div>
+            <div class="city-year-badge" style="background:rgba(90,87,112,0.2);color:var(--muted);">2028</div>
+            <div class="city-status-badge" style="background:rgba(90,87,112,0.2);color:var(--muted);">Year 3 Vision</div>
+          </div>
+          <div class="city-card-body">
+            <div class="city-name" style="color:var(--muted);">Houston</div>
+            <div class="city-state">Texas · Southern Expansion</div>
+            <div class="city-stats">
+              <div><div class="city-stat-val" style="color:var(--dim);">3,500</div><div class="city-stat-lbl">Capacity</div></div>
+              <div><div class="city-stat-val" style="color:var(--dim);">77</div><div class="city-stat-lbl">Venue Score</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="city-card vision">
+          <div class="city-card-banner" style="background:rgba(255,255,255,0.01);">
+            <div class="city-banner-text">LA</div>
+            <div class="city-year-badge" style="background:rgba(90,87,112,0.2);color:var(--muted);">2028+</div>
+            <div class="city-status-badge" style="background:rgba(90,87,112,0.2);color:var(--muted);">National Scale</div>
+          </div>
+          <div class="city-card-body">
+            <div class="city-name" style="color:var(--muted);">Los Angeles</div>
+            <div class="city-state">California · West Coast Flagship</div>
+            <div class="city-stats">
+              <div><div class="city-stat-val" style="color:var(--dim);">5,000+</div><div class="city-stat-lbl">Capacity</div></div>
+              <div><div class="city-stat-val" style="color:var(--dim);">TBD</div><div class="city-stat-lbl">Venue Score</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REVENUE PROJECTION BY YEAR -->
+      <div class="card">
+        <div class="card-hd"><div class="card-title">📈 Multi-Year Revenue Projection</div></div>
+        <div class="card-body">
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center;">
+            <div style="padding:20px;background:var(--gold-d);border:1px solid rgba(240,180,41,0.2);border-radius:8px;">
+              <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Year 1 · 2026</div>
+              <div style="font-family:var(--font-display);font-size:38px;color:var(--gold);line-height:1;margin-bottom:4px;">$284K</div>
+              <div style="font-size:11px;color:var(--muted);">1 city · Wilmington</div>
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--teal);margin-top:8px;">$116K profit</div>
+            </div>
+            <div style="padding:20px;background:var(--panel);border:1px solid var(--rim);border-radius:8px;">
+              <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Year 2 · 2027</div>
+              <div style="font-family:var(--font-display);font-size:38px;color:var(--off);line-height:1;margin-bottom:4px;">$1.2M</div>
+              <div style="font-size:11px;color:var(--muted);">3 cities · Scale</div>
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--teal);margin-top:8px;">$480K profit est.</div>
+            </div>
+            <div style="padding:20px;background:var(--panel);border:1px solid var(--rim);border-radius:8px;">
+              <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Year 3 · 2028</div>
+              <div style="font-family:var(--font-display);font-size:38px;color:var(--off);line-height:1;margin-bottom:4px;">$3.8M</div>
+              <div style="font-size:11px;color:var(--muted);">5+ cities · National</div>
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--teal);margin-top:8px;">$1.5M profit est.</div>
+            </div>
+            <div style="padding:20px;background:var(--panel);border:1px solid var(--rim);border-radius:8px;">
+              <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">Year 4 · 2029</div>
+              <div style="font-family:var(--font-display);font-size:38px;color:var(--off);line-height:1;margin-bottom:4px;">$10M+</div>
+              <div style="font-size:11px;color:var(--muted);">Rolling Loud tier</div>
+              <div style="font-family:var(--font-mono);font-size:10px;color:var(--teal);margin-top:8px;">Nation-scale brand</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================
+         FULL ROADMAP
+         ======================================= -->
+
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+// ── TAB NAVIGATION ─────────────────────────────────────────
+const pageTitles = {
+  overview:'MISSION CONTROL', venue:'VENUE INTELLIGENCE',
+  ticketing:'TICKETING ENGINE', lineup:'LINEUP BUILDER',
+  production:'PRODUCTION PLAN', sponsors:'SPONSOR DECK',
+  pnl:'P&L PROJECTIONS', expansion:'MULTI-CITY EXPANSION', roadmap:'ROADMAP'
+};
+
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const page = document.getElementById('tab-' + id);
+  if(page) page.classList.add('active');
+  if(btn) btn.classList.add('active');
+  document.getElementById('page-title').textContent = pageTitles[id] || id.toUpperCase();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// ── STAGE SWITCHER ─────────────────────────────────────────
+function switchStage(stage, btn) {
+  document.querySelectorAll('.stage-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  ['main','second','third'].forEach(s => {
+    const el = document.getElementById('stage-' + s);
+    if(el) el.style.display = s === stage ? '' : 'none';
+  });
+}
+
+// ── PRESALE BAR ANIMATION ──────────────────────────────────
+setTimeout(() => {
+  const bar = document.getElementById('presale-bar');
+  if(bar) bar.style.width = '27.5%';
+}, 500);
+
+// ── LIVE COUNTDOWN ─────────────────────────────────────────
+(function() {
+  const target = new Date('2026-11-14T19:00:00');
+  function update() {
+    const diff = target - new Date();
+    if(diff > 0) {
+      const days = Math.floor(diff / 86400000);
+      const el = document.getElementById('countdown-val');
+      if(el) el.textContent = days + 'd';
+    }
+  }
+  update();
+  setInterval(update, 60000);
+})();
+
+// ── TOAST ──────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3800);
+}
+
+// ── HEATBAR ANIMATIONS ────────────────────────────────────
+const barObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.querySelectorAll('.heatbar-fill[data-w]').forEach(b => {
+        const w = b.getAttribute('data-w');
+        b.style.width = '0%';
+        setTimeout(() => b.style.width = w + '%', 200);
+      });
+      barObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.card, .venue-map-placeholder').forEach(c => barObs.observe(c));
+
+</script>
+</body>
+</html>

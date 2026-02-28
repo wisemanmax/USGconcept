@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ticketing Engine — UGS Phase 4</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/phase4.css">
+<style>
+.tab-page { display: block !important; }
+.sb .nav-btn { text-decoration: none; display: flex; width: 100%; }
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="sb">
+    <div class="sb-brand">
+      <div class="sb-phase-orb"><span>P4</span></div>
+      <div class="sb-logo">
+        <div class="sb-logo-top">UNDERGROUND</div>
+        <div class="sb-logo-bottom">Festival Infrastructure</div>
+      </div>
+    </div>
+    <div class="sb-festival-pulse">
+      <div class="sfp-label"><div class="sfp-dot"></div> Festival Status</div>
+      <div class="sfp-stats">
+        <div><div class="sfp-stat-val g">412</div><div class="sfp-stat-lbl">Pre-Sale List</div></div>
+        <div><div class="sfp-stat-val b">3</div><div class="sfp-stat-lbl">Cities Locked</div></div>
+        <div><div class="sfp-stat-val g">$48K</div><div class="sfp-stat-lbl">Sponsors Secured</div></div>
+        <div><div class="sfp-stat-val b">284</div><div class="sfp-stat-lbl">Days to Launch</div></div>
+      </div>
+    </div>
+    <nav>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Command Center</div>
+        <a href="/phase4/mission-control.html" class="nav-btn"><span class="nav-icon">🎪</span> Mission Control</a>
+        <a href="/phase4/venue-intelligence.html" class="nav-btn"><span class="nav-icon">📍</span> Venue Intelligence<span class="nav-pip pip-gold">8 Cities</span></a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Festival Engine</div>
+        <a href="/phase4/ticketing.html" class="nav-btn active"><span class="nav-icon">🎟️</span> Ticketing Engine<span class="nav-pip pip-blood">LIVE</span></a>
+        <a href="/phase4/lineup.html" class="nav-btn"><span class="nav-icon">🎤</span> Lineup Builder<span class="nav-pip pip-teal">Draft</span></a>
+        <a href="/phase4/production.html" class="nav-btn"><span class="nav-icon">⚙️</span> Production Plan</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Business</div>
+        <a href="/phase4/sponsors.html" class="nav-btn"><span class="nav-icon">💼</span> Sponsor Deck<span class="nav-pip pip-gold">$48K</span></a>
+        <a href="/phase4/pnl.html" class="nav-btn"><span class="nav-icon">📈</span> P&amp;L Projections</a>
+        <a href="/phase4/expansion.html" class="nav-btn"><span class="nav-icon">🌎</span> Multi-City Expansion</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Platform</div>
+        <a href="/phase4/roadmap.html" class="nav-btn"><span class="nav-icon">🗺️</span> Full Roadmap</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Navigate</div>
+        <a href="/phase3/overview.html" class="nav-btn" style="text-decoration:none;"><span class="nav-icon">←</span> Phase 3: Community</a>
+        <a href="/" class="nav-btn" style="text-decoration:none;"><span class="nav-icon">↗</span> Phase 1: Media Hub</a>
+      </div>
+    </nav>
+    <div class="sb-footer">
+      <a href="/phase3/overview.html" class="sb-back-btn">← Phase 3: Community</a>
+      <a href="/" class="sb-back-btn">↗ Phase 1: Media Site</a>
+    </div>
+  </aside>
+  <header class="hd">
+    <div class="hd-title" id="page-title">TICKETING ENGINE</div>
+    <div class="hd-countdown">
+      <div><div class="hd-countdown-label">Days to Flagship</div><div class="hd-countdown-val" id="countdown-val">284</div></div>
+    </div>
+    <div class="hd-live"><div class="hd-dot"></div> Phase 4 Active</div>
+    <div class="hd-notif">🔔<div class="notif-pip"></div></div>
+    <button class="btn btn-gold btn-sm" onclick="showToast('🎟️ Pre-sale list is live — 412 signed up')">Pre-Sale Live ↗</button>
+  </header>
+  <main class="mn">
+        <div class="tab-page active" id="tab-ticketing">
+      <div class="pg-hd">
+        <div>
+          <div class="pg-eyebrow">UGS-Owned Ticketing</div>
+          <div class="pg-title">TICKETING<em>ENGINE</em></div>
+          <p class="pg-sub">No Ticketmaster. No middleman. UGS owns the full ticketing stack — data, revenue, and the relationship with every buyer. Ambassador priority windows open first.</p>
+        </div>
+        <div class="pg-actions">
+          <button class="btn btn-ghost">Export Buyers</button>
+          <button class="btn btn-blood" onclick="showToast('🎟️ General sale window opened!')">Open General Sale</button>
+          <button class="btn btn-gold" onclick="showToast('⭐ Ambassador window activated!')">Ambassador Access</button>
+        </div>
+      </div>
+
+      <!-- TIER CARDS -->
+      <div class="ticket-tier-grid">
+        <div class="ticket-tier">
+          <div class="tt-head" style="background:var(--raised);">
+            <div class="tt-name" style="color:var(--muted);">GENERAL</div>
+            <div class="tt-price" style="color:var(--off);">$45</div>
+            <div class="tt-sold">
+              <div class="tt-bar-track"><div class="tt-bar-fill" style="width:34%;background:var(--muted);"></div></div>
+              <div class="tt-sold-meta">340 / 1,000 sold</div>
+            </div>
+          </div>
+          <div class="tt-body">
+            <div class="tt-perks">
+              <div class="tt-perk"><span class="tt-check">—</span> General admission</div>
+              <div class="tt-perk"><span class="tt-check">—</span> All 3 stages access</div>
+              <div class="tt-perk"><span class="tt-check">—</span> Standard entry queue</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ticket-tier featured">
+          <div class="tt-head" style="background:var(--gold-d);">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;"><span class="chip chip-gold">BEST SELLER</span></div>
+            <div class="tt-name" style="color:var(--gold);">VIP</div>
+            <div class="tt-price" style="color:var(--gold);">$120</div>
+            <div class="tt-sold">
+              <div class="tt-bar-track"><div class="tt-bar-fill" style="width:58%;background:var(--gold);"></div></div>
+              <div class="tt-sold-meta" style="color:var(--gold);">58 / 100 sold</div>
+            </div>
+          </div>
+          <div class="tt-body">
+            <div class="tt-perks">
+              <div class="tt-perk"><span class="tt-check" style="color:var(--gold);">✓</span> VIP viewing platform</div>
+              <div class="tt-perk"><span class="tt-check" style="color:var(--gold);">✓</span> Open bar first 2 hours</div>
+              <div class="tt-perk"><span class="tt-check" style="color:var(--gold);">✓</span> Artist meet & greet access</div>
+              <div class="tt-perk"><span class="tt-check" style="color:var(--gold);">✓</span> UGS merch pack included</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ticket-tier">
+          <div class="tt-head" style="background:var(--raised);">
+            <div class="tt-name" style="color:var(--blood);">BACKSTAGE</div>
+            <div class="tt-price" style="color:var(--blood);">$250</div>
+            <div class="tt-sold">
+              <div class="tt-bar-track"><div class="tt-bar-fill" style="width:70%;background:var(--blood);"></div></div>
+              <div class="tt-sold-meta">14 / 20 sold</div>
+            </div>
+          </div>
+          <div class="tt-body">
+            <div class="tt-perks">
+              <div class="tt-perk"><span class="tt-check" style="color:var(--blood);">✓</span> Full backstage access</div>
+              <div class="tt-perk"><span class="tt-check" style="color:var(--blood);">✓</span> Soundcheck access</div>
+              <div class="tt-perk"><span class="tt-check" style="color:var(--blood);">✓</span> Private artist dinner</div>
+              <div class="tt-perk"><span class="tt-check" style="color:var(--blood);">✓</span> Signed merch + photo</div>
+              <div class="tt-perk"><span class="tt-check" style="color:var(--blood);">✓</span> Lifetime UGS Gold status</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ticket-tier">
+          <div class="tt-head" style="background:var(--raised);">
+            <div class="tt-name" style="color:var(--teal);">AMBASSADOR</div>
+            <div class="tt-price" style="color:var(--teal);">FREE</div>
+            <div class="tt-sold">
+              <div class="tt-bar-track"><div class="tt-bar-fill" style="width:20%;background:var(--teal);"></div></div>
+              <div class="tt-sold-meta">20 / 94 claimed</div>
+            </div>
+          </div>
+          <div class="tt-body">
+            <div class="tt-perks">
+              <div class="tt-perk"><span class="tt-check" style="color:var(--teal);">✓</span> Gold ambassador perk</div>
+              <div class="tt-perk"><span class="tt-check" style="color:var(--teal);">✓</span> Free entry — earned via XP</div>
+              <div class="tt-perk"><span class="tt-check" style="color:var(--teal);">✓</span> VIP access included</div>
+              <div class="tt-perk"><span class="tt-check" style="color:var(--teal);">✓</span> Ambassador lanyard + table</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SALES TREND + ACTIONS -->
+      <div class="two-col">
+        <div class="card">
+          <div class="card-hd"><div class="card-title">📈 Pre-Sale Trend</div><span class="chip chip-teal">+84 this week</span></div>
+          <div class="card-body">
+            <div class="sales-chart-area">
+              <svg class="sales-svg" viewBox="0 0 600 160" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="saleGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#f0b429" stop-opacity="0.3"/>
+                    <stop offset="100%" stop-color="#f0b429" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <path d="M0,155 C60,150 100,145 150,130 C200,115 240,110 290,90 C340,70 380,65 420,50 C460,35 500,25 540,15 C560,10 580,6 600,2" fill="url(#saleGrad)"/>
+                <path d="M0,155 C60,150 100,145 150,130 C200,115 240,110 290,90 C340,70 380,65 420,50 C460,35 500,25 540,15 C560,10 580,6 600,2" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round"/>
+                <!-- grid lines -->
+                <line x1="0" y1="40" x2="600" y2="40" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+                <line x1="0" y1="80" x2="600" y2="80" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+                <line x1="0" y1="120" x2="600" y2="120" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+                <!-- peak dot -->
+                <circle cx="600" cy="2" r="4" fill="var(--gold)"/>
+              </svg>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:8px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-top:8px;">
+              <span>NOV</span><span>DEC</span><span>JAN</span><span>FEB</span><span>MAR</span><span>NOW</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-hd"><div class="card-title">⚙️ Ticketing Controls</div></div>
+          <div class="card-body">
+            <div class="tkt-actions-grid" style="margin-bottom:0;">
+              <div class="tkt-action-card" onclick="showToast('⭐ Ambassador window: 72h priority activated')">
+                <div class="tkt-action-icon">⭐</div>
+                <div class="tkt-action-title">AMBASSADOR</div>
+                <div class="tkt-action-desc">Open Gold tier 72h window</div>
+              </div>
+              <div class="tkt-action-card" onclick="showToast('🔥 General sale now live')">
+                <div class="tkt-action-icon">🔥</div>
+                <div class="tkt-action-title">PUBLIC SALE</div>
+                <div class="tkt-action-desc">Open to all buyers</div>
+              </div>
+              <div class="tkt-action-card" onclick="showToast('📊 Analytics report generated')">
+                <div class="tkt-action-icon">📊</div>
+                <div class="tkt-action-title">ANALYTICS</div>
+                <div class="tkt-action-desc">Buyer data & demographics</div>
+              </div>
+              <div class="tkt-action-card" onclick="showToast('📩 Confirmation emails queued')">
+                <div class="tkt-action-icon">📩</div>
+                <div class="tkt-action-title">EMAIL BLAST</div>
+                <div class="tkt-action-desc">Send to pre-sale list</div>
+              </div>
+              <div class="tkt-action-card" onclick="showToast('🎟️ Promo codes generated')">
+                <div class="tkt-action-icon">🎟️</div>
+                <div class="tkt-action-title">PROMO CODES</div>
+                <div class="tkt-action-desc">Create discount codes</div>
+              </div>
+              <div class="tkt-action-card" onclick="showToast('🔒 Capacity locked at 1,500')">
+                <div class="tkt-action-icon">🔒</div>
+                <div class="tkt-action-title">LOCK CAP</div>
+                <div class="tkt-action-desc">Freeze at capacity</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================
+         LINEUP BUILDER
+         ======================================= -->
+
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+// ── TAB NAVIGATION ─────────────────────────────────────────
+const pageTitles = {
+  overview:'MISSION CONTROL', venue:'VENUE INTELLIGENCE',
+  ticketing:'TICKETING ENGINE', lineup:'LINEUP BUILDER',
+  production:'PRODUCTION PLAN', sponsors:'SPONSOR DECK',
+  pnl:'P&L PROJECTIONS', expansion:'MULTI-CITY EXPANSION', roadmap:'ROADMAP'
+};
+
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const page = document.getElementById('tab-' + id);
+  if(page) page.classList.add('active');
+  if(btn) btn.classList.add('active');
+  document.getElementById('page-title').textContent = pageTitles[id] || id.toUpperCase();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// ── STAGE SWITCHER ─────────────────────────────────────────
+function switchStage(stage, btn) {
+  document.querySelectorAll('.stage-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  ['main','second','third'].forEach(s => {
+    const el = document.getElementById('stage-' + s);
+    if(el) el.style.display = s === stage ? '' : 'none';
+  });
+}
+
+// ── PRESALE BAR ANIMATION ──────────────────────────────────
+setTimeout(() => {
+  const bar = document.getElementById('presale-bar');
+  if(bar) bar.style.width = '27.5%';
+}, 500);
+
+// ── LIVE COUNTDOWN ─────────────────────────────────────────
+(function() {
+  const target = new Date('2026-11-14T19:00:00');
+  function update() {
+    const diff = target - new Date();
+    if(diff > 0) {
+      const days = Math.floor(diff / 86400000);
+      const el = document.getElementById('countdown-val');
+      if(el) el.textContent = days + 'd';
+    }
+  }
+  update();
+  setInterval(update, 60000);
+})();
+
+// ── TOAST ──────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3800);
+}
+
+// ── HEATBAR ANIMATIONS ────────────────────────────────────
+const barObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.querySelectorAll('.heatbar-fill[data-w]').forEach(b => {
+        const w = b.getAttribute('data-w');
+        b.style.width = '0%';
+        setTimeout(() => b.style.width = w + '%', 200);
+      });
+      barObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.card, .venue-map-placeholder').forEach(c => barObs.observe(c));
+
+</script>
+</body>
+</html>

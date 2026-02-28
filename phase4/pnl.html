@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P&L Projections — UGS Phase 4</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/phase4.css">
+<style>
+.tab-page { display: block !important; }
+.sb .nav-btn { text-decoration: none; display: flex; width: 100%; }
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="sb">
+    <div class="sb-brand">
+      <div class="sb-phase-orb"><span>P4</span></div>
+      <div class="sb-logo">
+        <div class="sb-logo-top">UNDERGROUND</div>
+        <div class="sb-logo-bottom">Festival Infrastructure</div>
+      </div>
+    </div>
+    <div class="sb-festival-pulse">
+      <div class="sfp-label"><div class="sfp-dot"></div> Festival Status</div>
+      <div class="sfp-stats">
+        <div><div class="sfp-stat-val g">412</div><div class="sfp-stat-lbl">Pre-Sale List</div></div>
+        <div><div class="sfp-stat-val b">3</div><div class="sfp-stat-lbl">Cities Locked</div></div>
+        <div><div class="sfp-stat-val g">$48K</div><div class="sfp-stat-lbl">Sponsors Secured</div></div>
+        <div><div class="sfp-stat-val b">284</div><div class="sfp-stat-lbl">Days to Launch</div></div>
+      </div>
+    </div>
+    <nav>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Command Center</div>
+        <a href="/phase4/mission-control.html" class="nav-btn"><span class="nav-icon">🎪</span> Mission Control</a>
+        <a href="/phase4/venue-intelligence.html" class="nav-btn"><span class="nav-icon">📍</span> Venue Intelligence<span class="nav-pip pip-gold">8 Cities</span></a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Festival Engine</div>
+        <a href="/phase4/ticketing.html" class="nav-btn"><span class="nav-icon">🎟️</span> Ticketing Engine<span class="nav-pip pip-blood">LIVE</span></a>
+        <a href="/phase4/lineup.html" class="nav-btn"><span class="nav-icon">🎤</span> Lineup Builder<span class="nav-pip pip-teal">Draft</span></a>
+        <a href="/phase4/production.html" class="nav-btn"><span class="nav-icon">⚙️</span> Production Plan</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Business</div>
+        <a href="/phase4/sponsors.html" class="nav-btn"><span class="nav-icon">💼</span> Sponsor Deck<span class="nav-pip pip-gold">$48K</span></a>
+        <a href="/phase4/pnl.html" class="nav-btn active"><span class="nav-icon">📈</span> P&amp;L Projections</a>
+        <a href="/phase4/expansion.html" class="nav-btn"><span class="nav-icon">🌎</span> Multi-City Expansion</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Platform</div>
+        <a href="/phase4/roadmap.html" class="nav-btn"><span class="nav-icon">🗺️</span> Full Roadmap</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Navigate</div>
+        <a href="/phase3/overview.html" class="nav-btn" style="text-decoration:none;"><span class="nav-icon">←</span> Phase 3: Community</a>
+        <a href="/" class="nav-btn" style="text-decoration:none;"><span class="nav-icon">↗</span> Phase 1: Media Hub</a>
+      </div>
+    </nav>
+    <div class="sb-footer">
+      <a href="/phase3/overview.html" class="sb-back-btn">← Phase 3: Community</a>
+      <a href="/" class="sb-back-btn">↗ Phase 1: Media Site</a>
+    </div>
+  </aside>
+  <header class="hd">
+    <div class="hd-title" id="page-title">P&L PROJECTIONS</div>
+    <div class="hd-countdown">
+      <div><div class="hd-countdown-label">Days to Flagship</div><div class="hd-countdown-val" id="countdown-val">284</div></div>
+    </div>
+    <div class="hd-live"><div class="hd-dot"></div> Phase 4 Active</div>
+    <div class="hd-notif">🔔<div class="notif-pip"></div></div>
+    <button class="btn btn-gold btn-sm" onclick="showToast('🎟️ Pre-sale list is live — 412 signed up')">Pre-Sale Live ↗</button>
+  </header>
+  <main class="mn">
+        <div class="tab-page active" id="tab-pnl">
+      <div class="pg-hd">
+        <div>
+          <div class="pg-eyebrow">Financial Model</div>
+          <div class="pg-title">P&L<em>PROJECTIONS</em></div>
+          <p class="pg-sub">Three scenarios modeled: conservative (900 tickets), base (1,200), and optimistic (sell-out 1,500). All include ticket revenue, sponsorship, merch, and bar split.</p>
+        </div>
+        <div class="pg-actions">
+          <button class="btn btn-ghost">Export Model</button>
+          <button class="btn btn-gold" onclick="showToast('📊 P&L sent to investors')">Share with Investors</button>
+        </div>
+      </div>
+
+      <!-- BIG 3 -->
+      <div class="pnl-hero" style="margin-bottom:24px;">
+        <div class="pnl-big revenue">
+          <div class="pnl-label">Base Case Revenue</div>
+          <div class="pnl-amount">$284K</div>
+          <div class="pnl-note">1,200 tickets × $85 avg + $90K sponsors + $44K merch/bar</div>
+        </div>
+        <div class="pnl-big costs">
+          <div class="pnl-label">Total Production Costs</div>
+          <div class="pnl-amount">$168K</div>
+          <div class="pnl-note">Artist fees + venue + production + operations + marketing</div>
+        </div>
+        <div class="pnl-big profit">
+          <div class="pnl-label">Base Case Net Profit</div>
+          <div class="pnl-amount">$116K</div>
+          <div class="pnl-note">41% margin · Year 1 · Reinvest into Year 2 expansion</div>
+        </div>
+      </div>
+
+      <!-- BREAKDOWN -->
+      <div class="pnl-breakdown">
+        <div>
+          <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:8px;"><span style="width:20px;height:1px;background:var(--gold);display:inline-block;"></span>Revenue Breakdown</div>
+          <div class="pnl-side">
+            <div class="pnl-line revenue-line"><div class="pnl-line-name">Ticket Sales (1,200 avg)</div><div class="pnl-line-val">$102K</div></div>
+            <div class="pnl-line revenue-line"><div class="pnl-line-name">VIP Upgrades (85 × $120)</div><div class="pnl-line-val">$10.2K</div></div>
+            <div class="pnl-line revenue-line"><div class="pnl-line-name">Backstage (18 × $250)</div><div class="pnl-line-val">$4.5K</div></div>
+            <div class="pnl-line revenue-line"><div class="pnl-line-name">Total Sponsorship</div><div class="pnl-line-val">$90K</div></div>
+            <div class="pnl-line revenue-line"><div class="pnl-line-name">Merchandise Sales</div><div class="pnl-line-val">$28K</div></div>
+            <div class="pnl-line revenue-line"><div class="pnl-line-name">Bar Revenue Split (40%)</div><div class="pnl-line-val">$16K</div></div>
+            <div class="pnl-line revenue-line"><div class="pnl-line-name">Media / Streaming Rights</div><div class="pnl-line-val">$10K</div></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:var(--gold-d);border:1px solid rgba(240,180,41,0.2);border-radius:6px;margin-top:4px;">
+              <div style="font-family:var(--font-display);font-size:16px;letter-spacing:2px;color:var(--gold);">TOTAL REVENUE</div>
+              <div style="font-family:var(--font-display);font-size:28px;color:var(--gold);">$284K</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--blood);margin-bottom:12px;display:flex;align-items:center;gap:8px;"><span style="width:20px;height:1px;background:var(--blood);display:inline-block;"></span>Cost Breakdown</div>
+          <div class="pnl-side">
+            <div class="pnl-line cost-line"><div class="pnl-line-name">Artist Fees (12 artists)</div><div class="pnl-line-val">$62K</div></div>
+            <div class="pnl-line cost-line"><div class="pnl-line-name">Venue Rental</div><div class="pnl-line-val">$18K</div></div>
+            <div class="pnl-line cost-line"><div class="pnl-line-name">Production (Sound + Lights)</div><div class="pnl-line-val">$28K</div></div>
+            <div class="pnl-line cost-line"><div class="pnl-line-name">Security + Operations</div><div class="pnl-line-val">$14K</div></div>
+            <div class="pnl-line cost-line"><div class="pnl-line-name">Marketing + Ticketing</div><div class="pnl-line-val">$12K</div></div>
+            <div class="pnl-line cost-line"><div class="pnl-line-name">Merch Production</div><div class="pnl-line-val">$8K</div></div>
+            <div class="pnl-line cost-line"><div class="pnl-line-name">Insurance + Permits</div><div class="pnl-line-val">$6K</div></div>
+            <div class="pnl-line cost-line"><div class="pnl-line-name">Staffing + Misc</div><div class="pnl-line-val">$20K</div></div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:var(--blood-d);border:1px solid rgba(232,57,14,0.2);border-radius:6px;margin-top:4px;">
+              <div style="font-family:var(--font-display);font-size:16px;letter-spacing:2px;color:var(--blood);">TOTAL COSTS</div>
+              <div style="font-family:var(--font-display);font-size:28px;color:var(--blood);">$168K</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCENARIO TABLE -->
+      <div class="card">
+        <div class="card-hd"><div class="card-title">📊 Scenario Analysis</div></div>
+        <table class="scenario-table">
+          <thead><tr><th>Scenario</th><th>Attendance</th><th>Ticket Rev.</th><th>Total Revenue</th><th>Total Costs</th><th>Net Profit</th><th>ROI</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><div class="scen-name" style="color:var(--muted);">Conservative</div></td>
+              <td style="font-family:var(--font-mono);font-size:11px;color:var(--muted);">900 (60%)</td>
+              <td style="font-family:var(--font-mono);font-size:11px;color:var(--muted);">$76K</td>
+              <td class="scen-revenue" style="color:var(--off);">$214K</td>
+              <td style="font-family:var(--font-display);font-size:20px;color:var(--blood);">$168K</td>
+              <td class="scen-profit" style="color:var(--teal);">$46K</td>
+              <td style="font-family:var(--font-mono);font-size:11px;color:var(--muted);">27%</td>
+            </tr>
+            <tr style="background:rgba(240,180,41,0.03);">
+              <td><div class="scen-name" style="color:var(--gold);">Base Case ← You Are Here</div></td>
+              <td style="font-family:var(--font-mono);font-size:11px;color:var(--gold);">1,200 (80%)</td>
+              <td style="font-family:var(--font-mono);font-size:11px;color:var(--gold);">$117K</td>
+              <td class="scen-revenue">$284K</td>
+              <td style="font-family:var(--font-display);font-size:20px;color:var(--blood);">$168K</td>
+              <td class="scen-profit">$116K</td>
+              <td style="font-family:var(--font-mono);font-size:11px;color:var(--teal);">41%</td>
+            </tr>
+            <tr>
+              <td><div class="scen-name" style="color:var(--teal);">Optimistic (Sell-Out)</div></td>
+              <td style="font-family:var(--font-mono);font-size:11px;color:var(--teal);">1,500 (100%)</td>
+              <td style="font-family:var(--font-mono);font-size:11px;color:var(--teal);">$146K</td>
+              <td class="scen-revenue" style="color:var(--teal);">$328K</td>
+              <td style="font-family:var(--font-display);font-size:20px;color:var(--blood);">$168K</td>
+              <td class="scen-profit" style="color:var(--teal);font-size:24px;">$160K</td>
+              <td style="font-family:var(--font-mono);font-size:11px;color:var(--teal);">49%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- =======================================
+         MULTI-CITY EXPANSION
+         ======================================= -->
+
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+// ── TAB NAVIGATION ─────────────────────────────────────────
+const pageTitles = {
+  overview:'MISSION CONTROL', venue:'VENUE INTELLIGENCE',
+  ticketing:'TICKETING ENGINE', lineup:'LINEUP BUILDER',
+  production:'PRODUCTION PLAN', sponsors:'SPONSOR DECK',
+  pnl:'P&L PROJECTIONS', expansion:'MULTI-CITY EXPANSION', roadmap:'ROADMAP'
+};
+
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const page = document.getElementById('tab-' + id);
+  if(page) page.classList.add('active');
+  if(btn) btn.classList.add('active');
+  document.getElementById('page-title').textContent = pageTitles[id] || id.toUpperCase();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// ── STAGE SWITCHER ─────────────────────────────────────────
+function switchStage(stage, btn) {
+  document.querySelectorAll('.stage-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  ['main','second','third'].forEach(s => {
+    const el = document.getElementById('stage-' + s);
+    if(el) el.style.display = s === stage ? '' : 'none';
+  });
+}
+
+// ── PRESALE BAR ANIMATION ──────────────────────────────────
+setTimeout(() => {
+  const bar = document.getElementById('presale-bar');
+  if(bar) bar.style.width = '27.5%';
+}, 500);
+
+// ── LIVE COUNTDOWN ─────────────────────────────────────────
+(function() {
+  const target = new Date('2026-11-14T19:00:00');
+  function update() {
+    const diff = target - new Date();
+    if(diff > 0) {
+      const days = Math.floor(diff / 86400000);
+      const el = document.getElementById('countdown-val');
+      if(el) el.textContent = days + 'd';
+    }
+  }
+  update();
+  setInterval(update, 60000);
+})();
+
+// ── TOAST ──────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3800);
+}
+
+// ── HEATBAR ANIMATIONS ────────────────────────────────────
+const barObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.querySelectorAll('.heatbar-fill[data-w]').forEach(b => {
+        const w = b.getAttribute('data-w');
+        b.style.width = '0%';
+        setTimeout(() => b.style.width = w + '%', 200);
+      });
+      barObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.card, .venue-map-placeholder').forEach(c => barObs.observe(c));
+
+</script>
+</body>
+</html>

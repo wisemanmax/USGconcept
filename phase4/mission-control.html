@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mission Control — UGS Phase 4</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/phase4.css">
+<style>
+.tab-page { display: block !important; }
+.sb .nav-btn { text-decoration: none; display: flex; width: 100%; }
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="sb">
+    <div class="sb-brand">
+      <div class="sb-phase-orb"><span>P4</span></div>
+      <div class="sb-logo">
+        <div class="sb-logo-top">UNDERGROUND</div>
+        <div class="sb-logo-bottom">Festival Infrastructure</div>
+      </div>
+    </div>
+    <div class="sb-festival-pulse">
+      <div class="sfp-label"><div class="sfp-dot"></div> Festival Status</div>
+      <div class="sfp-stats">
+        <div><div class="sfp-stat-val g">412</div><div class="sfp-stat-lbl">Pre-Sale List</div></div>
+        <div><div class="sfp-stat-val b">3</div><div class="sfp-stat-lbl">Cities Locked</div></div>
+        <div><div class="sfp-stat-val g">$48K</div><div class="sfp-stat-lbl">Sponsors Secured</div></div>
+        <div><div class="sfp-stat-val b">284</div><div class="sfp-stat-lbl">Days to Launch</div></div>
+      </div>
+    </div>
+    <nav>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Command Center</div>
+        <a href="/phase4/mission-control.html" class="nav-btn active"><span class="nav-icon">🎪</span> Mission Control</a>
+        <a href="/phase4/venue-intelligence.html" class="nav-btn"><span class="nav-icon">📍</span> Venue Intelligence<span class="nav-pip pip-gold">8 Cities</span></a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Festival Engine</div>
+        <a href="/phase4/ticketing.html" class="nav-btn"><span class="nav-icon">🎟️</span> Ticketing Engine<span class="nav-pip pip-blood">LIVE</span></a>
+        <a href="/phase4/lineup.html" class="nav-btn"><span class="nav-icon">🎤</span> Lineup Builder<span class="nav-pip pip-teal">Draft</span></a>
+        <a href="/phase4/production.html" class="nav-btn"><span class="nav-icon">⚙️</span> Production Plan</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Business</div>
+        <a href="/phase4/sponsors.html" class="nav-btn"><span class="nav-icon">💼</span> Sponsor Deck<span class="nav-pip pip-gold">$48K</span></a>
+        <a href="/phase4/pnl.html" class="nav-btn"><span class="nav-icon">📈</span> P&amp;L Projections</a>
+        <a href="/phase4/expansion.html" class="nav-btn"><span class="nav-icon">🌎</span> Multi-City Expansion</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Platform</div>
+        <a href="/phase4/roadmap.html" class="nav-btn"><span class="nav-icon">🗺️</span> Full Roadmap</a>
+      </div>
+      <div class="nav-section">
+        <div class="nav-section-lbl">Navigate</div>
+        <a href="/phase3/overview.html" class="nav-btn" style="text-decoration:none;"><span class="nav-icon">←</span> Phase 3: Community</a>
+        <a href="/" class="nav-btn" style="text-decoration:none;"><span class="nav-icon">↗</span> Phase 1: Media Hub</a>
+      </div>
+    </nav>
+    <div class="sb-footer">
+      <a href="/phase3/overview.html" class="sb-back-btn">← Phase 3: Community</a>
+      <a href="/" class="sb-back-btn">↗ Phase 1: Media Site</a>
+    </div>
+  </aside>
+  <header class="hd">
+    <div class="hd-title" id="page-title">MISSION CONTROL</div>
+    <div class="hd-countdown">
+      <div><div class="hd-countdown-label">Days to Flagship</div><div class="hd-countdown-val" id="countdown-val">284</div></div>
+    </div>
+    <div class="hd-live"><div class="hd-dot"></div> Phase 4 Active</div>
+    <div class="hd-notif">🔔<div class="notif-pip"></div></div>
+    <button class="btn btn-gold btn-sm" onclick="showToast('🎟️ Pre-sale list is live — 412 signed up')">Pre-Sale Live ↗</button>
+  </header>
+  <main class="mn">
+        <div class="tab-page active" id="tab-overview">
+
+      <!-- HERO -->
+      <div class="festival-hero">
+        <div class="fh-year">2026</div>
+        <div class="fh-content">
+          <div class="fh-phase-tag">Phase 4 — Flagship Festival · Underground Sound</div>
+          <div class="fh-headline">THE UNDERGROUND<em>GOES LIVE</em></div>
+          <p class="fh-desc">Three years of data. 2,847 community members. 92K Twitter followers. 18 Discord partners. Now we use all of it to build the festival the underground actually deserves.</p>
+          <div class="fh-ctas">
+            <button class="btn btn-gold" onclick="showTab('ticketing', document.querySelectorAll('.nav-btn')[2])">🎟️ Ticketing Dashboard</button>
+            <button class="btn btn-blood" onclick="showTab('sponsors', document.querySelectorAll('.nav-btn')[5])">💼 Sponsor Deck</button>
+            <button class="btn btn-ghost" onclick="showTab('pnl', document.querySelectorAll('.nav-btn')[6])">📈 View P&L</button>
+          </div>
+          <div class="fh-stats-row">
+            <div class="fh-stat"><div class="fh-stat-val">412</div><div class="fh-stat-lbl">Pre-Sale Signups</div></div>
+            <div class="fh-stat"><div class="fh-stat-val" style="color:var(--blood);">$48K</div><div class="fh-stat-lbl">Sponsor Secured</div></div>
+            <div class="fh-stat"><div class="fh-stat-val">3</div><div class="fh-stat-lbl">Cities in Play</div></div>
+            <div class="fh-stat"><div class="fh-stat-val" style="color:var(--teal);">$284K</div><div class="fh-stat-lbl">Projected Revenue</div></div>
+            <div class="fh-stat"><div class="fh-stat-val">1,500</div><div class="fh-stat-lbl">Target Capacity</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI ROW -->
+      <div class="kpi-row">
+        <div class="kpi kg"><div class="kpi-lbl">Ticket Pre-Sales</div><div class="kpi-val">412</div><div class="kpi-sub up">↑ +84 this week</div></div>
+        <div class="kpi kb"><div class="kpi-lbl">Venue Score #1</div><div class="kpi-val">94</div><div class="kpi-sub">Wilmington, DE — Locked</div></div>
+        <div class="kpi kg"><div class="kpi-lbl">Sponsors Secured</div><div class="kpi-val">$48K</div><div class="kpi-sub up">↑ 4 brands confirmed</div></div>
+        <div class="kpi kt"><div class="kpi-lbl">Lineup Confirmed</div><div class="kpi-val">6/12</div><div class="kpi-sub">6 slots still open</div></div>
+        <div class="kpi kg"><div class="kpi-lbl">Days to Flagship</div><div class="kpi-val">284</div><div class="kpi-sub">Target: Nov 2026</div></div>
+      </div>
+
+      <!-- TWO COL -->
+      <div class="two-col">
+        <!-- MILESTONE TRACKER -->
+        <div class="card">
+          <div class="card-hd"><div class="card-title">🏁 Critical Milestones</div><span class="chip chip-gold">On Track</span></div>
+          <div class="card-body">
+            <div style="display:flex;flex-direction:column;gap:0;">
+              <!-- milestone row fn -->
+              <!-- milestone: done -->
+              <div style="display:flex;align-items:flex-start;gap:16px;padding:14px 0;border-bottom:1px solid var(--rim);">
+                <div style="width:20px;height:20px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;margin-top:2px;box-shadow:0 0 8px rgba(240,180,41,0.4);">✓</div>
+                <div style="flex:1;"><div style="font-weight:700;font-size:13px;margin-bottom:2px;">Phase 1–3 Infrastructure Complete</div><div style="font-size:11px;color:var(--muted);font-style:italic;">Media hub, analytics engine, and community network all live. 92K+ reach.</div></div>
+                <div style="font-family:var(--font-mono);font-size:9px;color:var(--gold);white-space:nowrap;">DONE ✓</div>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:16px;padding:14px 0;border-bottom:1px solid var(--rim);">
+                <div style="width:20px;height:20px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;margin-top:2px;box-shadow:0 0 8px rgba(240,180,41,0.4);">✓</div>
+                <div style="flex:1;"><div style="font-weight:700;font-size:13px;margin-bottom:2px;">Venue Intelligence Report Completed</div><div style="font-size:11px;color:var(--muted);font-style:italic;">8 cities analyzed. Wilmington, DE selected as Flagship Year 1 venue.</div></div>
+                <div style="font-family:var(--font-mono);font-size:9px;color:var(--gold);white-space:nowrap;">DONE ✓</div>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:16px;padding:14px 0;border-bottom:1px solid var(--rim);background:rgba(232,57,14,0.03);">
+                <div style="width:20px;height:20px;border-radius:50%;background:var(--blood);display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;margin-top:2px;animation:pulse-timeline 1.5s infinite;">▶</div>
+                <div style="flex:1;"><div style="font-weight:700;font-size:13px;margin-bottom:2px;">Pre-Sale Launch & Sponsor Outreach</div><div style="font-size:11px;color:var(--muted);font-style:italic;">412 pre-sale list. 4 sponsors confirmed at $48K. Targeting $90K total sponsorship.</div></div>
+                <div style="font-family:var(--font-mono);font-size:9px;color:var(--blood);white-space:nowrap;">IN PROGRESS</div>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:16px;padding:14px 0;border-bottom:1px solid var(--rim);opacity:0.6;">
+                <div style="width:20px;height:20px;border-radius:50%;background:var(--rim2);display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;margin-top:2px;">4</div>
+                <div style="flex:1;"><div style="font-weight:700;font-size:13px;margin-bottom:2px;">Lineup Finalization & Artist Contracts</div><div style="font-size:11px;color:var(--muted);font-style:italic;">6/12 slots filled. Headliner negotiation in progress. Target: 90-day out deadline.</div></div>
+                <div style="font-family:var(--font-mono);font-size:9px;color:var(--muted);white-space:nowrap;">Q2 2026</div>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:16px;padding:14px 0;border-bottom:1px solid var(--rim);opacity:0.6;">
+                <div style="width:20px;height:20px;border-radius:50%;background:var(--rim2);display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;margin-top:2px;">5</div>
+                <div style="flex:1;"><div style="font-weight:700;font-size:13px;margin-bottom:2px;">Full Ticket Sale & Marketing Campaign</div><div style="font-size:11px;color:var(--muted);font-style:italic;">Ambassador priority window opens first. Full public sale 90 days before event.</div></div>
+                <div style="font-family:var(--font-mono);font-size:9px;color:var(--muted);white-space:nowrap;">Q3 2026</div>
+              </div>
+              <div style="display:flex;align-items:flex-start;gap:16px;padding:14px 0;opacity:0.4;">
+                <div style="width:20px;height:20px;border-radius:50%;background:var(--rim2);display:flex;align-items:center;justify-content:center;font-size:9px;flex-shrink:0;margin-top:2px;">6</div>
+                <div style="flex:1;"><div style="font-weight:700;font-size:13px;margin-bottom:2px;">Underground Sound Flagship Festival — Year 1</div><div style="font-size:11px;color:var(--muted);font-style:italic;">1,500-cap venue. 12 artists. 3 stages. Community. Data driving everything.</div></div>
+                <div style="font-family:var(--font-mono);font-size:9px;color:var(--muted);white-space:nowrap;">NOV 2026</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- QUICK STATS COL -->
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <!-- TICKET GAUGE -->
+          <div class="card">
+            <div class="card-hd"><div class="card-title">🎟️ Pre-Sale Velocity</div><button class="card-action" onclick="showTab('ticketing',null)">Full View →</button></div>
+            <div class="card-body">
+              <div style="text-align:center;padding:8px 0;">
+                <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">Pre-Sales vs Goal</div>
+                <div style="font-family:var(--font-display);font-size:56px;color:var(--gold);line-height:1;">412</div>
+                <div style="font-family:var(--font-mono);font-size:9px;color:var(--muted);letter-spacing:2px;margin-bottom:14px;">of 1,500 capacity</div>
+                <div style="height:10px;background:var(--rim2);border-radius:5px;overflow:hidden;margin-bottom:6px;">
+                  <div id="presale-bar" style="height:100%;width:0%;background:linear-gradient(90deg,var(--blood),var(--gold));border-radius:5px;transition:width 1.5s cubic-bezier(0.25,0.46,0.45,0.94);"></div>
+                </div>
+                <div style="font-family:var(--font-mono);font-size:9px;color:var(--gold);">27% of capacity claimed</div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;">
+                <div style="padding:10px;background:var(--raised);border-radius:6px;text-align:center;border-left:2px solid var(--gold);">
+                  <div style="font-family:var(--font-display);font-size:22px;color:var(--gold);">84</div>
+                  <div style="font-family:var(--font-mono);font-size:7px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;">This Week</div>
+                </div>
+                <div style="padding:10px;background:var(--raised);border-radius:6px;text-align:center;border-left:2px solid var(--blood);">
+                  <div style="font-family:var(--font-display);font-size:22px;color:var(--blood);">28%</div>
+                  <div style="font-family:var(--font-mono);font-size:7px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;">Week Growth</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- SPONSOR SUMMARY -->
+          <div class="card">
+            <div class="card-hd"><div class="card-title">💼 Sponsor Status</div><button class="card-action" onclick="showTab('sponsors',null)">Deck →</button></div>
+            <div class="card-body">
+              <div style="font-family:var(--font-display);font-size:44px;color:var(--gold);line-height:1;margin-bottom:4px;">$48K</div>
+              <div style="font-family:var(--font-mono);font-size:8px;color:var(--muted);letter-spacing:3px;text-transform:uppercase;margin-bottom:14px;">Confirmed · Target $90K</div>
+              <div style="height:6px;background:var(--rim2);border-radius:3px;overflow:hidden;margin-bottom:14px;">
+                <div style="width:53%;height:100%;background:linear-gradient(90deg,var(--blood),var(--gold));border-radius:3px;"></div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:6px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;"><span style="color:var(--muted);">Brand X Audio</span><span style="font-family:var(--font-display);font-size:16px;color:var(--gold);">$20K</span></div>
+                <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;"><span style="color:var(--muted);">Sole Supply Co.</span><span style="font-family:var(--font-display);font-size:16px;color:var(--gold);">$15K</span></div>
+                <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;"><span style="color:var(--muted);">DistroKit</span><span style="font-family:var(--font-display);font-size:16px;color:var(--gold);">$8K</span></div>
+                <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;"><span style="color:var(--muted);">Local Media Partner</span><span style="font-family:var(--font-display);font-size:16px;color:var(--gold);">$5K</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================
+         VENUE INTELLIGENCE
+         ======================================= -->
+
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+// ── TAB NAVIGATION ─────────────────────────────────────────
+const pageTitles = {
+  overview:'MISSION CONTROL', venue:'VENUE INTELLIGENCE',
+  ticketing:'TICKETING ENGINE', lineup:'LINEUP BUILDER',
+  production:'PRODUCTION PLAN', sponsors:'SPONSOR DECK',
+  pnl:'P&L PROJECTIONS', expansion:'MULTI-CITY EXPANSION', roadmap:'ROADMAP'
+};
+
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const page = document.getElementById('tab-' + id);
+  if(page) page.classList.add('active');
+  if(btn) btn.classList.add('active');
+  document.getElementById('page-title').textContent = pageTitles[id] || id.toUpperCase();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// ── STAGE SWITCHER ─────────────────────────────────────────
+function switchStage(stage, btn) {
+  document.querySelectorAll('.stage-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  ['main','second','third'].forEach(s => {
+    const el = document.getElementById('stage-' + s);
+    if(el) el.style.display = s === stage ? '' : 'none';
+  });
+}
+
+// ── PRESALE BAR ANIMATION ──────────────────────────────────
+setTimeout(() => {
+  const bar = document.getElementById('presale-bar');
+  if(bar) bar.style.width = '27.5%';
+}, 500);
+
+// ── LIVE COUNTDOWN ─────────────────────────────────────────
+(function() {
+  const target = new Date('2026-11-14T19:00:00');
+  function update() {
+    const diff = target - new Date();
+    if(diff > 0) {
+      const days = Math.floor(diff / 86400000);
+      const el = document.getElementById('countdown-val');
+      if(el) el.textContent = days + 'd';
+    }
+  }
+  update();
+  setInterval(update, 60000);
+})();
+
+// ── TOAST ──────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3800);
+}
+
+// ── HEATBAR ANIMATIONS ────────────────────────────────────
+const barObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.querySelectorAll('.heatbar-fill[data-w]').forEach(b => {
+        const w = b.getAttribute('data-w');
+        b.style.width = '0%';
+        setTimeout(() => b.style.width = w + '%', 200);
+      });
+      barObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.card, .venue-map-placeholder').forEach(c => barObs.observe(c));
+
+</script>
+</body>
+</html>
