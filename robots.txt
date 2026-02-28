@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://undergroundsound.co/sitemap.xml
+
+# Block Phase 2/3 admin pages from indexing
+Disallow: /phase2/reports.html
+Disallow: /phase2/funnel.html

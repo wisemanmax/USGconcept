@@ -2,214 +2,495 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.svg">
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://undergroundsound.co/promotions.html">
+<meta property="og:image" content="https://undergroundsound.co/og-image.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Underground Sound">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@therealugs">
+<meta name="twitter:image" content="https://undergroundsound.co/og-image.svg">
+<meta name="theme-color" content="#d4ff00">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Promotions — Underground Sound</title>
+<title>Artist Promotions — Submit Your Music — Underground Sound</title>
+<meta name="description" content="Get your music in front of 92K+ underground fans. Twitter, Instagram, YouTube campaigns starting at $75.">
+<meta property="og:title" content="Artist Promotions — Submit Your Music — Underground Sound">
+<meta property="og:description" content="Get your music in front of 92K+ underground fans. Twitter, Instagram, YouTube campaigns starting at $75.">
+<meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/phase1.css">
+<link rel="stylesheet" href="/assets/css/phase1.css">
+<style>
+.promo-hero{background:var(--deep);padding:80px 0 64px;position:relative;overflow:hidden;}
+.promo-hero-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 60% 80% at 15% 50%,rgba(212,255,0,.06) 0%,transparent 60%),radial-gradient(ellipse 40% 60% at 90% 30%,rgba(255,53,0,.05) 0%,transparent 60%);}
+.promo-hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 400px;gap:80px;align-items:center;}
+.promo-hero-title{font-family:var(--font-display);font-size:clamp(64px,9vw,120px);line-height:.88;letter-spacing:2px;}
+.promo-hero-title em{font-style:normal;color:var(--acid);}
+.promo-hero-sub{font-size:15px;color:var(--off);line-height:1.75;font-weight:300;margin-top:20px;max-width:480px;}
+.trust-list{display:flex;flex-direction:column;gap:12px;}
+.trust-item{display:flex;align-items:center;gap:14px;padding:16px 18px;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--acid);}
+.trust-icon{font-size:18px;flex-shrink:0;}
+.trust-body strong{font-family:var(--font-display);font-size:15px;letter-spacing:1px;display:block;margin-bottom:2px;}
+.trust-body span{font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:36px;}
+.stat-box{background:var(--card);padding:18px 20px;}
+.stat-val{font-family:var(--font-display);font-size:44px;line-height:1;color:var(--acid);}
+.stat-lbl{font-family:var(--font-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:3px;}
+.pkg-section{padding:80px 0;background:var(--black);border-top:1px solid var(--border);}
+.pkg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);margin-top:48px;}
+.pkg-card{background:var(--card);padding:32px 24px;display:flex;flex-direction:column;transition:background .3s;position:relative;}
+.pkg-card:hover{background:var(--raised);}
+.pkg-card.pop{background:var(--raised);border:1px solid rgba(212,255,0,.25);margin:-1px;z-index:2;}
+.pkg-card.pop::before{content:'MOST POPULAR';position:absolute;top:0;left:0;right:0;background:var(--acid);color:var(--black);font-family:var(--font-mono);font-size:8px;letter-spacing:4px;text-transform:uppercase;padding:5px;text-align:center;font-weight:700;}
+.pkg-top{padding-top:0;}
+.pkg-card.pop .pkg-top{padding-top:14px;}
+.pkg-name{font-family:var(--font-display);font-size:26px;letter-spacing:2px;margin-bottom:4px;}
+.pkg-card.pop .pkg-name{color:var(--acid);}
+.pkg-price{font-family:var(--font-display);font-size:52px;line-height:1;margin-bottom:4px;}
+.pkg-tagline{font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding-bottom:16px;border-bottom:1px solid var(--border);margin-bottom:16px;}
+.pkg-feats{list-style:none;flex:1;margin-bottom:24px;}
+.pkg-feats li{font-size:12px;color:var(--off);padding:7px 0;border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:flex-start;line-height:1.4;}
+.pkg-feats li:last-child{border:none;}
+.pkg-feats li::before{content:"✓";color:var(--acid);font-family:var(--font-mono);font-size:9px;flex-shrink:0;margin-top:2px;}
+.pkg-feats li.dim{color:var(--muted);}
+.pkg-feats li.dim::before{content:"—";color:var(--dimmed);}
+.pkg-btn{display:block;text-align:center;font-family:var(--font-ui);font-weight:700;font-size:10px;letter-spacing:3px;text-transform:uppercase;padding:13px 20px;border:1px solid var(--border2);color:var(--white);background:transparent;text-decoration:none;transition:all .2s;clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,6px 100%,0 calc(100% - 6px));cursor:pointer;}
+.pkg-btn:hover{border-color:var(--acid);color:var(--acid);}
+.pkg-card.pop .pkg-btn{background:var(--acid);color:var(--black);border-color:var(--acid);}
+.pkg-card.pop .pkg-btn:hover{background:var(--fire);border-color:var(--fire);color:#fff;}
+.addon-section{padding:60px 0;background:var(--surface);border-top:1px solid var(--border);}
+.addon-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap);margin-top:40px;}
+.addon-card{background:var(--card);border:1px solid var(--border);padding:24px;transition:border-color .2s,transform .2s;}
+.addon-card:hover{border-color:var(--acid);transform:translateY(-2px);}
+.addon-price{font-family:var(--font-display);font-size:36px;color:var(--acid);line-height:1;margin-bottom:6px;}
+.addon-name{font-family:var(--font-display);font-size:19px;letter-spacing:1px;margin-bottom:6px;}
+.addon-desc{font-size:12px;color:var(--muted);line-height:1.6;font-weight:300;}
+.proof-section{padding:60px 0;background:var(--deep);border-top:1px solid var(--border);}
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap);margin-top:40px;}
+.proof-card{background:var(--card);border:1px solid var(--border);padding:24px;border-left:2px solid var(--fire);}
+.proof-quote{font-size:13px;color:var(--off);line-height:1.75;font-weight:300;font-style:italic;margin-bottom:16px;}
+.proof-artist{display:flex;align-items:center;gap:10px;}
+.proof-avi{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--acid),var(--fire));display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:11px;color:var(--black);flex-shrink:0;}
+.proof-name{font-family:var(--font-display);font-size:15px;letter-spacing:1px;}
+.proof-stat{font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--fire);}
+.submit-section{padding:80px 0;background:var(--black);border-top:1px solid var(--border);}
+.submit-layout{display:grid;grid-template-columns:1fr 440px;gap:80px;align-items:start;}
+.form-wrap{background:var(--card);border:1px solid var(--border);padding:36px;}
+.form-title{font-family:var(--font-display);font-size:38px;letter-spacing:2px;margin-bottom:4px;}
+.form-sub{font-family:var(--font-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:28px;}
+.fgrp{margin-bottom:18px;}
+.flbl{font-family:var(--font-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:7px;}
+.finp,.fsel,.ftxt{width:100%;background:var(--surface);border:1px solid var(--border);color:var(--white);font-family:var(--font-ui);font-size:13px;padding:11px 14px;outline:none;transition:border-color .2s;-webkit-appearance:none;}
+.finp:focus,.fsel:focus,.ftxt:focus{border-color:var(--acid);}
+.finp::placeholder,.ftxt::placeholder{color:var(--dimmed);}
+.fsel option{background:var(--surface);}
+.ftxt{resize:vertical;min-height:90px;line-height:1.6;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.plat-checks{display:flex;flex-wrap:wrap;gap:8px;}
+.plat-chk{display:flex;align-items:center;gap:7px;font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:7px 12px;border:1px solid var(--border);cursor:pointer;transition:all .15s;user-select:none;}
+.plat-chk.on{background:rgba(212,255,0,.07);border-color:rgba(212,255,0,.4);color:var(--acid);}
+.chk-box{width:13px;height:13px;border:1px solid var(--border2);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:8px;transition:all .15s;}
+.plat-chk.on .chk-box{background:var(--acid);border-color:var(--acid);color:var(--black);}
+.fsub{width:100%;margin-top:8px;font-family:var(--font-ui);font-weight:700;font-size:12px;letter-spacing:3px;text-transform:uppercase;background:var(--acid);color:var(--black);border:none;padding:17px;cursor:pointer;transition:all .2s;clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));}
+.fsub:hover{background:var(--fire);color:#fff;}
+.fnote{font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dimmed);margin-top:10px;text-align:center;}
+.success-box{display:none;margin-top:20px;padding:20px;background:rgba(212,255,0,.06);border:1px solid rgba(212,255,0,.2);border-left:3px solid var(--acid);}
+.process-steps{display:flex;flex-direction:column;}
+.pstep{display:flex;gap:18px;padding:22px 0;border-bottom:1px solid var(--border);}
+.pstep:last-child{border:none;}
+.pstep-num{font-family:var(--font-display);font-size:44px;color:var(--border2);line-height:1;flex-shrink:0;width:48px;transition:color .3s;}
+.pstep:hover .pstep-num{color:var(--acid);}
+.pstep-title{font-family:var(--font-display);font-size:20px;letter-spacing:1px;margin-bottom:5px;}
+.pstep-desc{font-size:12px;color:var(--muted);line-height:1.6;font-weight:300;}
+.pstep-time{font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--acid);margin-top:6px;}
+@media(max-width:1024px){.promo-hero-inner,.submit-layout{grid-template-columns:1fr;}
+.pkg-grid{grid-template-columns:repeat(2,1fr);}
+.addon-grid,.proof-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:640px){.pkg-grid,.addon-grid,.proof-grid{grid-template-columns:1fr;}
+.pkg-card.pop{margin:0;}.stat-row{grid-template-columns:1fr;}.frow{grid-template-columns:1fr;}}
+</style>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Underground Sound Music Promotion",
+  "provider": {"@type": "Organization", "name": "Underground Sound"},
+  "description": "Twitter, Instagram, and YouTube promotion packages for underground artists. Starter $75, Standard $150, Pro $300, Elite $500.",
+  "url": "https://undergroundsound.co/promotions.html",
+  "areaServed": "Worldwide"
+}
+</script>
 </head>
 <body>
-<div class="phase-nav-strip">
+<div id="ugs-announce" class="announce-bar" data-id="phase4-2025">
   <div class="container">
-    <div class="phase-nav-inner">
-      <span class="phase-nav-label">PLATFORM:</span>
-      <a href="index.html" class="phase-nav-item current">Phase 1 — Media Hub</a><a href="phase2/dashboard.html" class="phase-nav-item">Phase 2 — Analytics</a><a href="phase3/overview.html" class="phase-nav-item">Phase 3 — Community</a><a href="phase4/mission-control.html" class="phase-nav-item">Phase 4 — Festival</a>
+    <div class="announce-inner">
+      <span class="announce-text"><strong>🎪 PHASE 4 FESTIVAL</strong> — Wilmington, DE · Nov 2026 · Pre-sale now open</span>
+      <a href="/phase4/mission-control.html#presale-form-section" class="announce-link">Reserve Your Spot →</a>
+      <button class="announce-close" aria-label="Close announcement">✕</button>
     </div>
   </div>
 </div>
-<!-- UTILITY BAR -->
-<div class="util-bar">
-  <div class="container">
-    <div class="util-inner">
-      <div class="util-left">
-        <span>Underground Sound</span> — Media Hub for the New Global Underground
-        &nbsp;|&nbsp; 📍 <span>US-Based</span> &nbsp;|&nbsp; Est. 2020
-      </div>
-      <div class="util-right">
-        <a href="promotions.html">Submit Music</a>
-        <a href="freshman-list.html">2025 Freshman</a>
-        <a href="events.html">Events</a>
-        <a href="https://twitter.com/therealugs" target="_blank">Twitter</a>
-        <a href="https://instagram.com/undergroundsound" target="_blank">Instagram</a>
-      </div>
-    </div>
+<div class="phase-nav-strip"><div class="container"><div class="phase-nav-inner">
+  <span class="phase-nav-label">PLATFORM:</span>
+  <a href="/" class="phase-nav-item current">Phase 1 — Media Hub</a>
+  <a href="/phase2/dashboard.html" class="phase-nav-item">Phase 2 — Analytics</a>
+  <a href="/phase3/overview.html" class="phase-nav-item">Phase 3 — Community</a>
+  <a href="/phase4/mission-control.html" class="phase-nav-item">Phase 4 — Festival</a>
+</div></div></div>
+<div class="util-bar"><div class="container"><div class="util-inner">
+  <div class="util-left"><span>Underground Sound</span> — Media Hub for the New Global Underground &nbsp;|&nbsp; 📍 <span>US-Based</span> &nbsp;|&nbsp; Est. 2020</div>
+  <div class="util-right">
+    <a href="/promotions.html">Submit Music</a>
+    <a href="/advertise.html">Advertise</a>
+    <a href="/press-kit.html">Press Kit</a>
+    <a href="https://twitter.com/therealugs" target="_blank">Twitter</a>
   </div>
-</div>
-
-<!-- PRIMARY NAV -->
-<nav class="primary-nav">
-  <div class="container">
-    <div class="nav-inner">
-      <div class="nav-logo-wrap">
-        <div class="logo-mark"><span>UGS</span></div>
-        <div class="logo-text">
-          <span class="top">UNDERGROUND</span>
-          <span class="sub">Sound · Est. 2020</span>
-        </div>
-      </div>
-      <ul class="nav-menu">
-        <li><a href="index.html" class="">Home</a></li>
-        <li><a href="news.html" class="">News</a></li>
-        <li><a href="freshman-list.html" class="">Freshman List<span class="nav-badge">2025</span></a></li>
-        <li><a href="videos.html" class="">Videos</a></li>
-        <li><a href="events.html" class="">Events</a></li>
-        <li><a href="promotions.html" class="active">Promotions</a></li>
-      </ul>
-      <div class="nav-actions">
-        <div class="nav-search">
-          <span class="nav-search-icon">🔍</span>
-          <input type="text" placeholder="Search artists, news...">
-        </div>
-        <a href="promotions.html" class="btn btn-acid" style="padding: 10px 20px; font-size: 11px;">Submit ↗</a>
-      </div>
+</div></div></div>
+<nav class="primary-nav"><div class="container"><div class="nav-inner">
+  <div class="nav-logo-wrap">
+    <div class="logo-mark"><span>UGS</span></div>
+    <div class="logo-text"><span class="top">UNDERGROUND</span><span class="sub">Sound · Est. 2020</span></div>
+  </div>
+  <ul class="nav-menu"><li><a href="/">Home</a></li><li><a href="/news.html">News</a></li><li><a href="/freshman-list.html">Freshman List <span class="nav-badge">2025</span></a></li><li><a href="/videos.html">Videos</a></li><li><a href="/events.html">Events</a></li><li><a href="/promotions.html" class="active">Promotions</a></li></ul>
+  <div class="nav-actions">
+    <div class="nav-search"><span class="nav-search-icon">🔍</span><input type="text" placeholder="Search artists, news..."></div>
+    <a href="/promotions.html" class="btn btn-acid" style="padding:10px 20px;font-size:11px;">Submit ↗</a>
+  </div>
+</div></div><div class="nav-drawer-overlay" id="nav-drawer-overlay"></div>
+<nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation">
+  <div class="nav-drawer-header">
+    <div class="nav-drawer-logo">
+      <div class="logo-mark" style="width:32px;height:32px;"><span style="font-size:15px;">UGS</span></div>
+      <div style="font-family:var(--font-display);font-size:18px;letter-spacing:3px;color:var(--white);">UNDERGROUND</div>
     </div>
+    <button class="nav-drawer-close" id="nav-drawer-close" aria-label="Close navigation">✕</button>
+  </div>
+  <div class="nav-drawer-search">
+    <input type="text" id="drawer-search-input" placeholder="Search artists, news..." aria-label="Search">
+  </div>
+  <div class="nav-drawer-links">
+    <div class="nav-drawer-section-label">Navigation</div>
+    <a href="/" class="nav-drawer-link">Home</a>
+    <a href="/news.html" class="nav-drawer-link">News</a>
+    <a href="/freshman-list.html" class="nav-drawer-link">Freshman List <span class="ndl-badge">2025</span></a>
+    <a href="/videos.html" class="nav-drawer-link">Videos</a>
+    <a href="/events.html" class="nav-drawer-link">Events</a>
+    <a href="/promotions.html" class="nav-drawer-link">Promotions</a>
+    <div class="nav-drawer-divider"></div>
+    <div class="nav-drawer-section-label">For Artists</div>
+    <a href="/pricing.html" class="nav-drawer-link">Pricing</a>
+    <a href="/freshman-list.html" class="nav-drawer-link">Freshman List</a>
+    <div class="nav-drawer-divider"></div>
+    <div class="nav-drawer-section-label">Business</div>
+    <a href="/advertise.html" class="nav-drawer-link">Advertise</a>
+    <a href="/press-kit.html" class="nav-drawer-link">Press Kit</a>
+    <a href="/merch.html" class="nav-drawer-link">Merch</a>
+    <a href="/contact.html" class="nav-drawer-link">Contact</a>
+    <div class="nav-drawer-divider"></div>
+    <div class="nav-drawer-section-label">Platform</div>
+    <a href="/phase2/dashboard.html" class="nav-drawer-link">Phase 2 — Analytics</a>
+    <a href="/phase3/overview.html" class="nav-drawer-link">Phase 3 — Community</a>
+    <a href="/phase4/mission-control.html" class="nav-drawer-link">Phase 4 — Festival</a>
+  </div>
+  <div class="nav-drawer-cta">
+    <a href="/promotions.html" class="btn btn-acid" style="display:block;text-align:center;padding:14px;font-size:11px;letter-spacing:3px;">Submit Your Music →</a>
   </div>
 </nav>
+</nav>
+<div class="breaking-bar"><div class="breaking-label">BREAKING</div><div class="breaking-track"><div class="breaking-inner">
+  <span class="breaking-item">2Slimey's music video crosses 1.8M views after UGS campaign</span>
+  <span class="breaking-item">Cypher applications open — 3 slots remaining for March edition</span>
+  <span class="breaking-item">Starter Pack $75 — limited campaign slots this week</span>
+  <span class="breaking-item">Phase 4 Festival sponsorships open — presenting spot still available</span>
+  <span class="breaking-item">UGS Merch drop coming Spring 2025 — join the waitlist</span>
+  <span class="breaking-item">2Slimey's music video crosses 1.8M views after UGS campaign</span>
+  <span class="breaking-item">Cypher applications open — 3 slots remaining for March edition</span>
+  <span class="breaking-item">Starter Pack $75 — limited campaign slots this week</span>
+  <span class="breaking-item">Phase 4 Festival sponsorships open — presenting spot still available</span>
+  <span class="breaking-item">UGS Merch drop coming Spring 2025 — join the waitlist</span>
+</div></div></div>
 
-<!-- BREAKING BAR -->
-<div class="breaking-bar">
-  <div class="breaking-label">BREAKING</div>
-  <div class="breaking-track">
-    <div class="breaking-inner">
-      <span class="breaking-item">2Slimey's music video crosses 1.8M views on Underground Sound's Twitter</span>
-      <span class="breaking-item">UGS 2025 Freshman List nominations now open — submit your artist</span>
-      <span class="breaking-item">Underground Sound road to 100K followers — follow @therealugs</span>
-      <span class="breaking-item">ØWAY Cypher out now — watch on YouTube @therealugs</span>
-      <span class="breaking-item">New promotions packages available — Twitter, Instagram, and YouTube</span>
-      <span class="breaking-item">Phase 4 Festival — Wilmington, DE · Nov 2026 — Pre-sale list open</span>
-      <span class="breaking-item">2Slimey's music video crosses 1.8M views on Underground Sound's Twitter</span>
-      <span class="breaking-item">UGS 2025 Freshman List nominations now open — submit your artist</span>
-      <span class="breaking-item">Underground Sound road to 100K followers — follow @therealugs</span>
-      <span class="breaking-item">ØWAY Cypher out now — watch on YouTube @therealugs</span>
-      <span class="breaking-item">New promotions packages available — Twitter, Instagram, and YouTube</span>
-      <span class="breaking-item">Phase 4 Festival — Wilmington, DE · Nov 2026 — Pre-sale list open</span>
+<div class="promo-hero">
+  <div class="promo-hero-bg"></div>
+  <div class="container">
+    <div class="promo-hero-inner">
+      <div>
+        <div class="eyebrow" style="margin-bottom:20px;">For Artists</div>
+        <h1 class="promo-hero-title">GET ON<br><em>UNDERGROUND</em><br>SOUND</h1>
+        <p class="promo-hero-sub">Real promotion to a real audience. 92K Twitter followers, 50K+ Instagram, 1.8M peak views — and every one of them is here for underground music. Submit your track. We build the campaign.</p>
+        <div class="stat-row">
+          <div class="stat-box"><div class="stat-val"><span data-counter>92K</span></div><div class="stat-lbl">Twitter Followers</div></div>
+          <div class="stat-box"><div class="stat-val"><span data-counter>1.8M</span></div><div class="stat-lbl">Peak Post Views</div></div>
+          <div class="stat-box"><div class="stat-val"><span data-counter>177K</span></div><div class="stat-lbl">Avg Views / Post</div></div>
+        </div>
+      </div>
+      <div class="trust-list">
+        <div class="trust-item"><div class="trust-icon">⚡</div><div class="trust-body"><strong>48-Hour Turnaround</strong><span>Campaign live within 2 days of payment</span></div></div>
+        <div class="trust-item"><div class="trust-icon">📊</div><div class="trust-body"><strong>Full Performance Report</strong><span>Views, reach, engagement delivered post-campaign</span></div></div>
+        <div class="trust-item"><div class="trust-icon">🎤</div><div class="trust-body"><strong>Freshman List Consideration</strong><span>All submissions reviewed for annual class</span></div></div>
+        <div class="trust-item"><div class="trust-icon">🌐</div><div class="trust-body"><strong>Cross-Platform Distribution</strong><span>Twitter · Instagram · YouTube — one submission</span></div></div>
+        <div class="trust-item"><div class="trust-icon">🎫</div><div class="trust-body"><strong>Festival Performance Track</strong><span>Campaign artists considered for Phase 4 lineup</span></div></div>
+      </div>
     </div>
   </div>
 </div>
-<section class="cta-banner" id="submit">
-  <div class="cta-banner-bg"></div>
+
+<section class="pkg-section" id="packages">
   <div class="container">
-    <div class="cta-inner reveal">
-      <div class="cta-text">
-        <div class="cta-label">For Artists</div>
-        <h2 class="cta-heading">
-          GET ON<br><span>UNDERGROUND</span><br>SOUND
-        </h2>
-        <p class="cta-subtext">
-          Submit your music for promotion across Twitter, Instagram, and YouTube. 
-          Get in front of 92K+ underground fans who actually listen. 
-          Be considered for the Freshman List. Get your campaign report. 
-          This is the infrastructure the underground deserves.
-        </p>
+    <div class="section-head reveal">
+      <div><div class="eyebrow" style="margin-bottom:12px;">Choose Your Level</div><div class="section-title">PROMO<br>PACKAGES</div></div>
+      <a href="#submit-form" class="see-all">Skip to Form →</a>
+    </div>
+    <div class="pkg-grid stagger">
+      <div class="pkg-card">
+        <div class="pkg-top">
+          <div class="pkg-name">STARTER</div>
+          <div class="pkg-price">$75</div>
+          <div class="pkg-tagline">Get your foot in the door</div>
+          <ul class="pkg-feats">
+            <li>1 Twitter post to 92K followers</li>
+            <li>Custom caption + hashtag strategy</li>
+            <li>Campaign performance report</li>
+            <li>48-hour turnaround</li>
+            <li>Freshman List eligibility</li>
+            <li class="dim">Instagram post</li>
+            <li class="dim">YouTube placement</li>
+            <li class="dim">Priority review</li>
+          </ul>
+          <button class="pkg-btn" onclick="selectPkg('Starter — $75')">Get Starter ↗</button>
+        </div>
       </div>
-      <div class="cta-actions">
-        <a href="#" class="btn btn-acid" style="font-size: 13px; padding: 18px 36px; white-space: nowrap;">
-          Submit Your Music →
-        </a>
-        <a href="#" class="btn btn-ghost" style="font-size: 12px; padding: 14px 28px; white-space: nowrap;">
-          View Packages
-        </a>
-        <div style="text-align:center;">
-          <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-top:4px;">Response within 48 hours</div>
+      <div class="pkg-card pop">
+        <div class="pkg-top">
+          <div class="pkg-name">STANDARD</div>
+          <div class="pkg-price">$150</div>
+          <div class="pkg-tagline">Full cross-platform push</div>
+          <ul class="pkg-feats">
+            <li>2 Twitter posts to 92K followers</li>
+            <li>1 Instagram post to 50K+ followers</li>
+            <li>Custom content per platform</li>
+            <li>Full campaign performance report</li>
+            <li>Priority review within 48 hours</li>
+            <li>Freshman List priority consideration</li>
+            <li>Cypher slot application review</li>
+            <li class="dim">YouTube placement</li>
+          </ul>
+          <button class="pkg-btn" onclick="selectPkg('Standard — $150')">Get Standard ↗</button>
+        </div>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-top">
+          <div class="pkg-name">PRO</div>
+          <div class="pkg-price">$300</div>
+          <div class="pkg-tagline">Maximum underground exposure</div>
+          <ul class="pkg-feats">
+            <li>3 Twitter posts + thread treatment</li>
+            <li>2 Instagram posts + Story</li>
+            <li>YouTube Shorts placement</li>
+            <li>Full analytics with demographics</li>
+            <li>Priority 24-hour turnaround</li>
+            <li>Guaranteed Freshman List review</li>
+            <li>Cypher slot priority consideration</li>
+            <li>Artist profile on UGS platform</li>
+          </ul>
+          <button class="pkg-btn" onclick="selectPkg('Pro — $300')">Get Pro ↗</button>
+        </div>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-top">
+          <div class="pkg-name">ELITE</div>
+          <div class="pkg-price">$500</div>
+          <div class="pkg-tagline">The full UGS treatment</div>
+          <ul class="pkg-feats">
+            <li>5 Twitter posts over 7-day window</li>
+            <li>3 Instagram posts + Reel + Stories</li>
+            <li>YouTube feature + Shorts</li>
+            <li>Dedicated editorial feature article</li>
+            <li>Custom campaign creative assets</li>
+            <li>Guaranteed Freshman List submission</li>
+            <li>Cypher slot guaranteed review</li>
+            <li>Festival lineup consideration (Phase 4)</li>
+          </ul>
+          <button class="pkg-btn" onclick="selectPkg('Elite — $500')">Get Elite ↗</button>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<!-- FOOTER -->
-<footer>
+<section class="addon-section">
   <div class="container">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="footer-brand-logo">
-          <div class="logo-mark"><span>UGS</span></div>
-          <div class="logo-text">
-            <span class="top" style="font-size:18px;">UNDERGROUND</span>
-            <span class="sub">Sound · Media Hub</span>
-          </div>
-        </div>
-        <p>The media brand for underground artists. Daily content, real promotion, and authentic exposure across Twitter, Instagram, and YouTube. Building toward the underground's flagship event.</p>
-        <div class="footer-socials">
-          <a href="https://twitter.com/therealugs" target="_blank" class="social-ico">𝕏</a>
-          <a href="https://instagram.com/undergroundsound" target="_blank" class="social-ico">📸</a>
-          <a href="https://youtube.com/@therealugs" target="_blank" class="social-ico">▶</a>
-        </div>
-      </div>
-      <div class="footer-col">
-        <h5>Editorial</h5>
-        <ul>
-          <li><a href="news.html">Latest News</a></li>
-          <li><a href="freshman-list.html">Freshman List <span class="new">2025</span></a></li>
-          <li><a href="videos.html">Videos</a></li>
-          <li><a href="events.html">Events</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>For Artists</h5>
-        <ul>
-          <li><a href="promotions.html">Submit Music</a></li>
-          <li><a href="promotions.html">Promotion Packages</a></li>
-          <li><a href="promotions.html">Twitter Blast</a></li>
-          <li><a href="promotions.html">YouTube Feature</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Platform</h5>
-        <ul>
-          <li><a href="index.html">Phase 1 — Media Hub <span class="new">LIVE</span></a></li>
-          <li><a href="phase2/dashboard.html">Phase 2 — Analytics</a></li>
-          <li><a href="phase3/overview.html">Phase 3 — Community</a></li>
-          <li><a href="phase4/mission-control.html">Phase 4 — Festival</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Company</h5>
-        <ul>
-          <li><a href="#">About UGS</a></li>
-          <li><a href="#">Partnerships</a></li>
-          <li><a href="#">Advertise</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Press Kit</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="footer-copy">© 2025 Underground Sound — All Rights Reserved</div>
-      <div class="footer-phase">
-        Currently <div class="phase-badge">PHASE 1</div> — Media Hub Infrastructure
-      </div>
-      <div class="footer-copy">Built for the underground. By the underground.</div>
+    <div class="section-head reveal"><div><div class="eyebrow" style="margin-bottom:12px;">Stack Your Campaign</div><div class="section-title">ADD-ONS</div></div></div>
+    <div class="addon-grid stagger">
+      <div class="addon-card"><div class="addon-price">+$50</div><div class="addon-name">EXTRA TWITTER POST</div><div class="addon-desc">One additional dedicated Twitter post. Same campaign window, fresh angle, second wave of reach across our 92K audience.</div></div>
+      <div class="addon-card"><div class="addon-price">+$75</div><div class="addon-name">PEAK-TIME REPOST</div><div class="addon-desc">Strategic repost at peak engagement window (7–10PM EST). Captures a second audience wave from the same content with boosted algorithmic placement.</div></div>
+      <div class="addon-card"><div class="addon-price">+$100</div><div class="addon-name">CYPHER FAST-TRACK</div><div class="addon-desc">Jump to front of cypher review queue. Track reviewed within 48 hours with direct feedback on placement eligibility for the next UGS cypher edition.</div></div>
+      <div class="addon-card"><div class="addon-price">+$150</div><div class="addon-name">EDITORIAL FEATURE</div><div class="addon-desc">Full written feature on the UGS platform. Artist bio, discography highlights, interview quotes, embedded content — indexed and searchable.</div></div>
+      <div class="addon-card"><div class="addon-price">+$200</div><div class="addon-name">INSTAGRAM REEL</div><div class="addon-desc">Custom Reel using your audio/visuals, optimized for Instagram's algorithm. Hits the Reels discovery feed for organic reach beyond existing followers.</div></div>
+      <div class="addon-card"><div class="addon-price">+$250</div><div class="addon-name">7-DAY EXTENSION</div><div class="addon-desc">Extend any campaign by one full week with 2 additional posts across platforms. Keeps momentum while new audiences discover your original campaign content.</div></div>
     </div>
   </div>
-</footer>
+</section>
+
+<section class="proof-section">
+  <div class="container">
+    <div class="section-head reveal"><div><div class="eyebrow" style="margin-bottom:12px;">Results</div><div class="section-title">ARTIST<br>WINS</div></div></div>
+    <div class="proof-grid reveal">
+      <div class="proof-card">
+        <div class="proof-quote">"I submitted on a Tuesday, campaign went live Thursday. By the weekend the post had 800K views and my DMs were flooded with booking inquiries. This is the real underground network."</div>
+        <div class="proof-artist"><div class="proof-avi">2S</div><div><div class="proof-name">2SLIMEY</div><div class="proof-stat">1.8M Views · Pro Package</div></div></div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-quote">"UGS doesn't post and disappear. The report they sent showed exactly who was listening and from where — real data I could take to labels. Signed a deal 8 weeks later."</div>
+        <div class="proof-artist"><div class="proof-avi">FD</div><div><div class="proof-name">FROST DIVZ</div><div class="proof-stat">340K Views · Standard Package</div></div></div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-quote">"Being on the Freshman List changed everything. Labels started reaching out within days. The UGS audience is different — they actually discover artists, not just follow trends."</div>
+        <div class="proof-artist"><div class="proof-avi">KW</div><div><div class="proof-name">KAOSWAVE</div><div class="proof-stat">210K Views · Elite Package</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="submit-section" id="submit-form">
+  <div class="container">
+    <div class="section-head reveal"><div><div class="eyebrow" style="margin-bottom:12px;">Apply Now</div><div class="section-title">SUBMIT<br>YOUR<br>MUSIC</div></div></div>
+    <div class="submit-layout reveal">
+      <div>
+        <div class="eyebrow" style="margin-bottom:20px;">How It Works</div>
+        <div class="process-steps">
+          <div class="pstep"><div class="pstep-num">01</div><div><div class="pstep-title">Submit Your Track</div><div class="pstep-desc">Fill out the form with your music link, artist info, and selected package. SoundCloud, YouTube, or any streaming link accepted.</div><div class="pstep-time">Takes 3 minutes</div></div></div>
+          <div class="pstep"><div class="pstep-num">02</div><div><div class="pstep-title">Review & Confirmation</div><div class="pstep-desc">We personally review every submission. You'll get a confirmation email within 24 hours with campaign dates, a content preview, and payment link.</div><div class="pstep-time">Within 24 hours</div></div></div>
+          <div class="pstep"><div class="pstep-num">03</div><div><div class="pstep-title">Campaign Goes Live</div><div class="pstep-desc">Once confirmed and paid, your campaign posts within 48 hours. All content is crafted by UGS — not templated, not automated.</div><div class="pstep-time">Within 48 hours of payment</div></div></div>
+          <div class="pstep"><div class="pstep-num">04</div><div><div class="pstep-title">Get Your Report</div><div class="pstep-desc">Post-campaign full performance breakdown: total reach, impressions per platform, engagement rate, demographic data, and top-performing content.</div><div class="pstep-time">Within 72 hours of campaign end</div></div></div>
+        </div>
+        <div style="margin-top:32px;padding:22px;background:var(--card);border:1px solid var(--border);border-left:2px solid var(--gold,#f0b429);">
+          <div class="eyebrow" style="margin-bottom:10px;">Also Available</div>
+          <div style="font-family:var(--font-display);font-size:18px;letter-spacing:1px;margin-bottom:6px;">CYPHER APPLICATIONS</div>
+          <div style="font-size:12px;color:var(--muted);line-height:1.6;font-weight:300;margin-bottom:12px;">Want to be in the next UGS cypher? Select "Cypher Consideration" in the form. We review bar quality, flow, and underground credibility. Every slot is earned.</div>
+          <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#f0b429;">Next Cypher: March 2025 · 3 Slots Remaining</div>
+        </div>
+      </div>
+      <div class="form-wrap" id="the-form">
+        <div class="form-title">SUBMIT</div>
+        <div class="form-sub">All submissions reviewed within 24 hours</div>
+        <div class="fgrp"><label class="flbl">Artist Name *</label><input type="text" class="finp" placeholder="Your artist name" id="f-artist"></div>
+        <div class="frow">
+          <div class="fgrp"><label class="flbl">Email *</label><input type="email" class="finp" placeholder="your@email.com" id="f-email"></div>
+          <div class="fgrp"><label class="flbl">Instagram</label><input type="text" class="finp" placeholder="@handle" id="f-ig"></div>
+        </div>
+        <div class="fgrp"><label class="flbl">Music Link (SC / YT / Spotify) *</label><input type="text" class="finp" placeholder="https://" id="f-link"></div>
+        <div class="frow">
+          <div class="fgrp"><label class="flbl">Genre</label><select class="fsel" id="f-genre"><option value="">Select...</option><option>Melodic Trap</option><option>Drill</option><option>Hyphy / West Coast</option><option>Dark / Emo Rap</option><option>Alt Rap</option><option>Boom Bap / Classic</option><option>Other Underground</option></select></div>
+          <div class="fgrp"><label class="flbl">Package *</label><select class="fsel" id="f-pkg"><option value="">Select...</option><option value="Starter — $75">Starter — $75</option><option value="Standard — $150">Standard — $150 ★</option><option value="Pro — $300">Pro — $300</option><option value="Elite — $500">Elite — $500</option><option value="Custom">Custom / Let's Talk</option></select></div>
+        </div>
+        <div class="fgrp"><label class="flbl">Platforms</label><div class="plat-checks">
+          <label class="plat-chk on" onclick="this.classList.toggle('on')"><div class="chk-box">✓</div><span>𝕏 Twitter</span></label>
+          <label class="plat-chk" onclick="this.classList.toggle('on')"><div class="chk-box">✓</div><span>📸 Instagram</span></label>
+          <label class="plat-chk" onclick="this.classList.toggle('on')"><div class="chk-box">✓</div><span>▶ YouTube</span></label>
+          <label class="plat-chk" onclick="this.classList.toggle('on')"><div class="chk-box">✓</div><span>🎤 Cypher</span></label>
+        </div></div>
+        <div class="fgrp"><label class="flbl">About Your Music</label><textarea class="ftxt" id="f-bio" placeholder="What's the story? What makes this track different from everything else in the underground right now?"></textarea></div>
+        <button class="fsub" onclick="doSubmit()">Submit For Review →</button>
+        <div class="fnote">Response within 24 hrs · No spam · No auto-rejects</div>
+        <div class="success-box" id="success-box">
+          <div style="font-family:var(--font-display);font-size:20px;letter-spacing:1px;color:var(--acid);margin-bottom:8px;">✓ SUBMISSION RECEIVED</div>
+          <div style="font-size:13px;color:var(--off);line-height:1.6;font-weight:300;">We'll review and hit you back within 24 hours with campaign details and a payment link. Keep making noise.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <script>
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('in'), i * 60);
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.08 });
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-// NAV ACTIVE STATE
-const currentPath = window.location.pathname;
-document.querySelectorAll('.nav-menu a').forEach(a => {
-  a.classList.remove('active');
-  if (a.getAttribute('href') === currentPath || 
-      (currentPath === '/' && a.getAttribute('href') === '/') ||
-      (currentPath.endsWith(a.getAttribute('href')?.replace('/', '')) && a.getAttribute('href') !== '/')) {
-    a.classList.add('active');
-  }
-});
-
-document.querySelectorAll('.platform-check')?.forEach(label => {
-  label.addEventListener('click', () => label.classList.toggle('checked'));
-});
+function selectPkg(p){document.getElementById('f-pkg').value=p;document.getElementById('submit-form').scrollIntoView({behavior:'smooth'});}
+function doSubmit(){
+  const a=document.getElementById('f-artist').value.trim();
+  const e=document.getElementById('f-email').value.trim();
+  const l=document.getElementById('f-link').value.trim();
+  const p=document.getElementById('f-pkg').value;
+  if(!a||!e||!l||!p){alert('Please fill in Artist Name, Email, Music Link, and Package.');return;}
+  document.querySelector('.fsub').style.display='none';
+  const s=document.getElementById('success-box');s.style.display='block';s.scrollIntoView({behavior:'smooth'});
+}
 </script>
-<script src="assets/js/responsive.js"></script>
-</body>
-</html>
+
+<!-- NEWSLETTER CAPTURE -->
+<div style="background:var(--raised);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 0;">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;" class="newsletter-strip">
+      <div>
+        <div style="font-family:var(--font-display);font-size:clamp(28px,4vw,48px);letter-spacing:2px;line-height:1;margin-bottom:8px;">STAY IN THE<br><span style="color:var(--acid);">UNDERGROUND</span></div>
+        <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);">Fresh drops · Artist news · Freshman List alerts · Festival updates · No spam</div>
+      </div>
+      <div id="nl-wrap" style="min-width:340px;">
+        <div style="display:flex;gap:0;" id="nl-form">
+          <input type="email" id="nl-email" placeholder="your@email.com" style="flex:1;background:var(--surface);border:1px solid var(--border);border-right:none;color:var(--white);font-family:var(--font-ui);font-size:13px;padding:13px 16px;outline:none;min-width:0;" onfocus="this.style.borderColor='var(--acid)'" onblur="this.style.borderColor=''">
+          <button onclick="nlSubmit()" style="background:var(--acid);color:var(--black);border:none;font-family:var(--font-ui);font-weight:700;font-size:10px;letter-spacing:3px;text-transform:uppercase;padding:13px 20px;cursor:pointer;white-space:nowrap;transition:all .2s;flex-shrink:0;" onmouseover="this.style.background='var(--fire)';this.style.color='#fff'" onmouseout="this.style.background='var(--acid)';this.style.color='var(--black)'">Subscribe →</button>
+        </div>
+        <div id="nl-success" style="display:none;padding:13px 16px;background:rgba(212,255,0,.06);border:1px solid rgba(212,255,0,.2);font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--acid);">✓ YOU'RE IN — Welcome to the underground.</div>
+        <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--dimmed);margin-top:8px;">No spam · Unsubscribe anytime</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+if(!window._nlDone){window._nlDone=true;
+function nlSubmit(){const e=document.getElementById('nl-email').value.trim();if(!e||!e.includes('@')){alert('Please enter a valid email.');return;}document.getElementById('nl-form').style.display='none';document.getElementById('nl-success').style.display='block';}
+}
+</script>
+<footer><div class="container">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-brand-logo">
+        <div class="logo-mark"><span>UGS</span></div>
+        <div class="logo-text"><span class="top" style="font-size:18px;">UNDERGROUND</span><span class="sub">Sound · Media Hub</span></div>
+      </div>
+      <p>The media brand for underground artists. Daily content, real promotion, and authentic exposure across Twitter, Instagram, and YouTube.</p>
+      <div class="footer-socials">
+        <a href="https://twitter.com/therealugs" target="_blank" class="social-ico">𝕏</a>
+        <a href="https://instagram.com/undergroundsound" target="_blank" class="social-ico">📸</a>
+        <a href="https://youtube.com/@therealugs" target="_blank" class="social-ico">▶</a>
+      </div>
+    </div>
+    <div class="footer-col"><h5>For Artists</h5><ul>
+      <li><a href="/promotions.html">Submit Music</a></li>
+      <li><a href="/promotions.html#packages">View Packages</a></li>
+      <li><a href="/pricing.html">Pricing</a></li>
+      <li><a href="/freshman-list.html">Freshman List</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Editorial</h5><ul>
+      <li><a href="/news.html">Latest News</a></li>
+      <li><a href="/videos.html">Videos</a></li>
+      <li><a href="/events.html">Events</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Business</h5><ul>
+      <li><a href="/advertise.html">Advertise</a></li>
+      <li><a href="/press-kit.html">Press Kit</a></li>
+      <li><a href="/phase4/sponsors.html">Festival Sponsors</a></li>
+      <li><a href="/merch.html">Merch</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Company</h5><ul>
+      <li><a href="/contact.html">Contact</a></li>
+      <li><a href="/press-kit.html">About UGS</a></li>
+      <li><a href="/phase4/mission-control.html">Phase 4 Festival</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Underground Sound — All Rights Reserved</div>
+    <div class="footer-phase">Platform <div class="phase-badge">PHASE 1</div></div>
+    <div class="footer-copy">Built for the underground. By the underground.</div>
+  </div>
+</div></footer>
+<script>
+const ro = new IntersectionObserver((e)=>e.forEach((en,i)=>{if(en.isIntersecting){setTimeout(()=>en.target.classList.add('in'),i*60);ro.unobserve(en.target)}}),{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+</script>
+<button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
+<script src="/assets/js/ugs-enhance.js"></script>
+</body></html>

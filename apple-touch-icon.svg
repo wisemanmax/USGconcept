@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+  <rect width="180" height="180" fill="#050507"/>
+  <polygon points="10,10 170,10 170,130 130,170 10,170" fill="#d4ff00"/>
+  <text x="90" y="118" font-family="Arial Black, sans-serif" font-size="72" font-weight="900"
+        text-anchor="middle" fill="#050507" letter-spacing="2">UGS</text>
+</svg>

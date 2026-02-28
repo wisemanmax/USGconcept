@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.svg">
+<link rel="manifest" href="/manifest.json">
+<link rel="canonical" href="https://undergroundsound.co/merch.html">
+<meta property="og:image" content="https://undergroundsound.co/og-image.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Underground Sound">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@therealugs">
+<meta name="twitter:image" content="https://undergroundsound.co/og-image.svg">
+<meta name="theme-color" content="#d4ff00">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merch — Official UGS Store — Underground Sound</title>
+<meta name="description" content="Official Underground Sound merch. Limited runs, no restocks. Spring 2025 drop — join the waitlist for early access.">
+<meta property="og:title" content="Merch — Official UGS Store — Underground Sound">
+<meta property="og:description" content="Official Underground Sound merch. Limited runs, no restocks. Spring 2025 drop — join the waitlist for early access.">
+<meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/phase1.css">
+<style>
+.merch-hero{background:var(--deep);padding:80px 0;position:relative;overflow:hidden;}
+.merch-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(212,255,0,.07),transparent 50%);}
+.merch-hero-inner{position:relative;z-index:1;text-align:center;max-width:700px;margin:0 auto;}
+.merch-title{font-family:var(--font-display);font-size:clamp(72px,12vw,140px);line-height:.85;letter-spacing:2px;}
+.merch-title em{font-style:normal;color:var(--acid);}
+.merch-sub{font-size:15px;color:var(--off);line-height:1.75;font-weight:300;margin-top:16px;}
+.countdown-strip{background:var(--card);border:1px solid var(--border);border-top:2px solid var(--acid);padding:24px;text-align:center;margin-top:36px;}
+.cd-label{font-family:var(--font-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
+.cd-nums{display:flex;justify-content:center;gap:24px;}
+.cd-num-box{display:flex;flex-direction:column;align-items:center;}
+.cd-num{font-family:var(--font-display);font-size:52px;line-height:1;color:var(--acid);}
+.cd-unit{font-family:var(--font-mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);}
+.preview-section{padding:80px 0;background:var(--black);border-top:1px solid var(--border);}
+.preview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-top:48px;}
+.preview-card{background:var(--card);position:relative;overflow:hidden;cursor:pointer;transition:background .3s;}
+.preview-card:hover{background:var(--raised);}
+.preview-img{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:80px;color:rgba(212,255,0,.08);background:var(--surface);letter-spacing:4px;position:relative;overflow:hidden;}
+.preview-img::after{content:'COMING SOON';position:absolute;font-family:var(--font-mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--muted);background:var(--card);padding:8px 16px;}
+.preview-info{padding:20px;}
+.preview-name{font-family:var(--font-display);font-size:22px;letter-spacing:1px;margin-bottom:4px;}
+.preview-price{font-family:var(--font-display);font-size:18px;color:var(--acid);}
+.preview-desc{font-size:12px;color:var(--muted);margin-top:6px;line-height:1.5;font-weight:300;}
+.preview-tag{position:absolute;top:12px;right:12px;font-family:var(--font-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;}
+.tag-drop{background:var(--fire);color:#fff;}
+.tag-ltd{background:var(--acid);color:var(--black);}
+.waitlist-section{padding:80px 0;background:var(--surface);border-top:1px solid var(--border);}
+.waitlist-inner{max-width:640px;margin:0 auto;text-align:center;}
+.waitlist-title{font-family:var(--font-display);font-size:clamp(48px,8vw,88px);line-height:.88;letter-spacing:2px;margin-bottom:16px;}
+.waitlist-sub{font-size:14px;color:var(--off);line-height:1.75;font-weight:300;margin-bottom:36px;}
+.waitlist-form{display:flex;gap:0;}
+.waitlist-input{flex:1;background:var(--surface);border:1px solid var(--border);border-right:none;color:var(--white);font-family:var(--font-ui);font-size:14px;padding:14px 18px;outline:none;transition:border-color .2s;}
+.waitlist-input:focus{border-color:var(--acid);}
+.waitlist-input::placeholder{color:var(--dimmed);}
+.waitlist-btn{background:var(--acid);color:var(--black);border:none;font-family:var(--font-ui);font-weight:700;font-size:11px;letter-spacing:3px;text-transform:uppercase;padding:14px 28px;cursor:pointer;white-space:nowrap;transition:all .2s;}
+.waitlist-btn:hover{background:var(--fire);color:#fff;}
+.waitlist-note{font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dimmed);margin-top:12px;}
+.waitlist-success{display:none;padding:20px;background:rgba(212,255,0,.06);border:1px solid rgba(212,255,0,.2);margin-top:20px;}
+@media(max-width:640px){.preview-grid{grid-template-columns:1fr;}.waitlist-form{flex-direction:column;}.waitlist-input{border-right:1px solid var(--border);border-bottom:none;}.cd-nums{gap:12px;}.cd-num{font-size:36px;}}
+
+.preview-card { cursor: pointer; }
+.preview-card:hover .preview-img { transform: scale(1.02); transition: transform 0.3s; }
+
+#merch-modal {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.88);
+  z-index: 500;
+  align-items: center; justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(8px);
+}
+#merch-modal.open { display: flex; }
+.merch-modal-inner {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--acid);
+  max-width: 560px; width: 100%;
+  position: relative;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  overflow: hidden;
+}
+.merch-modal-thumb {
+  background: var(--surface);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 64px; color: rgba(212,255,0,0.12);
+  letter-spacing: 2px;
+  aspect-ratio: 1;
+  align-self: stretch;
+}
+.merch-modal-body { padding: 28px; }
+.merch-modal-tag {
+  font-family: var(--font-mono); font-size: 8px; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--acid);
+  margin-bottom: 10px; display: block;
+}
+.merch-modal-name {
+  font-family: var(--font-display); font-size: 28px; letter-spacing: 1px;
+  line-height: 1; margin-bottom: 8px;
+}
+.merch-modal-price {
+  font-family: var(--font-display); font-size: 32px; color: var(--acid);
+  margin-bottom: 14px; line-height: 1;
+}
+.merch-modal-desc {
+  font-size: 13px; color: var(--muted); line-height: 1.7;
+  font-weight: 300; margin-bottom: 20px;
+}
+.merch-modal-close {
+  position: absolute; top: 14px; right: 14px;
+  background: var(--raised); border: 1px solid var(--border2);
+  color: var(--muted); width: 28px; height: 28px;
+  cursor: pointer; font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .2s;
+}
+.merch-modal-close:hover { background: var(--acid); color: var(--black); border-color: var(--acid); }
+@media (max-width: 480px) {
+  .merch-modal-inner { grid-template-columns: 1fr; }
+  .merch-modal-thumb { aspect-ratio: 2/1; }
+}
+
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Underground Sound",
+  "url": "https://undergroundsound.co",
+  "logo": "https://undergroundsound.co/favicon.svg",
+  "description": "Underground Sound is the media hub for underground artists — promotion, Freshman List, cyphers, and Phase 4 flagship festival.",
+  "sameAs": [
+    "https://twitter.com/therealugs",
+    "https://instagram.com/undergroundsound",
+    "https://youtube.com/@therealugs"
+  ],
+  "foundingDate": "2020",
+  "foundingLocation": {"@type": "Place", "name": "Delaware, USA"}
+}
+</script>
+</head>
+<body>
+<div id="ugs-announce" class="announce-bar" data-id="phase4-2025">
+  <div class="container">
+    <div class="announce-inner">
+      <span class="announce-text"><strong>🎪 PHASE 4 FESTIVAL</strong> — Wilmington, DE · Nov 2026 · Pre-sale now open</span>
+      <a href="/phase4/mission-control.html#presale-form-section" class="announce-link">Reserve Your Spot →</a>
+      <button class="announce-close" aria-label="Close announcement">✕</button>
+    </div>
+  </div>
+</div>
+<div class="phase-nav-strip"><div class="container"><div class="phase-nav-inner">
+  <span class="phase-nav-label">PLATFORM:</span>
+  <a href="/" class="phase-nav-item current">Phase 1 — Media Hub</a>
+  <a href="/phase2/dashboard.html" class="phase-nav-item">Phase 2 — Analytics</a>
+  <a href="/phase3/overview.html" class="phase-nav-item">Phase 3 — Community</a>
+  <a href="/phase4/mission-control.html" class="phase-nav-item">Phase 4 — Festival</a>
+</div></div></div>
+<div class="util-bar"><div class="container"><div class="util-inner">
+  <div class="util-left"><span>Underground Sound</span> — Media Hub for the New Global Underground &nbsp;|&nbsp; 📍 <span>US-Based</span> &nbsp;|&nbsp; Est. 2020</div>
+  <div class="util-right">
+    <a href="/promotions.html">Submit Music</a>
+    <a href="/advertise.html">Advertise</a>
+    <a href="/press-kit.html">Press Kit</a>
+    <a href="https://twitter.com/therealugs" target="_blank">Twitter</a>
+  </div>
+</div></div></div>
+<nav class="primary-nav"><div class="container"><div class="nav-inner">
+  <div class="nav-logo-wrap">
+    <div class="logo-mark"><span>UGS</span></div>
+    <div class="logo-text"><span class="top">UNDERGROUND</span><span class="sub">Sound · Est. 2020</span></div>
+  </div>
+  <ul class="nav-menu"><li><a href="/">Home</a></li><li><a href="/news.html">News</a></li><li><a href="/freshman-list.html">Freshman List <span class="nav-badge">2025</span></a></li><li><a href="/videos.html">Videos</a></li><li><a href="/events.html">Events</a></li><li><a href="/promotions.html">Promotions</a></li></ul>
+  <div class="nav-actions">
+    <div class="nav-search"><span class="nav-search-icon">🔍</span><input type="text" placeholder="Search artists, news..."></div>
+    <a href="/promotions.html" class="btn btn-acid" style="padding:10px 20px;font-size:11px;">Submit ↗</a>
+  </div>
+</div></div><div class="nav-drawer-overlay" id="nav-drawer-overlay"></div>
+<nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation">
+  <div class="nav-drawer-header">
+    <div class="nav-drawer-logo">
+      <div class="logo-mark" style="width:32px;height:32px;"><span style="font-size:15px;">UGS</span></div>
+      <div style="font-family:var(--font-display);font-size:18px;letter-spacing:3px;color:var(--white);">UNDERGROUND</div>
+    </div>
+    <button class="nav-drawer-close" id="nav-drawer-close" aria-label="Close navigation">✕</button>
+  </div>
+  <div class="nav-drawer-search">
+    <input type="text" id="drawer-search-input" placeholder="Search artists, news..." aria-label="Search">
+  </div>
+  <div class="nav-drawer-links">
+    <div class="nav-drawer-section-label">Navigation</div>
+    <a href="/" class="nav-drawer-link">Home</a>
+    <a href="/news.html" class="nav-drawer-link">News</a>
+    <a href="/freshman-list.html" class="nav-drawer-link">Freshman List <span class="ndl-badge">2025</span></a>
+    <a href="/videos.html" class="nav-drawer-link">Videos</a>
+    <a href="/events.html" class="nav-drawer-link">Events</a>
+    <a href="/promotions.html" class="nav-drawer-link">Promotions</a>
+    <div class="nav-drawer-divider"></div>
+    <div class="nav-drawer-section-label">For Artists</div>
+    <a href="/pricing.html" class="nav-drawer-link">Pricing</a>
+    <a href="/freshman-list.html" class="nav-drawer-link">Freshman List</a>
+    <div class="nav-drawer-divider"></div>
+    <div class="nav-drawer-section-label">Business</div>
+    <a href="/advertise.html" class="nav-drawer-link">Advertise</a>
+    <a href="/press-kit.html" class="nav-drawer-link">Press Kit</a>
+    <a href="/merch.html" class="nav-drawer-link">Merch</a>
+    <a href="/contact.html" class="nav-drawer-link">Contact</a>
+    <div class="nav-drawer-divider"></div>
+    <div class="nav-drawer-section-label">Platform</div>
+    <a href="/phase2/dashboard.html" class="nav-drawer-link">Phase 2 — Analytics</a>
+    <a href="/phase3/overview.html" class="nav-drawer-link">Phase 3 — Community</a>
+    <a href="/phase4/mission-control.html" class="nav-drawer-link">Phase 4 — Festival</a>
+  </div>
+  <div class="nav-drawer-cta">
+    <a href="/promotions.html" class="btn btn-acid" style="display:block;text-align:center;padding:14px;font-size:11px;letter-spacing:3px;">Submit Your Music →</a>
+  </div>
+</nav>
+</nav>
+<div class="breaking-bar"><div class="breaking-label">BREAKING</div><div class="breaking-track"><div class="breaking-inner">
+  <span class="breaking-item">2Slimey's music video crosses 1.8M views after UGS campaign</span>
+  <span class="breaking-item">Cypher applications open — 3 slots remaining for March edition</span>
+  <span class="breaking-item">Starter Pack $75 — limited campaign slots this week</span>
+  <span class="breaking-item">Phase 4 Festival sponsorships open — presenting spot still available</span>
+  <span class="breaking-item">UGS Merch drop coming Spring 2025 — join the waitlist</span>
+  <span class="breaking-item">2Slimey's music video crosses 1.8M views after UGS campaign</span>
+  <span class="breaking-item">Cypher applications open — 3 slots remaining for March edition</span>
+  <span class="breaking-item">Starter Pack $75 — limited campaign slots this week</span>
+  <span class="breaking-item">Phase 4 Festival sponsorships open — presenting spot still available</span>
+  <span class="breaking-item">UGS Merch drop coming Spring 2025 — join the waitlist</span>
+</div></div></div>
+
+<div class="merch-hero">
+  <div class="container">
+    <div class="merch-hero-inner">
+      <div class="eyebrow" style="margin-bottom:20px;">UGS Official</div>
+      <h1 class="merch-title">UGS<br><em>MERCH</em></h1>
+      <p class="merch-sub">The underground wears its culture. First drop coming Spring 2025 — limited run, no restocks. Get on the list before it goes live.</p>
+      <div class="countdown-strip">
+        <div class="cd-label">Spring Drop Countdown</div>
+        <div class="cd-nums">
+          <div class="cd-num-box"><div class="cd-num" id="cd-days">--</div><div class="cd-unit">Days</div></div>
+          <div class="cd-num-box" style="color:var(--muted)"><div class="cd-num">:</div></div>
+          <div class="cd-num-box"><div class="cd-num" id="cd-hrs">--</div><div class="cd-unit">Hours</div></div>
+          <div class="cd-num-box" style="color:var(--muted)"><div class="cd-num">:</div></div>
+          <div class="cd-num-box"><div class="cd-num" id="cd-min">--</div><div class="cd-unit">Min</div></div>
+          <div class="cd-num-box" style="color:var(--muted)"><div class="cd-num">:</div></div>
+          <div class="cd-num-box"><div class="cd-num" id="cd-sec">--</div><div class="cd-unit">Sec</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="preview-section">
+  <div class="container">
+    <div class="section-head reveal"><div><div class="eyebrow" style="margin-bottom:12px;">Spring 2025 Drop</div><div class="section-title">PREVIEW<br>LINEUP</div></div></div>
+    <div class="preview-grid stagger">
+      <div class="preview-card" onclick="openMerch(0)" title="View details" style="cursor:pointer;">
+        <div class="preview-tag tag-ltd">LIMITED</div>
+        <div class="preview-img">UGS</div>
+        <div class="preview-info">
+          <div class="preview-name">ACID LOGO TEE</div>
+          <div class="preview-price">$45</div>
+          <div class="preview-desc">Classic UGS logomark in acid yellow on heavyweight black tee. 100% cotton. Unisex fit. Limited to 200 units.</div>
+        </div>
+      </div>
+      <div class="preview-card" onclick="openMerch(1)" title="View details" style="cursor:pointer;">
+        <div class="preview-tag tag-drop">FIRST DROP</div>
+        <div class="preview-img">UGS</div>
+        <div class="preview-info">
+          <div class="preview-name">UNDERGROUND HOODIE</div>
+          <div class="preview-price">$85</div>
+          <div class="preview-desc">Full UGS wordmark across the back. Embroidered chest logo. Heavyweight fleece. Sizes S–3XL. The culture on your back.</div>
+        </div>
+      </div>
+      <div class="preview-card" onclick="openMerch(2)" title="View details" style="cursor:pointer;">
+        <div class="preview-tag tag-ltd">LTD · 100 UNITS</div>
+        <div class="preview-img">UGS</div>
+        <div class="preview-info">
+          <div class="preview-name">FRESHMAN CAP</div>
+          <div class="preview-price">$35</div>
+          <div class="preview-desc">2025 Freshman List edition. Embroidered "UGS 25" on structured 6-panel cap. Adjustable strap. Black / Acid yellow.</div>
+        </div>
+      </div>
+      <div class="preview-card" onclick="openMerch(3)" title="View details" style="cursor:pointer;">
+        <div class="preview-card-inner">
+        <div class="preview-img" style="font-size:60px;">PHASE 4</div>
+        <div class="preview-info">
+          <div class="preview-name">FESTIVAL LONG-SLEEVE</div>
+          <div class="preview-price">$65</div>
+          <div class="preview-desc">Phase 4 Festival collab tee. "Wilmington · 2026" on sleeve. Event-exclusive design — only available at festival and to waitlist members pre-drop.</div>
+        </div>
+        </div>
+      </div>
+      <div class="preview-card" onclick="openMerch(4)" title="View details" style="cursor:pointer;">
+        <div class="preview-img" style="font-size:60px;">UGS</div>
+        <div class="preview-info">
+          <div class="preview-name">UNDERGROUND CREWNECK</div>
+          <div class="preview-price">$75</div>
+          <div class="preview-desc">Minimal UGS crewneck sweatshirt. Small embroidered logo on chest. French terry fabric. Clean enough for the streets, heavy enough for the underground.</div>
+        </div>
+      </div>
+      <div class="preview-card" onclick="openMerch(5)" title="View details" style="cursor:pointer;">
+        <div class="preview-tag tag-ltd">EXTRA LTD · 50 UNITS</div>
+        <div class="preview-img" style="font-size:50px;">CYPHER</div>
+        <div class="preview-info">
+          <div class="preview-name">CYPHER SERIES PRINT</div>
+          <div class="preview-price">$25</div>
+          <div class="preview-desc">Archival-quality 18×24 print featuring the ØWAY Cypher lineup. Numbered and signed. Framing-ready. The underground documented.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="waitlist-section" id="waitlist">
+  <div class="container">
+    <div class="waitlist-inner reveal">
+      <h2 class="waitlist-title">JOIN THE<br>WAITLIST</h2>
+      <p class="waitlist-sub">Drop launches to the waitlist 48 hours before public release. Limited units — waitlist members get first access, no exceptions.</p>
+      <div class="waitlist-form" id="wl-form">
+        <input type="email" class="waitlist-input" placeholder="your@email.com" id="wl-email">
+        <button class="waitlist-btn" onclick="joinWaitlist()">Get Early Access →</button>
+      </div>
+      <div class="waitlist-note">No spam · Just the drop notification · Unsubscribe anytime</div>
+      <div class="waitlist-success" id="wl-success">
+        <div style="font-family:var(--font-display);font-size:22px;letter-spacing:1px;color:var(--acid);margin-bottom:8px;">✓ YOU'RE ON THE LIST</div>
+        <div style="font-size:13px;color:var(--off);line-height:1.6;font-weight:300;">We'll hit your inbox 48 hours before the Spring 2025 drop goes live. Don't sleep — limited units, no restocks.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+// Countdown to May 1, 2025
+const dropDate = new Date('2025-05-01T12:00:00');
+function updateCd(){
+  const now=new Date(),diff=dropDate-now;
+  if(diff<=0){document.getElementById('cd-days').textContent='00';return;}
+  const d=Math.floor(diff/864e5),h=Math.floor((diff%864e5)/36e5),m=Math.floor((diff%36e5)/6e4),s=Math.floor((diff%6e4)/1e3);
+  document.getElementById('cd-days').textContent=String(d).padStart(2,'0');
+  document.getElementById('cd-hrs').textContent=String(h).padStart(2,'0');
+  document.getElementById('cd-min').textContent=String(m).padStart(2,'0');
+  document.getElementById('cd-sec').textContent=String(s).padStart(2,'0');
+}
+updateCd();setInterval(updateCd,1000);
+function joinWaitlist(){
+  const e=document.getElementById('wl-email').value.trim();
+  if(!e||!e.includes('@')){alert('Please enter a valid email.');return;}
+  document.getElementById('wl-form').style.display='none';
+  document.getElementById('wl-success').style.display='block';
+}
+</script>
+
+<!-- NEWSLETTER CAPTURE -->
+<div style="background:var(--raised);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 0;">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;" class="newsletter-strip">
+      <div>
+        <div style="font-family:var(--font-display);font-size:clamp(28px,4vw,48px);letter-spacing:2px;line-height:1;margin-bottom:8px;">STAY IN THE<br><span style="color:var(--acid);">UNDERGROUND</span></div>
+        <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);">Fresh drops · Artist news · Freshman List alerts · Festival updates · No spam</div>
+      </div>
+      <div id="nl-wrap" style="min-width:340px;">
+        <div style="display:flex;gap:0;" id="nl-form">
+          <input type="email" id="nl-email" placeholder="your@email.com" style="flex:1;background:var(--surface);border:1px solid var(--border);border-right:none;color:var(--white);font-family:var(--font-ui);font-size:13px;padding:13px 16px;outline:none;min-width:0;" onfocus="this.style.borderColor='var(--acid)'" onblur="this.style.borderColor=''">
+          <button onclick="nlSubmit()" style="background:var(--acid);color:var(--black);border:none;font-family:var(--font-ui);font-weight:700;font-size:10px;letter-spacing:3px;text-transform:uppercase;padding:13px 20px;cursor:pointer;white-space:nowrap;transition:all .2s;flex-shrink:0;" onmouseover="this.style.background='var(--fire)';this.style.color='#fff'" onmouseout="this.style.background='var(--acid)';this.style.color='var(--black)'">Subscribe →</button>
+        </div>
+        <div id="nl-success" style="display:none;padding:13px 16px;background:rgba(212,255,0,.06);border:1px solid rgba(212,255,0,.2);font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--acid);">✓ YOU'RE IN — Welcome to the underground.</div>
+        <div style="font-family:var(--font-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--dimmed);margin-top:8px;">No spam · Unsubscribe anytime</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+if(!window._nlDone){window._nlDone=true;
+function nlSubmit(){const e=document.getElementById('nl-email').value.trim();if(!e||!e.includes('@')){alert('Please enter a valid email.');return;}document.getElementById('nl-form').style.display='none';document.getElementById('nl-success').style.display='block';}
+}
+</script>
+<footer><div class="container">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-brand-logo">
+        <div class="logo-mark"><span>UGS</span></div>
+        <div class="logo-text"><span class="top" style="font-size:18px;">UNDERGROUND</span><span class="sub">Sound · Media Hub</span></div>
+      </div>
+      <p>The media brand for underground artists. Daily content, real promotion, and authentic exposure across Twitter, Instagram, and YouTube.</p>
+      <div class="footer-socials">
+        <a href="https://twitter.com/therealugs" target="_blank" class="social-ico">𝕏</a>
+        <a href="https://instagram.com/undergroundsound" target="_blank" class="social-ico">📸</a>
+        <a href="https://youtube.com/@therealugs" target="_blank" class="social-ico">▶</a>
+      </div>
+    </div>
+    <div class="footer-col"><h5>For Artists</h5><ul>
+      <li><a href="/promotions.html">Submit Music</a></li>
+      <li><a href="/promotions.html#packages">View Packages</a></li>
+      <li><a href="/pricing.html">Pricing</a></li>
+      <li><a href="/freshman-list.html">Freshman List</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Editorial</h5><ul>
+      <li><a href="/news.html">Latest News</a></li>
+      <li><a href="/videos.html">Videos</a></li>
+      <li><a href="/events.html">Events</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Business</h5><ul>
+      <li><a href="/advertise.html">Advertise</a></li>
+      <li><a href="/press-kit.html">Press Kit</a></li>
+      <li><a href="/phase4/sponsors.html">Festival Sponsors</a></li>
+      <li><a href="/merch.html">Merch</a></li>
+    </ul></div>
+    <div class="footer-col"><h5>Company</h5><ul>
+      <li><a href="/contact.html">Contact</a></li>
+      <li><a href="/press-kit.html">About UGS</a></li>
+      <li><a href="/phase4/mission-control.html">Phase 4 Festival</a></li>
+    </ul></div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Underground Sound — All Rights Reserved</div>
+    <div class="footer-phase">Platform <div class="phase-badge">PHASE 1</div></div>
+    <div class="footer-copy">Built for the underground. By the underground.</div>
+  </div>
+</div></footer>
+<script>
+const ro = new IntersectionObserver((e)=>e.forEach((en,i)=>{if(en.isIntersecting){setTimeout(()=>en.target.classList.add('in'),i*60);ro.unobserve(en.target)}}),{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+</script>
+<button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
+<script src="/assets/js/ugs-enhance.js"></script>
+<div id="merch-modal">
+  <div class="merch-modal-inner">
+    <div class="merch-modal-thumb" id="mm-art">UGS</div>
+    <div class="merch-modal-body">
+      <span class="merch-modal-tag" id="mm-tag">LIMITED</span>
+      <div class="merch-modal-name" id="mm-name">ITEM NAME</div>
+      <div class="merch-modal-price" id="mm-price">$00</div>
+      <div class="merch-modal-desc" id="mm-desc">Description.</div>
+      <div style="font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;">COMING SOON — Join the waitlist to get early access</div>
+      <a href="#waitlist" onclick="closeMerch()" class="btn btn-acid" style="display:block;text-align:center;padding:13px;font-size:10px;letter-spacing:3px;">Join Waitlist →</a>
+    </div>
+    <button class="merch-modal-close" onclick="closeMerch()">✕</button>
+  </div>
+</div>
+<script>
+const MERCH_DATA = [
+  { tag:"LIMITED · 200 UNITS", name:"ACID LOGO TEE", price:"$45", desc:"Classic UGS logomark in acid yellow on heavyweight black tee. 100% cotton. Unisex fit. Limited to 200 units.", art:"UGS" },
+  { tag:"FIRST DROP", name:"UNDERGROUND HOODIE", price:"$85", desc:"Full UGS wordmark across the back. Embroidered chest logo. Heavyweight fleece. Sizes S–3XL. The culture on your back.", art:"UGS" },
+  { tag:"LIMITED · 100 UNITS", name:"FRESHMAN CAP", price:"$35", desc:"2025 Freshman List edition. Embroidered 'UGS 25' on structured 6-panel cap. Adjustable strap. Black / Acid yellow.", art:"25" },
+  { tag:"FESTIVAL EXCLUSIVE", name:"FESTIVAL LONG-SLEEVE", price:"$65", desc:"Phase 4 Festival collab tee. 'Wilmington · 2026' on sleeve. Event-exclusive — only available at festival and to waitlist members.", art:"P4" },
+  { tag:"CORE DROP", name:"UNDERGROUND CREWNECK", price:"$75", desc:"Minimal UGS crewneck sweatshirt. Small embroidered logo on chest. French terry fabric.", art:"UGS" },
+  { tag:"EXTRA LIMITED · 50 UNITS", name:"CYPHER SERIES PRINT", price:"$25", desc:"Archival-quality 18×24 print featuring the ØWAY Cypher lineup. Numbered and signed. Framing-ready.", art:"ØWAY" },
+];
+function openMerch(i) {
+  const d = MERCH_DATA[i];
+  const m = document.getElementById('merch-modal');
+  document.getElementById('mm-tag').textContent = d.tag;
+  document.getElementById('mm-name').textContent = d.name;
+  document.getElementById('mm-price').textContent = d.price;
+  document.getElementById('mm-desc').textContent = d.desc;
+  document.getElementById('mm-art').textContent = d.art;
+  m.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMerch() {
+  document.getElementById('merch-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('merch-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeMerch();
+});
+</script>
+</body></html>

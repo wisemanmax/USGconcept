@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#050507"/>
+  <!-- Grid lines -->
+  <line x1="0" y1="315" x2="1200" y2="315" stroke="#d4ff00" stroke-opacity="0.04" stroke-width="1"/>
+  <line x1="600" y1="0" x2="600" y2="630" stroke="#d4ff00" stroke-opacity="0.04" stroke-width="1"/>
+  <!-- Ambient glow -->
+  <radialGradient id="g1" cx="75%" cy="40%" r="50%">
+    <stop offset="0%" stop-color="#d4ff00" stop-opacity="0.07"/>
+    <stop offset="100%" stop-color="#050507" stop-opacity="0"/>
+  </radialGradient>
+  <rect width="1200" height="630" fill="url(#g1)"/>
+  <radialGradient id="g2" cx="10%" cy="70%" r="40%">
+    <stop offset="0%" stop-color="#ff3500" stop-opacity="0.06"/>
+    <stop offset="100%" stop-color="#050507" stop-opacity="0"/>
+  </radialGradient>
+  <rect width="1200" height="630" fill="url(#g2)"/>
+  <!-- Logo mark -->
+  <polygon points="60,60 140,60 140,120 120,140 60,140" fill="#d4ff00"/>
+  <text x="100" y="115" font-family="Arial Black, sans-serif" font-size="40" font-weight="900"
+        text-anchor="middle" fill="#050507">UGS</text>
+  <!-- Main headline -->
+  <text x="60" y="260" font-family="Arial Black, sans-serif" font-size="96" font-weight="900"
+        fill="#f2f2f0" letter-spacing="4">UNDERGROUND</text>
+  <text x="60" y="360" font-family="Arial Black, sans-serif" font-size="96" font-weight="900"
+        fill="#d4ff00" letter-spacing="4">SOUND</text>
+  <!-- Subline -->
+  <text x="60" y="430" font-family="Arial, sans-serif" font-size="24" fill="#5a5a70"
+        letter-spacing="6">THE MEDIA HUB FOR THE UNDERGROUND</text>
+  <!-- Stats -->
+  <text x="60" y="530" font-family="Arial Black, sans-serif" font-size="36" font-weight="900" fill="#f2f2f0">92K</text>
+  <text x="60" y="558" font-family="Arial, sans-serif" font-size="14" fill="#5a5a70" letter-spacing="3">TWITTER</text>
+  <text x="220" y="530" font-family="Arial Black, sans-serif" font-size="36" font-weight="900" fill="#f2f2f0">1.8M</text>
+  <text x="220" y="558" font-family="Arial, sans-serif" font-size="14" fill="#5a5a70" letter-spacing="3">PEAK VIEWS</text>
+  <text x="400" y="530" font-family="Arial Black, sans-serif" font-size="36" font-weight="900" fill="#f2f2f0">10</text>
+  <text x="400" y="558" font-family="Arial, sans-serif" font-size="14" fill="#5a5a70" letter-spacing="3">FRESHMAN 2025</text>
+  <!-- URL -->
+  <text x="1140" y="590" font-family="Arial, sans-serif" font-size="16" fill="#3a3a50"
+        text-anchor="end" letter-spacing="2">UNDERGROUNDSOUND.CO</text>
+</svg>
