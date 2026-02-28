@@ -244,6 +244,40 @@ body::after {
 .hd-notif:hover { border-color:var(--gold); }
 .notif-pip { position:absolute; top:-3px; right:-3px; width:10px; height:10px; border-radius:50%; background:var(--blood); border:2px solid var(--ink); }
 
+
+.mobile-tab-nav {
+  display: none;
+  margin: 14px 24px 0;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 12px;
+}
+.mobile-tab-nav label {
+  display:block;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.mobile-tab-nav select {
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--border2);
+  color: var(--white);
+  padding: 10px;
+  font-family: var(--font-ui);
+}
+.mobile-phase-links {
+  margin-top: 10px;
+  display:grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 8px;
+}
+.mobile-phase-links a { text-align:center; }
+
 /* ============================================================
    MAIN
    ============================================================ */
@@ -801,6 +835,16 @@ body::after {
   .shell { grid-template-columns:1fr; grid-template-areas:"hd""mn"; }
   .sb { display:none; }
   .mn, .hd { margin-left:0 !important; }
+  .hd {
+    height:auto;
+    min-height: var(--header-h);
+    padding: 12px 20px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .hd-title { width:100%; }
+  .mobile-tab-nav { display:block; margin: 12px 20px 0; }
+  .mn { padding: 20px; }
   .kpi-row { grid-template-columns:1fr 1fr; }
   .four-col { grid-template-columns:1fr 1fr; }
   .three-col { grid-template-columns:1fr; }
@@ -860,7 +904,7 @@ body::after {
 
     <div class="sb-footer">
       <a href="ugs-phase3.html" class="sb-back-btn">← Phase 3: Community</a>
-      <a href="ugs-phase1.html" class="sb-back-btn">↗ Phase 1: Media Site</a>
+      <a href="index.html" class="sb-back-btn">↗ Phase 1: Media Site</a>
     </div>
   </aside>
 
@@ -874,6 +918,26 @@ body::after {
     <div class="hd-notif">🔔<div class="notif-pip"></div></div>
     <button class="btn btn-gold btn-sm" onclick="showToast('🎟️ Pre-sale list is live — 412 signed up')">Pre-Sale Live ↗</button>
   </header>
+
+  <div class="mobile-tab-nav" aria-label="Mobile section navigation">
+    <label for="mobile-tab-select-phase4">Jump to section</label>
+    <select id="mobile-tab-select-phase4">
+      <option value="overview">Mission Control</option>
+      <option value="venue">Venue Intelligence</option>
+      <option value="ticketing">Ticketing Engine</option>
+      <option value="lineup">Lineup Builder</option>
+      <option value="production">Production Plan</option>
+      <option value="sponsors">Sponsor Deck</option>
+      <option value="pnl">P&L Projections</option>
+      <option value="expansion">Multi-City Expansion</option>
+      <option value="roadmap">Roadmap</option>
+    </select>
+    <div class="mobile-phase-links">
+      <a href="index.html" class="btn btn-ghost btn-sm">Phase 1</a>
+      <a href="ugs-phase2.html" class="btn btn-ghost btn-sm">Phase 2</a>
+      <a href="ugs-phase3.html" class="btn btn-ghost btn-sm">Phase 3</a>
+    </div>
+  </div>
 
   <!-- ===================== MAIN ===================== -->
   <main class="mn">
@@ -2053,7 +2117,23 @@ function showTab(id, btn) {
   if(page) page.classList.add('active');
   if(btn) btn.classList.add('active');
   document.getElementById('page-title').textContent = pageTitles[id] || id.toUpperCase();
+  const mobileSelect = document.getElementById('mobile-tab-select-phase4');
+  if (mobileSelect && mobileSelect.value !== id) mobileSelect.value = id;
   window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function getNavBtnByTab(id) {
+  return Array.from(document.querySelectorAll('.nav-btn')).find(btn =>
+    (btn.getAttribute('onclick') || '').includes(`'${id}'`)
+  );
+}
+
+const mobileSelectPhase4 = document.getElementById('mobile-tab-select-phase4');
+if (mobileSelectPhase4) {
+  mobileSelectPhase4.addEventListener('change', (e) => {
+    const id = e.target.value;
+    showTab(id, getNavBtnByTab(id));
+  });
 }
 
 // ── STAGE SWITCHER ─────────────────────────────────────────

@@ -80,6 +80,7 @@ body::after {
 }
 
 a { text-decoration: none; color: inherit; }
+:focus-visible { outline: 2px solid var(--violet-l); outline-offset: 2px; }
 
 /* ============================================================
    APP SHELL
@@ -270,6 +271,40 @@ a { text-decoration: none; color: inherit; }
   color: var(--muted); cursor: pointer; transition: all 0.2s; white-space:nowrap;
 }
 .ph-nav-btn:hover { border-color: var(--violet); color: var(--violet-l); }
+
+
+.mobile-tab-nav {
+  display: none;
+  margin: 14px 24px 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+}
+.mobile-tab-nav label {
+  display:block;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.mobile-tab-nav select {
+  width:100%;
+  background: var(--panel);
+  border: 1px solid var(--border2);
+  color: var(--white);
+  padding: 10px;
+  font-family: var(--font-ui);
+}
+.mobile-phase-links {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.mobile-phase-links .ph-nav-btn { width: 100%; }
 
 /* ============================================================
    MAIN
@@ -998,6 +1033,17 @@ a { text-decoration: none; color: inherit; }
   .app-shell { grid-template-columns: 1fr; grid-template-areas:"header""main"; }
   .sidebar { display:none; }
   .main, .top-bar { margin-left: 0 !important; }
+  .top-bar {
+    height: auto;
+    min-height: var(--header-h);
+    padding: 12px 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .top-bar-title { width: 100%; }
+  .top-bar-search { order: 5; width: 100%; }
+  .mobile-tab-nav { display: block; margin: 12px 20px 0; }
+  .main { padding: 20px; }
   .kpi-grid { grid-template-columns: 1fr 1fr; }
   .discord-grid { grid-template-columns: 1fr; }
   .badges-grid { grid-template-columns: repeat(2,1fr); }
@@ -1118,8 +1164,28 @@ a { text-decoration: none; color: inherit; }
     </div>
     <div class="top-notif">🔔<div class="notif-dot"></div></div>
     <button class="ph-nav-btn" onclick="window.location.href='ugs-phase2.html'">← Phase 2</button>
-    <button class="ph-nav-btn" onclick="window.location.href='ugs-phase1.html'" style="color:var(--violet-l);border-color:rgba(139,92,246,0.3);">Phase 1 Site ↗</button>
+    <button class="ph-nav-btn" onclick="window.location.href='index.html'" style="color:var(--violet-l);border-color:rgba(139,92,246,0.3);">Phase 1 Site ↗</button>
   </header>
+
+  <div class="mobile-tab-nav" aria-label="Mobile section navigation">
+    <label for="mobile-tab-select-phase3">Jump to section</label>
+    <select id="mobile-tab-select-phase3">
+      <option value="overview">Overview</option>
+      <option value="discord">Discord Partners</option>
+      <option value="feed">Activity Feed</option>
+      <option value="ambassadors">Ambassadors</option>
+      <option value="reputation">Reputation</option>
+      <option value="referrals">Referral Rewards</option>
+      <option value="events">Event Priority</option>
+      <option value="perks">Perks</option>
+      <option value="roadmap">Roadmap</option>
+    </select>
+    <div class="mobile-phase-links">
+      <button class="ph-nav-btn" onclick="window.location.href='index.html'">Phase 1</button>
+      <button class="ph-nav-btn" onclick="window.location.href='ugs-phase2.html'">Phase 2</button>
+      <button class="ph-nav-btn" onclick="window.location.href='ugs-phase4.html'">Phase 4</button>
+    </div>
+  </div>
 
   <!-- ===================== MAIN ===================== -->
   <main class="main">
@@ -2193,7 +2259,23 @@ function showTab(id, btn) {
   if(page) page.classList.add('active');
   if(btn) btn.classList.add('active');
   document.getElementById('page-title').textContent = pageTitles[id] || id.toUpperCase();
+  const mobileSelect = document.getElementById('mobile-tab-select-phase3');
+  if (mobileSelect && mobileSelect.value !== id) mobileSelect.value = id;
   window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function getNavBtnByTab(id) {
+  return Array.from(document.querySelectorAll('.nav-btn')).find(btn =>
+    (btn.getAttribute('onclick') || '').includes(`'${id}'`)
+  );
+}
+
+const mobileSelectPhase3 = document.getElementById('mobile-tab-select-phase3');
+if (mobileSelectPhase3) {
+  mobileSelectPhase3.addEventListener('change', (e) => {
+    const id = e.target.value;
+    showTab(id, getNavBtnByTab(id));
+  });
 }
 
 // ── LIVE FEED GENERATOR ──────────────────────────────────
