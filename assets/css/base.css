@@ -1,0 +1,335 @@
+/* ============================================================
+   UGS BASE — base.css
+   Shared utilities extracted from phase1–4 stylesheets.
+   Link BEFORE the phase-specific CSS on every page.
+   
+   USAGE:
+     <link rel="stylesheet" href="/assets/css/base.css">
+     <link rel="stylesheet" href="/assets/css/phase1.css"> (or phase2/3/4)
+   
+   ============================================================ */
+
+/* ── RESET ────────────────────────────────────────────────── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 16px; scroll-behavior: smooth; }
+
+/* ── SHARED CSS VARS (phase files override these) ─────────── */
+:root {
+  /* Typography tokens — each phase may override font-ui and font-mono */
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-mono:    'Space Mono', monospace;
+  --font-ui:      'Barlow Condensed', sans-serif;
+
+  /* Neutral tokens — shared across all phases */
+  --white:   #f2f2f0;
+  --off:     #c0c0c8;
+  --muted:   #555570;
+  --dimmed:  #353550;
+
+  /* Accent tokens — phases override these */
+  --acid:    #d4ff00;
+  --fire:    #ff3500;
+  --gold:    #ffc300;
+
+  /* Layout tokens */
+  --gap:     16px;
+  --max:     1440px;
+  --radius:  2px;
+}
+
+/* ── PHASE NAV STRIP ──────────────────────────────────────── */
+.phase-nav-strip {
+  background: rgba(0,0,0,.6);
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  padding: 6px 0;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  backdrop-filter: blur(8px);
+}
+.phase-nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.phase-nav-inner::-webkit-scrollbar { display: none; }
+.phase-nav-label {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-right: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.phase-nav-item {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 5px 12px;
+  white-space: nowrap;
+  transition: color 0.2s;
+  flex-shrink: 0;
+}
+.phase-nav-item:hover { color: var(--off); }
+.phase-nav-item.current { color: var(--acid); border-bottom: 1px solid var(--acid); }
+
+/* ── BUTTONS ──────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+  outline: none;
+  white-space: nowrap;
+}
+.btn-acid {
+  background: var(--acid);
+  color: #000;
+}
+.btn-acid:hover {
+  background: var(--fire);
+  color: #fff;
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--off);
+  border: 1px solid rgba(255,255,255,.12);
+}
+.btn-ghost:hover {
+  border-color: var(--acid);
+  color: var(--acid);
+}
+.btn-outline {
+  background: transparent;
+  color: var(--acid);
+  border: 1px solid var(--acid);
+}
+.btn-outline:hover {
+  background: var(--acid);
+  color: #000;
+}
+
+/* ── NAV BADGE ────────────────────────────────────────────── */
+.nav-badge {
+  font-family: var(--font-mono);
+  font-size: 7px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: var(--acid);
+  color: #000;
+  padding: 2px 6px;
+  margin-left: 6px;
+  font-weight: 700;
+}
+
+/* ── SCROLL REVEAL ANIMATIONS ─────────────────────────────── */
+.reveal, .reveal-left, .reveal-right, .reveal-scale {
+  opacity: 0;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal           { transform: translateY(24px); }
+.reveal-left      { transform: translateX(-24px); }
+.reveal-right     { transform: translateX(24px); }
+.reveal-scale     { transform: scale(0.96); }
+.reveal.in, .reveal-left.in, .reveal-right.in, .reveal-scale.in {
+  opacity: 1;
+  transform: none;
+}
+.stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.stagger.in > * { opacity: 1; transform: none; }
+.stagger.in > *:nth-child(1) { transition-delay: 0.05s; }
+.stagger.in > *:nth-child(2) { transition-delay: 0.10s; }
+.stagger.in > *:nth-child(3) { transition-delay: 0.15s; }
+.stagger.in > *:nth-child(4) { transition-delay: 0.20s; }
+.stagger.in > *:nth-child(5) { transition-delay: 0.25s; }
+.stagger.in > *:nth-child(6) { transition-delay: 0.30s; }
+
+/* ── BREAKING TICKER (shared animation) ────────────────────── */
+.breaking-inner {
+  display: flex;
+  gap: 0;
+  animation: ticker-scroll 40s linear infinite;
+  will-change: transform;
+}
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.breaking-track:hover .breaking-inner { animation-play-state: paused; }
+
+/* ── ANNOUNCE BAR ──────────────────────────────────────────── */
+.announce-bar {
+  background: var(--acid);
+  color: #000;
+  padding: 10px 0;
+  position: relative;
+  z-index: 100;
+}
+.announce-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.announce-text { font-size: 12px; font-weight: 600; }
+.announce-link {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #000;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0,0,0,.3);
+}
+.announce-close {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  font-size: 14px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+  padding: 4px 8px;
+}
+.announce-close:hover { opacity: 1; }
+
+/* ── BACK TO TOP ───────────────────────────────────────────── */
+.back-to-top {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 40px;
+  height: 40px;
+  background: var(--acid);
+  color: #000;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s, background 0.2s;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.back-to-top.visible { opacity: 1; visibility: visible; }
+.back-to-top:hover { background: var(--fire); color: #fff; }
+
+/* ── CONTAINER ─────────────────────────────────────────────── */
+.container {
+  max-width: var(--max, 1440px);
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 80px);
+}
+
+/* ── SUCCESS BOX (shared form feedback) ────────────────────── */
+.success-box {
+  display: none;
+  padding: 20px;
+  background: rgba(212,255,0,.06);
+  border: 1px solid rgba(212,255,0,.2);
+}
+
+/* ── TOAST ─────────────────────────────────────────────────── */
+.toast {
+  position: fixed;
+  bottom: 80px;
+  right: 24px;
+  background: var(--acid);
+  color: #000;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 12px 20px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+  z-index: 2000;
+  max-width: 320px;
+}
+.toast.show { opacity: 1; transform: none; }
+
+/* ── FORM SHARED STYLES ────────────────────────────────────── */
+.fgrp { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.flbl { font-family: var(--font-mono); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
+.finp {
+  background: var(--surface, #101016);
+  border: 1px solid var(--border, #222230);
+  color: var(--white);
+  font-size: 13px;
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+.finp:focus { border-color: var(--acid); }
+.fsel { appearance: none; }
+.ftxt { min-height: 100px; resize: vertical; }
+.fsub {
+  width: 100%;
+  background: var(--acid);
+  color: #000;
+  border: none;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 8px;
+}
+.fsub:hover { background: var(--fire); color: #fff; }
+.fnote { font-family: var(--font-mono); font-size: 8px; letter-spacing: 2px; text-transform: uppercase; color: var(--dimmed); margin-top: 10px; text-align: center; }
+.frow { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+/* ── EYEBROW LABEL ─────────────────────────────────────────── */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── ACCESSIBILITY: prefers-reduced-motion ─────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .breaking-inner { animation: none !important; transform: none !important; }
+  .reveal, .reveal-left, .reveal-right, .reveal-scale,
+  .stagger > * { opacity: 1 !important; transform: none !important; transition: none !important; }
+}

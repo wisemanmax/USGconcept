@@ -1679,3 +1679,35 @@ body { animation: pageFadeIn 0.4s ease forwards; }
     width: 100% !important;
   }
 }
+
+/* ────────────────────────────────────────────────────────────
+   ACCESSIBILITY: prefers-reduced-motion
+   Respects users who have vestibular disorders or motion
+   sensitivity — pauses animations and transitions globally.
+   ──────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .breaking-inner {
+    animation: none !important;
+    /* Freeze ticker in place — content still readable */
+    transform: none !important;
+  }
+  .reveal, .reveal-left, .reveal-right, .reveal-scale {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .hero-ambient, .hero-grid-bg {
+    animation: none !important;
+  }
+}
