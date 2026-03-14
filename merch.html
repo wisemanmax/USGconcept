@@ -23,6 +23,7 @@
 <meta property="og:description" content="Official Underground Sound merch. Limited runs, no restocks. Spring 2025 drop — join the waitlist for early access.">
 <meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/phase1.css">
 <style>
 .merch-hero{background:var(--deep);padding:80px 0;position:relative;overflow:hidden;}
@@ -171,7 +172,7 @@
     <a href="promotions.html">Submit Music</a>
     <a href="advertise.html">Advertise</a>
     <a href="press-kit.html">Press Kit</a>
-    <a href="https://twitter.com/therealugs" target="_blank">Twitter</a>
+    <a href="https://twitter.com/therealugs" target="_blank" rel="noopener noreferrer">Twitter</a>
   </div>
 </div></div></div>
 <nav class="primary-nav"><div class="container"><div class="nav-inner">
@@ -360,7 +361,6 @@ function joinWaitlist(){
 }
 </script>
 
-<!-- NEWSLETTER CAPTURE -->
 <div style="background:var(--raised);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 0;">
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;" class="newsletter-strip">
@@ -381,7 +381,12 @@ function joinWaitlist(){
 </div>
 <script>
 if(!window._nlDone){window._nlDone=true;
-function nlSubmit(){const e=document.getElementById('nl-email').value.trim();if(!e||!e.includes('@')){alert('Please enter a valid email.');return;}document.getElementById('nl-form').style.display='none';document.getElementById('nl-success').style.display='block';}
+function nlSubmit(){
+  const e=document.getElementById('nl-email').value.trim();
+  if(!e||!e.includes('@')){alert('Please enter a valid email.');return;}
+  document.getElementById('nl-form').style.display='none';
+  document.getElementById('nl-success').style.display='block';
+}
 }
 </script>
 <footer><div class="container">
@@ -393,9 +398,9 @@ function nlSubmit(){const e=document.getElementById('nl-email').value.trim();if(
       </div>
       <p>The media brand for underground artists. Daily content, real promotion, and authentic exposure across Twitter, Instagram, and YouTube.</p>
       <div class="footer-socials">
-        <a href="https://twitter.com/therealugs" target="_blank" class="social-ico">𝕏</a>
-        <a href="https://instagram.com/undergroundsound" target="_blank" class="social-ico">📸</a>
-        <a href="https://youtube.com/@therealugs" target="_blank" class="social-ico">▶</a>
+        <a href="https://twitter.com/therealugs" target="_blank" class="social-ico" rel="noopener noreferrer">𝕏</a>
+        <a href="https://instagram.com/undergroundsound" target="_blank" class="social-ico" rel="noopener noreferrer">📸</a>
+        <a href="https://youtube.com/@therealugs" target="_blank" class="social-ico" rel="noopener noreferrer">▶</a>
       </div>
     </div>
     <div class="footer-col"><h5>For Artists</h5><ul>

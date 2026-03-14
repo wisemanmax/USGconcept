@@ -12,6 +12,10 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Underground Sound">
+<meta name="description" content="Underground Sound's four-phase platform: Media Hub, Analytics, Community, and Festival infrastructure.">
+<meta property="og:title" content="Platform Infrastructure — Underground Sound">
+<meta property="og:description" content="A four-phase media platform built for the underground — from content and analytics to community and flagship festival.">
+<meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@therealugs">
 <meta name="twitter:image" content="https://undergroundsound.co/og-image.svg">
@@ -19,6 +23,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Platform Infrastructure — Underground Sound</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/phase1.css">
 
 
@@ -70,8 +75,8 @@
         <a href="promotions.html">Submit Music</a>
         <a href="freshman-list.html">2025 Freshman</a>
         <a href="events.html">Events</a>
-        <a href="https://twitter.com/therealugs" target="_blank">Twitter</a>
-        <a href="https://instagram.com/undergroundsound" target="_blank">Instagram</a>
+        <a href="https://twitter.com/therealugs" target="_blank" rel="noopener noreferrer">Twitter</a>
+        <a href="https://instagram.com/undergroundsound" target="_blank" rel="noopener noreferrer">Instagram</a>
       </div>
     </div>
   </div>
@@ -107,7 +112,6 @@
   </div>
 </nav>
 
-<!-- BREAKING BAR -->
 <div class="breaking-bar">
   <div class="breaking-label">BREAKING</div>
   <div class="breaking-track">
@@ -132,7 +136,7 @@
     <div class="section-head reveal">
       <div>
         <div class="eyebrow" style="margin-bottom:12px;">Behind the Curtain</div>
-        <div class="section-title">PLATFORM<br>INFRA</div>
+        <h1 class="section-title" style="margin:0;">PLATFORM<br>INFRA</h1>
       </div>
     </div>
     <div class="featured-strip stagger">
@@ -167,9 +171,7 @@
     </div>
   </div>
 </section>
-<!-- FOOTER -->
 
-<!-- NEWSLETTER CAPTURE -->
 <div style="background:var(--raised);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 0;">
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;" class="newsletter-strip">
@@ -190,7 +192,12 @@
 </div>
 <script>
 if(!window._nlDone){window._nlDone=true;
-function nlSubmit(){const e=document.getElementById('nl-email').value.trim();if(!e||!e.includes('@')){alert('Please enter a valid email.');return;}document.getElementById('nl-form').style.display='none';document.getElementById('nl-success').style.display='block';}
+function nlSubmit(){
+  const e=document.getElementById('nl-email').value.trim();
+  if(!e||!e.includes('@')){alert('Please enter a valid email.');return;}
+  document.getElementById('nl-form').style.display='none';
+  document.getElementById('nl-success').style.display='block';
+}
 }
 </script>
 <footer>
@@ -206,9 +213,9 @@ function nlSubmit(){const e=document.getElementById('nl-email').value.trim();if(
         </div>
         <p>The media brand for underground artists. Daily content, real promotion, and authentic exposure across Twitter, Instagram, and YouTube. Building toward the underground's flagship event.</p>
         <div class="footer-socials">
-          <a href="https://twitter.com/therealugs" target="_blank" class="social-ico">𝕏</a>
-          <a href="https://instagram.com/undergroundsound" target="_blank" class="social-ico">📸</a>
-          <a href="https://youtube.com/@therealugs" target="_blank" class="social-ico">▶</a>
+          <a href="https://twitter.com/therealugs" target="_blank" class="social-ico" rel="noopener noreferrer">𝕏</a>
+          <a href="https://instagram.com/undergroundsound" target="_blank" class="social-ico" rel="noopener noreferrer">📸</a>
+          <a href="https://youtube.com/@therealugs" target="_blank" class="social-ico" rel="noopener noreferrer">▶</a>
         </div>
       </div>
       <div class="footer-col">

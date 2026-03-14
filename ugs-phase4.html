@@ -2,6 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="description" content="Underground Sound Phase 4 — Festival Platform. Venue intelligence, ticketing, lineup builder, and P&L projections for the 2026 flagship event.">
+<meta property="og:title" content="UGS Phase 4 — Festival Platform — Underground Sound">
+<meta property="og:description" content="Underground Sound Phase 4 — Festival Platform. Venue intelligence, ticketing, lineup builder, and P&L projections for the 2026 flagship event.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://undergroundsound.co/og-image.svg">
+<meta property="og:site_name" content="Underground Sound">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@therealugs">
+<link rel="canonical" href="https://undergroundsound.co/ugs-phase4.html">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>UGS Phase 4 — Flagship Festival Infrastructure</title>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
@@ -1403,7 +1412,7 @@ body::after {
             <div class="slot-num">1</div>
             <div class="slot-avi" style="background:var(--gold-d);">🎤</div>
             <div class="slot-info">
-              <div class="slot-name">HEADLINER TBD</div>
+              <div class="slot-name" style="letter-spacing:3px;color:var(--gold);">ANNOUNCING SOON</div>
               <div class="slot-meta">Negotiating · Main Stage · ATL / NYC</div>
             </div>
             <div class="slot-draw"><div class="slot-draw-num">—</div><div class="slot-draw-lbl">Draw Est.</div></div>
@@ -1510,7 +1519,7 @@ body::after {
             <tr><td class="sched-time">7:00 PM</td><td><div class="sched-name">Lunar4</div></td><td class="sched-city">Detroit, MI</td><td><span class="sched-stage st-second">Second</span></td><td style="font-size:11px;color:var(--muted);">Dark Rap</td><td><span class="chip chip-gold">Confirmed</span></td></tr>
             <tr><td class="sched-time">7:30 PM</td><td><div class="sched-name">Voidkid</div></td><td class="sched-city">New York, NY</td><td><span class="sched-stage st-second">Second</span></td><td style="font-size:11px;color:var(--muted);">Alt Rap</td><td><span class="chip chip-gold">Confirmed</span></td></tr>
             <tr><td class="sched-time">8:00 PM</td><td><div class="sched-name">2Slimey</div></td><td class="sched-city">Delaware</td><td><span class="sched-stage st-main">Main</span></td><td style="font-size:11px;color:var(--muted);">Melodic Trap</td><td><span class="chip chip-gold">Confirmed</span></td></tr>
-            <tr><td class="sched-time">9:30 PM</td><td><div class="sched-name">HEADLINER TBD</div></td><td class="sched-city">ATL / NYC</td><td><span class="sched-stage st-main">Main</span></td><td style="font-size:11px;color:var(--muted);">Underground Rap</td><td><span class="chip chip-blood">Negotiating</span></td></tr>
+            <tr><td class="sched-time">9:30 PM</td><td><div class="sched-name" style="color:var(--gold);">ANNOUNCING SOON</div></td><td class="sched-city">ATL / NYC</td><td><span class="sched-stage st-main">Main</span></td><td style="font-size:11px;color:var(--muted);">Underground Rap</td><td><span class="chip chip-blood">Negotiating</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -1546,7 +1555,7 @@ body::after {
               </div>
               <div style="display:flex;justify-content:space-between;align-items:flex-start;padding:10px;background:var(--raised);border-radius:6px;border-left:2px solid var(--rim2);">
                 <div><div style="font-size:13px;font-weight:700;margin-bottom:2px;">Live Stream Setup</div><div style="font-size:11px;color:var(--muted);">Multi-cam, UGS YouTube</div></div>
-                <span class="chip chip-muted">TBD</span>
+                <span class="chip chip-muted">In Review</span>
               </div>
             </div>
           </div>
@@ -1970,7 +1979,7 @@ body::after {
             <div class="city-state">California · West Coast Flagship</div>
             <div class="city-stats">
               <div><div class="city-stat-val" style="color:var(--dim);">5,000+</div><div class="city-stat-lbl">Capacity</div></div>
-              <div><div class="city-stat-val" style="color:var(--dim);">TBD</div><div class="city-stat-lbl">Venue Score</div></div>
+              <div><div class="city-stat-val" style="color:var(--muted);">—</div><div class="city-stat-lbl">Venue Score</div></div>
             </div>
           </div>
         </div>
@@ -2190,5 +2199,7 @@ const barObs = new IntersectionObserver(entries => {
 document.querySelectorAll('.card, .venue-map-placeholder').forEach(c => barObs.observe(c));
 </script>
 <script src="assets/js/responsive.js"></script>
+<button id="back-to-top" class="back-to-top" aria-label="Back to top">↑</button>
+<script src="assets/js/ugs-enhance.js"></script>
 </body>
 </html>

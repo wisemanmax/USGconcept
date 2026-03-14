@@ -12,6 +12,10 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Underground Sound">
+<meta name="description" content="Underground Sound video hub: cyphers, freestyles, and must-watch content. 1.8M peak views on @therealugs YouTube.">
+<meta property="og:title" content="Videos — Underground Sound">
+<meta property="og:description" content="Underground cyphers, freestyles, and must-watch content from @therealugs. 1.8M peak views and counting.">
+<meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@therealugs">
 <meta name="twitter:image" content="https://undergroundsound.co/og-image.svg">
@@ -19,6 +23,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Videos — Underground Sound</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/phase1.css">
 
 
@@ -70,8 +75,8 @@
         <a href="promotions.html">Submit Music</a>
         <a href="freshman-list.html">2025 Freshman</a>
         <a href="events.html">Events</a>
-        <a href="https://twitter.com/therealugs" target="_blank">Twitter</a>
-        <a href="https://instagram.com/undergroundsound" target="_blank">Instagram</a>
+        <a href="https://twitter.com/therealugs" target="_blank" rel="noopener noreferrer">Twitter</a>
+        <a href="https://instagram.com/undergroundsound" target="_blank" rel="noopener noreferrer">Instagram</a>
       </div>
     </div>
   </div>
@@ -97,17 +102,58 @@
         <li><a href="promotions.html" class="">Promotions</a></li>
       </ul>
       <div class="nav-actions">
-        <div class="nav-search">
+        <div class="nav-search" style="position:relative;">
           <span class="nav-search-icon">🔍</span>
-          <input type="text" placeholder="Search artists, news...">
+          <input type="text" id="site-search" placeholder="Search artists, news..." autocomplete="off">
+          <div id="search-results" style="display:none;position:absolute;top:calc(100% + 8px);right:0;background:var(--card);border:1px solid var(--border);min-width:320px;z-index:500;max-height:400px;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,.5);"></div>
         </div>
         <a href="promotions.html" class="btn btn-acid" style="padding: 10px 20px; font-size: 11px;">Submit ↗</a>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
     </div>
   </div>
 </nav>
+<div class="nav-drawer-overlay" id="nav-drawer-overlay"></div>
+<nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation">
+  <div class="nav-drawer-header">
+    <div class="nav-drawer-logo">
+      <div class="logo-mark" style="width:32px;height:32px;"><span style="font-size:15px;">UGS</span></div>
+      <div style="font-family:var(--font-display);font-size:18px;letter-spacing:3px;color:var(--white);">UNDERGROUND</div>
+    </div>
+    <button class="nav-drawer-close" id="nav-drawer-close" aria-label="Close navigation">✕</button>
+  </div>
+  <div class="nav-drawer-search">
+    <input type="text" id="drawer-search-input" placeholder="Search artists, news..." aria-label="Search">
+  </div>
+  <div class="nav-drawer-links">
+    <div class="nav-drawer-section-label">Navigation</div>
+    <a href="index.html" class="nav-drawer-link">Home</a>
+    <a href="news.html" class="nav-drawer-link">News</a>
+    <a href="freshman-list.html" class="nav-drawer-link">Freshman List <span class="ndl-badge">2025</span></a>
+    <a href="videos.html" class="nav-drawer-link">Videos</a>
+    <a href="events.html" class="nav-drawer-link">Events</a>
+    <a href="promotions.html" class="nav-drawer-link">Promotions</a>
+    <div class="nav-drawer-divider"></div>
+    <div class="nav-drawer-section-label">For Artists</div>
+    <a href="pricing.html" class="nav-drawer-link">Pricing</a>
+    <a href="freshman-list.html" class="nav-drawer-link">Freshman List</a>
+    <div class="nav-drawer-divider"></div>
+    <div class="nav-drawer-section-label">Business</div>
+    <a href="advertise.html" class="nav-drawer-link">Advertise</a>
+    <a href="press-kit.html" class="nav-drawer-link">Press Kit</a>
+    <a href="merch.html" class="nav-drawer-link">Merch</a>
+    <a href="contact.html" class="nav-drawer-link">Contact</a>
+    <div class="nav-drawer-divider"></div>
+    <div class="nav-drawer-section-label">Platform</div>
+    <a href="phase2/dashboard.html" class="nav-drawer-link">Phase 2 — Analytics</a>
+    <a href="phase3/overview.html" class="nav-drawer-link">Phase 3 — Community</a>
+    <a href="phase4/mission-control.html" class="nav-drawer-link">Phase 4 — Festival</a>
+  </div>
+  <div class="nav-drawer-cta">
+    <a href="promotions.html" class="btn btn-acid" style="display:block;text-align:center;padding:14px;font-size:11px;letter-spacing:3px;">Submit Your Music →</a>
+  </div>
+</nav>
 
-<!-- BREAKING BAR -->
 <div class="breaking-bar">
   <div class="breaking-label">BREAKING</div>
   <div class="breaking-track">
@@ -132,9 +178,9 @@
     <div class="section-head reveal">
       <div>
         <div class="eyebrow" style="margin-bottom:12px;">Watch</div>
-        <div class="section-title">LATEST<br>VIDEOS</div>
+        <h1 class="section-title" style="margin:0;">LATEST<br>VIDEOS</h1>
       </div>
-      <a href="https://youtube.com/@therealugs" target="_blank" class="see-all">YouTube Channel →</a>
+      <a href="https://youtube.com/@therealugs" target="_blank" class="see-all" rel="noopener noreferrer">YouTube Channel →</a>
     </div>
 
     <div class="video-grid reveal">
@@ -191,7 +237,7 @@
           <div class="video-title">ØWAY CYPHER — Full Session</div>
           <p class="video-desc">The most viewed cypher on Underground Sound's platform. Multiple underground artists, unfiltered bars, one camera. Watch the video that proved UGS builds careers.</p>
           <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;">
-            <a href="https://youtube.com/@therealugs" target="_blank" class="btn btn-acid" style="font-size:11px;padding:10px 20px;">Watch on YouTube ↗</a>
+            <a href="https://youtube.com/@therealugs" target="_blank" class="btn btn-acid" style="font-size:11px;padding:10px 20px;" rel="noopener noreferrer">Watch on YouTube ↗</a>
             <span style="font-family:var(--font-mono);font-size:10px;color:var(--muted);letter-spacing:2px;">@THEREALUGS</span>
           </div>
         </div>
@@ -223,7 +269,7 @@
           <div style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border);">
             <div style="font-family:var(--font-display);font-size:20px;color:var(--gold);line-height:1;width:28px;flex-shrink:0;">#3</div>
             <div style="font-family:var(--font-display);font-size:15px;letter-spacing:1px;flex:1;">LADE</div>
-            <a href="artists/lade.html" style="font-family:var(--font-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;white-space:nowrap;transition:color .2s;" onmouseover="this.style.color='var(--acid)'" onmouseout="this.style.color='var(--muted)'">Profile →</a>
+            <a href="artists/voidkid.html" style="font-family:var(--font-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;white-space:nowrap;transition:color .2s;" onmouseover="this.style.color='var(--acid)'" onmouseout="this.style.color='var(--muted)'">Profile →</a>
           </div>
           <div style="position:relative;width:100%;aspect-ratio:16/9;background:var(--deep);">
             <iframe src="https://www.youtube.com/embed/pqPnyb5FQ8M" title="LADE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe>
@@ -233,7 +279,7 @@
           <div style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border);">
             <div style="font-family:var(--font-display);font-size:20px;color:var(--gold);line-height:1;width:28px;flex-shrink:0;">#4</div>
             <div style="font-family:var(--font-display);font-size:15px;letter-spacing:1px;flex:1;">RAININGLOL</div>
-            <a href="artists/raininglol.html" style="font-family:var(--font-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;white-space:nowrap;transition:color .2s;" onmouseover="this.style.color='var(--acid)'" onmouseout="this.style.color='var(--muted)'">Profile →</a>
+            <a href="artists/kaoswave.html" style="font-family:var(--font-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;white-space:nowrap;transition:color .2s;" onmouseover="this.style.color='var(--acid)'" onmouseout="this.style.color='var(--muted)'">Profile →</a>
           </div>
           <div style="position:relative;width:100%;aspect-ratio:16/9;background:var(--deep);">
             <iframe src="https://www.youtube.com/embed/fRqBQM-_uqY" title="RAININGLOL" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe>
@@ -245,9 +291,7 @@
 </section>
 
 <!-- EVENTS -->
-<!-- FOOTER -->
 
-<!-- NEWSLETTER CAPTURE -->
 <div style="background:var(--raised);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 0;">
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;" class="newsletter-strip">
@@ -268,7 +312,12 @@
 </div>
 <script>
 if(!window._nlDone){window._nlDone=true;
-function nlSubmit(){const e=document.getElementById('nl-email').value.trim();if(!e||!e.includes('@')){alert('Please enter a valid email.');return;}document.getElementById('nl-form').style.display='none';document.getElementById('nl-success').style.display='block';}
+function nlSubmit(){
+  const e=document.getElementById('nl-email').value.trim();
+  if(!e||!e.includes('@')){alert('Please enter a valid email.');return;}
+  document.getElementById('nl-form').style.display='none';
+  document.getElementById('nl-success').style.display='block';
+}
 }
 </script>
 <footer>
@@ -284,9 +333,9 @@ function nlSubmit(){const e=document.getElementById('nl-email').value.trim();if(
         </div>
         <p>The media brand for underground artists. Daily content, real promotion, and authentic exposure across Twitter, Instagram, and YouTube. Building toward the underground's flagship event.</p>
         <div class="footer-socials">
-          <a href="https://twitter.com/therealugs" target="_blank" class="social-ico">𝕏</a>
-          <a href="https://instagram.com/undergroundsound" target="_blank" class="social-ico">📸</a>
-          <a href="https://youtube.com/@therealugs" target="_blank" class="social-ico">▶</a>
+          <a href="https://twitter.com/therealugs" target="_blank" class="social-ico" rel="noopener noreferrer">𝕏</a>
+          <a href="https://instagram.com/undergroundsound" target="_blank" class="social-ico" rel="noopener noreferrer">📸</a>
+          <a href="https://youtube.com/@therealugs" target="_blank" class="social-ico" rel="noopener noreferrer">▶</a>
         </div>
       </div>
       <div class="footer-col">

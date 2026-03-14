@@ -12,6 +12,10 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="Underground Sound">
+<meta name="description" content="Upcoming underground hip-hop events, shows, and the Phase 4 Festival. Stay in the loop with Underground Sound.">
+<meta property="og:title" content="Events — Underground Sound">
+<meta property="og:description" content="Upcoming underground hip-hop events, UGS shows, and the Phase 4 Festival in Wilmington, DE — Nov 2026.">
+<meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@therealugs">
 <meta name="twitter:image" content="https://undergroundsound.co/og-image.svg">
@@ -19,6 +23,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Events — Underground Sound</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400&family=DM+Serif+Display:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/phase1.css">
 
 
@@ -70,8 +75,8 @@
         <a href="promotions.html">Submit Music</a>
         <a href="freshman-list.html">2025 Freshman</a>
         <a href="events.html">Events</a>
-        <a href="https://twitter.com/therealugs" target="_blank">Twitter</a>
-        <a href="https://instagram.com/undergroundsound" target="_blank">Instagram</a>
+        <a href="https://twitter.com/therealugs" target="_blank" rel="noopener noreferrer">Twitter</a>
+        <a href="https://instagram.com/undergroundsound" target="_blank" rel="noopener noreferrer">Instagram</a>
       </div>
     </div>
   </div>
@@ -97,17 +102,58 @@
         <li><a href="promotions.html" class="">Promotions</a></li>
       </ul>
       <div class="nav-actions">
-        <div class="nav-search">
+        <div class="nav-search" style="position:relative;">
           <span class="nav-search-icon">🔍</span>
-          <input type="text" placeholder="Search artists, news...">
+          <input type="text" id="site-search" placeholder="Search artists, news..." autocomplete="off">
+          <div id="search-results" style="display:none;position:absolute;top:calc(100% + 8px);right:0;background:var(--card);border:1px solid var(--border);min-width:320px;z-index:500;max-height:400px;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,.5);"></div>
         </div>
         <a href="promotions.html" class="btn btn-acid" style="padding: 10px 20px; font-size: 11px;">Submit ↗</a>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Open navigation" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
     </div>
   </div>
 </nav>
+<div class="nav-drawer-overlay" id="nav-drawer-overlay"></div>
+<nav class="nav-drawer" id="nav-drawer" aria-label="Mobile navigation">
+  <div class="nav-drawer-header">
+    <div class="nav-drawer-logo">
+      <div class="logo-mark" style="width:32px;height:32px;"><span style="font-size:15px;">UGS</span></div>
+      <div style="font-family:var(--font-display);font-size:18px;letter-spacing:3px;color:var(--white);">UNDERGROUND</div>
+    </div>
+    <button class="nav-drawer-close" id="nav-drawer-close" aria-label="Close navigation">✕</button>
+  </div>
+  <div class="nav-drawer-search">
+    <input type="text" id="drawer-search-input" placeholder="Search artists, news..." aria-label="Search">
+  </div>
+  <div class="nav-drawer-links">
+    <div class="nav-drawer-section-label">Navigation</div>
+    <a href="index.html" class="nav-drawer-link">Home</a>
+    <a href="news.html" class="nav-drawer-link">News</a>
+    <a href="freshman-list.html" class="nav-drawer-link">Freshman List <span class="ndl-badge">2025</span></a>
+    <a href="videos.html" class="nav-drawer-link">Videos</a>
+    <a href="events.html" class="nav-drawer-link">Events</a>
+    <a href="promotions.html" class="nav-drawer-link">Promotions</a>
+    <div class="nav-drawer-divider"></div>
+    <div class="nav-drawer-section-label">For Artists</div>
+    <a href="pricing.html" class="nav-drawer-link">Pricing</a>
+    <a href="freshman-list.html" class="nav-drawer-link">Freshman List</a>
+    <div class="nav-drawer-divider"></div>
+    <div class="nav-drawer-section-label">Business</div>
+    <a href="advertise.html" class="nav-drawer-link">Advertise</a>
+    <a href="press-kit.html" class="nav-drawer-link">Press Kit</a>
+    <a href="merch.html" class="nav-drawer-link">Merch</a>
+    <a href="contact.html" class="nav-drawer-link">Contact</a>
+    <div class="nav-drawer-divider"></div>
+    <div class="nav-drawer-section-label">Platform</div>
+    <a href="phase2/dashboard.html" class="nav-drawer-link">Phase 2 — Analytics</a>
+    <a href="phase3/overview.html" class="nav-drawer-link">Phase 3 — Community</a>
+    <a href="phase4/mission-control.html" class="nav-drawer-link">Phase 4 — Festival</a>
+  </div>
+  <div class="nav-drawer-cta">
+    <a href="promotions.html" class="btn btn-acid" style="display:block;text-align:center;padding:14px;font-size:11px;letter-spacing:3px;">Submit Your Music →</a>
+  </div>
+</nav>
 
-<!-- BREAKING BAR -->
 <div class="breaking-bar">
   <div class="breaking-label">BREAKING</div>
   <div class="breaking-track">
@@ -132,7 +178,7 @@
     <div class="section-head reveal">
       <div>
         <div class="eyebrow" style="margin-bottom:12px;">Live & Upcoming</div>
-        <div class="section-title">EVENTS</div>
+        <h1 class="section-title" style="margin:0;">EVENTS</h1>
       </div>
       <a href="phase4/mission-control.html" class="see-all">Full Festival Info →</a>
     </div>
@@ -179,7 +225,7 @@
         <div class="event-body">
           <div class="cat cat-fresh" style="margin-bottom:10px;">Freshman Live</div>
           <div class="event-title">Freshman Class 2025 Reveal Event</div>
-          <div class="event-location">TBD — Major City</div>
+          <div class="event-location">Est. Coast — City Reveal Coming</div>
           <div class="event-tags">
             <span class="fresh-tag">FRESHMAN</span>
             <span class="fresh-tag">LIVE</span>
@@ -190,7 +236,7 @@
 
       <div class="event-card" data-type="community">
         <div class="event-date-banner">
-          <div class="event-day">TBA</div>
+          <div class="event-day">Q3</div>
           <div class="event-month-year">
             <div class="event-month">SUM</div>
             <div class="event-year">2025</div>
@@ -199,43 +245,50 @@
         <div class="event-body">
           <div class="cat cat-feature" style="margin-bottom:10px;">Phase 3 Preview</div>
           <div class="event-title">UGS Community Summit + Live Experience</div>
-          <div class="event-location">Regional — TBD</div>
+          <div class="event-location">Mid-Atlantic Region</div>
           <div class="event-tags">
             <span class="fresh-tag">COMMUNITY</span>
             <span class="fresh-tag">FESTIVAL</span>
           </div>
-          <div class="event-status tba">Date TBA</div>
+          <div class="event-status soon">Date Revealing Soon</div>
         </div>
       </div>
 
-      <div class="event-card" data-type="festival">
-        <div class="event-date-banner">
-          <div class="event-day">???</div>
+      <div class="event-card" data-type="festival" style="border-color:var(--gold,#f0b429);position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#f0b429,#e8390e,#f0b429);"></div>
+        <div class="event-date-banner" style="background:rgba(240,180,41,0.08);border-right-color:rgba(240,180,41,0.3);">
+          <div class="event-day" style="color:#f0b429;">14</div>
           <div class="event-month-year">
-            <div class="event-month">2026</div>
-            <div class="event-year">FLAGSHIP</div>
+            <div class="event-month">NOV</div>
+            <div class="event-year">2026</div>
           </div>
         </div>
         <div class="event-body">
-          <div class="cat cat-video" style="margin-bottom:10px;">Flagship Event</div>
-          <div class="event-title">Underground Sound Festival — Phase 4 Vision</div>
-          <div class="event-location">National Scale</div>
+          <div class="cat" style="background:rgba(240,180,41,0.12);color:#f0b429;border-color:rgba(240,180,41,0.3);margin-bottom:10px;">Phase 4 Flagship Festival</div>
+          <div class="event-title">Underground Sound Festival 2026</div>
+          <div class="event-location" style="display:flex;align-items:center;gap:6px;">
+            📍 Wilmington, DE — Venue Locked · 2,000 Capacity
+          </div>
+          <div style="font-size:11px;color:var(--muted);margin:8px 0;line-height:1.5;font-weight:300;">
+            The underground's flagship event. 10+ artists. Full production. The movement goes live.
+          </div>
           <div class="event-tags">
-            <span class="fresh-tag">FESTIVAL</span>
+            <span class="fresh-tag" style="background:rgba(240,180,41,0.1);color:#f0b429;">FESTIVAL</span>
             <span class="fresh-tag">FLAGSHIP</span>
             <span class="fresh-tag">PHASE 4</span>
+            <span class="fresh-tag">WILMINGTON DE</span>
           </div>
-          <div class="event-status tba">In Development</div>
+          <div style="display:flex;gap:10px;align-items:center;margin-top:14px;flex-wrap:wrap;">
+            <a href="phase4/mission-control.html#presale-form-section" style="background:#f0b429;color:#000;font-family:var(--font-mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:9px 16px;text-decoration:none;font-weight:700;transition:background .2s;" onmouseover="this.style.background='#e8390e';this.style.color='#fff'" onmouseout="this.style.background='#f0b429';this.style.color='#000'">🎟 Join Pre-Sale (412 signed) →</a>
+            <a href="phase4/mission-control.html" style="font-family:var(--font-mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border);" onmouseover="this.style.color='var(--acid)'" onmouseout="this.style.color='var(--muted)'">Full Details →</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SUBMIT CTA -->
-<!-- FOOTER -->
 
-<!-- NEWSLETTER CAPTURE -->
 <div style="background:var(--raised);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:40px 0;">
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr auto;gap:40px;align-items:center;" class="newsletter-strip">
@@ -256,7 +309,12 @@
 </div>
 <script>
 if(!window._nlDone){window._nlDone=true;
-function nlSubmit(){const e=document.getElementById('nl-email').value.trim();if(!e||!e.includes('@')){alert('Please enter a valid email.');return;}document.getElementById('nl-form').style.display='none';document.getElementById('nl-success').style.display='block';}
+function nlSubmit(){
+  const e=document.getElementById('nl-email').value.trim();
+  if(!e||!e.includes('@')){alert('Please enter a valid email.');return;}
+  document.getElementById('nl-form').style.display='none';
+  document.getElementById('nl-success').style.display='block';
+}
 }
 </script>
 <footer>
@@ -272,9 +330,9 @@ function nlSubmit(){const e=document.getElementById('nl-email').value.trim();if(
         </div>
         <p>The media brand for underground artists. Daily content, real promotion, and authentic exposure across Twitter, Instagram, and YouTube. Building toward the underground's flagship event.</p>
         <div class="footer-socials">
-          <a href="https://twitter.com/therealugs" target="_blank" class="social-ico">𝕏</a>
-          <a href="https://instagram.com/undergroundsound" target="_blank" class="social-ico">📸</a>
-          <a href="https://youtube.com/@therealugs" target="_blank" class="social-ico">▶</a>
+          <a href="https://twitter.com/therealugs" target="_blank" class="social-ico" rel="noopener noreferrer">𝕏</a>
+          <a href="https://instagram.com/undergroundsound" target="_blank" class="social-ico" rel="noopener noreferrer">📸</a>
+          <a href="https://youtube.com/@therealugs" target="_blank" class="social-ico" rel="noopener noreferrer">▶</a>
         </div>
       </div>
       <div class="footer-col">
